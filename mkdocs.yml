@@ -3,3 +3,9 @@ remote_branch: gh-deploy
 theme: readthedocs
 nav:
 - Home: index.md
+- Hardware: hardware.md
+- Web Scraping: web_scraping.md
+- Server: server.md
+- Bash scripting: bash.md
+- Linux tools:
+  - Wget: wget.md
