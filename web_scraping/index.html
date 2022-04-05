@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Web Scraping - Documentación de Javi</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Web Scraping";
+        var mkdocs_page_input_path = "web_scraping.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Documentación de Javi
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../hardware/">Hardware</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Web Scraping</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#get-data-from-internet">Get data from internet</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#reference">Reference</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#parse-data">Parse data</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3-ways">3 ways</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#1-static-webpages">1. Static webpages</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#2-api-reverse-engineering">2. API reverse engineering</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#3-headless-browser-and-selenium">3. Headless browser and Selenium</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../server/">Server</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../bash/">Bash scripting</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Linux tools</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../wget/">Wget</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Documentación de Javi</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>Web Scraping</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="web-scraping">Web Scraping</h1>
+<h2 id="get-data-from-internet">Get data from internet</h2>
+<ul>
+<li><strong>cURL</strong></li>
+<li><strong>Selenium</strong></li>
+<li><strong>Google Chrome cli</strong></li>
+<li><code>google-chrome-stable --headless --disable-gpu --dump-dom 'URL' &gt; ~/file.html</code></li>
+<li>lynx</li>
+<li>lynx -dump -listonly http://aligajani.com </li>
+</ul>
+<blockquote>
+<h3 id="reference">Reference</h3>
+<ul>
+<li>https://www.queryhome.com/tech/54364/overview-about-wget-command</li>
+<li>https://www.linuxtechi.com/wget-command-practical-examples/</li>
+<li>https://www.youtube.com/watch?v=GJum2O2JM6M</li>
+<li>https://www.youtube.com/watch?v=-GCDJ26B4Ho</li>
+</ul>
+</blockquote>
+<h2 id="parse-data">Parse data</h2>
+<h2 id="3-ways">3 ways</h2>
+<p>There are 3 ways of we scrapping:</p>
+<ol>
+<li>FIRST OPTION: Static webpages + <code>pup</code></li>
+<li>SECOND OPTION: API reverse engineering + <code>jq</code></li>
+<li>LAST OPTION: Use Selenium or Headless browser</li>
+</ol>
+<h3 id="1-static-webpages">1. Static webpages</h3>
+<p>Get a simple static page (server side rendered) with <code>curl</code> or <code>wget</code> and parse them</p>
+<p>Example:</p>
+<pre><code class="language-bash">page_html=$(curl -s $URL)
+title=$(echo $page_html | pup 'title' text{})
+echo $title
+
+col_A=$(echo $page_html | pup 'a.bb1c_ attr{href}')
+col_B=$(echo $page_html | pup 'span.price-sale text{}')
+table=$(paste col_A col_B)
+</code></pre>
+<blockquote>
+<p>https://www.youtube.com/watch?v=GJum2O2JM6M</p>
+</blockquote>
+<h3 id="2-api-reverse-engineering">2. API reverse engineering</h3>
+<p>Useful for dynamic websites. Find the hidden api that makes XHR requests to fullfill the webpage. XMLHttpRequest is used heavily in AJAX programming.</p>
+<ul>
+<li>Step 1: See the requests that the web is doing: Chrome or Firefox dev tools &gt; Network &gt; XHR requests</li>
+<li>Step 2: Copy the target request as cURL (right click)</li>
+<li>Step 3: Paste the target request in <a href="https://www.postman.com">Postman</a> or <a href="https://insomnia.rest">Insomnia</a></li>
+<li>Step 4: Elaborate your own script using <code>curl</code> + <code>jq</code></li>
+</ul>
+<h3 id="3-headless-browser-and-selenium">3. Headless browser and Selenium</h3>
+<p>Use Selenium or Headless browser for automate the interaction with the web.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../hardware/" class="btn btn-neutral float-left" title="Hardware"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../server/" class="btn btn-neutral float-right" title="Server">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../hardware/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../server/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
