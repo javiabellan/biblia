@@ -8,4 +8,11 @@ nav:
 - Server: server.md
 - Bash scripting: bash.md
 - Linux tools:
+  - Git: git.md
+  - SSH: ssh.md
+  - TMUX: tmux.md
+  - Vim: vim.md
   - Wget: wget.md
+- Programming:
+  - Profiling: profiling.md
+  - Debugging: debugging.md

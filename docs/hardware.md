@@ -156,6 +156,15 @@ RAID 0: lass velocidades de lectura y escritura. Normalmente es la suma de las v
 (LVM) Logical Volume Management
 
 
-### RAM
 
+
+### Hardware for servers
+
+- disks -> RAID (mean time to failure (MTTF) of about 10 to 50 years)
+- dual power supplies
+- batteries and diesel generators for backup power
+- hot-swappable CPUs
+- When one component dies, the redundant component can take its place while the broken component is replaced.
 - ECC RAM: Good for servers
+
+

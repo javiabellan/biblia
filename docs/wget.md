@@ -23,3 +23,10 @@
 - `wget --ftp-user=USERNAME --ftp-password=PASSWORD URL`: FTP Download With wget
 - `wget --reject=gif URL`:       Reject Certain File Types while Downloading
 - `wget -o download.log URL`:    Log messages to a log file instead of stderr Using wget -o
+
+
+> ### Reference
+> - https://www.queryhome.com/tech/54364/overview-about-wget-command
+> - https://www.linuxtechi.com/wget-command-practical-examples/
+> - https://www.youtube.com/watch?v=GJum2O2JM6M
+> - https://www.youtube.com/watch?v=-GCDJ26B4Ho

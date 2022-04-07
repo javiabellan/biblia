@@ -1,29 +1,6 @@
 
 # Web Scraping
 
-
-## Get data from internet
-
-- **cURL**
-- **Selenium**
-- **Google Chrome cli**
-  - `google-chrome-stable --headless --disable-gpu --dump-dom 'URL' > ~/file.html`
-- lynx
-  - lynx -dump -listonly http://aligajani.com 
-
-
-> ### Reference
-> - https://www.queryhome.com/tech/54364/overview-about-wget-command
-> - https://www.linuxtechi.com/wget-command-practical-examples/
-> - https://www.youtube.com/watch?v=GJum2O2JM6M
-> - https://www.youtube.com/watch?v=-GCDJ26B4Ho
-
-## Parse data
-
-
-
-
-## 3 ways
 There are 3 ways of we scrapping:
 
 1. FIRST OPTION: Static webpages + `pup`
@@ -32,7 +9,7 @@ There are 3 ways of we scrapping:
 
 
 
-### 1. Static webpages
+## 1. Static webpages
 
 Get a simple static page (server side rendered) with `curl` or `wget` and parse them
 
@@ -52,7 +29,7 @@ table=$(paste col_A col_B)
 
 
 
-### 2. API reverse engineering
+## 2. API reverse engineering
 
 Useful for dynamic websites. Find the hidden api that makes XHR requests to fullfill the webpage. XMLHttpRequest is used heavily in AJAX programming.
 
@@ -62,7 +39,13 @@ Useful for dynamic websites. Find the hidden api that makes XHR requests to full
 - Step 4: Elaborate your own script using `curl` + `jq`
 
 
-### 3. Headless browser and Selenium
+## 3. Headless browser & Selenium
 
 Use Selenium or Headless browser for automate the interaction with the web.
 
+- **Selenium**
+- **Google Chrome cli**
+- lynx
+  - lynx -dump -listonly http://aligajani.com 
+
+  - `google-chrome-stable --headless --disable-gpu --dump-dom 'URL' > ~/file.html`
