@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Server - Documentación de Javi</title>
+    <title>TMUX - Documentación de Javi</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Server";
-        var mkdocs_page_input_path = "server.md";
+        var mkdocs_page_name = "TMUX";
+        var mkdocs_page_input_path = "tmux.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -52,14 +52,8 @@
                 <li class="toctree-l1"><a class="reference internal" href="../web_scraping/">Web Scraping</a>
                 </li>
               </ul>
-              <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="./">Server</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#problem-1-static-ip">Problem 1: Static IP</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#problem-2-you-router-need-to-allow-oustside-traffic-to-get-in-to-your-network">Problem 2: you router need to allow oustside traffic to get in to your network.</a>
-    </li>
-    </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../server/">Server</a>
                 </li>
               </ul>
               <ul>
@@ -67,12 +61,14 @@
                 </li>
               </ul>
               <p class="caption"><span class="caption-text">Linux tools</span></p>
-              <ul>
+              <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../git/">Git</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../ssh/">SSH</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../tmux/">TMUX</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">TMUX</a>
+    <ul class="current">
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../vim/">Vim</a>
                   </li>
@@ -99,7 +95,8 @@
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>Server</li>
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Linux tools &raquo;</li><li>TMUX</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -109,56 +106,45 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="visible-ip-on-the-internet">Visible IP on the internet</h2>
-<h3 id="problem-1-static-ip">Problem 1: Static IP</h3>
-<p>THere are not enough IPv4 adresses for everyone in the world
-so your ISP (Internet Service Provider) probably has given you a <strong>dynamic IP adress</strong> instead of an <strong>static IP adress</strong>.</p>
-<p>Solution:</p>
+                <h1 id="tmux">TMUX</h1>
+<p>https://hackernoon.com/using-tmux-to-improve-your-terminal-experience-jt4932zv</p>
+<p>The most popular terminal multiplexer these days is <a href="https://www.man7.org/linux/man-pages/man1/tmux.1.html"><code>tmux</code></a>.
+- tmux can have several <strong>sessions</strong>.
+- a <strong>session</strong> can have several <strong>windows</strong> (like tabs)
+- a <strong>window</strong> can have several <strong>panes</strong> (like a divided terminal)</p>
+<p>Commands:</p>
 <ul>
-<li>OPTION 1) You can ask for you ISP to give a <strong>static IP adress</strong>.</li>
-<li>OPTION 2) You can use <a href="https://www.noip.com/es-MX">noip</a> which track your current ip</li>
-<li>Wen you sign up, you pick a free domain name and automaticlly detect your external IP</li>
-<li>In order to detect changes of your IOP, you need to install the <a href="">noip software</a> on the server.</li>
+<li><strong>Outside tmux</strong></li>
+<li><code>tmux</code>: starts a new session.</li>
+<li><code>tmux new -s NAME</code>: starts it with that name.</li>
+<li><code>tmux ls</code>: lists the current sessions.</li>
+<li><code>tmux a</code>: attaches the last session.</li>
+<li><code>tmux -t sesName</code>: attaches to specific session.</li>
+<li><strong>Inside tmux</strong>:</li>
+<li><code>[Ctrl+b] c</code>: Creates a new window. To close it you can just terminate the shells doing <code>&lt;C-d&gt;</code></li>
+<li><code>[Ctrl+b] 0</code>: Go to window 0</li>
+<li><code>[Ctrl+b] 1</code>: Go to window 1</li>
+<li><code>[Ctrl+b] 2</code>: Go to window 2</li>
+<li><code>[Ctrl+b] p</code>: Go to the previous window</li>
+<li><code>[Ctrl+b] n</code>: Go to the next window</li>
+<li><code>[Ctrl+b] ,</code>: Rename the current window</li>
+<li><code>[Ctrl+b] w</code>: List current windows</li>
+<li><code>[Ctrl+b] d</code>: Detaches the current session (remains active in background)</li>
+<li><code>[Ctrl+d]</code>: Kill the current window (kill the sesion if is it the only window)</li>
+<li><strong>Panes</strong>: Like vim splits, panes let you have multiple shells in the same visual display.</li>
+<li><code>[Ctrl+b] "</code> Split the current pane horizontally</li>
+<li><code>[Ctrl+b] %</code> Split the current pane vertically</li>
+<li><code>[Ctrl+b] &lt;direction&gt;</code> Move to the pane in the specified <em>direction</em>. Direction here means arrow keys.</li>
+<li><code>[Ctrl+b] z</code> Toggle zoom for the current pane</li>
+<li><code>[Ctrl+b] [</code> Start scrollback. You can then press <code>&lt;space&gt;</code> to start a selection and <code>&lt;enter&gt;</code> to copy that selection.</li>
+<li><code>[Ctrl+b] &lt;space&gt;</code> Cycle through pane arrangements.</li>
 </ul>
-<h3 id="problem-2-you-router-need-to-allow-oustside-traffic-to-get-in-to-your-network">Problem 2: you router need to allow oustside traffic to get in to your network.</h3>
-<ul>
-<li>Open up port 80 on the router (this is port forawrding)</li>
-<li>https://www.youtube.com/watch?v=ZlYyiuBc8Mc</li>
-</ul>
-<p>Ojo que el ISP tiene un servidor ACS que controla todos sus routers</p>
-<h2 id="wake-on-lan">Wake on lan</h2>
-<p>On the server:</p>
-<ol>
-<li><code>ip link</code> to find informatio about available network cards</li>
-<li>find the name og the ethernet enterface (eg. <code>enp0s31f6</code>)</li>
-<li>find the mac address (eg. e0:............)</li>
-<li><code>sudo ethtool enp0s31f6 | grep Wake-on</code></li>
-<li>Check that is on </li>
-</ol>
-<p>On the client</p>
-<ol>
-<li>Find the server mac address: <code>arp -a</code></li>
-<li>Wake the server <code>wakeonlan *mac address*</code></li>
-</ol>
-<h2 id="firewall">Firewall</h2>
-<pre><code class="language-bash"># iptables is already installed. I like ufw.
-
-pacman -S ufw                # Install ufw
-ufw enable                   # Enable it only once, when package is installed
-ufw status verbose           # Check its status
-systemctl start ufw          # Start the firewall
-systemctl enable ufw         # Enable the start-up with the system [option a]
-systemctl enable ufw.service # Enable the start-up with the system [option b]
-</code></pre>
-<h2 id="load-balancing">Load balancing</h2>
-<p>"failover" or "load balancing", which is where two servers provide the same service but allow for distribution in the event of problems.</p>
-<p>Services like NGINX, Cloudflare, Apigee, AWS ELB</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../web_scraping/" class="btn btn-neutral float-left" title="Web Scraping"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../bash/" class="btn btn-neutral float-right" title="Bash scripting">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../ssh/" class="btn btn-neutral float-left" title="SSH"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../vim/" class="btn btn-neutral float-right" title="Vim">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -181,10 +167,10 @@ systemctl enable ufw.service # Enable the start-up with the system [option b]
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../web_scraping/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../ssh/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../bash/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../vim/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

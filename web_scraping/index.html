@@ -51,23 +51,11 @@
               <ul class="current">
                 <li class="toctree-l1 current"><a class="reference internal current" href="./">Web Scraping</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#get-data-from-internet">Get data from internet</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#reference">Reference</a>
+    <li class="toctree-l2"><a class="reference internal" href="#1-static-webpages">1. Static webpages</a>
     </li>
-        </ul>
+    <li class="toctree-l2"><a class="reference internal" href="#2-api-reverse-engineering">2. API reverse engineering</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#parse-data">Parse data</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#3-ways">3 ways</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#1-static-webpages">1. Static webpages</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#2-api-reverse-engineering">2. API reverse engineering</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#3-headless-browser-and-selenium">3. Headless browser and Selenium</a>
-    </li>
-        </ul>
+    <li class="toctree-l2"><a class="reference internal" href="#3-headless-browser-selenium">3. Headless browser &amp; Selenium</a>
     </li>
     </ul>
                 </li>
@@ -82,7 +70,22 @@
               </ul>
               <p class="caption"><span class="caption-text">Linux tools</span></p>
               <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../git/">Git</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ssh/">SSH</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tmux/">TMUX</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../vim/">Vim</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../wget/">Wget</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Programming</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../profiling/">Profiling</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../debugging/">Debugging</a>
                   </li>
               </ul>
       </div>
@@ -109,33 +112,13 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="web-scraping">Web Scraping</h1>
-<h2 id="get-data-from-internet">Get data from internet</h2>
-<ul>
-<li><strong>cURL</strong></li>
-<li><strong>Selenium</strong></li>
-<li><strong>Google Chrome cli</strong></li>
-<li><code>google-chrome-stable --headless --disable-gpu --dump-dom 'URL' &gt; ~/file.html</code></li>
-<li>lynx</li>
-<li>lynx -dump -listonly http://aligajani.com </li>
-</ul>
-<blockquote>
-<h3 id="reference">Reference</h3>
-<ul>
-<li>https://www.queryhome.com/tech/54364/overview-about-wget-command</li>
-<li>https://www.linuxtechi.com/wget-command-practical-examples/</li>
-<li>https://www.youtube.com/watch?v=GJum2O2JM6M</li>
-<li>https://www.youtube.com/watch?v=-GCDJ26B4Ho</li>
-</ul>
-</blockquote>
-<h2 id="parse-data">Parse data</h2>
-<h2 id="3-ways">3 ways</h2>
 <p>There are 3 ways of we scrapping:</p>
 <ol>
 <li>FIRST OPTION: Static webpages + <code>pup</code></li>
 <li>SECOND OPTION: API reverse engineering + <code>jq</code></li>
 <li>LAST OPTION: Use Selenium or Headless browser</li>
 </ol>
-<h3 id="1-static-webpages">1. Static webpages</h3>
+<h2 id="1-static-webpages">1. Static webpages</h2>
 <p>Get a simple static page (server side rendered) with <code>curl</code> or <code>wget</code> and parse them</p>
 <p>Example:</p>
 <pre><code class="language-bash">page_html=$(curl -s $URL)
@@ -149,7 +132,7 @@ table=$(paste col_A col_B)
 <blockquote>
 <p>https://www.youtube.com/watch?v=GJum2O2JM6M</p>
 </blockquote>
-<h3 id="2-api-reverse-engineering">2. API reverse engineering</h3>
+<h2 id="2-api-reverse-engineering">2. API reverse engineering</h2>
 <p>Useful for dynamic websites. Find the hidden api that makes XHR requests to fullfill the webpage. XMLHttpRequest is used heavily in AJAX programming.</p>
 <ul>
 <li>Step 1: See the requests that the web is doing: Chrome or Firefox dev tools &gt; Network &gt; XHR requests</li>
@@ -157,8 +140,19 @@ table=$(paste col_A col_B)
 <li>Step 3: Paste the target request in <a href="https://www.postman.com">Postman</a> or <a href="https://insomnia.rest">Insomnia</a></li>
 <li>Step 4: Elaborate your own script using <code>curl</code> + <code>jq</code></li>
 </ul>
-<h3 id="3-headless-browser-and-selenium">3. Headless browser and Selenium</h3>
+<h2 id="3-headless-browser-selenium">3. Headless browser &amp; Selenium</h2>
 <p>Use Selenium or Headless browser for automate the interaction with the web.</p>
+<ul>
+<li><strong>Selenium</strong></li>
+<li><strong>Google Chrome cli</strong></li>
+<li>lynx</li>
+<li>
+<p>lynx -dump -listonly http://aligajani.com </p>
+</li>
+<li>
+<p><code>google-chrome-stable --headless --disable-gpu --dump-dom 'URL' &gt; ~/file.html</code></p>
+</li>
+</ul>
               
             </div>
           </div><footer>

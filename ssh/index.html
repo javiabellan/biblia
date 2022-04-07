@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Server - Documentación de Javi</title>
+    <title>SSH - Documentación de Javi</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Server";
-        var mkdocs_page_input_path = "server.md";
+        var mkdocs_page_name = "SSH";
+        var mkdocs_page_input_path = "ssh.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -52,14 +52,8 @@
                 <li class="toctree-l1"><a class="reference internal" href="../web_scraping/">Web Scraping</a>
                 </li>
               </ul>
-              <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="./">Server</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#problem-1-static-ip">Problem 1: Static IP</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#problem-2-you-router-need-to-allow-oustside-traffic-to-get-in-to-your-network">Problem 2: you router need to allow oustside traffic to get in to your network.</a>
-    </li>
-    </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../server/">Server</a>
                 </li>
               </ul>
               <ul>
@@ -67,10 +61,20 @@
                 </li>
               </ul>
               <p class="caption"><span class="caption-text">Linux tools</span></p>
-              <ul>
+              <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../git/">Git</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../ssh/">SSH</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">SSH</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#en-el-servidor">En el servidor:</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#en-el-cliente-conectar-y-redirigir-puerto-8888-juypter">En el cliente. Conectar y redirigir puerto 8888 (juypter)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#key-generation">Key generation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#dejar-un-programa-largo-en-ejecucion">Dejar un programa largo en ejecucion</a>
+    </li>
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../tmux/">TMUX</a>
                   </li>
@@ -99,7 +103,8 @@
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>Server</li>
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Linux tools &raquo;</li><li>SSH</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -109,56 +114,53 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="visible-ip-on-the-internet">Visible IP on the internet</h2>
-<h3 id="problem-1-static-ip">Problem 1: Static IP</h3>
-<p>THere are not enough IPv4 adresses for everyone in the world
-so your ISP (Internet Service Provider) probably has given you a <strong>dynamic IP adress</strong> instead of an <strong>static IP adress</strong>.</p>
-<p>Solution:</p>
-<ul>
-<li>OPTION 1) You can ask for you ISP to give a <strong>static IP adress</strong>.</li>
-<li>OPTION 2) You can use <a href="https://www.noip.com/es-MX">noip</a> which track your current ip</li>
-<li>Wen you sign up, you pick a free domain name and automaticlly detect your external IP</li>
-<li>In order to detect changes of your IOP, you need to install the <a href="">noip software</a> on the server.</li>
-</ul>
-<h3 id="problem-2-you-router-need-to-allow-oustside-traffic-to-get-in-to-your-network">Problem 2: you router need to allow oustside traffic to get in to your network.</h3>
-<ul>
-<li>Open up port 80 on the router (this is port forawrding)</li>
-<li>https://www.youtube.com/watch?v=ZlYyiuBc8Mc</li>
-</ul>
-<p>Ojo que el ISP tiene un servidor ACS que controla todos sus routers</p>
-<h2 id="wake-on-lan">Wake on lan</h2>
-<p>On the server:</p>
-<ol>
-<li><code>ip link</code> to find informatio about available network cards</li>
-<li>find the name og the ethernet enterface (eg. <code>enp0s31f6</code>)</li>
-<li>find the mac address (eg. e0:............)</li>
-<li><code>sudo ethtool enp0s31f6 | grep Wake-on</code></li>
-<li>Check that is on </li>
-</ol>
-<p>On the client</p>
-<ol>
-<li>Find the server mac address: <code>arp -a</code></li>
-<li>Wake the server <code>wakeonlan *mac address*</code></li>
-</ol>
-<h2 id="firewall">Firewall</h2>
-<pre><code class="language-bash"># iptables is already installed. I like ufw.
-
-pacman -S ufw                # Install ufw
-ufw enable                   # Enable it only once, when package is installed
-ufw status verbose           # Check its status
-systemctl start ufw          # Start the firewall
-systemctl enable ufw         # Enable the start-up with the system [option a]
-systemctl enable ufw.service # Enable the start-up with the system [option b]
+                <h1 id="ssh">SSH</h1>
+<h2 id="en-el-servidor">En el servidor:</h2>
+<pre><code class="language-bash">sudo systemctl status sshd  # Ver si esta encendido
+sudo systemctl start sshd   # Encender
+sudo systemctl stop sshd    # Apagar
+sudo systemctl enable sshd  # Al arrancar por defecto: encendido
+sudo systemctl disable sshd # Al arrancar por defecto: apagado
 </code></pre>
-<h2 id="load-balancing">Load balancing</h2>
-<p>"failover" or "load balancing", which is where two servers provide the same service but allow for distribution in the event of problems.</p>
-<p>Services like NGINX, Cloudflare, Apigee, AWS ELB</p>
+<h2 id="en-el-cliente-conectar-y-redirigir-puerto-8888-juypter">En el cliente. Conectar y redirigir puerto 8888 (juypter)</h2>
+<pre><code class="language-bash">ssh javi@192.168.0.103 -L 8888:localhost:8888  # Conectar
+jupyter notebook --no-browser                  # Abrir Jupyter
+exit                                           # Desconectar o CTL+
+</code></pre>
+<h2 id="key-generation">Key generation</h2>
+<pre><code class="language-bash"># Gerenar claves publica y privada
+ssh-keygen -o -a 100 -t ed25519 -f ~/.ssh/id_ed25519
+
+# Llevar la clave publica al cliente
+cat .ssh/id_ed25519.pub | ssh foobar@remote 'cat &gt;&gt; ~/.ssh/authorized_keys'
+</code></pre>
+<ul>
+<li><code>-o</code>: Save the private-key using the new OpenSSH format rather than the PEM format. Actually, this option is implied when you specify the key type as ed25519.</li>
+<li><code>-a</code>: It’s the numbers of KDF (Key Derivation Function) rounds. Higher numbers result in slower passphrase verification, increasing the resistance to brute-force password cracking should the private-key be stolen.</li>
+<li><code>-t</code>: Specifies the type of key to create, in our case the Ed25519.</li>
+<li><code>-f</code>: Specify the filename of the generated key file. If you want it to be discovered automatically by the SSH agent, it must be stored in the default <code>.ssh</code> directory within your home directory.</li>
+</ul>
+<h2 id="dejar-un-programa-largo-en-ejecucion">Dejar un programa largo en ejecucion</h2>
+<p>Opcion simple</p>
+<pre><code class="language-bash">nohup COMMAND        # Run a command immune to hangups
+nohup COMMAND &gt; FILE # Ademas puede guardar su salida estandar en un fichero
+</code></pre>
+<p>Opción con programas que mantienen la sesion activa (<code>tmux</code> or <code>screen</code>)
+1. <code>ssh</code> log in into your remote box. 
+2. <code>tmux</code> or <code>screen</code>
+3. Start the long process you want.
+4. Leave/detach <code>tmux</code> or <code>screen</code> session, but leave your processes running.
+   - Ctrl+A then Ctrl+D (para salir de screen)
+   - Ctrl+B then Ctrl+D (para salir de tmux)
+5. <code>exit</code> ssh
+6. <code>ssh</code> log in into your remote box. 
+7. <code>screen -r</code> "resume" your screen session, and you can see the output of your process.</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../web_scraping/" class="btn btn-neutral float-left" title="Web Scraping"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../bash/" class="btn btn-neutral float-right" title="Bash scripting">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../git/" class="btn btn-neutral float-left" title="Git"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../tmux/" class="btn btn-neutral float-right" title="TMUX">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -181,10 +183,10 @@ systemctl enable ufw.service # Enable the start-up with the system [option b]
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../web_scraping/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../git/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../bash/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../tmux/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

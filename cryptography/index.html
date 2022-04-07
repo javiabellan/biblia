@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Server - Documentación de Javi</title>
+    <title>Cryptography - Documentación de Javi</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Server";
-        var mkdocs_page_input_path = "server.md";
+        var mkdocs_page_name = "Cryptography";
+        var mkdocs_page_input_path = "cryptography.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -52,14 +52,8 @@
                 <li class="toctree-l1"><a class="reference internal" href="../web_scraping/">Web Scraping</a>
                 </li>
               </ul>
-              <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="./">Server</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#problem-1-static-ip">Problem 1: Static IP</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#problem-2-you-router-need-to-allow-oustside-traffic-to-get-in-to-your-network">Problem 2: you router need to allow oustside traffic to get in to your network.</a>
-    </li>
-    </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../server/">Server</a>
                 </li>
               </ul>
               <ul>
@@ -99,7 +93,7 @@
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>Server</li>
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>Cryptography</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -109,57 +103,56 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="visible-ip-on-the-internet">Visible IP on the internet</h2>
-<h3 id="problem-1-static-ip">Problem 1: Static IP</h3>
-<p>THere are not enough IPv4 adresses for everyone in the world
-so your ISP (Internet Service Provider) probably has given you a <strong>dynamic IP adress</strong> instead of an <strong>static IP adress</strong>.</p>
-<p>Solution:</p>
+                <h1 id="cryptography">Cryptography</h1>
+<h2 id="hash-function-md5-sha-1-sha-256">Hash function: MD5, SHA-1, SHA-256</h2>
 <ul>
-<li>OPTION 1) You can ask for you ISP to give a <strong>static IP adress</strong>.</li>
-<li>OPTION 2) You can use <a href="https://www.noip.com/es-MX">noip</a> which track your current ip</li>
-<li>Wen you sign up, you pick a free domain name and automaticlly detect your external IP</li>
-<li>In order to detect changes of your IOP, you need to install the <a href="">noip software</a> on the server.</li>
+<li>Non invertible</li>
+<li>Collision redundant</li>
 </ul>
-<h3 id="problem-2-you-router-need-to-allow-oustside-traffic-to-get-in-to-your-network">Problem 2: you router need to allow oustside traffic to get in to your network.</h3>
-<ul>
-<li>Open up port 80 on the router (this is port forawrding)</li>
-<li>https://www.youtube.com/watch?v=ZlYyiuBc8Mc</li>
-</ul>
-<p>Ojo que el ISP tiene un servidor ACS que controla todos sus routers</p>
-<h2 id="wake-on-lan">Wake on lan</h2>
-<p>On the server:</p>
-<ol>
-<li><code>ip link</code> to find informatio about available network cards</li>
-<li>find the name og the ethernet enterface (eg. <code>enp0s31f6</code>)</li>
-<li>find the mac address (eg. e0:............)</li>
-<li><code>sudo ethtool enp0s31f6 | grep Wake-on</code></li>
-<li>Check that is on </li>
-</ol>
-<p>On the client</p>
-<ol>
-<li>Find the server mac address: <code>arp -a</code></li>
-<li>Wake the server <code>wakeonlan *mac address*</code></li>
-</ol>
-<h2 id="firewall">Firewall</h2>
-<pre><code class="language-bash"># iptables is already installed. I like ufw.
-
-pacman -S ufw                # Install ufw
-ufw enable                   # Enable it only once, when package is installed
-ufw status verbose           # Check its status
-systemctl start ufw          # Start the firewall
-systemctl enable ufw         # Enable the start-up with the system [option a]
-systemctl enable ufw.service # Enable the start-up with the system [option b]
+<pre><code class="language-bash">md5 myFile.txt
+shasum myFile.txt
+sha1sum myFile.txt
 </code></pre>
-<h2 id="load-balancing">Load balancing</h2>
-<p>"failover" or "load balancing", which is where two servers provide the same service but allow for distribution in the event of problems.</p>
-<p>Services like NGINX, Cloudflare, Apigee, AWS ELB</p>
+<h2 id="symetric-cryptography-1-key">Symetric cryptography (1 key)</h2>
+<ol>
+<li>keygen() -&gt; key</li>
+<li>encrypt(plaintext, key) -&gt; ciphertext</li>
+<li>decrypt(ciphertext, key) -&gt; plaintext</li>
+</ol>
+<pre><code class="language-bash"># AES
+openssl aes-256-cbc -salt -in aaa.py -out aaa.py.enc # Encription
+openssl aes-256-cbc -d -in aaa.py.ec -out aaa2.py    # Decryption
+</code></pre>
+<h2 id="asymmetric-cryptography-public-private-keys">Asymmetric cryptography (public &amp; private keys)</h2>
+<ol>
+<li>keygen() -&gt; public key, private key</li>
+<li>La clave pública solo se usa para cifrar (la usará el otro)</li>
+<li>La clave privada solo se usa para descifrar (la usaré yo)</li>
+<li>encrypt(plaintext, public key) -&gt; ciphertext</li>
+<li>decrypt(ciphertext, private key) -&gt; plaintext</li>
+</ol>
+<p>En general todo aque que quiera que LE LLEGEN los mensajes privados, debe comunicar su public key.
+Si AMBOS extremos comunican su public key, la comunicación será cifrada</p>
+<p>Ejemplos:
+- RSA
+- ED25519: more secure</p>
+<pre><code class="language-bash"># RSA
+</code></pre>
+<h2 id="hybrid-cryptography">Hybrid cryptography</h2>
+<p>Presmisa:
+- La Symetric cryptography es rápida
+- La Asymmetric cryptography es lenta</p>
+<p>Entoces:
+Usar la Asymmetric cryptography SOLO PARA INTERCAMBIAR LA CLAVE SIMETRICA. Asi ya se tiene una Symetric cryptography que es más rápida que la Asymmetric</p>
+<h2 id="asymmetric-cryptography-for-signing">Asymmetric cryptography for signing</h2>
+<ol>
+<li>keygen() -&gt; public key, private key</li>
+<li>sign(message, private key) -&gt; signature</li>
+<li>verify(message, signature, public key) -&gt; bool  (whether or not the signature is valid)</li>
+</ol>
               
             </div>
           </div><footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../web_scraping/" class="btn btn-neutral float-left" title="Web Scraping"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../bash/" class="btn btn-neutral float-right" title="Bash scripting">Next <span class="icon icon-circle-arrow-right"></span></a>
-    </div>
 
   <hr/>
 
@@ -181,10 +174,6 @@ systemctl enable ufw.service # Enable the start-up with the system [option b]
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../web_scraping/" style="color: #fcfcfc">&laquo; Previous</a></span>
-    
-    
-      <span><a href="../bash/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

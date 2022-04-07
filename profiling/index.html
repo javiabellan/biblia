@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Server - Documentación de Javi</title>
+    <title>Profiling - Documentación de Javi</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Server";
-        var mkdocs_page_input_path = "server.md";
+        var mkdocs_page_name = "Profiling";
+        var mkdocs_page_input_path = "profiling.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -52,14 +52,8 @@
                 <li class="toctree-l1"><a class="reference internal" href="../web_scraping/">Web Scraping</a>
                 </li>
               </ul>
-              <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="./">Server</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#problem-1-static-ip">Problem 1: Static IP</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#problem-2-you-router-need-to-allow-oustside-traffic-to-get-in-to-your-network">Problem 2: you router need to allow oustside traffic to get in to your network.</a>
-    </li>
-    </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../server/">Server</a>
                 </li>
               </ul>
               <ul>
@@ -80,8 +74,18 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Programming</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../profiling/">Profiling</a>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Profiling</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#the-lazy-way-time">The lazy way: time</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#cpu-profiler">CPU profiler</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#cpu-line-profilers">CPU line profilers</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#memory-profiler">Memory profiler</a>
+    </li>
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../debugging/">Debugging</a>
                   </li>
@@ -99,7 +103,8 @@
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>Server</li>
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Programming &raquo;</li><li>Profiling</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -109,56 +114,88 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="visible-ip-on-the-internet">Visible IP on the internet</h2>
-<h3 id="problem-1-static-ip">Problem 1: Static IP</h3>
-<p>THere are not enough IPv4 adresses for everyone in the world
-so your ISP (Internet Service Provider) probably has given you a <strong>dynamic IP adress</strong> instead of an <strong>static IP adress</strong>.</p>
-<p>Solution:</p>
-<ul>
-<li>OPTION 1) You can ask for you ISP to give a <strong>static IP adress</strong>.</li>
-<li>OPTION 2) You can use <a href="https://www.noip.com/es-MX">noip</a> which track your current ip</li>
-<li>Wen you sign up, you pick a free domain name and automaticlly detect your external IP</li>
-<li>In order to detect changes of your IOP, you need to install the <a href="">noip software</a> on the server.</li>
-</ul>
-<h3 id="problem-2-you-router-need-to-allow-oustside-traffic-to-get-in-to-your-network">Problem 2: you router need to allow oustside traffic to get in to your network.</h3>
-<ul>
-<li>Open up port 80 on the router (this is port forawrding)</li>
-<li>https://www.youtube.com/watch?v=ZlYyiuBc8Mc</li>
-</ul>
-<p>Ojo que el ISP tiene un servidor ACS que controla todos sus routers</p>
-<h2 id="wake-on-lan">Wake on lan</h2>
-<p>On the server:</p>
-<ol>
-<li><code>ip link</code> to find informatio about available network cards</li>
-<li>find the name og the ethernet enterface (eg. <code>enp0s31f6</code>)</li>
-<li>find the mac address (eg. e0:............)</li>
-<li><code>sudo ethtool enp0s31f6 | grep Wake-on</code></li>
-<li>Check that is on </li>
-</ol>
-<p>On the client</p>
-<ol>
-<li>Find the server mac address: <code>arp -a</code></li>
-<li>Wake the server <code>wakeonlan *mac address*</code></li>
-</ol>
-<h2 id="firewall">Firewall</h2>
-<pre><code class="language-bash"># iptables is already installed. I like ufw.
+                <h1 id="profiling">Profiling</h1>
+<h2 id="the-lazy-way-time">The lazy way: <code>time</code></h2>
+<p>in python:</p>
+<pre><code class="language-python">import time
 
-pacman -S ufw                # Install ufw
-ufw enable                   # Enable it only once, when package is installed
-ufw status verbose           # Check its status
-systemctl start ufw          # Start the firewall
-systemctl enable ufw         # Enable the start-up with the system [option a]
-systemctl enable ufw.service # Enable the start-up with the system [option b]
+start = time.time()
+muy_fun() # Long code here
+print(time.time() - start)
 </code></pre>
-<h2 id="load-balancing">Load balancing</h2>
-<p>"failover" or "load balancing", which is where two servers provide the same service but allow for distribution in the event of problems.</p>
-<p>Services like NGINX, Cloudflare, Apigee, AWS ELB</p>
+<p>in jupyter:</p>
+<pre><code class="language-python">%time muy_fun()
+%timeit -r 2 -n 5 muy_fun() # -r: number of runs, -n: number of loops
+</code></pre>
+<p>On the shell: <code>$ time some_command</code>
+- <strong><code>real</code></strong>: Real time. Other programs or internet connection affect.
+- <strong><code>user</code></strong>: User time. Amount of time spent in the CPU running user code
+- <strong><code>sys</code></strong>: Syestem time. Amount of time spent in the CPU running kernel code.</p>
+<h2 id="cpu-profiler">CPU profiler</h2>
+<p>There are two main types of CPU profilers:
+- <strong>Tracing profilers</strong> keep a record of every function call your program makes.
+  - No son muy fiables porque acompañan siempre al programa y esto puede interferir en el rendimiento
+- <strong>Sampling profilers</strong> probe your program periodically (commonly every millisecond) and record the program’s stack.</p>
+<p><a href="https://jvns.ca/blog/2017/12/17/how-do-ruby---python-profilers-work-/">Here</a> is a good intro article if you want more detail on this topic.</p>
+<h2 id="cpu-line-profilers">CPU line profilers</h2>
+<ul>
+<li><a href="https://github.com/pyutils/line_profiler">line_profiler</a>: <code>pip install line-profiler</code></li>
+<li><a href="https://github.com/vpelletier/pprofile">pprofile</a>: <code>pacman -S python-pprofile</code></li>
+</ul>
+<pre><code class="language-python">import time
+
+@profile
+def my_fun():
+  time.sleep(2)
+  for i in range(3):
+    print(&quot;print&quot;)
+    time.sleep(1)
+my_fun()
+</code></pre>
+<pre><code class="language-bash">$ kernprof -l -v program_with_my_fun.py
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+     3                                           @profile
+     4                                           def my_fun():
+     5         1    2002083.0 2002083.0     40.0    time.sleep(2)
+     6         4         36.0      9.0      0.0   for i in range(3):
+     7         3        188.0     62.7      0.0     print(&quot;print&quot;)
+     8         3    3002333.0 1000777.7     60.0      time.sleep(1)
+</code></pre>
+<p>In jupyter</p>
+<pre><code class="language-python">%load_ext line_profiler
+
+%lprun -f func_to_profile func_to_profile(params)
+</code></pre>
+<h2 id="memory-profiler">Memory profiler</h2>
+<p>Install with <code>pip install memory-profiler</code> or <code>pacamn -S python-memory-profiler</code></p>
+<pre><code class="language-python">@profile
+def my_func():
+    a = [1] * (10 ** 6)
+    b = [2] * (2 * 10 ** 7)
+    del b
+    return a
+
+my_func()
+</code></pre>
+<pre><code class="language-bash">$ python -m memory_profiler mem.py
+
+Line #    Mem usage    Increment   Line Contents
+================================================
+     1   38.637 MiB   38.637 MiB   @profile
+     2                             def my_func():
+     3   46.090 MiB    7.453 MiB       a = [1] * (10 ** 6)
+     4  198.715 MiB  152.625 MiB       b = [2] * (2 * 10 ** 7)
+     5   46.270 MiB    0.000 MiB       del b
+     6   46.270 MiB    0.000 MiB       return a
+</code></pre>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../web_scraping/" class="btn btn-neutral float-left" title="Web Scraping"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../bash/" class="btn btn-neutral float-right" title="Bash scripting">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../wget/" class="btn btn-neutral float-left" title="Wget"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../debugging/" class="btn btn-neutral float-right" title="Debugging">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -181,10 +218,10 @@ systemctl enable ufw.service # Enable the start-up with the system [option b]
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../web_scraping/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../wget/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../bash/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../debugging/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

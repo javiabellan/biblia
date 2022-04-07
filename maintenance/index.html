@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Server - Documentación de Javi</title>
+    <title>[System maintenance](https://wiki.archlinux.org/index.php/System_maintenance) - Documentación de Javi</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Server";
-        var mkdocs_page_input_path = "server.md";
+        var mkdocs_page_name = "[System maintenance](https://wiki.archlinux.org/index.php/System_maintenance)";
+        var mkdocs_page_input_path = "maintenance.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -52,14 +52,8 @@
                 <li class="toctree-l1"><a class="reference internal" href="../web_scraping/">Web Scraping</a>
                 </li>
               </ul>
-              <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="./">Server</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#problem-1-static-ip">Problem 1: Static IP</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#problem-2-you-router-need-to-allow-oustside-traffic-to-get-in-to-your-network">Problem 2: you router need to allow oustside traffic to get in to your network.</a>
-    </li>
-    </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../server/">Server</a>
                 </li>
               </ul>
               <ul>
@@ -99,7 +93,7 @@
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>Server</li>
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>[System maintenance](https://wiki.archlinux.org/index.php/System_maintenance)</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -109,57 +103,66 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="visible-ip-on-the-internet">Visible IP on the internet</h2>
-<h3 id="problem-1-static-ip">Problem 1: Static IP</h3>
-<p>THere are not enough IPv4 adresses for everyone in the world
-so your ISP (Internet Service Provider) probably has given you a <strong>dynamic IP adress</strong> instead of an <strong>static IP adress</strong>.</p>
-<p>Solution:</p>
-<ul>
-<li>OPTION 1) You can ask for you ISP to give a <strong>static IP adress</strong>.</li>
-<li>OPTION 2) You can use <a href="https://www.noip.com/es-MX">noip</a> which track your current ip</li>
-<li>Wen you sign up, you pick a free domain name and automaticlly detect your external IP</li>
-<li>In order to detect changes of your IOP, you need to install the <a href="">noip software</a> on the server.</li>
-</ul>
-<h3 id="problem-2-you-router-need-to-allow-oustside-traffic-to-get-in-to-your-network">Problem 2: you router need to allow oustside traffic to get in to your network.</h3>
-<ul>
-<li>Open up port 80 on the router (this is port forawrding)</li>
-<li>https://www.youtube.com/watch?v=ZlYyiuBc8Mc</li>
-</ul>
-<p>Ojo que el ISP tiene un servidor ACS que controla todos sus routers</p>
-<h2 id="wake-on-lan">Wake on lan</h2>
-<p>On the server:</p>
-<ol>
-<li><code>ip link</code> to find informatio about available network cards</li>
-<li>find the name og the ethernet enterface (eg. <code>enp0s31f6</code>)</li>
-<li>find the mac address (eg. e0:............)</li>
-<li><code>sudo ethtool enp0s31f6 | grep Wake-on</code></li>
-<li>Check that is on </li>
-</ol>
-<p>On the client</p>
-<ol>
-<li>Find the server mac address: <code>arp -a</code></li>
-<li>Wake the server <code>wakeonlan *mac address*</code></li>
-</ol>
-<h2 id="firewall">Firewall</h2>
-<pre><code class="language-bash"># iptables is already installed. I like ufw.
-
-pacman -S ufw                # Install ufw
-ufw enable                   # Enable it only once, when package is installed
-ufw status verbose           # Check its status
-systemctl start ufw          # Start the firewall
-systemctl enable ufw         # Enable the start-up with the system [option a]
-systemctl enable ufw.service # Enable the start-up with the system [option b]
+                <h1 id="system-maintenance"><a href="https://wiki.archlinux.org/index.php/System_maintenance">System maintenance</a></h1>
+<h2 id="check-for-errors">Check for errors</h2>
+<pre><code>sudo systemctl --failed        # Check if any systemd services have entered in a failed state.
+sudo journalctl -p 3 -xb       # Look for errors in the log files located at /var/log
 </code></pre>
-<h2 id="load-balancing">Load balancing</h2>
-<p>"failover" or "load balancing", which is where two servers provide the same service but allow for distribution in the event of problems.</p>
-<p>Services like NGINX, Cloudflare, Apigee, AWS ELB</p>
+<h2 id="backup">Backup</h2>
+<p>...</p>
+<h2 id="upgrading-the-system">Upgrading the system</h2>
+<ol>
+<li><a href="https://www.archlinux.org/">Check news</a></li>
+</ol>
+<pre><code>pacman -Syu                     #  Update packages and system
+</code></pre>
+<p>If the system has packages from the AUR, carefully upgrade all of them.</p>
+<h2 id="clean-the-filesystem"><a href="https://wiki.archlinux.org/index.php/System_maintenance#Clean_the_filesystem">Clean the filesystem</a></h2>
+<h3 id="disk-usage-display"><a href="https://wiki.archlinux.org/index.php/List_of_applications#Disk_usage_display">Disk usage display</a></h3>
+<p>Find largest files and directories.</p>
+<pre><code>sudo pacman -S ncdu              # Intall ncdu
+</code></pre>
+<p>Filelight is a GUI program
+Baobab is other GUI program (gnome)</p>
+<h3 id="disk-cleaning-programs"><a href="https://wiki.archlinux.org/index.php/List_of_applications#Disk_cleaning">Disk cleaning programs</a></h3>
+<p>Find and remove:</p>
+<ul>
+<li>duplicates</li>
+<li>empty files</li>
+<li>empty directories</li>
+<li>broken symlinks.</li>
+</ul>
+<pre><code>sudo pacman -S rmlint            # Intall rmlint
+</code></pre>
+<p>BleachBit is a GUI program</p>
+<h3 id="package-cache"><a href="https://wiki.archlinux.org/index.php/Pacman#Cleaning_the_package_cache">Package cache</a></h3>
+<p>Remove unwanted <code>.pkg</code> files from <code>/var/cache/pacman/pkg/</code> to free up disk space. </p>
+<pre><code>ls /var/cache/pacman/pkg/ | less # Ver paquetes (diponibles?)
+du -sh /var/cache/pacman/pkg/    # Ver tamaño carpeta
+sudo pacman -Sc                  # Remove old and unused pkgs
+sudo pacman -Scc                 # Remove files from cache
+paccache                         # ???
+</code></pre>
+<h3 id="unused-packges-orphans"><a href="https://wiki.archlinux.org/index.php/Pacman/Tips_and_tricks#Removing_unused_packages_.28orphans.29">Unused packges (orphans)</a></h3>
+<pre><code>sudo pacman -Qtdq                # List orphans
+sudo pacman -Rns $(pacman -Qtdq) # Remove orphans and their configuration files
+</code></pre>
+<h3 id="clean-cache-in-your-home">Clean cache in your /home.</h3>
+<pre><code>du -sh ~/.cache/                 # Ver tamaño carpeta
+rm -rf ~/.cache/*                # Remove 
+</code></pre>
+<h3 id="old-config-files">Old config files</h3>
+<ul>
+<li><code>~/.config/</code>: where apps stores their configuration</li>
+<li><code>~/.cache/</code>: cache of some programs may grow in size</li>
+<li><code>~/.local/share/</code>: old files may be lying there</li>
+</ul>
+<h3 id="broken-symlinks">Broken symlinks</h3>
+<pre><code>find -xtype l -print             # List all the broken symlinks
+</code></pre>
               
             </div>
           </div><footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../web_scraping/" class="btn btn-neutral float-left" title="Web Scraping"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../bash/" class="btn btn-neutral float-right" title="Bash scripting">Next <span class="icon icon-circle-arrow-right"></span></a>
-    </div>
 
   <hr/>
 
@@ -181,10 +184,6 @@ systemctl enable ufw.service # Enable the start-up with the system [option b]
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../web_scraping/" style="color: #fcfcfc">&laquo; Previous</a></span>
-    
-    
-      <span><a href="../bash/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
