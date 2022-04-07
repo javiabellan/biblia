@@ -2,6 +2,7 @@
 
 
 ## En el servidor:
+
 ```bash
 sudo systemctl status sshd  # Ver si esta encendido
 sudo systemctl start sshd   # Encender
@@ -12,6 +13,7 @@ sudo systemctl disable sshd # Al arrancar por defecto: apagado
 
 
 ## En el cliente. Conectar y redirigir puerto 8888 (juypter)
+
 ```bash
 ssh javi@192.168.0.103 -L 8888:localhost:8888  # Conectar
 jupyter notebook --no-browser                  # Abrir Jupyter
