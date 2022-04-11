@@ -7,34 +7,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-# Optmice Deep learning 
-turbojpeg
-
-Preparsear los ficheros se cargan a bajo nivel
-- Numpy Memmap
-- Torch storage
-
-https://pytorch.org/blog/efficient-pytorch-io-library-for-large-datasets-many-files-many-gpus/
-
-https://www.deepspeed.ai/
-
-https://ffcv.io/
-
-kornia: agmentations on GPU
-
-
-
-
 # Optimize OS
 
 ### linux kernel:
