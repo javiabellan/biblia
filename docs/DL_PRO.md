@@ -45,6 +45,6 @@
 > - https://towardsdatascience.com/setting-a-strong-deep-learning-baseline-in-minutes-with-pytorch-c0dfe41f7d7
 > - https://towardsdatascience.com/gpus-are-fast-datasets-are-your-bottleneck-e5ac9bf2ad27
 > - https://towardsdatascience.com/pytorch-lightning-vs-deepspeed-vs-fsdp-vs-ffcv-vs-e0d6b2a95719
-
+> - https://neptune.ai/blog/image-segmentation-tips-and-tricks-from-kaggle-competitions
 
 
