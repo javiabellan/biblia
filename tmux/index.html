@@ -68,6 +68,20 @@
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">TMUX</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#commands">Commands</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#iterm2-tmux-integration">iTerm2 TMUX Integration</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tmuxconf">.tmux.conf</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#oh-my-tmux">Oh my tmux!</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tmux-server-autostart-with-systemd">TMUX Server (Autostart with systemd)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#learn-more">Learn more</a>
+    </li>
     </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../vim/">Vim</a>
@@ -107,12 +121,12 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="tmux">TMUX</h1>
-<p>https://hackernoon.com/using-tmux-to-improve-your-terminal-experience-jt4932zv</p>
 <p>The most popular terminal multiplexer these days is <a href="https://www.man7.org/linux/man-pages/man1/tmux.1.html"><code>tmux</code></a>.
 - tmux can have several <strong>sessions</strong>.
 - a <strong>session</strong> can have several <strong>windows</strong> (like tabs)
 - a <strong>window</strong> can have several <strong>panes</strong> (like a divided terminal)</p>
-<p>Commands:</p>
+<p><img alt="" src="../img/tmux.png" /></p>
+<h2 id="commands">Commands</h2>
 <ul>
 <li><strong>Outside tmux</strong></li>
 <li><code>tmux</code>: starts a new session.</li>
@@ -138,6 +152,45 @@
 <li><code>[Ctrl+b] z</code> Toggle zoom for the current pane</li>
 <li><code>[Ctrl+b] [</code> Start scrollback. You can then press <code>&lt;space&gt;</code> to start a selection and <code>&lt;enter&gt;</code> to copy that selection.</li>
 <li><code>[Ctrl+b] &lt;space&gt;</code> Cycle through pane arrangements.</li>
+</ul>
+<h2 id="iterm2-tmux-integration"><a href="https://iterm2.com/documentation-tmux-integration.html">iTerm2 TMUX Integration</a></h2>
+<p><strong>Each TMUX window will be a real window</strong>.</p>
+<ul>
+<li><code>tmux -CC</code>: Create a new session</li>
+<li><code>tmux -CC attach</code> Attach to</li>
+</ul>
+<h2 id="tmuxconf">.tmux.conf</h2>
+<pre><code># Enable mouse mode (tmux 2.1 and above)
+set -g mouse on
+</code></pre>
+<h3 id="oh-my-tmux"><a href="https://github.com/gpakosz/.tmux">Oh my tmux!</a></h3>
+<p>Self-contained, pretty &amp; versatile tmux configuration</p>
+<h2 id="tmux-server-autostart-with-systemd">TMUX Server (<a href="https://wiki.archlinux.org/title/tmux#Autostart_with_systemd">Autostart with systemd</a>)</h2>
+<p>Put this file in <code>/etc/systemd/system/tmux.service</code>:</p>
+<blockquote>
+<ul>
+<li><code>cd /etc/systemd/system</code></li>
+<li><code>sudo nano tmux.service</code></li>
+</ul>
+</blockquote>
+<pre><code>[Unit]
+Description=Tmux server
+
+[Service]
+Type=forking
+User=javi
+ExecStart=/usr/bin/tmux new -s 0 -d
+ExecStop=/usr/bin/tmux kill-server
+
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+<p>Enable service with: <code>sudo systemctl enable tmux.service</code></p>
+<h2 id="learn-more">Learn more</h2>
+<ul>
+<li>Video de s4vitar: <a href="https://www.youtube.com/watch?v=1dDahc214co">Aprendiendo a usar tmux desde 0</a></li>
+<li><a href="https://mutelight.org/practical-tmux">Practical Tmux</a></li>
+<li>https://hackernoon.com/using-tmux-to-improve-your-terminal-experience-jt4932zv</li>
 </ul>
               
             </div>
