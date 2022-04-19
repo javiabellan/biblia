@@ -58,9 +58,12 @@
 If you get a OOM error on the first batch, try...
 
 - Smaller batch size
+  - You always can use [Gradient Accumulation](https://kozodoi.me/python/deep%20learning/pytorch/tutorial/2021/02/19/gradient-accumulation.html) to simulate larger batches
 - Smaller input size (image resolution)
 - Half precision (Float16 instead of default Float32)
-- Gradient Checkpointing
+- Gradient Checkpointing: Reduces the model's memory cost by 60% (at the cost of 25% greater training time).
+  - https://spell.ml/blog/gradient-checkpointing-pytorch-YGypLBAAACEAefHs#:~:text=In%20a%20nutshell%2C%20gradient%20checkpointing,these%20values%20ahead%20of%20time
+  - https://github.com/prigoyal/pytorch_memonger/blob/master/tutorial/Checkpointing_for_PyTorch_models.ipynb
 
 
 If you get a OOM error in the middle of training, try...
@@ -72,11 +75,15 @@ del output
 gc.collect()
 ```
 
-### Gradient Checkpointing
+> - https://pytorch.org/tutorials/recipes/recipes/tuning_guide.html
+> - https://medium.com/deep-learning-for-protein-design/a-comprehensive-guide-to-memory-usage-in-pytorch-b9b7c78031d3
 
 
-Gradient checkpointing reduces the model's memory cost by 60% (at the cost of 25% greater training time).
 
-- https://spell.ml/blog/gradient-checkpointing-pytorch-YGypLBAAACEAefHs#:~:text=In%20a%20nutshell%2C%20gradient%20checkpointing,these%20values%20ahead%20of%20time
-- https://github.com/prigoyal/pytorch_memonger/blob/master/tutorial/Checkpointing_for_PyTorch_models.ipynb
 
+
+
+
+## Layer-Wise Learning Rate in PyTorch
+
+https://kozodoi.me/python/deep%20learning/pytorch/tutorial/2022/03/29/discriminative-lr.html
