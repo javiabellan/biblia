@@ -73,10 +73,6 @@
     <li class="toctree-l2"><a class="reference internal" href="#iterm2-tmux-integration">iTerm2 TMUX Integration</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#tmuxconf">.tmux.conf</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#oh-my-tmux">Oh my tmux!</a>
-    </li>
-        </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#tmux-server-autostart-with-systemd">TMUX Server (Autostart with systemd)</a>
     </li>
@@ -159,12 +155,22 @@
 <li><code>tmux -CC</code>: Create a new session</li>
 <li><code>tmux -CC attach</code> Attach to</li>
 </ul>
+<p><img alt="" src="img/mux-windows.png" /></p>
+<blockquote>
+<p>Reference: https://stackoverflow.com/questions/35421819/tmux-in-multiple-terminal-app-windows</p>
+</blockquote>
 <h2 id="tmuxconf">.tmux.conf</h2>
-<pre><code># Enable mouse mode (tmux 2.1 and above)
-set -g mouse on
+<pre><code>####### SAME PROMT
+set -g default-terminal &quot;screen-256color&quot;
+if 'infocmp -x tmux-256color &gt; /dev/null 2&gt;&amp;1' 'set -g default-terminal &quot;tmux-256color&quot;'
+
+
+####### MOUSE (enable scroll)
+set -g mouse on        # For tmux version 2.1 and above
 </code></pre>
-<h3 id="oh-my-tmux"><a href="https://github.com/gpakosz/.tmux">Oh my tmux!</a></h3>
-<p>Self-contained, pretty &amp; versatile tmux configuration</p>
+<ul>
+<li><a href="https://github.com/gpakosz/.tmux">Oh my tmux!</a>: Self-contained, pretty &amp; versatile tmux configuration</li>
+</ul>
 <h2 id="tmux-server-autostart-with-systemd">TMUX Server (<a href="https://wiki.archlinux.org/title/tmux#Autostart_with_systemd">Autostart with systemd</a>)</h2>
 <p>Put this file in <code>/etc/systemd/system/tmux.service</code>:</p>
 <blockquote>
