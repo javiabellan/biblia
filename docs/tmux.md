@@ -43,21 +43,27 @@ The most popular terminal multiplexer these days is [`tmux`](https://www.man7.or
 - `tmux -CC`: Create a new session
 - `tmux -CC attach` Attach to
 
+![](img/mux-windows.png)
 
+> Reference: https://stackoverflow.com/questions/35421819/tmux-in-multiple-terminal-app-windows
 
 
 ## .tmux.conf
+
 ```
-# Enable mouse mode (tmux 2.1 and above)
-set -g mouse on
+####### SAME PROMT
+set -g default-terminal "screen-256color"
+if 'infocmp -x tmux-256color > /dev/null 2>&1' 'set -g default-terminal "tmux-256color"'
+
+
+####### MOUSE (enable scroll)
+set -g mouse on        # For tmux version 2.1 and above
 ```
 
-### [Oh my tmux!](https://github.com/gpakosz/.tmux)
+- [Oh my tmux!](https://github.com/gpakosz/.tmux): Self-contained, pretty & versatile tmux configuration
 
-Self-contained, pretty & versatile tmux configuration
 
 ## TMUX Server ([Autostart with systemd](https://wiki.archlinux.org/title/tmux#Autostart_with_systemd))
-
 
 Put this file in `/etc/systemd/system/tmux.service`:
 > - `cd /etc/systemd/system`

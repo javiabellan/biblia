@@ -48,3 +48,35 @@
 > - https://neptune.ai/blog/image-segmentation-tips-and-tricks-from-kaggle-competitions
 
 
+
+
+
+
+
+## AVOID UDA OUT OF MEMORY
+
+If you get a OOM error on the first batch, try...
+
+- Smaller batch size
+- Smaller input size (image resolution)
+- Half precision (Float16 instead of default Float32)
+- Gradient Checkpointing
+
+
+If you get a OOM error in the middle of training, try...
+
+```python
+output = model(input)
+loss   = loss_fn(output, target)
+del output
+gc.collect()
+```
+
+### Gradient Checkpointing
+
+
+Gradient checkpointing reduces the model's memory cost by 60% (at the cost of 25% greater training time).
+
+- https://spell.ml/blog/gradient-checkpointing-pytorch-YGypLBAAACEAefHs#:~:text=In%20a%20nutshell%2C%20gradient%20checkpointing,these%20values%20ahead%20of%20time
+- https://github.com/prigoyal/pytorch_memonger/blob/master/tutorial/Checkpointing_for_PyTorch_models.ipynb
+
