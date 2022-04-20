@@ -1,6 +1,4 @@
-
 # Profiling
-
 
 
 ## The lazy way: `time`

@@ -61,3 +61,17 @@ https://carfax.org.uk/btrfs-usage/
 https://www.linuxjournal.com/content/hot-swappable-filesystems-smooth-btrfs
 https://www.salvagedata.com/btrfs-zfs-xfs-ext4-how-are-they-different/
 
+
+
+
+### I/O schedulers
+
+
+
+
+> - https://wiki.archlinux.org/title/improving_performance
+> - https://wiki.ubuntu.com/Kernel/Reference/IOSchedulers
+> - https://community.clearlinux.org/t/arch-linux-outperforms-clear-linux/5462
+> - https://clearlinux.org/
+
+

@@ -12,9 +12,11 @@
   - `!(pattern-list)`: Matches anything except one of the given patterns.
 
 
+
 > #### Reference
 > - `man re_format`
 > - https://remram44.github.io/regex-cheatsheet/regex.html
-> - https://linuxize.com/post/regular-expressions-in-grep/
+> - https://linuxize.com/post/regular-expressions-in-grep
+> - http://mywiki.wooledge.org/RegularExpression
 > - **`grep`**: print lines matching a pattern
 > - **`egrep`**: can handle extended regular expressions (EREs)

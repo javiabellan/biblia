@@ -1,61 +1,70 @@
 
+# Bash scripting
+
+
+
+## Shells
+
+| Terminal        | Promt | Hashbang/Shebang | Configuration file |
+|-----------------|:------|------------------|--------------------|
+| `sh`            |  `$`  | `#!/bin/sh`      |                    |
+| `bash`          |  `$`  | `#!/bin/bash`    | `.bashrc`          |
+| `zsh`           |  `$`  | `#!/bin/zsh`     |                    |
+| `csh` or `tcsh` |  `%`  | `#!/bin/csh`     |                    |
 
 
 
 
+# Scripts
+
+[Shebang line](https://en.wikipedia.org/wiki/Shebang_(Unix): First line, This is going to be the interpreter:
+- `#!/bin/sh`:  Bourne shell script
+- `#!/bin/bash`:  Bash shell script `./myScript.sh`
+- `#!/usr/bin/python`:  Python script `./myScript.py`
+- `#!/usr/bin/env python`:  Python script (more portable because looks for python comand)  `./myScript.py`
+
+
+### Python script
+
+```python
+#!/usr/bin/python
+import sys
+for arg in reversed(sys.argv[1:]):
+    print(arg)
+```
+
+### Bash script
+```bash
+############## Variables
+myVar=someValue
+echo $myVar
+myVar = someValue      # No funciona con espacios
+echo "Value is $myVar" # Imprime: Value is someValue
+echo 'Value is $myVar' # Imprime: Value is $myVar
+
+
+############## Functions
+#!/bin/bash
+mcd () {
+    mkdir -p "$1"
+    cd "$1"
+}
+
+# $0: The name of the script
+# $1: The 1st argument
+# $9: The 9th argument
+
+
+########## command substitution
+myDir=$(pwd) # The output of a command in a varaible
+echo "we are in $(pwd)"
+for file in $(ls)
+```
 
 
 
 
-# Optimize OS
-
-
-
-
-
-### I/O schedulers
-
-
-
-
-> - https://wiki.archlinux.org/title/improving_performance
-> - https://wiki.ubuntu.com/Kernel/Reference/IOSchedulers
-> - https://community.clearlinux.org/t/arch-linux-outperforms-clear-linux/5462
-> - https://clearlinux.org/
-
-
-
-
-# Find duplicates
-
-- **OPTION A)** Comparing filenames
-  - `ls | sort | uniq -d`
-- **OPTION B)** Comparing line by line (text files)
-  - `diff`
-- **OPTION C)** Comparing Byte by byte (binary files)
-- **OPTION D)** Comparing Checksums, hashes, fingerprints
-  - md5sum
-  - sha1sum, 
-  - Some filesytems already computes th checksums
-    - ZFS: Performs automatic file integrity checking using checksums
-
-
-
-> - https://unix.stackexchange.com/questions/28895/open-source-duplicate-image-finder-for-linux
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Special variables
+## Special variables
 
 - `$0`: Name of the script
 - `$1` to `$9`: Arguments to the script. `"$10"` and so on for the rest.
@@ -68,8 +77,7 @@
 
 
 
-# Arrays
-
+## Arrays
 
 An array is a numbered list of strings: It maps integers to strings.
 
@@ -96,6 +104,13 @@ An array is a numbered list of strings: It maps integers to strings.
 someCommand && echo "Previos comand worked (exit estatus==0)"
 someCommand || echo "Previos comand failed (exit estatus!=0)"
 ```
+
+
+
+```bash
+rm /etc/some_file.conf || echo "I couldn't remove the file"
+```
+
 
 
 ```bash
@@ -326,12 +341,6 @@ You can use it with `ls`, `mkdir`, `echo`, `for i in {}`
 > ### Globs with brace expansion
 >
 > Because Brace expansion happens **before** Filename expansion, `ls *{.jpg,.png}` will become `ls *.jpg *.png` and then execute the comand.
-
-
-
-# [Regular expressions](http://mywiki.wooledge.org/RegularExpression)
-
-$ rm /etc/some_file.conf || echo "I couldn't remove the file"
 
 
 
