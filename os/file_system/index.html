@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>File system - Documentación de Javi</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "File system";
+        var mkdocs_page_input_path = "os/file_system.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Documentación de Javi
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">AI</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ai/deep_learning/">Deep Learning</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Server</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../server/wakeonlan/">Wakeonlan</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../server/wakeonlan/">Firewall</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../server/load_balancer/">Load balancer</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../server/public_ip/">Public IP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../server/security/">Security</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Linux tools</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/git/">Git</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/ssh/">SSH</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/tmux/">TMUX</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/vim/">VIM</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/nano/">Nano</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../tools/wget.md">Wget</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/gnu_parallel/">GNU parallel</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/pacman/">Pacman</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Programming</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/bash_scripting/">Bash scripting</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../programming/makfile.md">Makefile</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/profiling/">Profiling</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/debugging/">Debugging</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../web_scraping/">Web Scraping</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../hardware/">Hardware</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Documentación de Javi</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>File system</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="file-system">File system</h1>
+<h2 id="btrfs">BTRFS</h2>
+<ul>
+<li>Recomendado por andres torrubia...</li>
+<li>...No por prestaciones, lo ha elegido por funcionalidad</li>
+<li>Copias autoamáticas (equvalente a la Time Machine de apple)</li>
+<li>Con <a href="https://wiki.archlinux.org/title/snapper">snapper</a> que es un sofware que va por encima, tienes facilmente recuperable como estaba tu ordenador hace 1 hora, hace 1 dia, ... te salva la vida cuando borras datos por accidente</li>
+<li>sucesor natural del sistema de archivos EXT4</li>
+<li>menos velocidad de lectura y escritura que EXT4</li>
+</ul>
+<h2 id="zfs">ZFS</h2>
+<ul>
+<li>Recomendado por profe ASORC carrera informatica</li>
+<li>Sistema por defecto de freeBSD</li>
+<li>Puedes meter y quitar Discos ampliando o reduciendo el espacio (y el logical volume y ZFS se adapta)</li>
+<li>ASi que va bien para tener hot-swapable disks</li>
+<li>Es sinónimo de escalabilidad</li>
+<li>Desventaja: consumo alto de memoria RAM</li>
+</ul>
+<h2 id="ext4">EXT4</h2>
+<ul>
+<li>Mas comun en linux.</li>
+<li>Tambien es rapido (mas que btrfs)</li>
+</ul>
+<h2 id="xfs">XFS</h2>
+<ul>
+<li>Tambien es rapido</li>
+</ul>
+<p>copy-on-write (COW) mechanism: when you modify a file, the file system won’t overwrite the existing data on the drive. Instead, the newer data is written elsewhere. Once the write operation is over, the file system simply points to the newer data blocks.
+  - Ventaja: asegurar la integridad de los archivos en caso de corte eléctrico. 
+  - Desventaja: una alta fragmentación, </p>
+<p>journaling (mejora la integridad del sistema de archivos), por lo que no deberías tener pérdida de datos en caso de corte de alimentación</p>
+<pre><code>      Asegurar integridad        How to               Scalable for
+      en caso de corte corr      RAID?                hot-swap disks
+</code></pre>
+<hr />
+<p>EXT4       journaling              need to format             no
+BTRFS      copy-on-write
+ZFS       copy-on-write                                    pool of vdevs</p>
+<p>vdevs == Virtual DEVice. A pool is made up of vdevs. A vdev is made up of physical devices.
+Let's say you have 12 physical disks. You might have a pool consisting of 6 mirrors. Each two disk mirror is a vdev. So your pool has 6 vdevs.</p>
+<blockquote>
+<h3 id="optimizacion-trick-1-desactivar-el-atributo-atime">Optimizacion trick 1: Desactivar el atributo atime</h3>
+<p>El atributo atime (access time) es recopilado y actualizado cada vez que el usuario lee o modifica un determinado archivo. En total, se recogen 3 atributos:</p>
+<ul>
+<li>Access: la última vez que el archivo fue leído</li>
+<li>Modify: la última vez que el archivo fue modificado (su contenido)</li>
+<li>Change: la última vez que los meta-datos del archivo fueron modificados (permisos, nombre, propietario, etc)</li>
+</ul>
+<p>Mediante <code>noatime</code> desactivamos esta funcionalidad y ganamos algo de velocidad al leer y escribira archivos.</p>
+</blockquote>
+<p>https://markmcb.com/2020/01/07/five-years-of-btrfs/
+https://carfax.org.uk/btrfs-usage/
+https://www.linuxjournal.com/content/hot-swappable-filesystems-smooth-btrfs
+https://www.salvagedata.com/btrfs-zfs-xfs-ext4-how-are-they-different/</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
