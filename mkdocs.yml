@@ -3,16 +3,27 @@ remote_branch: gh-deploy
 theme: readthedocs
 nav:
 - Home: index.md
-- Hardware: hardware.md
-- Web Scraping: web_scraping.md
-- Server: server.md
-- Bash scripting: bash.md
+- AI:
+  - Deep Learning: ai/deep_learning.md
+- Server:
+  - Wakeonlan: server/wakeonlan.md
+  - Firewall: server/wakeonlan.md
+  - Load balancer: server/load_balancer.md
+  - Public IP: server/public_ip.md
+  - Security: server/security.md
 - Linux tools:
-  - Git: git.md
-  - SSH: ssh.md
-  - TMUX: tmux.md
-  - Vim: vim.md
-  - Wget: wget.md
+  - Git: tools/git.md
+  - SSH: tools/ssh.md
+  - TMUX: tools/tmux.md
+  - VIM: tools/vim.md
+  - Nano: tools/nano.md
+  - Wget: tools/wget.md
+  - GNU parallel: tools/gnu_parallel.md
+  - Pacman: tools/pacman.md
 - Programming:
-  - Profiling: profiling.md
-  - Debugging: debugging.md
+  - Bash scripting: programming/bash_scripting.md
+  - Makefile: programming/makfile.md
+  - Profiling: programming/profiling.md
+  - Debugging: programming/debugging.md
+- Web Scraping: web_scraping.md
+- Hardware: hardware.md

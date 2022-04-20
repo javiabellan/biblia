@@ -1,8 +1,15 @@
 # Jupyter
 
+
+## Start jupyter when conected with SSH
+
+```bash
+jupyter notebook --no-browser
+```
+
 ## [Jupyter extensions](https://jupyter-contrib-nbextensions.readthedocs.io/en/latest/install.html)
 
-1. `sudi pip install jupyter_contrib_nbextensions`
+1. `sudo pip install jupyter_contrib_nbextensions`
 2. `sudo jupyter contrib nbextension install`
 
 
