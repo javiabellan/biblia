@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>PDF (Xpdf, poppler) - Documentación de Javi</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "PDF (Xpdf, poppler)";
+        var mkdocs_page_input_path = "tools/pdf.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Documentación de Javi
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">AI</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ai/deep_learning/">Deep Learning</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Server</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../server/wakeonlan/">Wakeonlan</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../server/firewall/">Firewall</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../server/load_balancer/">Load balancer</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../server/public_ip/">Public IP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../server/security/">Security</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Linux tools</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../git/">GIT</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ssh/">SSH</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tmux/">TMUX</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Text editors</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../vim/">VIM</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../nano/">NANO</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Parsers</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../csv/">CVS,TSV (q, awk)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../pup/">HTML (pup)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../jq/">JSON (jq)</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">PDF (Xpdf, poppler)</a>
+    <ul class="current">
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Multimedia</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../multimedia/convert/">convert (image)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../multimedia/imagemagick/">ImageMagick (image)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../multimedia/ffmepg/">ffmepg (video and audio)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../multimedia/sox/">sox (audio)</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Download tools</a>
+    <ul>
+                <li class="toctree-l2"><a class="" href="../curl.md">cURL</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../wget/">WGET</a>
+                </li>
+                <li class="toctree-l2"><a class="" href="../youtube_dl.md">youtube-dl</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../gnu_parallel/">GNU parallel</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../pacman/">Pacman</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cron/">CRON</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Programming</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/bash_scripting/">Bash scripting</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/makefile/">Makefile</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/profiling/">Profiling</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/debugging/">Debugging</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../web_scraping/">Web Scraping</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../hardware/">Hardware</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Documentación de Javi</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Linux tools &raquo;</li>
+          <li>Parsers &raquo;</li><li>PDF (Xpdf, poppler)</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h3 id="parsing-pdf-xpdf-or-poppler">Parsing PDF: <a href="https://www.xpdfreader.com"><code>Xpdf</code></a> or <a href="https://poppler.freedesktop.org"><code>poppler</code></a></h3>
+<ul>
+<li><strong>Xpdf</strong></li>
+<li><code>xpdf</code>: PDF viewer (click for a screenshot)</li>
+<li><code>pdftotext</code>: converts PDF to text</li>
+<li><code>pdftops</code>: converts PDF to PostScript</li>
+<li><code>pdftoppm</code>: converts PDF pages to netpbm (PPM/PGM/PBM) image files</li>
+<li><code>pdftopng</code>: converts PDF pages to PNG image files</li>
+<li><code>pdftohtml</code>: converts PDF to HTML</li>
+<li><code>pdfinfo</code>: extracts PDF metadata</li>
+<li><code>pdfimages</code>: extracts raw images from PDF files</li>
+<li><code>pdffonts</code>: lists fonts used in PDF files</li>
+<li><code>pdfdetach</code>: extracts attached files from PDF files</li>
+<li><strong>Poppler</strong></li>
+<li><code>pdfattach</code></li>
+<li><code>pdfdetach</code></li>
+<li><code>pdffonts</code></li>
+<li><code>pdfimages</code></li>
+<li><code>pdfinfo</code></li>
+<li><code>pdfseparate</code></li>
+<li><code>pdfsig</code></li>
+<li><code>pdftocairo</code></li>
+<li><code>pdftohtml</code></li>
+<li><code>pdftoppm</code></li>
+<li><code>pdftops</code></li>
+<li><strong><code>pdftotext</code></strong>: Portable Document Format (PDF) to text converter<ul>
+<li><code>pdftotext [options] someFile.pdf</code></li>
+</ul>
+</li>
+<li><code>pdfunite</code></li>
+<li><strong>textutil</strong>: Only in MacOS (Usado por Pascual Perez)</li>
+<li><code>textutil -convert txt ~/Desktop/DrectorioDeArchivosEnPDF/*.pdf</code></li>
+</ul>
+<h1 id="documents">Documents</h1>
+<ul>
+<li><code>pandoc</code>: Conversion between markup formats</li>
+<li><code>aspell</code>: A spell checker designed to eventually replace Ispell</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../jq/" class="btn btn-neutral float-left" title="JSON (jq)"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../multimedia/convert/" class="btn btn-neutral float-right" title="convert (image)">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../jq/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../multimedia/convert/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

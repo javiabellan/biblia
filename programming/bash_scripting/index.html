@@ -53,7 +53,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../../server/wakeonlan/">Wakeonlan</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../server/wakeonlan/">Firewall</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../server/firewall/">Firewall</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../server/load_balancer/">Load balancer</a>
                   </li>
@@ -64,28 +64,66 @@
               </ul>
               <p class="caption"><span class="caption-text">Linux tools</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools/git/">Git</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/git/">GIT</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../tools/ssh/">SSH</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../tools/tmux/">TMUX</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools/vim/">VIM</a>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Text editors</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../tools/vim/">VIM</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../tools/nano/">NANO</a>
+                </li>
+    </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools/nano/">Nano</a>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Parsers</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../tools/csv/">CVS,TSV (q, awk)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../tools/pup/">HTML (pup)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../tools/jq/">JSON (jq)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../tools/pdf/">PDF (Xpdf, poppler)</a>
+                </li>
+    </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools/wget/">Wget</a>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Multimedia</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../tools/multimedia/convert/">convert (image)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../tools/multimedia/imagemagick/">ImageMagick (image)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../tools/multimedia/ffmepg/">ffmepg (video and audio)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../tools/multimedia/sox/">sox (audio)</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Download tools</a>
+    <ul>
+                <li class="toctree-l2"><a class="" href="../../tools/curl.md">cURL</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../tools/wget/">WGET</a>
+                </li>
+                <li class="toctree-l2"><a class="" href="../../tools/youtube_dl.md">youtube-dl</a>
+                </li>
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../tools/gnu_parallel/">GNU parallel</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../tools/pacman/">Pacman</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/cron/">CRON</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Programming</span></p>
               <ul class="current">
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Bash scripting</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#io-schedulers">I/O schedulers</a>
+    <li class="toctree-l2"><a class="reference internal" href="#shells">Shells</a>
     </li>
     </ul>
                   </li>
@@ -128,37 +166,83 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="optimize-os">Optimize OS</h1>
-<h3 id="io-schedulers">I/O schedulers</h3>
-<blockquote>
-<ul>
-<li>https://wiki.archlinux.org/title/improving_performance</li>
-<li>https://wiki.ubuntu.com/Kernel/Reference/IOSchedulers</li>
-<li>https://community.clearlinux.org/t/arch-linux-outperforms-clear-linux/5462</li>
-<li>https://clearlinux.org/</li>
-</ul>
-</blockquote>
-<h1 id="find-duplicates">Find duplicates</h1>
-<ul>
-<li><strong>OPTION A)</strong> Comparing filenames</li>
-<li><code>ls | sort | uniq -d</code></li>
-<li><strong>OPTION B)</strong> Comparing line by line (text files)</li>
-<li><code>diff</code></li>
-<li><strong>OPTION C)</strong> Comparing Byte by byte (binary files)</li>
-<li><strong>OPTION D)</strong> Comparing Checksums, hashes, fingerprints</li>
-<li>md5sum</li>
-<li>sha1sum, </li>
-<li>Some filesytems already computes th checksums<ul>
-<li>ZFS: Performs automatic file integrity checking using checksums</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<ul>
-<li>https://unix.stackexchange.com/questions/28895/open-source-duplicate-image-finder-for-linux</li>
-</ul>
-</blockquote>
-<h1 id="special-variables">Special variables</h1>
+                <h1 id="bash-scripting">Bash scripting</h1>
+<h2 id="shells">Shells</h2>
+<table>
+<thead>
+<tr>
+<th>Terminal</th>
+<th align="left">Promt</th>
+<th>Hashbang/Shebang</th>
+<th>Configuration file</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sh</code></td>
+<td align="left"><code>$</code></td>
+<td><code>#!/bin/sh</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>bash</code></td>
+<td align="left"><code>$</code></td>
+<td><code>#!/bin/bash</code></td>
+<td><code>.bashrc</code></td>
+</tr>
+<tr>
+<td><code>zsh</code></td>
+<td align="left"><code>$</code></td>
+<td><code>#!/bin/zsh</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>csh</code> or <code>tcsh</code></td>
+<td align="left"><code>%</code></td>
+<td><code>#!/bin/csh</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 id="scripts">Scripts</h1>
+<p>[Shebang line](https://en.wikipedia.org/wiki/Shebang_(Unix): First line, This is going to be the interpreter:
+- <code>#!/bin/sh</code>:  Bourne shell script
+- <code>#!/bin/bash</code>:  Bash shell script <code>./myScript.sh</code>
+- <code>#!/usr/bin/python</code>:  Python script <code>./myScript.py</code>
+- <code>#!/usr/bin/env python</code>:  Python script (more portable because looks for python comand)  <code>./myScript.py</code></p>
+<h3 id="python-script">Python script</h3>
+<pre><code class="language-python">#!/usr/bin/python
+import sys
+for arg in reversed(sys.argv[1:]):
+    print(arg)
+</code></pre>
+<h3 id="bash-script">Bash script</h3>
+<pre><code class="language-bash">############## Variables
+myVar=someValue
+echo $myVar
+myVar = someValue      # No funciona con espacios
+echo &quot;Value is $myVar&quot; # Imprime: Value is someValue
+echo 'Value is $myVar' # Imprime: Value is $myVar
+
+
+############## Functions
+#!/bin/bash
+mcd () {
+    mkdir -p &quot;$1&quot;
+    cd &quot;$1&quot;
+}
+
+# $0: The name of the script
+# $1: The 1st argument
+# $9: The 9th argument
+
+
+########## command substitution
+myDir=$(pwd) # The output of a command in a varaible
+echo &quot;we are in $(pwd)&quot;
+for file in $(ls)
+</code></pre>
+<h2 id="special-variables">Special variables</h2>
 <ul>
 <li><code>$0</code>: Name of the script</li>
 <li><code>$1</code> to <code>$9</code>: Arguments to the script. <code>"$10"</code> and so on for the rest.</li>
@@ -169,7 +253,7 @@
 <li><code>!!</code>: Entire last command, including arguments. A common pattern is to execute a command only for it to fail due to missing permissions; you can quickly re-execute the command with sudo by doing <code>sudo !!</code></li>
 <li><code>$_</code>: Last argument from the last command. If you are in an interactive shell, you can also quickly get this value by typing Esc followed by . or Alt+.</li>
 </ul>
-<h1 id="arrays">Arrays</h1>
+<h2 id="arrays">Arrays</h2>
 <p>An array is a numbered list of strings: It maps integers to strings.</p>
 <ul>
 <li>Creating Arrays</li>
@@ -189,6 +273,8 @@
 <h1 id="control-operators-and">Control Operators (<code>&amp;&amp;</code> and <code>||</code>)</h1>
 <pre><code class="language-bash">someCommand &amp;&amp; echo &quot;Previos comand worked (exit estatus==0)&quot;
 someCommand || echo &quot;Previos comand failed (exit estatus!=0)&quot;
+</code></pre>
+<pre><code class="language-bash">rm /etc/some_file.conf || echo &quot;I couldn't remove the file&quot;
 </code></pre>
 <pre><code class="language-bash">[ a = a ]; echo $?  # 0 (True)
 [ a = b ]; echo $?  # 1 (False)
@@ -389,13 +475,11 @@ ${name%.*}    polish.ostrich.racing
 <h3 id="globs-with-brace-expansion">Globs with brace expansion</h3>
 <p>Because Brace expansion happens <strong>before</strong> Filename expansion, <code>ls *{.jpg,.png}</code> will become <code>ls *.jpg *.png</code> and then execute the comand.</p>
 </blockquote>
-<h1 id="regular-expressions"><a href="http://mywiki.wooledge.org/RegularExpression">Regular expressions</a></h1>
-<p>$ rm /etc/some_file.conf || echo "I couldn't remove the file"</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../../tools/pacman/" class="btn btn-neutral float-left" title="Pacman"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../tools/cron/" class="btn btn-neutral float-left" title="CRON"><span class="icon icon-circle-arrow-left"></span> Previous</a>
         <a href="../makefile/" class="btn btn-neutral float-right" title="Makefile">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
@@ -419,7 +503,7 @@ ${name%.*}    polish.ostrich.racing
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../../tools/pacman/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../../tools/cron/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
       <span><a href="../makefile/" style="color: #fcfcfc">Next &raquo;</a></span>
