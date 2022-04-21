@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>[System maintenance](https://wiki.archlinux.org/index.php/System_maintenance) - Documentación de Javi</title>
+    <title>Hacking - Documentación de Javi</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "[System maintenance](https://wiki.archlinux.org/index.php/System_maintenance)";
-        var mkdocs_page_input_path = "maintenance.md";
+        var mkdocs_page_name = "Hacking";
+        var mkdocs_page_input_path = "hacking.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -142,7 +142,7 @@
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>[System maintenance](https://wiki.archlinux.org/index.php/System_maintenance)</li>
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>Hacking</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -152,62 +152,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="system-maintenance"><a href="https://wiki.archlinux.org/index.php/System_maintenance">System maintenance</a></h1>
-<h2 id="check-for-errors">Check for errors</h2>
-<pre><code>sudo systemctl --failed        # Check if any systemd services have entered in a failed state.
-sudo journalctl -p 3 -xb       # Look for errors in the log files located at /var/log
-</code></pre>
-<h2 id="backup">Backup</h2>
-<p>...</p>
-<h2 id="upgrading-the-system">Upgrading the system</h2>
-<ol>
-<li><a href="https://www.archlinux.org/">Check news</a></li>
-</ol>
-<pre><code>pacman -Syu                     #  Update packages and system
-</code></pre>
-<p>If the system has packages from the AUR, carefully upgrade all of them.</p>
-<h2 id="clean-the-filesystem"><a href="https://wiki.archlinux.org/index.php/System_maintenance#Clean_the_filesystem">Clean the filesystem</a></h2>
-<h3 id="disk-usage-display"><a href="https://wiki.archlinux.org/index.php/List_of_applications#Disk_usage_display">Disk usage display</a></h3>
-<p>Find largest files and directories.</p>
-<pre><code>sudo pacman -S ncdu              # Intall ncdu
-</code></pre>
-<p>Filelight is a GUI program
-Baobab is other GUI program (gnome)</p>
-<h3 id="disk-cleaning-programs"><a href="https://wiki.archlinux.org/index.php/List_of_applications#Disk_cleaning">Disk cleaning programs</a></h3>
-<p>Find and remove:</p>
-<ul>
-<li>duplicates</li>
-<li>empty files</li>
-<li>empty directories</li>
-<li>broken symlinks.</li>
-</ul>
-<pre><code>sudo pacman -S rmlint            # Intall rmlint
-</code></pre>
-<p>BleachBit is a GUI program</p>
-<h3 id="package-cache"><a href="https://wiki.archlinux.org/index.php/Pacman#Cleaning_the_package_cache">Package cache</a></h3>
-<p>Remove unwanted <code>.pkg</code> files from <code>/var/cache/pacman/pkg/</code> to free up disk space. </p>
-<pre><code>ls /var/cache/pacman/pkg/ | less # Ver paquetes (diponibles?)
-du -sh /var/cache/pacman/pkg/    # Ver tamaño carpeta
-sudo pacman -Sc                  # Remove old and unused pkgs
-sudo pacman -Scc                 # Remove files from cache
-paccache                         # ???
-</code></pre>
-<h3 id="unused-packges-orphans"><a href="https://wiki.archlinux.org/index.php/Pacman/Tips_and_tricks#Removing_unused_packages_.28orphans.29">Unused packges (orphans)</a></h3>
-<pre><code>sudo pacman -Qtdq                # List orphans
-sudo pacman -Rns $(pacman -Qtdq) # Remove orphans and their configuration files
-</code></pre>
-<h3 id="clean-cache-in-your-home">Clean cache in your /home.</h3>
-<pre><code>du -sh ~/.cache/                 # Ver tamaño carpeta
-rm -rf ~/.cache/*                # Remove 
-</code></pre>
-<h3 id="old-config-files">Old config files</h3>
-<ul>
-<li><code>~/.config/</code>: where apps stores their configuration</li>
-<li><code>~/.cache/</code>: cache of some programs may grow in size</li>
-<li><code>~/.local/share/</code>: old files may be lying there</li>
-</ul>
-<h3 id="broken-symlinks">Broken symlinks</h3>
-<pre><code>find -xtype l -print             # List all the broken symlinks
+                <h1 id="hacking">Hacking</h1>
+<h2 id="blackarch-repos-in-arch">BLACKARCH repos in ARCH</h2>
+<pre><code class="language-bash">curl -O https://blackarch.org/strap.sh                               # Download script
+echo 8bfe5a569ba7d3b055077a4e5ceada94119cccef strap.sh | sha1sum -c  # Verify the SHA1 sum
+chmod +x strap.sh                                                    # Set execute bit
+sudo ./strap.sh                                                      # Run strap.sh
+sudo pacman -Syu                                                     # Enable multilib
 </code></pre>
               
             </div>

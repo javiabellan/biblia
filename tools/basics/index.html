@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>The Shell - Documentación de Javi</title>
+    <title>Fundamentals - Documentación de Javi</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "The Shell";
+        var mkdocs_page_name = "Fundamentals";
         var mkdocs_page_input_path = "tools/basics.md";
         var mkdocs_page_url = null;
       </script>
@@ -63,10 +63,46 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Linux tools</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../git/">GIT</a>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Fundamentals</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#link-files">Link files</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#io-redirection">IO Redirection</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#pipes">Pipes</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#navigate">Navigate</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#find-duplicates">Find duplicates</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#search">Search</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#see-current-date">See current date</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#hard-drives">Hard drives</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#disk-usage">Disk usage</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#see-files">See files</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#compare-files">Compare files</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#deep-remove-files">Deep remove files</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#see-content">See content</a>
+    </li>
+    </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../ssh/">SSH</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../cron/">CRON</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../curl/">cURL</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../git/">GIT</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../tmux/">TMUX</a>
                   </li>
@@ -74,53 +110,36 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../pacman/">Pacman</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../cron/">CRON</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../nano/">NANO</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="#">Text editors & IDEs</a>
-    <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../editors/nano/">NANO</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../editors/vim/">VIM</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../editors/neovim/">NEOVIM</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../editors/jupyter/">Jupyter</a>
-                </li>
-    </ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../jupyter/">Jupyter</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="#">Parsers</a>
-    <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../csv/">CVS,TSV (q, awk)</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../pup/">HTML (pup)</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../jq/">JSON (jq)</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../pdf/">PDF (Xpdf, poppler)</a>
-                </li>
-    </ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../csv/">CVS,TSV (q, awk)</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="#">Multimedia</a>
-    <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../multimedia/convert/">convert (image)</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../multimedia/imagemagick/">ImageMagick (image)</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../multimedia/ffmepg/">ffmepg (video and audio)</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../multimedia/sox/">sox (audio)</a>
-                </li>
-    </ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../pup/">HTML (pup)</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="#">Download tools</a>
-    <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../download/curl/">cURL</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../download/wget/">WGET</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../download/youtube_dl/">youtube-dl</a>
-                </li>
-    </ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../jq/">JSON (jq)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../pdf/">PDF (Xpdf, poppler)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ssh/">SSH</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../vim/">VIM</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../wget/">WGET</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../youtube_dl/">youtube-dl</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Multimedia</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../multimedia/convert/">convert (image)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../multimedia/imagemagick/">ImageMagick (image)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../multimedia/ffmepg/">ffmepg (video and audio)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../multimedia/sox/">sox (audio)</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Programming</span></p>
@@ -155,7 +174,8 @@
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>The Shell</li>
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Linux tools &raquo;</li><li>Fundamentals</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -210,7 +230,11 @@ du {file}              # Disk usage of a file
 ncdu {file}            # Interactive version of Disk usage
 tar {file1}            # compress file
 </code></pre>
-<h1 id="io-redirection">IO Redirection</h1>
+<h2 id="link-files">Link files</h2>
+<ul>
+<li><code>ln -s -f src_file dest_file</code>: Symbolyc link</li>
+</ul>
+<h2 id="io-redirection">IO Redirection</h2>
 <pre><code class="language-bash">command &gt;   filename    # Redirect stdout to a file.
 command &lt;   filename    # Redirect stdin to the command.
 command &gt;&gt;  filename    # Redirect and append stdout to a file.
@@ -219,10 +243,9 @@ command 1&gt;&gt; filename    # Redirect and append stdout to file
 command 2&gt;  errorsfile  # Redirect stderr to file
 command 2&gt;&gt; errorsfile  # Redirect and append stderr to file
 command &amp;&gt;  filename    # Redirect both stdout and stderr to file
-
 command &gt;   /dev/null   # When we dont care about the output of a command
 </code></pre>
-<h1 id="pipes">Pipes</h1>
+<h2 id="pipes">Pipes</h2>
 <pre><code class="language-bash">echo hello &gt;  hello.txt # Crea (o sobrescribe) un fichero con la salida del programa anterior
 echo hello &gt;&gt; hello.txt # Añade (append) a un fichero la salida del programa anterior
 ls -l | tail -n2        # Pipe: Imprime solo los ultimos 2 ficheros
@@ -248,6 +271,9 @@ rm $(ls)       # same of above
 </ul>
 <blockquote>
 <ul>
+<li><code>lsd</code>: Better ls</li>
+<li><code>bat</code>: Better cat</li>
+<li><code>mdcat</code>: cat for markdown</li>
 <li><code>tree</code></li>
 <li><code>broot</code></li>
 <li><code>nnn</code></li>
@@ -336,6 +362,16 @@ rm $(ls)       # same of above
 <li><code>cmp {file1} {file2}</code>: See differencs between files</li>
 <li><code>comm</code>: select or reject lines <strong>comm</strong>on to two files</li>
 </ul>
+<h2 id="deep-remove-files">Deep remove files</h2>
+<ul>
+<li><code>scrub</code>: Real delete files in disk</li>
+<li><code>shred</code>: Real delete files in disk</li>
+</ul>
+<pre><code class="language-bash">deep_rm () {
+  scrub -p dod $1
+  shred -zun 10 -v $1
+}
+</code></pre>
 <h2 id="see-content">See content</h2>
 <ul>
 <li><strong><code>sort</code></strong>: Sorting</li>
@@ -454,6 +490,10 @@ sudo timedatectl set-ntp true
               
             </div>
           </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../server/security/" class="btn btn-neutral float-left" title="Security"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../cron/" class="btn btn-neutral float-right" title="CRON">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
 
   <hr/>
 
@@ -475,6 +515,10 @@ sudo timedatectl set-ntp true
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
+      <span><a href="../../server/security/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../cron/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

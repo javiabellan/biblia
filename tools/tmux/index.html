@@ -64,9 +64,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Linux tools</span></p>
               <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" href="../git/">GIT</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../basics/">Fundamentals</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../ssh/">SSH</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../cron/">CRON</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../curl/">cURL</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../git/">GIT</a>
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">TMUX</a>
     <ul class="current">
@@ -86,53 +90,36 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../pacman/">Pacman</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../cron/">CRON</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../nano/">NANO</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="#">Text editors & IDEs</a>
-    <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../editors/nano/">NANO</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../editors/vim/">VIM</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../editors/neovim/">NEOVIM</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../editors/jupyter/">Jupyter</a>
-                </li>
-    </ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../jupyter/">Jupyter</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="#">Parsers</a>
-    <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../csv/">CVS,TSV (q, awk)</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../pup/">HTML (pup)</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../jq/">JSON (jq)</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../pdf/">PDF (Xpdf, poppler)</a>
-                </li>
-    </ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../csv/">CVS,TSV (q, awk)</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="#">Multimedia</a>
-    <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../multimedia/convert/">convert (image)</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../multimedia/imagemagick/">ImageMagick (image)</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../multimedia/ffmepg/">ffmepg (video and audio)</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../multimedia/sox/">sox (audio)</a>
-                </li>
-    </ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../pup/">HTML (pup)</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="#">Download tools</a>
-    <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../download/curl/">cURL</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../download/wget/">WGET</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../download/youtube_dl/">youtube-dl</a>
-                </li>
-    </ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../jq/">JSON (jq)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../pdf/">PDF (Xpdf, poppler)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ssh/">SSH</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../vim/">VIM</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../wget/">WGET</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../youtube_dl/">youtube-dl</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Multimedia</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../multimedia/convert/">convert (image)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../multimedia/imagemagick/">ImageMagick (image)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../multimedia/ffmepg/">ffmepg (video and audio)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../multimedia/sox/">sox (audio)</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Programming</span></p>
@@ -183,7 +170,7 @@
 - tmux can have several <strong>sessions</strong>.
 - a <strong>session</strong> can have several <strong>windows</strong> (like tabs)
 - a <strong>window</strong> can have several <strong>panes</strong> (like a divided terminal)</p>
-<p><img alt="" src="../img/tmux.png" /></p>
+<p><img alt="" src="../../img/tmux.png" /></p>
 <h2 id="commands">Commands</h2>
 <ul>
 <li><strong>Outside tmux</strong></li>
@@ -217,7 +204,7 @@
 <li><code>tmux -CC</code>: Create a new session</li>
 <li><code>tmux -CC attach</code> Attach to</li>
 </ul>
-<p><img alt="" src="../img/tmux-windows.png" /></p>
+<p><img alt="" src="../../img/tmux-windows.png" /></p>
 <blockquote>
 <p>Reference: https://stackoverflow.com/questions/35421819/tmux-in-multiple-terminal-app-windows</p>
 </blockquote>
@@ -264,7 +251,7 @@ WantedBy=multi-user.target
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../ssh/" class="btn btn-neutral float-left" title="SSH"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../git/" class="btn btn-neutral float-left" title="GIT"><span class="icon icon-circle-arrow-left"></span> Previous</a>
         <a href="../gnu_parallel/" class="btn btn-neutral float-right" title="GNU parallel">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
@@ -288,7 +275,7 @@ WantedBy=multi-user.target
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../ssh/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../git/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
       <span><a href="../gnu_parallel/" style="color: #fcfcfc">Next &raquo;</a></span>
