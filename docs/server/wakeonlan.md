@@ -12,3 +12,19 @@
 
 1. Find the server mac address: `arp -a`
 2. Wake the server `wakeonlan *mac address*`
+
+
+
+
+## shutdown
+
+```bash
+shutdown now
+```
+
+## Reboot
+
+```bash
+reboot now
+```
+

@@ -47,7 +47,14 @@ ncdu {file}            # Interactive version of Disk usage
 tar {file1}            # compress file
 ```
 
-# IO Redirection
+
+## Link files
+
+- `ln -s -f src_file dest_file`: Symbolyc link
+
+
+## IO Redirection
+
 ```bash
 command >   filename    # Redirect stdout to a file.
 command <   filename    # Redirect stdin to the command.
@@ -57,12 +64,11 @@ command 1>> filename    # Redirect and append stdout to file
 command 2>  errorsfile  # Redirect stderr to file
 command 2>> errorsfile  # Redirect and append stderr to file
 command &>  filename    # Redirect both stdout and stderr to file
-
 command >   /dev/null   # When we dont care about the output of a command
 ```
 
 
-# Pipes
+## Pipes
 
 ```bash
 echo hello >  hello.txt # Crea (o sobrescribe) un fichero con la salida del programa anterior
@@ -90,10 +96,15 @@ rm $(ls)       # same of above
   - `ls *.png`: only png files
   - `ls *.??g`: only png and jpg files
 
+> - `lsd`: Better ls
+> - `bat`: Better cat
+> - `mdcat`: cat for markdown
 > - `tree`
 > - `broot`
 > - `nnn`
 > - `ranger`
+
+
 
 
 ## Find duplicates
@@ -182,6 +193,18 @@ rm $(ls)       # same of above
 
 
 
+
+## Deep remove files
+
+- `scrub`: Real delete files in disk
+- `shred`: Real delete files in disk
+
+```bash
+deep_rm () {
+  scrub -p dod $1
+  shred -zun 10 -v $1
+}
+```
 
 ## See content
 

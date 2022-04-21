@@ -12,31 +12,28 @@ nav:
   - Public IP: server/public_ip.md
   - Security: server/security.md
 - Linux tools:
+  - Fundamentals: tools/basics.md
+  - CRON: tools/cron.md
+  - cURL: tools/curl.md
   - GIT: tools/git.md
-  - SSH: tools/ssh.md
   - TMUX: tools/tmux.md
   - GNU parallel: tools/gnu_parallel.md
   - Pacman: tools/pacman.md
-  - CRON: tools/cron.md
-  - Text editors & IDEs:
-    - NANO: tools/editors/nano.md
-    - VIM: tools/editors/vim.md
-    - NEOVIM: tools/editors/neovim.md
-    - Jupyter: tools/editors/jupyter.md
-  - Parsers:
-    - CVS,TSV (q, awk): tools/csv.md
-    - HTML (pup): tools/pup.md
-    - JSON (jq): tools/jq.md
-    - PDF (Xpdf, poppler): tools/pdf.md
-  - Multimedia:
-    - convert (image): tools/multimedia/convert.md
-    - ImageMagick (image): tools/multimedia/imagemagick.md
-    - ffmepg (video and audio): tools/multimedia/ffmepg.md
-    - sox (audio): tools//multimedia/sox.md
-  - Download tools:
-    - cURL: tools/download/curl.md
-    - WGET: tools/download/wget.md
-    - youtube-dl: tools/download/youtube_dl.md
+  - NANO: tools/nano.md
+  - Jupyter: tools/jupyter.md
+  - CVS,TSV (q, awk): tools/csv.md
+  - HTML (pup): tools/pup.md
+  - JSON (jq): tools/jq.md
+  - PDF (Xpdf, poppler): tools/pdf.md
+  - SSH: tools/ssh.md
+  - VIM: tools/vim.md
+  - WGET: tools/wget.md
+  - youtube-dl: tools/youtube_dl.md
+- Multimedia:
+  - convert (image): multimedia/convert.md
+  - ImageMagick (image): multimedia/imagemagick.md
+  - ffmepg (video and audio): multimedia/ffmepg.md
+  - sox (audio): multimedia/sox.md
 - Programming:
   - Bash scripting: programming/bash_scripting.md
   - Makefile: programming/makefile.md

@@ -5,7 +5,7 @@ The most popular terminal multiplexer these days is [`tmux`](https://www.man7.or
 - a **session** can have several **windows** (like tabs)
 - a **window** can have several **panes** (like a divided terminal)
 
-![](img/tmux.png)
+![](../img/tmux.png)
 
 
 ## Commands
@@ -43,7 +43,7 @@ The most popular terminal multiplexer these days is [`tmux`](https://www.man7.or
 - `tmux -CC`: Create a new session
 - `tmux -CC attach` Attach to
 
-![](img/tmux-windows.png)
+![](../img/tmux-windows.png)
 
 > Reference: https://stackoverflow.com/questions/35421819/tmux-in-multiple-terminal-app-windows
 

@@ -32,3 +32,12 @@ pacman -Rns {pkg}  # Remove package, dependencies (-s), and system config files 
 ### YAY
 
 https://www.chrisatmachine.com/Linux/03-AUR-yay/
+
+
+### PARU
+
+```bash
+git clone https://aur.archlinux.org/paru-bin.git
+cd paru-bin
+makepkg -si
+```

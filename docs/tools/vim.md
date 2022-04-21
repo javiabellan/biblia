@@ -27,6 +27,10 @@ has many functionalities, including opening, saving, and closing files, and
     - `:help w` opens help for the `w` movement
 
 
+## NeoVIM
+
+- NvimTreeToogle: left tree panel
+- nvchad
 
 
 ## Dotfile: `~/.vimrc`
