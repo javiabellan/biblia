@@ -60,7 +60,19 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#references">References</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#avoid-uda-out-of-memory">AVOID UDA OUT OF MEMORY</a>
+    <li class="toctree-l2"><a class="reference internal" href="#avoid-cuda-out-of-memory-oom-error-5-1-tricks">AVOID CUDA OUT OF MEMORY (OOM) ERROR. 5 + 1 tricks</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#extra-6th-trick-do-not-store-the-unnecesary-cuda-variables-in-the-training-loop">Extra 6th trick: Do not store the unnecesary cuda variables in the training loop.</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#faq">FAQ</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#why-do-i-need-to-store-the-activations-during-the-foward-pass">Why do I need to store the activations during the foward pass?</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#reference">Reference</a>
+    </li>
+        </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#layer-wise-learning-rate-in-pytorch">Layer-Wise Learning Rate in PyTorch</a>
     </li>
@@ -220,27 +232,138 @@
 <li>https://neptune.ai/blog/image-segmentation-tips-and-tricks-from-kaggle-competitions</li>
 </ul>
 </blockquote>
-<h2 id="avoid-uda-out-of-memory">AVOID UDA OUT OF MEMORY</h2>
+<h2 id="avoid-cuda-out-of-memory-oom-error-5-1-tricks">AVOID CUDA OUT OF MEMORY (OOM) ERROR. 5 + 1 tricks</h2>
 <p>If you get a OOM error on the first batch, try...</p>
-<ul>
-<li>Smaller batch size</li>
-<li>You always can use <a href="https://kozodoi.me/python/deep%20learning/pytorch/tutorial/2021/02/19/gradient-accumulation.html">Gradient Accumulation</a> to simulate larger batches</li>
-<li>Smaller input size (image resolution)</li>
-<li>Half precision (Float16 instead of default Float32)</li>
-<li>Gradient Checkpointing: Reduces the model's memory cost by 60% (at the cost of 25% greater training time).</li>
-<li>https://spell.ml/blog/gradient-checkpointing-pytorch-YGypLBAAACEAefHs#:~:text=In%20a%20nutshell%2C%20gradient%20checkpointing,these%20values%20ahead%20of%20time</li>
-<li>https://github.com/prigoyal/pytorch_memonger/blob/master/tutorial/Checkpointing_for_PyTorch_models.ipynb</li>
-</ul>
-<p>If you get a OOM error in the middle of training, try...</p>
+<table>
+<thead>
+<tr>
+<th>Trick</th>
+<th>Description</th>
+<th>Disadvantage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Smaller batch size</td>
+<td>Use Gradient Accumulation to simultate larger BS</td>
+<td>Slower training</td>
+</tr>
+<tr>
+<td>2. Smaller input size</td>
+<td>Decrease image resolution</td>
+<td>Lower accuracy</td>
+</tr>
+<tr>
+<td>3. Smaller model</td>
+<td></td>
+<td>Lower accuracy</td>
+</tr>
+<tr>
+<td>4. Half/Mixed precision</td>
+<td>Float16 instead of Float32</td>
+<td>Lower accuracy. Training may not converge…</td>
+</tr>
+<tr>
+<td>5. Gradient checkpointing</td>
+<td>Compute some acts again instad of store them</td>
+<td>Slower training</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Gradient checkpointing is also known as Buffer checkpointing
+Gradient checkpointing reduces the model's memory cost by 60%..70% (at the cost of 25% greater training time).</p>
+</blockquote>
+<h3 id="extra-6th-trick-do-not-store-the-unnecesary-cuda-variables-in-the-training-loop">Extra 6th trick: Do not store the unnecesary cuda variables in the training loop.</h3>
+<p>If you get a OOM error in the middle of training, you probably has an increasingly memeory leak.</p>
+<p>Delete it after the loss computation</p>
 <pre><code class="language-python">output = model(input)
 loss   = loss_fn(output, target)
 del output
 gc.collect()
 </code></pre>
+<p>Or do comoute the loss directly:</p>
+<pre><code class="language-python">loss = loss_fn(model(input), target)
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Pytorch code</th>
+<th>GPU memory</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(0) Model to GPU</td>
+<td><code>model.cuda()</code></td>
+<td>model</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>(1) Foward pass</td>
+<td><code>out = model(inp)</code></td>
+<td>model + activations + out</td>
+</tr>
+<tr>
+<td>(1) Loss func</td>
+<td><code>l = loss(out, tar)</code></td>
+<td>model + activations + out + l</td>
+</tr>
+<tr>
+<td>(1) Backward pass</td>
+<td><code>l.backward()</code></td>
+<td>model + out + l + grads</td>
+</tr>
+<tr>
+<td>(1) Optimizer step</td>
+<td><code>optimizer.step()</code></td>
+<td>model + out + l + grads + grads_mom</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>(2) Foward pass</td>
+<td><code>out = model(inp)</code></td>
+<td>model + activations + out</td>
+</tr>
+<tr>
+<td>(2) Loss func</td>
+<td><code>l = loss(out, tar)</code></td>
+<td>model + activations + out + l</td>
+</tr>
+<tr>
+<td>(2) Backward pass</td>
+<td><code>l.backward()</code></td>
+<td>model + out + l + grads</td>
+</tr>
+<tr>
+<td>(2) Optimizer step</td>
+<td><code>optimizer.step()</code></td>
+<td>model + out + l + grads + grads_mom</td>
+</tr>
+</tbody>
+</table>
+<h3 id="faq">FAQ</h3>
+<h4 id="why-do-i-need-to-store-the-activations-during-the-foward-pass">Why do I need to store the activations during the foward pass?</h4>
+<p>Each layer with learnable parameters will need to store its input until the backward pass due to the <strong>chain rule</strong></p>
 <blockquote>
+<h3 id="reference">Reference</h3>
 <ul>
-<li>https://pytorch.org/tutorials/recipes/recipes/tuning_guide.html</li>
-<li>https://medium.com/deep-learning-for-protein-design/a-comprehensive-guide-to-memory-usage-in-pytorch-b9b7c78031d3</li>
+<li><a href="https://kozodoi.me/python/deep%20learning/pytorch/tutorial/2021/02/19/gradient-accumulation.html">Gradient Accumulation</a></li>
+<li><a href="https://spell.ml/blog/gradient-checkpointing-pytorch-YGypLBAAACEAefHs">Gradient Checkpointing 1</a></li>
+<li><a href="https://github.com/prigoyal/pytorch_memonger/blob/master/tutorial/Checkpointing_for_PyTorch_models.ipynb">Gradient Checkpointing 2</a></li>
+<li><a href="https://pytorch.org/tutorials/recipes/recipes/tuning_guide.html">Pytorch Performance Tuning Guide</a></li>
+<li><a href="https://towardsdatascience.com/7-tips-for-squeezing-maximum-performance-from-pytorch-ca4a40951259">7 Tips To Maximize PyTorch Performance</a></li>
+<li><a href="https://medium.com/deep-learning-for-protein-design/a-comprehensive-guide-to-memory-usage-in-pytorch-b9b7c78031d3">Memory usage in Pytorch 1</a></li>
+<li><a href="https://www.sicara.fr/blog/2019-28-10-deep-learning-memory-usage-and-pytorch-optimization-tricks">Memory usage in Pytorch 2</a></li>
 </ul>
 </blockquote>
 <h2 id="layer-wise-learning-rate-in-pytorch">Layer-Wise Learning Rate in PyTorch</h2>
