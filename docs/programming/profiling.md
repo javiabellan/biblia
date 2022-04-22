@@ -105,3 +105,12 @@ Line #    Mem usage    Increment   Line Contents
      5   46.270 MiB    0.000 MiB       del b
      6   46.270 MiB    0.000 MiB       return a
 ```
+
+
+## [Memray](https://github.com/bloomberg/memray)
+
+A memory profiler for Python
+
+## [Magic trace](https://github.com/janestreet/magic-trace)
+
+magic-trace collects and displays high-resolution traces of what a process is doing
