@@ -29,11 +29,14 @@
 - **textutil**: Only in MacOS (Usado por Pascual Perez)
   - `textutil -convert txt ~/Desktop/DrectorioDeArchivosEnPDF/*.pdf`
 
-
-
+## Parse with OCR!: `ocrmypdf`
 
 
 # Documents
 
 - `pandoc`: Conversion between markup formats
 - `aspell`: A spell checker designed to eventually replace Ispell
+
+
+
+https://programminghistorian.org/en/lessons/working-with-batches-of-pdf-files
