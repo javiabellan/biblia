@@ -75,6 +75,10 @@
     <li class="toctree-l2"><a class="reference internal" href="#navigate">Navigate</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#find-duplicates">Find duplicates</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#type-of-files-and-magic-numbers">Type of files and magic numbers</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#users-and-privileges-when-ls-l">Users and Privileges (when ls -l)</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#search">Search</a>
         <ul>
@@ -199,19 +203,6 @@ lsb_release -a # Ver mi sistema operativo
   # se puede cambiar el brillo de la pantalla, los leds, etc
   cat /sys/class/thermal/thermal_zone*/temp # Ver temperatura CPU
 
-############## Atajos &amp; Signals
-CTRL + l   # Clean terminal
-CTRL + c   # Interrumpir programa (SIGINT)
-CTRL + \   # Salir programa (SIGQUIT)
-CTRL + z   # Pausar programa que se puede reunaudar (SIGSTOP)
-jobs        # See all the jobs that are running or suspended.
-my_command &amp;  # When you append &quot; &amp;&quot;  it becomes a &quot;background job&quot;.
-my_command_2 &amp;&amp; my_command_2 # Do my_command_2 only if my_command_2 was success
-fg          # Bring the job to the foreground.
-bg          # Send the job to the background.
-stop {PID} or Ctrl + z          # Suspend the job.
-kill {PID} or Ctrl + c          # Terminate the job.
-
 ############# Files and dirs
 mv {old_pth} {new_pth} # Move or rename a file
 cp {from_pth} {to_pth} # Copy a file
@@ -228,7 +219,6 @@ ln {from_pth} {to_pth} # Crear acceso directo
 chmod +x {file}        # Atorgar permisos de ejecución
 du {file}              # Disk usage of a file
 ncdu {file}            # Interactive version of Disk usage
-tar {file1}            # compress file
 </code></pre>
 <h2 id="link-files">Link files</h2>
 <ul>
@@ -300,6 +290,40 @@ rm $(ls)       # same of above
 <li>https://unix.stackexchange.com/questions/28895/open-source-duplicate-image-finder-for-linux</li>
 </ul>
 </blockquote>
+<h2 id="type-of-files-and-magic-numbers">Type of files and magic numbers</h2>
+<p>The first bytes of a file determine the type of file</p>
+<ul>
+<li><code>file *</code>: see the types of every file in the current directory</li>
+</ul>
+<p>Magic numbers:</p>
+<ul>
+<li><code>89 50 4e 47 0d 0a 1a 0a</code> magic number of PNG file</li>
+</ul>
+<h2 id="users-and-privileges-when-ls-l">Users and Privileges (when <code>ls -l</code>)</h2>
+<pre><code> -------&gt; Permission of owner
+ |  ----&gt; Permission of users of same group
+ |  |  -&gt; Permission of other users 
+ |  |  |
+/ \/ \/ \
+rwxrwxrwx  ownerUser userGroup 13B file
+</code></pre>
+<ul>
+<li>Manage users</li>
+<li><code>whoami</code>: See the current user i am</li>
+<li><code>su otherUser</code>: Change to other user</li>
+<li>`exit: Change to prevous user</li>
+<li>Manage files</li>
+<li><code>chmod +x file</code>: Add execution permission to the owner</li>
+<li><code>chmod o-r file</code>: Remove read permission to other users.</li>
+<li><code>chmod o+rw file</code>: Add read and write permission to other users.</li>
+<li><code>chmod g+w file</code>: Add write permission to group users.</li>
+<li><code>chmod g+r,o-w file</code>: Modifiy several users permission at the same time</li>
+<li><code>chmod 640 file</code>:  Modifiy several users permission at the same time</li>
+<li><code>chgrp userGroup file</code>: Change the user group</li>
+<li><code>lsattr file</code> List special atributers of file</li>
+<li><code>chattr +i file</code> Change special atributes of file (add i atribute)</li>
+<li><code>chattr -i file</code> Change special atributes of file (remove i atribute)</li>
+</ul>
 <h3 id="search">Search</h3>
 <ul>
 <li><code>find</code>: search on many paths</li>
@@ -353,6 +377,7 @@ rm $(ls)       # same of above
 <li><code>tail -n5</code>: only 5 lines</li>
 <li><strong><code>hexdump</code></strong>: Para ver ficheros binarios</li>
 <li><strong><code>xxd</code></strong>: make a hexdump or do the reverse.</li>
+<li><code>hexeditor</code>:</li>
 <li><code>xdg-open  myFile.txt</code>: Open a file with default program</li>
 </ul>
 <h2 id="compare-files">Compare files</h2>
@@ -387,6 +412,7 @@ rm $(ls)       # same of above
 <li><code>wc -w</code>: count only words</li>
 <li><code>wc -c</code>: count only chars</li>
 <li><strong><code>column</code></strong>: Display in <strong>column</strong>s</li>
+<li><code>| column -t</code>: Pretty print TSV file</li>
 <li><code>column iris.csv -t -s ,</code></li>
 <li><code>column file.csv -s "," -t | less -#2 -N -S</code>: CSV viewer</li>
 <li><strong><code>cut</code></strong>: Selecting fields (columns) (default is to delimit by tab).</li>
