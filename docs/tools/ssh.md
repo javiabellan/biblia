@@ -12,6 +12,12 @@ sudo systemctl disable sshd # Al arrancar por defecto: apagado
 ```
 
 
+## Common flags
+
+- `ssh javi@192.168.0.1 -L 8888:localhost:8888`: Redirect port
+- `ssh javi@192.168.0.1 -p 2222`: Conct over a specific port (Defualt port is 22)
+
+
 ## En el cliente. Conectar y redirigir puerto 8888 (juypter)
 
 ```bash

@@ -15,19 +15,6 @@ lsb_release -a # Ver mi sistema operativo
   # se puede cambiar el brillo de la pantalla, los leds, etc
   cat /sys/class/thermal/thermal_zone*/temp # Ver temperatura CPU
 
-############## Atajos & Signals
-CTRL + l   # Clean terminal
-CTRL + c   # Interrumpir programa (SIGINT)
-CTRL + \   # Salir programa (SIGQUIT)
-CTRL + z   # Pausar programa que se puede reunaudar (SIGSTOP)
-jobs        # See all the jobs that are running or suspended.
-my_command &  # When you append " &"  it becomes a "background job".
-my_command_2 && my_command_2 # Do my_command_2 only if my_command_2 was success
-fg          # Bring the job to the foreground.
-bg          # Send the job to the background.
-stop {PID} or Ctrl + z          # Suspend the job.
-kill {PID} or Ctrl + c          # Terminate the job.
-
 ############# Files and dirs
 mv {old_pth} {new_pth} # Move or rename a file
 cp {from_pth} {to_pth} # Copy a file
@@ -44,7 +31,6 @@ ln {from_pth} {to_pth} # Crear acceso directo
 chmod +x {file}        # Atorgar permisos de ejecución
 du {file}              # Disk usage of a file
 ncdu {file}            # Interactive version of Disk usage
-tar {file1}            # compress file
 ```
 
 
@@ -123,6 +109,46 @@ rm $(ls)       # same of above
 > - https://unix.stackexchange.com/questions/28895/open-source-duplicate-image-finder-for-linux
 
 
+
+## Type of files and magic numbers
+
+The first bytes of a file determine the type of file
+
+- `file *`: see the types of every file in the current directory
+
+Magic numbers:
+
+- `89 50 4e 47 0d 0a 1a 0a` magic number of PNG file
+
+
+
+## Users and Privileges (when `ls -l`)
+
+```
+ -------> Permission of owner
+ |  ----> Permission of users of same group
+ |  |  -> Permission of other users 
+ |  |  |
+/ \/ \/ \
+rwxrwxrwx  ownerUser userGroup 13B file
+```
+
+- Manage users
+  - `whoami`: See the current user i am
+  - `su otherUser`: Change to other user
+  - `exit: Change to prevous user
+- Manage files
+  - `chmod +x file`: Add execution permission to the owner
+  - `chmod o-r file`: Remove read permission to other users.
+  - `chmod o+rw file`: Add read and write permission to other users.
+  - `chmod g+w file`: Add write permission to group users.
+  - `chmod g+r,o-w file`: Modifiy several users permission at the same time
+  - `chmod 640 file`:  Modifiy several users permission at the same time
+  - `chgrp userGroup file`: Change the user group
+  - `lsattr file` List special atributers of file
+  - `chattr +i file` Change special atributes of file (add i atribute)
+  - `chattr -i file` Change special atributes of file (remove i atribute)
+
 ### Search
 
 - `find`: search on many paths
@@ -181,6 +207,7 @@ rm $(ls)       # same of above
    - `tail -n5`: only 5 lines
 - **`hexdump`**: Para ver ficheros binarios
 - **`xxd`**: make a hexdump or do the reverse.
+- `hexeditor`:
 - `xdg-open  myFile.txt`: Open a file with default program
 
 
@@ -221,6 +248,7 @@ deep_rm () {
   - `wc -w`: count only words
   - `wc -c`: count only chars
 - **`column`**: Display in **column**s
+  - `| column -t`: Pretty print TSV file
   - `column iris.csv -t -s ,`
   - `column file.csv -s "," -t | less -#2 -N -S`: CSV viewer
 - **`cut`**: Selecting fields (columns) (default is to delimit by tab).
