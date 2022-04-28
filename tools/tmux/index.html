@@ -216,6 +216,10 @@ if 'infocmp -x tmux-256color &gt; /dev/null 2&gt;&amp;1' 'set -g default-termina
 
 ####### MOUSE (enable scroll)
 set -g mouse on        # For tmux version 2.1 and above
+
+####### Number windows and panes start at 1 instead of 0
+set -g base-index 1
+set -g pane-base-index 1
 </code></pre>
 <ul>
 <li><a href="https://github.com/gpakosz/.tmux">Oh my tmux!</a>: Self-contained, pretty &amp; versatile tmux configuration</li>
