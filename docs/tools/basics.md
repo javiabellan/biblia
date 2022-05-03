@@ -39,33 +39,6 @@ ncdu {file}            # Interactive version of Disk usage
 - `ln -s -f src_file dest_file`: Symbolyc link
 
 
-## IO Redirection
-
-```bash
-command >   filename    # Redirect stdout to a file.
-command <   filename    # Redirect stdin to the command.
-command >>  filename    # Redirect and append stdout to a file.
-command 1>  filename    # Redirect stdout to file
-command 1>> filename    # Redirect and append stdout to file
-command 2>  errorsfile  # Redirect stderr to file
-command 2>> errorsfile  # Redirect and append stderr to file
-command &>  filename    # Redirect both stdout and stderr to file
-command >   /dev/null   # When we dont care about the output of a command
-```
-
-
-## Pipes
-
-```bash
-echo hello >  hello.txt # Crea (o sobrescribe) un fichero con la salida del programa anterior
-echo hello >> hello.txt # Añade (append) a un fichero la salida del programa anterior
-ls -l | tail -n2        # Pipe: Imprime solo los ultimos 2 ficheros
-ls -l | tail -n2 >  hello.txt # Pipe and file writting
-ls | xargs rm  # | xargs is when the inputs is IN THE ARGUMENTS
-rm $(ls)       # same of above
-```
-
-
 
 ## Navigate
 - `pwd`: **p**rint **w**orking **d**irectory

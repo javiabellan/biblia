@@ -2,7 +2,6 @@
 # Bash scripting
 
 
-
 ## Shells
 
 | Terminal        | Promt | Hashbang/Shebang | Configuration file |
@@ -13,10 +12,6 @@
 | `csh` or `tcsh` |  `%`  | `#!/bin/csh`     |                    |
 
 
-
-
-# Scripts
-
 [Shebang line](https://en.wikipedia.org/wiki/Shebang_(Unix): First line, This is going to be the interpreter:
 - `#!/bin/sh`:  Bourne shell script
 - `#!/bin/bash`:  Bash shell script `./myScript.sh`
@@ -24,16 +19,61 @@
 - `#!/usr/bin/env python`:  Python script (more portable because looks for python comand)  `./myScript.py`
 
 
-### Python script
+## File descriptors (fd)
 
-```python
-#!/usr/bin/python
-import sys
-for arg in reversed(sys.argv[1:]):
-    print(arg)
+Every command (every porcess in fact) has its own file despcriptor table. By default (assuming your terminal is /dev/tty0):
+
+| File descriptor | Meaning    | Initial value |
+|-----------------|------------|---------------|
+| 0               | **stdin**  | `/dev/tty0`   |
+| 1               | **stdout** | `/dev/tty0`   |
+| 2               | **stderr** | `/dev/tty0`   |
+
+
+## IO Redirection `<` `>`
+
+IO Redirection modifies the file descriptors table of a command.
+
+```bash
+command <   file    # Redirect stdin to the command.    FD0 = file
+command >   file    # Redirect stdout to file.          FD1 = file
+command 1>  file    # Redirect stdout to file.          FD1 = file
+command 2>  file    # Redirect stderr to file.          FD2 = file
+command &>  file    # Redirect stdout & stderr to file  FD1 = FD2 = file
+command >   /dev/null   # When we dont care about the output of a command
+echo hello >  hello.txt # Crea (o sobrescribe) un fichero con la salida del programa anterior
 ```
 
-### Bash script
+```bash
+command >>  file    # Redirect and append stdout to a file.
+command 1>> file    # Redirect and append stdout to file
+command 2>> file    # Redirect and append stderr to file
+echo hello >> hello.txt # Añade (append) a un fichero la salida del programa anterior
+```
+
+
+## Regular Pipes `|`
+
+- Assign the stdout (FD1) of the first command to the pipe.
+- Assign the stdin (FD0) of the second command to the pipe.
+
+
+```bash
+ls -l | tail -n2        # Pipe: Imprime solo los ultimos 2 ficheros
+ls -l | tail -n2 >  hello.txt # Pipe and file writting
+ls | xargs rm  # | xargs is when the inputs is IN THE ARGUMENTS
+rm $(ls)       # same of above
+```
+
+## Named Pipes: `mkfifo`
+
+
+
+
+
+
+
+## Example Bash script
 ```bash
 ############## Variables
 myVar=someValue
@@ -91,14 +131,19 @@ An array is a numbered list of strings: It maps integers to strings.
   - `files=($(ls))` STILL BAD!
   - `files=(*)` GOOD: filenames in the current directory
 
+> - http://mywiki.wooledge.org/BashGuide/Arrays
+> - http://mywiki.wooledge.org/BashFAQ/005
 
 
-# Associative Arrays (Dictionaries)
+## Associative Arrays (Dictionaries)
 
 - `fullNames=( ["lhunath"]="Maarten Billemont" ["greycat"]="Greg Wooledge" )`
 
+> - http://mywiki.wooledge.org/BashGuide/Arrays#Associative_Arrays
+> - http://mywiki.wooledge.org/BashFAQ/006
 
-# Control Operators (`&&` and `||`)
+
+## Control Operators (`&&` and `||`)
 
 ```bash
 someCommand && echo "Previos comand worked (exit estatus==0)"
@@ -127,7 +172,7 @@ false;     echo $?  # 1 (False)
 
 
 
-# If
+## If
 
 ```bash
 if [[ $filename = *.jpg ]]; then
@@ -183,22 +228,6 @@ done
 
 # While loop
 
-
-
-
-# Arrays
-
-
-http://mywiki.wooledge.org/BashGuide/Arrays
-http://mywiki.wooledge.org/BashFAQ/005
-
-
-
-# Associative arrays (dictionaries)
-
-
-http://mywiki.wooledge.org/BashGuide/Arrays#Associative_Arrays
-http://mywiki.wooledge.org/BashFAQ/006
 
 
 

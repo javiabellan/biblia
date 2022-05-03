@@ -30,7 +30,7 @@ nav:
   - HTML (pup): tools_data/html.md
   - JSON (jq): tools_data/json.md
   - PDF (Xpdf, poppler): tools_data/pdf.md
-  - Image (convert, ImageMagick): tools_data/image.md
+  - Image (ImageMagick): tools_data/image.md
   - Sound (ffmepg, sox): tools_data/sound.md
   - Video (ffmepg): tools_data/video.md
 - Programming:
