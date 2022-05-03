@@ -1,1 +1,0 @@
-# [ImageMagick](http://www.imagemagick.org/script/index.php)
