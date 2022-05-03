@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>ImageMagick (image) - Documentación de Javi</title>
+    <title>Video (ffmepg) - Documentación de Javi</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "ImageMagick (image)";
-        var mkdocs_page_input_path = "multimedia/imagemagick.md";
+        var mkdocs_page_name = "Video (ffmepg)";
+        var mkdocs_page_input_path = "tools_data/video.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -82,14 +82,6 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../tools/jupyter/">Jupyter</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools/csv/">CVS,TSV (q, awk)</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools/pup/">HTML (pup)</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools/jq/">JSON (jq)</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools/pdf/">PDF (Xpdf, poppler)</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../tools/ssh/">SSH</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../tools/vim/">VIM</a>
@@ -99,17 +91,25 @@
                   <li class="toctree-l1"><a class="reference internal" href="../../tools/youtube_dl/">youtube-dl</a>
                   </li>
               </ul>
-              <p class="caption"><span class="caption-text">Multimedia</span></p>
+              <p class="caption"><span class="caption-text">Data tools</span></p>
               <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" href="../convert/">convert (image)</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../csv/">CVS,TSV (q, awk)</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">ImageMagick (image)</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../html/">HTML (pup)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../json/">JSON (jq)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../pdf/">PDF (Xpdf, poppler)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../image/">Image (convert, ImageMagick)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../sound/">Sound (ffmepg, sox)</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Video (ffmepg)</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#ffmepg">ffmepg</a>
+    </li>
     </ul>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../ffmepg/">ffmepg (video and audio)</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../sox/">sox (audio)</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Programming</span></p>
@@ -145,7 +145,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>Multimedia &raquo;</li><li>ImageMagick (image)</li>
+          <li>Data tools &raquo;</li><li>Video (ffmepg)</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -155,13 +155,18 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="imagemagick"><a href="http://www.imagemagick.org/script/index.php">ImageMagick</a></h1>
+                <h1 id="video">Video</h1>
+<h2 id="ffmepg"><code>ffmepg</code></h2>
+<p>Video and audio</p>
+<ul>
+<li><code>ffmpeg -i input.mp4 output.avi</code> Convert audio format</li>
+</ul>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../convert/" class="btn btn-neutral float-left" title="convert (image)"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../ffmepg/" class="btn btn-neutral float-right" title="ffmepg (video and audio)">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../sound/" class="btn btn-neutral float-left" title="Sound (ffmepg, sox)"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../programming/bash_scripting/" class="btn btn-neutral float-right" title="Bash scripting">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -184,10 +189,10 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../convert/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../sound/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../ffmepg/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../../programming/bash_scripting/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
