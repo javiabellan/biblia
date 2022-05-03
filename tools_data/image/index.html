@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Image (convert, ImageMagick) - Documentación de Javi</title>
+    <title>Image (ImageMagick) - Documentación de Javi</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Image (convert, ImageMagick)";
+        var mkdocs_page_name = "Image (ImageMagick)";
         var mkdocs_page_input_path = "tools_data/image.md";
         var mkdocs_page_url = null;
       </script>
@@ -101,13 +101,21 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../pdf/">PDF (Xpdf, poppler)</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Image (convert, ImageMagick)</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Image (ImageMagick)</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#imgcat-display-in-the-iterm2-terminal">imgcat Display in the iTerm2 terminal</a>
+    <li class="toctree-l2"><a class="reference internal" href="#iterm2-imgcat">iTerm2 imgcat</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#convert">convert</a>
+    <li class="toctree-l2"><a class="reference internal" href="#imagemagick-convert">ImageMagick convert</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#conversion-between-formats">Conversion between formats</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#imagemagick">ImageMagick</a>
+    <li class="toctree-l3"><a class="reference internal" href="#resizing-convert-resize">Resizing convert -resize</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#cropping-convert-crop">Cropping convert -crop</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#imagemagick-montage">ImageMagick montage</a>
     </li>
     </ul>
                   </li>
@@ -118,7 +126,7 @@
               </ul>
               <p class="caption"><span class="caption-text">Programming</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../programming/bash_scripting/">Bash scripting</a>
+                  <li class="toctree-l1"><a class="" href="../../programming/bash_scripting.md">Bash scripting</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../programming/makefile/">Makefile</a>
                   </li>
@@ -149,7 +157,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>Data tools &raquo;</li><li>Image (convert, ImageMagick)</li>
+          <li>Data tools &raquo;</li><li>Image (ImageMagick)</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -159,21 +167,86 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="image">Image</h1>
-<h2 id="imgcat-display-in-the-iterm2-terminal"><code>imgcat</code> Display in the iTerm2 terminal</h2>
+                <h1 id="image-imagemagick">Image <a href="http://www.imagemagick.org/script/index.php">ImageMagick</a></h1>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Convert</td>
+<td>convert and modify images</td>
+</tr>
+<tr>
+<td>Identify</td>
+<td>Output information about this image</td>
+</tr>
+<tr>
+<td>Mogrify</td>
+<td>in-place batch processing</td>
+</tr>
+<tr>
+<td>Composite</td>
+<td>overlaying images in special ways</td>
+</tr>
+<tr>
+<td>Montage</td>
+<td>generating arrays of thumbnails</td>
+</tr>
+<tr>
+<td>Display</td>
+<td>Slideshows of Images</td>
+</tr>
+<tr>
+<td>Animate</td>
+<td>Show GIF Animations</td>
+</tr>
+<tr>
+<td>Compare</td>
+<td>Look for Differences</td>
+</tr>
+<tr>
+<td>Stream</td>
+<td>Pipelined Image Processor</td>
+</tr>
+<tr>
+<td>Import</td>
+<td>Read Images from On-screen Display</td>
+</tr>
+<tr>
+<td>Conjure</td>
+<td>Experimental IM Scripting Language</td>
+</tr>
+</tbody>
+</table>
+<h2 id="iterm2-imgcat">iTerm2 <code>imgcat</code></h2>
+<p>Display in the iTerm2 terminal</p>
 <pre><code class="language-bash">imgcat path/to/image
+cat path/to/image | imgcat
 </code></pre>
-<h2 id="convert"><code>convert</code></h2>
-<p>Images</p>
+<h2 id="imagemagick-convert">ImageMagick <code>convert</code></h2>
+<p>Synopsis:</p>
+<pre><code class="language-bash">convert [input-options] input-file [output-options] output-file
+# Specify 'file' as '-' for standard input or output.
+</code></pre>
+<h3 id="conversion-between-formats">Conversion between formats</h3>
 <ul>
-<li><code>convert imagen.jpg imagen.png</code> # Convertir una imagen de png a jpg</li>
-<li><code>convert imagen.{png,jpg}</code> # Expansion. Same of: convert imagen.jpg imagen.png</li>
-<li><code>convert image.jpg -crop 703x470+3+5 output.jpg</code> Crop image with <em>width x height + left + top</em> format:</li>
+<li><code>convert imagen.jpg imagen.png</code>: Convertir una imagen de png a jpg</li>
+<li><code>convert imagen.{png,jpg}</code>: Using Expansion. Same of before.</li>
 </ul>
-<h2 id="imagemagick"><a href="http://www.imagemagick.org/script/index.php">ImageMagick</a></h2>
+<h3 id="resizing-convert-resize">Resizing <code>convert -resize</code></h3>
 <ul>
-<li>ImageMagick <code>montage</code></li>
+<li><code>convert IN_IMG -resize 64x64 OUT_IMG</code>     Resize image (set larger to 64px)</li>
+<li><code>convert IN_IMG -resize 64x64\! OUT_IMG</code>   Resize image (Ignore Aspect Ratio)</li>
 </ul>
+<h3 id="cropping-convert-crop">Cropping <code>convert -crop</code></h3>
+<ul>
+<li><code>convert IN_IMG -crop 703x470+3+5 OUT_IMG</code> Crop image with <em>width x height + left + top</em> format</li>
+</ul>
+<h2 id="imagemagick-montage">ImageMagick <code>montage</code></h2>
               
             </div>
           </div><footer>

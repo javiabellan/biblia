@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>youtube-dl - Documentación de Javi</title>
+    <title>Python - Documentación de Javi</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "youtube-dl";
-        var mkdocs_page_input_path = "tools/youtube_dl.md";
+        var mkdocs_page_name = "Python";
+        var mkdocs_page_input_path = "programming/python.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -63,34 +63,32 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Linux tools</span></p>
-              <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" href="../basics/">Fundamentals</a>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/basics/">Fundamentals</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../cron/">CRON</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/cron/">CRON</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../curl/">cURL</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/curl/">cURL</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../git/">GIT</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/git/">GIT</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../tmux/">TMUX</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/tmux/">TMUX</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../gnu_parallel/">GNU parallel</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/gnu_parallel/">GNU parallel</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../pacman/">Pacman</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/pacman/">Pacman</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../nano/">NANO</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/nano/">NANO</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../jupyter/">Jupyter</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/jupyter/">Jupyter</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../ssh/">SSH</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/ssh/">SSH</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../vim/">VIM</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/vim/">VIM</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../wget/">WGET</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/wget/">WGET</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">youtube-dl</a>
-    <ul class="current">
-    </ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/youtube_dl/">youtube-dl</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Data tools</span></p>
@@ -112,13 +110,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Programming</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="" href="../../programming/bash_scripting.md">Bash scripting</a>
+                  <li class="toctree-l1"><a class="" href="../bash_scripting.md">Bash scripting</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../programming/makefile/">Makefile</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../makefile/">Makefile</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../programming/profiling/">Profiling</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../profiling/">Profiling</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../programming/debugging/">Debugging</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../debugging/">Debugging</a>
                   </li>
               </ul>
               <ul>
@@ -142,8 +140,7 @@
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>Linux tools &raquo;</li><li>youtube-dl</li>
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>Python</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -153,14 +150,15 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="youtube_dl">Youtube_dl</h1>
+                <h3 id="python-script">Python script</h3>
+<pre><code class="language-python">#!/usr/bin/python
+import sys
+for arg in reversed(sys.argv[1:]):
+    print(arg)
+</code></pre>
               
             </div>
           </div><footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../wget/" class="btn btn-neutral float-left" title="WGET"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../../tools_data/csv/" class="btn btn-neutral float-right" title="CVS,TSV (q, awk)">Next <span class="icon icon-circle-arrow-right"></span></a>
-    </div>
 
   <hr/>
 
@@ -182,10 +180,6 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../wget/" style="color: #fcfcfc">&laquo; Previous</a></span>
-    
-    
-      <span><a href="../../tools_data/csv/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

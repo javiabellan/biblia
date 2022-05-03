@@ -68,10 +68,6 @@
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#link-files">Link files</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#io-redirection">IO Redirection</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#pipes">Pipes</a>
-    </li>
     <li class="toctree-l2"><a class="reference internal" href="#navigate">Navigate</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#find-duplicates">Find duplicates</a>
@@ -137,7 +133,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../tools_data/pdf/">PDF (Xpdf, poppler)</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/image/">Image (convert, ImageMagick)</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/image/">Image (ImageMagick)</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../tools_data/sound/">Sound (ffmepg, sox)</a>
                   </li>
@@ -146,7 +142,7 @@
               </ul>
               <p class="caption"><span class="caption-text">Programming</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../programming/bash_scripting/">Bash scripting</a>
+                  <li class="toctree-l1"><a class="" href="../../programming/bash_scripting.md">Bash scripting</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../programming/makefile/">Makefile</a>
                   </li>
@@ -222,25 +218,6 @@ ncdu {file}            # Interactive version of Disk usage
 <ul>
 <li><code>ln -s -f src_file dest_file</code>: Symbolyc link</li>
 </ul>
-<h2 id="io-redirection">IO Redirection</h2>
-<pre><code class="language-bash">command &gt;   filename    # Redirect stdout to a file.
-command &lt;   filename    # Redirect stdin to the command.
-command &gt;&gt;  filename    # Redirect and append stdout to a file.
-command 1&gt;  filename    # Redirect stdout to file
-command 1&gt;&gt; filename    # Redirect and append stdout to file
-command 2&gt;  errorsfile  # Redirect stderr to file
-command 2&gt;&gt; errorsfile  # Redirect and append stderr to file
-command &amp;&gt;  filename    # Redirect both stdout and stderr to file
-command &gt;   /dev/null   # When we dont care about the output of a command
-</code></pre>
-<h2 id="pipes">Pipes</h2>
-<pre><code class="language-bash">echo hello &gt;  hello.txt # Crea (o sobrescribe) un fichero con la salida del programa anterior
-echo hello &gt;&gt; hello.txt # Añade (append) a un fichero la salida del programa anterior
-ls -l | tail -n2        # Pipe: Imprime solo los ultimos 2 ficheros
-ls -l | tail -n2 &gt;  hello.txt # Pipe and file writting
-ls | xargs rm  # | xargs is when the inputs is IN THE ARGUMENTS
-rm $(ls)       # same of above
-</code></pre>
 <h2 id="navigate">Navigate</h2>
 <ul>
 <li><code>pwd</code>: <strong>p</strong>rint <strong>w</strong>orking <strong>d</strong>irectory</li>
