@@ -66,11 +66,15 @@
               <ul class="current">
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Fundamentals</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#link-files">Link files</a>
+    <li class="toctree-l2"><a class="reference internal" href="#print-echo-printf">Print: echo, printf</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#navigate">Navigate</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#find-duplicates">Find duplicates</a>
+    <li class="toctree-l2"><a class="reference internal" href="#see-files">See files</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#rename-move-and-copy-files">Rename, Move and copy files</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#compare-files-and-find-duplicates">Compare files and Find duplicates</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#type-of-files-and-magic-numbers">Type of files and magic numbers</a>
     </li>
@@ -87,10 +91,6 @@
     <li class="toctree-l2"><a class="reference internal" href="#hard-drives">Hard drives</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#disk-usage">Disk usage</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#see-files">See files</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#compare-files">Compare files</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#deep-remove-files">Deep remove files</a>
     </li>
@@ -185,8 +185,6 @@
               
                 <h1 id="the-shell">The Shell</h1>
 <pre><code class="language-bash">############## Programas
-printf &quot;dfadf&quot; # Sitios donde la shell busca programas
-echo $PATH  # Sitios donde la shell busca programas
 which echo  # En que path está el programa echo
 man echo    # Muestra el manual de un programa
 tldr echo   # Muestra el manual de ejemplos de un programa
@@ -196,27 +194,15 @@ lsb_release -a # Ver mi sistema operativo
 /sys        # Los ficheros representan los propios devices del ordenador
   # se puede cambiar el brillo de la pantalla, los leds, etc
   cat /sys/class/thermal/thermal_zone*/temp # Ver temperatura CPU
-
-############# Files and dirs
-mv {old_pth} {new_pth} # Move or rename a file
-cp {from_pth} {to_pth} # Copy a file
-rm {pth}               # Remove a file
-  rm -r {pth}          # Remove a directory recusively
-  rmdir {pth}          # Remove an empty directory
-touch {new_file}       # Create a file
-mkdir {pth}            # Make a directory
-  mkdir My\ photos     # Make a directory with spaces
-  mkdir &quot;My photos&quot;    # Make a directory with spaces
-ln {from_pth} {to_pth} # Crear acceso directo
-  ln {file} {hardlink} # Hard link
-  ln -s {file_or_dir} {symlink} # Symbolic link
-chmod +x {file}        # Atorgar permisos de ejecución
-du {file}              # Disk usage of a file
-ncdu {file}            # Interactive version of Disk usage
 </code></pre>
-<h2 id="link-files">Link files</h2>
+<h2 id="print-echo-printf">Print: <code>echo</code>, <code>printf</code></h2>
 <ul>
-<li><code>ln -s -f src_file dest_file</code>: Symbolyc link</li>
+<li><code>echo</code></li>
+<li><code>echo $myvarible</code>: Print some variable badly</li>
+<li><code>echo "$myvarible"</code>: Print some variable correctly (with newlines)</li>
+<li><code>echo $PATH</code>: Sitios donde la shell busca programas</li>
+<li><code>printf</code></li>
+<li><code>printf "dfadf"</code> Sitios donde la shell busca programas</li>
 </ul>
 <h2 id="navigate">Navigate</h2>
 <ul>
@@ -237,20 +223,59 @@ ncdu {file}            # Interactive version of Disk usage
 <blockquote>
 <ul>
 <li><code>lsd</code>: Better ls</li>
-<li><code>bat</code>: Better cat</li>
-<li><code>mdcat</code>: cat for markdown</li>
 <li><code>tree</code></li>
 <li><code>broot</code></li>
 <li><code>nnn</code></li>
 <li><code>ranger</code></li>
 </ul>
 </blockquote>
-<h2 id="find-duplicates">Find duplicates</h2>
+<h2 id="see-files">See files</h2>
+<ul>
+<li><strong><code>cat</code></strong>: con<strong>cat</strong>enate and print files.</li>
+<li><strong><code>less</code></strong>: Interactive file viwer. Load the file dynamically (faster)</li>
+<li><code>less -N</code> Add line number</li>
+<li><strong><code>more</code></strong>:</li>
+<li><strong><code>head</code></strong>: shows the beginning of a file (defaults to first 10 lines).</li>
+<li><code>head -n5</code>: only 5 lines</li>
+<li><strong><code>tail</code></strong>: shows the ending of a file (defaults to last 10 lines).</li>
+<li><code>tail -n5</code>: only 5 lines</li>
+<li><strong><code>hexdump</code></strong>: Para ver ficheros binarios</li>
+<li><strong><code>xxd</code></strong>: make a hexdump or do the reverse.</li>
+<li><code>hexeditor</code>:</li>
+<li><code>xdg-open  myFile.txt</code>: Open a file with default program</li>
+</ul>
+<blockquote>
+<ul>
+<li><code>bat</code>: Better cat</li>
+<li><code>mdcat</code>: cat for markdown</li>
+</ul>
+</blockquote>
+<h2 id="rename-move-and-copy-files">Rename, Move and copy files</h2>
+<ul>
+<li><code>mv OLD NEW</code>: Move or rename files or directories</li>
+<li><code>for file in *; do; echo "$file ${file// /_}"; done;</code>: Replace spaces with underscores</li>
+<li><code>cp FROM TO</code>: Copy a file</li>
+<li><code>rm PATH</code>: Remove a file</li>
+<li><code>rm -r PATH</code>: Remove a directory recusively</li>
+<li><code>rmdir PATH</code>: Remove an empty directory</li>
+<li><code>touch NEW_FILE</code>: Create a file</li>
+<li><code>mkdir PATH</code>: Make a directory</li>
+<li><code>mkdir My\ photos</code>: Make a directory with spaces</li>
+<li><code>mkdir "My photos"</code>: Make a directory with spaces</li>
+<li><code>ln FROM TO</code>: Create link (acceso directo)</li>
+<li><code>ln src_file dest_file</code>: Hard link</li>
+<li><code>ln -s src_file dest_file</code>: Symbolic link</li>
+<li><code>ln -s -f src_file dest_file</code>: Symbolyc link</li>
+</ul>
+<h2 id="compare-files-and-find-duplicates">Compare files and Find duplicates</h2>
 <ul>
 <li><strong>OPTION A)</strong> Comparing filenames</li>
 <li><code>ls | sort | uniq -d</code></li>
 <li><strong>OPTION B)</strong> Comparing line by line (text files)</li>
-<li><code>diff</code></li>
+<li><code>diff {file1} {file2}</code>: See differencs between files</li>
+<li><code>sdiff {file1} {file2}</code>: side-by-side merge of file differences</li>
+<li><code>cmp {file1} {file2}</code>: See differencs between files</li>
+<li><code>comm</code>: select or reject lines <strong>comm</strong>on to two files</li>
 <li><strong>OPTION C)</strong> Comparing Byte by byte (binary files)</li>
 <li><strong>OPTION D)</strong> Comparing Checksums, hashes, fingerprints</li>
 <li>md5sum</li>
@@ -335,32 +360,12 @@ rwxrwxrwx  ownerUser userGroup 13B file
 <h2 id="disk-usage">Disk usage</h2>
 <ul>
 <li><code>du</code>: <strong>d</strong>isk <strong>u</strong>sage</li>
+<li><code>du FILE</code>: Disk usage of a file</li>
 <li><code>du -sh */ | sort -rh</code></li>
+<li><code>ncdu FILE</code>: Interactive version of Disk usage</li>
 <li><code>dust</code></li>
 <li><code>duf</code></li>
 <li><code>df /</code></li>
-</ul>
-<h2 id="see-files">See files</h2>
-<ul>
-<li><strong><code>cat</code></strong>: con<strong>cat</strong>enate and print files.</li>
-<li><strong><code>less</code></strong>: Interactive file viwer. Load the file dynamically (faster)</li>
-<li><code>less -N</code> Add line number</li>
-<li><strong><code>more</code></strong>:</li>
-<li><strong><code>head</code></strong>: shows the beginning of a file (defaults to first 10 lines).</li>
-<li><code>head -n5</code>: only 5 lines</li>
-<li><strong><code>tail</code></strong>: shows the ending of a file (defaults to last 10 lines).</li>
-<li><code>tail -n5</code>: only 5 lines</li>
-<li><strong><code>hexdump</code></strong>: Para ver ficheros binarios</li>
-<li><strong><code>xxd</code></strong>: make a hexdump or do the reverse.</li>
-<li><code>hexeditor</code>:</li>
-<li><code>xdg-open  myFile.txt</code>: Open a file with default program</li>
-</ul>
-<h2 id="compare-files">Compare files</h2>
-<ul>
-<li><code>diff {file1} {file2}</code>: See differencs between files</li>
-<li><code>sdiff {file1} {file2}</code>: side-by-side merge of file differences</li>
-<li><code>cmp {file1} {file2}</code>: See differencs between files</li>
-<li><code>comm</code>: select or reject lines <strong>comm</strong>on to two files</li>
 </ul>
 <h2 id="deep-remove-files">Deep remove files</h2>
 <ul>
