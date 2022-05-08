@@ -3,8 +3,6 @@
 
 ```bash
 ############## Programas
-printf "dfadf" # Sitios donde la shell busca programas
-echo $PATH  # Sitios donde la shell busca programas
 which echo  # En que path está el programa echo
 man echo    # Muestra el manual de un programa
 tldr echo   # Muestra el manual de ejemplos de un programa
@@ -14,30 +12,18 @@ lsb_release -a # Ver mi sistema operativo
 /sys        # Los ficheros representan los propios devices del ordenador
   # se puede cambiar el brillo de la pantalla, los leds, etc
   cat /sys/class/thermal/thermal_zone*/temp # Ver temperatura CPU
-
-############# Files and dirs
-mv {old_pth} {new_pth} # Move or rename a file
-cp {from_pth} {to_pth} # Copy a file
-rm {pth}               # Remove a file
-  rm -r {pth}          # Remove a directory recusively
-  rmdir {pth}          # Remove an empty directory
-touch {new_file}       # Create a file
-mkdir {pth}            # Make a directory
-  mkdir My\ photos     # Make a directory with spaces
-  mkdir "My photos"    # Make a directory with spaces
-ln {from_pth} {to_pth} # Crear acceso directo
-  ln {file} {hardlink} # Hard link
-  ln -s {file_or_dir} {symlink} # Symbolic link
-chmod +x {file}        # Atorgar permisos de ejecución
-du {file}              # Disk usage of a file
-ncdu {file}            # Interactive version of Disk usage
 ```
 
 
-## Link files
 
-- `ln -s -f src_file dest_file`: Symbolyc link
+## Print: `echo`, `printf`
 
+- `echo`
+  - `echo $myvarible`: Print some variable badly
+  - `echo "$myvarible"`: Print some variable correctly (with newlines)
+  - `echo $PATH`: Sitios donde la shell busca programas
+- `printf`
+  - `printf "dfadf"` Sitios donde la shell busca programas
 
 
 ## Navigate
@@ -56,22 +42,59 @@ ncdu {file}            # Interactive version of Disk usage
   - `ls *.??g`: only png and jpg files
 
 > - `lsd`: Better ls
-> - `bat`: Better cat
-> - `mdcat`: cat for markdown
 > - `tree`
 > - `broot`
 > - `nnn`
 > - `ranger`
 
 
+## See files
+
+- **`cat`**: con**cat**enate and print files.
+- **`less`**: Interactive file viwer. Load the file dynamically (faster)
+  - `less -N` Add line number
+- **`more`**:
+- **`head`**: shows the beginning of a file (defaults to first 10 lines).
+   - `head -n5`: only 5 lines
+- **`tail`**: shows the ending of a file (defaults to last 10 lines).
+   - `tail -n5`: only 5 lines
+- **`hexdump`**: Para ver ficheros binarios
+- **`xxd`**: make a hexdump or do the reverse.
+- `hexeditor`:
+- `xdg-open  myFile.txt`: Open a file with default program
 
 
-## Find duplicates
+> - `bat`: Better cat
+> - `mdcat`: cat for markdown
+
+
+## Rename, Move and copy files
+
+- `mv OLD NEW`: Move or rename files or directories
+  - `for file in *; do; echo "$file ${file// /_}"; done;`: Replace spaces with underscores
+- `cp FROM TO`: Copy a file
+- `rm PATH`: Remove a file
+  - `rm -r PATH`: Remove a directory recusively
+  - `rmdir PATH`: Remove an empty directory
+- `touch NEW_FILE`: Create a file
+- `mkdir PATH`: Make a directory
+  - `mkdir My\ photos`: Make a directory with spaces
+  - `mkdir "My photos"`: Make a directory with spaces
+- `ln FROM TO`: Create link (acceso directo)
+  - `ln src_file dest_file`: Hard link
+  - `ln -s src_file dest_file`: Symbolic link
+  - `ln -s -f src_file dest_file`: Symbolyc link
+
+
+## Compare files and Find duplicates
 
 - **OPTION A)** Comparing filenames
   - `ls | sort | uniq -d`
 - **OPTION B)** Comparing line by line (text files)
-  - `diff`
+  - `diff {file1} {file2}`: See differencs between files
+  - `sdiff {file1} {file2}`: side-by-side merge of file differences
+  - `cmp {file1} {file2}`: See differencs between files
+  - `comm`: select or reject lines **comm**on to two files
 - **OPTION C)** Comparing Byte by byte (binary files)
 - **OPTION D)** Comparing Checksums, hashes, fingerprints
   - md5sum
@@ -122,6 +145,8 @@ rwxrwxrwx  ownerUser userGroup 13B file
   - `chattr +i file` Change special atributes of file (add i atribute)
   - `chattr -i file` Change special atributes of file (remove i atribute)
 
+
+
 ### Search
 
 - `find`: search on many paths
@@ -160,7 +185,9 @@ rwxrwxrwx  ownerUser userGroup 13B file
 
 ## Disk usage
 - `du`: **d**isk **u**sage
+  - `du FILE`: Disk usage of a file
   - `du -sh */ | sort -rh`
+- `ncdu FILE`: Interactive version of Disk usage
 - `dust`
 - `duf`
 - `df /`
@@ -168,28 +195,6 @@ rwxrwxrwx  ownerUser userGroup 13B file
 
 
 
-## See files
-
-- **`cat`**: con**cat**enate and print files.
-- **`less`**: Interactive file viwer. Load the file dynamically (faster)
-  - `less -N` Add line number
-- **`more`**:
-- **`head`**: shows the beginning of a file (defaults to first 10 lines).
-   - `head -n5`: only 5 lines
-- **`tail`**: shows the ending of a file (defaults to last 10 lines).
-   - `tail -n5`: only 5 lines
-- **`hexdump`**: Para ver ficheros binarios
-- **`xxd`**: make a hexdump or do the reverse.
-- `hexeditor`:
-- `xdg-open  myFile.txt`: Open a file with default program
-
-
-## Compare files
-
-- `diff {file1} {file2}`: See differencs between files
-- `sdiff {file1} {file2}`: side-by-side merge of file differences
-- `cmp {file1} {file2}`: See differencs between files
-- `comm`: select or reject lines **comm**on to two files
 
 
 
