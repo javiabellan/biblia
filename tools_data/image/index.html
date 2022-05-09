@@ -103,19 +103,21 @@
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Image (ImageMagick)</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#iterm2-imgcat">iTerm2 imgcat</a>
+    <li class="toctree-l2"><a class="reference internal" href="#display-images-in-terminal-iterm2">Display images in terminal (iTerm2)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#libjpeg-turbo">LibJPEG-Turbo</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#imagemagick">ImageMagick</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#imagemagick-convert">ImageMagick convert</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#conversion-between-formats">Conversion between formats</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#resizing-convert-resize">Resizing convert -resize</a>
+    <li class="toctree-l2"><a class="reference internal" href="#conversion-between-formats">Conversion between formats</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#cropping-convert-crop">Cropping convert -crop</a>
+    <li class="toctree-l2"><a class="reference internal" href="#resizing-convert-resize">Resizing convert -resize</a>
     </li>
-        </ul>
+    <li class="toctree-l2"><a class="reference internal" href="#cropping-convert-crop">Cropping convert -crop</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#imagemagick-montage">ImageMagick montage</a>
+    <li class="toctree-l2"><a class="reference internal" href="#generate-grid-of-images-montage">Generate grid of images: montage</a>
     </li>
     </ul>
                   </li>
@@ -167,7 +169,43 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="image-imagemagick">Image <a href="http://www.imagemagick.org/script/index.php">ImageMagick</a></h1>
+                <h1 id="image">Image</h1>
+<h2 id="display-images-in-terminal-iterm2">Display images in terminal (iTerm2)</h2>
+<p>iTerm2 has a protocol to display images:</p>
+<ul>
+<li><code>ESC ] 1337 ; key = value ^G</code></li>
+<li><code>printf "\033]1337;File="</code></li>
+</ul>
+<p>In practice, iTerm2 has the <code>imgcat</code> command to display images.</p>
+<pre><code class="language-bash">imgcat path/to/image
+cat path/to/image | imgcat
+</code></pre>
+<blockquote>
+<p>Another option is using the kitty terminal with the <code>icat</code> command.</p>
+</blockquote>
+<p>Display images inside a <strong>python script</strong> (source <a href="https://gist.github.com/antorsae/e4ddd00efb627eed5d8e41d023ee8394">link1</a>, <a href="https://github.com/antorsae/data-science-bowl-2018/blob/master/iterm.py">link2</a>):</p>
+<pre><code class="language-python"># if you have iterm2 for osx (www.iterm2.com) this is a like print(...) for images in the console
+
+import base64
+import io
+import numpngw
+import numpy as np
+
+def show_image(img):
+    if img.dtype != np.uint8:
+        print(&quot;ERROR: Should be an uint8 numpy array&quot;) 
+    png_array = io.BytesIO()
+    numpngw.write_png(png_array, img)
+    encoded_png_array = base64.b64encode(png_array.getvalue()).decode(&quot;utf-8&quot;, &quot;strict&quot;)  
+    png_array.close()
+    image_seq = '\033]1337;File=[width=auto;height=auto;inline=1]:'+encoded_png_array+'\007'
+    print(image_seq, end='')
+</code></pre>
+<h2 id="libjpeg-turbo">LibJPEG-Turbo</h2>
+<p>Decode JPEG (very fast):</p>
+<pre><code class="language-bash">djpeg filename.jpg
+</code></pre>
+<h2 id="imagemagick"><a href="http://www.imagemagick.org/script/index.php">ImageMagick</a></h2>
 <table>
 <thead>
 <tr>
@@ -177,76 +215,80 @@
 </thead>
 <tbody>
 <tr>
-<td>Convert</td>
+<td><code>convert</code></td>
 <td>convert and modify images</td>
 </tr>
 <tr>
-<td>Identify</td>
+<td><code>identify</code></td>
 <td>Output information about this image</td>
 </tr>
 <tr>
-<td>Mogrify</td>
+<td><code>mogrify</code></td>
 <td>in-place batch processing</td>
 </tr>
 <tr>
-<td>Composite</td>
+<td><code>composite</code></td>
 <td>overlaying images in special ways</td>
 </tr>
 <tr>
-<td>Montage</td>
-<td>generating arrays of thumbnails</td>
+<td><code>montage</code></td>
+<td>generate grid of images</td>
 </tr>
 <tr>
-<td>Display</td>
+<td><code>display</code></td>
 <td>Slideshows of Images</td>
 </tr>
 <tr>
-<td>Animate</td>
+<td><code>animate</code></td>
 <td>Show GIF Animations</td>
 </tr>
 <tr>
-<td>Compare</td>
+<td><code>compare</code></td>
 <td>Look for Differences</td>
 </tr>
 <tr>
-<td>Stream</td>
+<td><code>stream</code></td>
 <td>Pipelined Image Processor</td>
 </tr>
 <tr>
-<td>Import</td>
+<td><code>import</code></td>
 <td>Read Images from On-screen Display</td>
 </tr>
 <tr>
-<td>Conjure</td>
+<td><code>conjure</code></td>
 <td>Experimental IM Scripting Language</td>
 </tr>
 </tbody>
 </table>
-<h2 id="iterm2-imgcat">iTerm2 <code>imgcat</code></h2>
-<p>Display in the iTerm2 terminal</p>
-<pre><code class="language-bash">imgcat path/to/image
-cat path/to/image | imgcat
-</code></pre>
 <h2 id="imagemagick-convert">ImageMagick <code>convert</code></h2>
 <p>Synopsis:</p>
 <pre><code class="language-bash">convert [input-options] input-file [output-options] output-file
 # Specify 'file' as '-' for standard input or output.
 </code></pre>
-<h3 id="conversion-between-formats">Conversion between formats</h3>
+<h2 id="conversion-between-formats">Conversion between formats</h2>
 <ul>
 <li><code>convert imagen.jpg imagen.png</code>: Convertir una imagen de png a jpg</li>
-<li><code>convert imagen.{png,jpg}</code>: Using Expansion. Same of before.</li>
+<li><code>convert imagen.{png,jpg}</code>: Same of before using Expansion.</li>
 </ul>
-<h3 id="resizing-convert-resize">Resizing <code>convert -resize</code></h3>
+<h2 id="resizing-convert-resize">Resizing <code>convert -resize</code></h2>
 <ul>
 <li><code>convert IN_IMG -resize 64x64 OUT_IMG</code>     Resize image (set larger to 64px)</li>
 <li><code>convert IN_IMG -resize 64x64\! OUT_IMG</code>   Resize image (Ignore Aspect Ratio)</li>
 </ul>
-<h3 id="cropping-convert-crop">Cropping <code>convert -crop</code></h3>
+<h2 id="cropping-convert-crop">Cropping <code>convert -crop</code></h2>
 <ul>
 <li><code>convert IN_IMG -crop 703x470+3+5 OUT_IMG</code> Crop image with <em>width x height + left + top</em> format</li>
 </ul>
-<h2 id="imagemagick-montage">ImageMagick <code>montage</code></h2>
+<h2 id="generate-grid-of-images-montage">Generate grid of images: <code>montage</code></h2>
+<pre><code class="language-bash"># Sytntax:
+montage INPUT_IMGS [OPTIONS] OUTPUT_IMG
+
+# Examples:
+montage imgs/* grid.png   # Generate and save grid
+montage imgs/* - | imgcat # Generate grid to stdout and display it with imgcat
+montage imgs/* -geometry 100x100\&gt;+2+2 - | imgcat # Define size (100x100pxs) &amp; margin (2px) of images
+</code></pre>
+<p><img alt="" src="../../img/imagemagick_montage.jpeg" /></p>
               
             </div>
           </div><footer>
