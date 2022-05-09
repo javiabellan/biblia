@@ -3,16 +3,9 @@ remote_branch: gh-deploy
 theme: readthedocs
 nav:
 - Home: index.md
-- AI:
-  - Deep Learning: ai/deep_learning.md
-- Server:
-  - Wakeonlan: server/wakeonlan.md
-  - Firewall: server/firewall.md
-  - Load balancer: server/load_balancer.md
-  - Public IP: server/public_ip.md
-  - Security: server/security.md
 - Linux tools:
-  - Fundamentals: tools/basics.md
+  - Bash fundamentals: tools/bash_basics.md
+  - Bash scripting: tools/bash_scripting.md
   - CRON: tools/cron.md
   - cURL: tools/curl.md
   - GIT: tools/git.md
@@ -33,10 +26,17 @@ nav:
   - Image (ImageMagick): tools_data/image.md
   - Sound (ffmepg, sox): tools_data/sound.md
   - Video (ffmepg): tools_data/video.md
+  - Web Scraping: tools_data/web_scraping.md
+- AI:
+  - Deep Learning: ai/deep_learning.md
 - Programming:
-  - Bash scripting: programming/bash_scripting.md
   - Makefile: programming/makefile.md
   - Profiling: programming/profiling.md
   - Debugging: programming/debugging.md
-- Web Scraping: web_scraping.md
+- Server:
+  - Wakeonlan: server/wakeonlan.md
+  - Firewall: server/firewall.md
+  - Load balancer: server/load_balancer.md
+  - Public IP: server/public_ip.md
+  - Security: server/security.md
 - Hardware: hardware.md

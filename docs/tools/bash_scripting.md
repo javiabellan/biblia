@@ -1,6 +1,4 @@
-
 # Bash scripting
-
 
 ## Shells
 
@@ -30,9 +28,11 @@ Every command (every porcess in fact) has its own file despcriptor table. By def
 | 2               | **stderr** | `/dev/tty0`   |
 
 
-## IO Redirection `<` `>`
+## IO Redirection
 
 IO Redirection modifies the file descriptors table of a command.
+
+### Redirect from/to file: `<` `>`
 
 ```bash
 command <   file    # Redirect stdin to the command.    FD0 = file
@@ -44,6 +44,8 @@ command >   /dev/null   # When we dont care about the output of a command
 echo hello >  hello.txt # Crea (o sobrescribe) un fichero con la salida del programa anterior
 ```
 
+### Append to file: `>>`
+
 ```bash
 command >>  file    # Redirect and append stdout to a file.
 command 1>> file    # Redirect and append stdout to file
@@ -51,8 +53,19 @@ command 2>> file    # Redirect and append stderr to file
 echo hello >> hello.txt # Añade (append) a un fichero la salida del programa anterior
 ```
 
+### `<<`
 
-## Regular Pipes `|`
+- `<<` is known as here-document structure
+
+
+### Read from variable: `<<<`
+
+- `<<<` is known as here-string structure
+
+
+## Pipelines
+
+### Regular Pipes `|`
 
 - Assign the stdout (FD1) of the first command to the pipe.
 - Assign the stdin (FD0) of the second command to the pipe.
@@ -65,7 +78,7 @@ ls | xargs rm  # | xargs is when the inputs is IN THE ARGUMENTS
 rm $(ls)       # same of above
 ```
 
-## Named Pipes: `mkfifo`
+### Named Pipes: `mkfifo`
 
 
 
@@ -237,53 +250,54 @@ done
 http://mywiki.wooledge.org/BashGuide/Parameters#Parameter_Expansion
 
 - Simple usage
-  - $PARAMETER
-  - ${PARAMETER}
+  - $VARIABLE
+  - ${VARIABLE}
 - Indirection
-  - ${!PARAMETER}
+  - ${!VARIABLE}
 - Case modification
-  - ${PARAMETER^}
-  - ${PARAMETER^^}
-  - ${PARAMETER,}
-  - ${PARAMETER,,}
-  - ${PARAMETER~}
-  - ${PARAMETER~~}
+  - ${VARIABLE^}
+  - ${VARIABLE^^}
+  - ${VARIABLE,}
+  - ${VARIABLE,,}
+  - ${VARIABLE~}
+  - ${VARIABLE~~}
 - Variable name expansion
   - ${!PREFIX*}
   - ${!PREFIX@}
 
 - Substring removal
-  - ${PARAMETER#PATTERN}
-  - ${PARAMETER##PATTERN}
-  - ${PARAMETER%PATTERN}
-  - ${PARAMETER%%PATTERN}
+  - ${VARIABLE#PATTERN}
+  - ${VARIABLE##PATTERN}
+  - ${VARIABLE%PATTERN}
+  - ${VARIABLE%%PATTERN}
 - Search and replace
-  - ${PARAMETER/PATTERN/STRING}
-  - ${PARAMETER//PATTERN/STRING}
-  - ${PARAMETER/PATTERN}
-  - ${PARAMETER//PATTERN}
+  - ${VARIABLE/PATTERN/STRING}
+  - ${VARIABLE//PATTERN/STRING}
+    - `for file in *; do; mv "$file ${file// /_}"; done;`: Replace spaces with underscores
+  - ${VARIABLE/PATTERN}
+  - ${VARIABLE//PATTERN}
 
 - String or array length
-  - ${#PARAMETER}
+  - ${#VARIABLE}
 - Substring expansion
-  - ${PARAMETER:OFFSET}
-  - ${PARAMETER:OFFSET:LENGTH}
+  - ${VARIABLE:OFFSET}
+  - ${VARIABLE:OFFSET:LENGTH}
 
 
 - Use a default value
-  - ${PARAMETER:-WORD}
-  - ${PARAMETER-WORD}
+  - ${VARIABLE:-WORD}
+  - ${VARIABLE-WORD}
 - Assign a default value
-  - ${PARAMETER:=WORD}
-  - ${PARAMETER=WORD}
+  - ${VARIABLE:=WORD}
+  - ${VARIABLE=WORD}
 - Use an alternate value
-  - ${PARAMETER:+WORD}
-  - ${PARAMETER+WORD}
+  - ${VARIABLE:+WORD}
+  - ${VARIABLE+WORD}
 
 
 - Display error if null or unset
-  - ${PARAMETER:?WORD}
-  - ${PARAMETER?WORD}
+  - ${VARIABLE:?WORD}
+  - ${VARIABLE?WORD}
 
 
 

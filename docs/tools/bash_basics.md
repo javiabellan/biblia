@@ -19,8 +19,9 @@ lsb_release -a # Ver mi sistema operativo
 ## Print: `echo`, `printf`
 
 - `echo`
-  - `echo $myvarible`: Print some variable badly
-  - `echo "$myvarible"`: Print some variable correctly (with newlines)
+  - `echo Value is $myvarible`: Print some variable badly
+  - `echo 'Value is $myvarible'`: Print some variable correctly (with newlines)
+  - `echo "Value is $myvarible"`: Print some variable correctly (with newlines)
   - `echo $PATH`: Sitios donde la shell busca programas
 - `printf`
   - `printf "dfadf"` Sitios donde la shell busca programas
@@ -71,7 +72,7 @@ lsb_release -a # Ver mi sistema operativo
 ## Rename, Move and copy files
 
 - `mv OLD NEW`: Move or rename files or directories
-  - `for file in *; do; echo "$file ${file// /_}"; done;`: Replace spaces with underscores
+  - `for file in *; do; mv "$file ${file// /_}"; done;`: Replace spaces with underscores
 - `cp FROM TO`: Copy a file
 - `rm PATH`: Remove a file
   - `rm -r PATH`: Remove a directory recusively
