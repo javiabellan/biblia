@@ -13,7 +13,7 @@
       <script>
         // Current page data
         var mkdocs_page_name = "Bash scripting";
-        var mkdocs_page_input_path = "programming/bash.md";
+        var mkdocs_page_input_path = "tools/bash_scripting.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -44,51 +44,73 @@
                 <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
                 </li>
               </ul>
-              <p class="caption"><span class="caption-text">AI</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../ai/deep_learning/">Deep Learning</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">Server</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../server/wakeonlan/">Wakeonlan</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../server/firewall/">Firewall</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../server/load_balancer/">Load balancer</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../server/public_ip/">Public IP</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../server/security/">Security</a>
-                  </li>
-              </ul>
               <p class="caption"><span class="caption-text">Linux tools</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools/basics/">Fundamentals</a>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../bash_basics/">Bash fundamentals</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools/cron/">CRON</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Bash scripting</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#shells">Shells</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#file-descriptors-fd">File descriptors (fd)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#io-redirection">IO Redirection</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#redirect-fromto-file">Redirect from/to file: &lt; &gt;</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#append-to-file">Append to file: &gt;&gt;</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_1">&lt;&lt;</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#read-from-variable">Read from variable: &lt;&lt;&lt;</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#pipelines">Pipelines</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#regular-pipes">Regular Pipes |</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#named-pipes-mkfifo">Named Pipes: mkfifo</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#example-bash-script">Example Bash script</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#special-variables">Special variables</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#arrays">Arrays</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#associative-arrays-dictionaries">Associative Arrays (Dictionaries)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#control-operators-and">Control Operators (&amp;&amp; and ||)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#if">If</a>
+    </li>
+    </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools/curl/">cURL</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../cron/">CRON</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools/git/">GIT</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../curl/">cURL</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools/tmux/">TMUX</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../git/">GIT</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools/gnu_parallel/">GNU parallel</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../tmux/">TMUX</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools/pacman/">Pacman</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../gnu_parallel/">GNU parallel</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools/nano/">NANO</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../pacman/">Pacman</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools/jupyter/">Jupyter</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../nano/">NANO</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools/ssh/">SSH</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../jupyter/">Jupyter</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools/vim/">VIM</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../ssh/">SSH</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools/wget/">WGET</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../vim/">VIM</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools/youtube_dl/">youtube-dl</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../wget/">WGET</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../youtube_dl/">youtube-dl</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Data tools</span></p>
@@ -107,21 +129,35 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../tools_data/video/">Video (ffmepg)</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/web_scraping/">Web Scraping</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">AI</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ai/deep_learning/">Deep Learning</a>
+                  </li>
               </ul>
               <p class="caption"><span class="caption-text">Programming</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="" href="../bash_scripting.md">Bash scripting</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/makefile/">Makefile</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../makefile/">Makefile</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/profiling/">Profiling</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../profiling/">Profiling</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../debugging/">Debugging</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/debugging/">Debugging</a>
                   </li>
               </ul>
+              <p class="caption"><span class="caption-text">Server</span></p>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../../web_scraping/">Web Scraping</a>
-                </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../server/wakeonlan/">Wakeonlan</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../server/firewall/">Firewall</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../server/load_balancer/">Load balancer</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../server/public_ip/">Public IP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../server/security/">Security</a>
+                  </li>
               </ul>
               <ul>
                 <li class="toctree-l1"><a class="reference internal" href="../../hardware/">Hardware</a>
@@ -140,7 +176,8 @@
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>Bash scripting</li>
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Linux tools &raquo;</li><li>Bash scripting</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -221,8 +258,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="io-redirection">IO Redirection <code>&lt;</code> <code>&gt;</code></h2>
+<h2 id="io-redirection">IO Redirection</h2>
 <p>IO Redirection modifies the file descriptors table of a command.</p>
+<h3 id="redirect-fromto-file">Redirect from/to file: <code>&lt;</code> <code>&gt;</code></h3>
 <pre><code class="language-bash">command &lt;   file    # Redirect stdin to the command.    FD0 = file
 command &gt;   file    # Redirect stdout to file.          FD1 = file
 command 1&gt;  file    # Redirect stdout to file.          FD1 = file
@@ -231,12 +269,22 @@ command &amp;&gt;  file    # Redirect stdout &amp; stderr to file  FD1 = FD2 = f
 command &gt;   /dev/null   # When we dont care about the output of a command
 echo hello &gt;  hello.txt # Crea (o sobrescribe) un fichero con la salida del programa anterior
 </code></pre>
+<h3 id="append-to-file">Append to file: <code>&gt;&gt;</code></h3>
 <pre><code class="language-bash">command &gt;&gt;  file    # Redirect and append stdout to a file.
 command 1&gt;&gt; file    # Redirect and append stdout to file
 command 2&gt;&gt; file    # Redirect and append stderr to file
 echo hello &gt;&gt; hello.txt # Añade (append) a un fichero la salida del programa anterior
 </code></pre>
-<h2 id="regular-pipes">Regular Pipes <code>|</code></h2>
+<h3 id="_1"><code>&lt;&lt;</code></h3>
+<ul>
+<li><code>&lt;&lt;</code> is known as here-document structure</li>
+</ul>
+<h3 id="read-from-variable">Read from variable: <code>&lt;&lt;&lt;</code></h3>
+<ul>
+<li><code>&lt;&lt;&lt;</code> is known as here-string structure</li>
+</ul>
+<h2 id="pipelines">Pipelines</h2>
+<h3 id="regular-pipes">Regular Pipes <code>|</code></h3>
 <ul>
 <li>Assign the stdout (FD1) of the first command to the pipe.</li>
 <li>Assign the stdin (FD0) of the second command to the pipe.</li>
@@ -246,7 +294,7 @@ ls -l | tail -n2 &gt;  hello.txt # Pipe and file writting
 ls | xargs rm  # | xargs is when the inputs is IN THE ARGUMENTS
 rm $(ls)       # same of above
 </code></pre>
-<h2 id="named-pipes-mkfifo">Named Pipes: <code>mkfifo</code></h2>
+<h3 id="named-pipes-mkfifo">Named Pipes: <code>mkfifo</code></h3>
 <h2 id="example-bash-script">Example Bash script</h2>
 <pre><code class="language-bash">############## Variables
 myVar=someValue
@@ -371,17 +419,17 @@ done
 <p>http://mywiki.wooledge.org/BashGuide/Parameters#Parameter_Expansion</p>
 <ul>
 <li>Simple usage</li>
-<li>$PARAMETER</li>
-<li>${PARAMETER}</li>
+<li>$VARIABLE</li>
+<li>${VARIABLE}</li>
 <li>Indirection</li>
-<li>${!PARAMETER}</li>
+<li>${!VARIABLE}</li>
 <li>Case modification</li>
-<li>${PARAMETER^}</li>
-<li>${PARAMETER^^}</li>
-<li>${PARAMETER,}</li>
-<li>${PARAMETER,,}</li>
-<li>${PARAMETER~}</li>
-<li>${PARAMETER~~}</li>
+<li>${VARIABLE^}</li>
+<li>${VARIABLE^^}</li>
+<li>${VARIABLE,}</li>
+<li>${VARIABLE,,}</li>
+<li>${VARIABLE~}</li>
+<li>${VARIABLE~~}</li>
 <li>Variable name expansion</li>
 <li>${!PREFIX*}</li>
 <li>
@@ -390,44 +438,47 @@ done
 <li>
 <p>Substring removal</p>
 </li>
-<li>${PARAMETER#PATTERN}</li>
-<li>${PARAMETER##PATTERN}</li>
-<li>${PARAMETER%PATTERN}</li>
-<li>${PARAMETER%%PATTERN}</li>
+<li>${VARIABLE#PATTERN}</li>
+<li>${VARIABLE##PATTERN}</li>
+<li>${VARIABLE%PATTERN}</li>
+<li>${VARIABLE%%PATTERN}</li>
 <li>Search and replace</li>
-<li>${PARAMETER/PATTERN/STRING}</li>
-<li>${PARAMETER//PATTERN/STRING}</li>
-<li>${PARAMETER/PATTERN}</li>
+<li>${VARIABLE/PATTERN/STRING}</li>
+<li>${VARIABLE//PATTERN/STRING}<ul>
+<li><code>for file in *; do; mv "$file ${file// /_}"; done;</code>: Replace spaces with underscores</li>
+</ul>
+</li>
+<li>${VARIABLE/PATTERN}</li>
 <li>
-<p>${PARAMETER//PATTERN}</p>
+<p>${VARIABLE//PATTERN}</p>
 </li>
 <li>
 <p>String or array length</p>
 </li>
-<li>${#PARAMETER}</li>
+<li>${#VARIABLE}</li>
 <li>Substring expansion</li>
-<li>${PARAMETER:OFFSET}</li>
+<li>${VARIABLE:OFFSET}</li>
 <li>
-<p>${PARAMETER:OFFSET:LENGTH}</p>
+<p>${VARIABLE:OFFSET:LENGTH}</p>
 </li>
 <li>
 <p>Use a default value</p>
 </li>
-<li>${PARAMETER:-WORD}</li>
-<li>${PARAMETER-WORD}</li>
+<li>${VARIABLE:-WORD}</li>
+<li>${VARIABLE-WORD}</li>
 <li>Assign a default value</li>
-<li>${PARAMETER:=WORD}</li>
-<li>${PARAMETER=WORD}</li>
+<li>${VARIABLE:=WORD}</li>
+<li>${VARIABLE=WORD}</li>
 <li>Use an alternate value</li>
-<li>${PARAMETER:+WORD}</li>
+<li>${VARIABLE:+WORD}</li>
 <li>
-<p>${PARAMETER+WORD}</p>
+<p>${VARIABLE+WORD}</p>
 </li>
 <li>
 <p>Display error if null or unset</p>
 </li>
-<li>${PARAMETER:?WORD}</li>
-<li>${PARAMETER?WORD}</li>
+<li>${VARIABLE:?WORD}</li>
+<li>${VARIABLE?WORD}</li>
 </ul>
 <pre><code class="language-bash">file=&quot;$HOME/.secrets/007&quot;
 
@@ -515,6 +566,10 @@ ${name%.*}    polish.ostrich.racing
               
             </div>
           </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../bash_basics/" class="btn btn-neutral float-left" title="Bash fundamentals"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../cron/" class="btn btn-neutral float-right" title="CRON">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
 
   <hr/>
 
@@ -536,6 +591,10 @@ ${name%.*}    polish.ostrich.racing
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
+      <span><a href="../bash_basics/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../cron/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

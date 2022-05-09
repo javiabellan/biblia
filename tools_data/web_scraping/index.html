@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Static program analisis - Documentación de Javi</title>
+    <title>Web Scraping - Documentación de Javi</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Static program analisis";
-        var mkdocs_page_input_path = "programming/static_analisys.md";
+        var mkdocs_page_name = "Web Scraping";
+        var mkdocs_page_input_path = "tools_data/web_scraping.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -76,22 +76,30 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Data tools</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/csv/">CVS,TSV (q, awk)</a>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../csv/">CVS,TSV (q, awk)</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/html/">HTML (pup)</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../html/">HTML (pup)</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/json/">JSON (jq)</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../json/">JSON (jq)</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/pdf/">PDF (Xpdf, poppler)</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../pdf/">PDF (Xpdf, poppler)</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/image/">Image (ImageMagick)</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../image/">Image (ImageMagick)</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/sound/">Sound (ffmepg, sox)</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../sound/">Sound (ffmepg, sox)</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/video/">Video (ffmepg)</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../video/">Video (ffmepg)</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/web_scraping/">Web Scraping</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Web Scraping</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#1-static-webpages">1. Static webpages</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2-api-reverse-engineering">2. API reverse engineering</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3-headless-browser-selenium">3. Headless browser &amp; Selenium</a>
+    </li>
+    </ul>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">AI</span></p>
@@ -101,11 +109,11 @@
               </ul>
               <p class="caption"><span class="caption-text">Programming</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../makefile/">Makefile</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/makefile/">Makefile</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../profiling/">Profiling</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/profiling/">Profiling</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../debugging/">Debugging</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/debugging/">Debugging</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Server</span></p>
@@ -138,7 +146,8 @@
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>Static program analisis</li>
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Data tools &raquo;</li><li>Web Scraping</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -148,21 +157,55 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="static-program-analisis">Static program analisis</h1>
-<h2 id="python">Python</h2>
-<pre><code class="language-bash">pyflakes my_program.py
-mypy my_program.py
-</code></pre>
-<h2 id="bash">Bash</h2>
-<pre><code class="language-bash">pacman -S shellcheck
+                <h1 id="web-scraping">Web Scraping</h1>
+<p>There are 3 ways of we scrapping:</p>
+<ol>
+<li>FIRST OPTION: Static webpages + <code>pup</code></li>
+<li>SECOND OPTION: API reverse engineering + <code>jq</code></li>
+<li>LAST OPTION: Use Selenium or Headless browser</li>
+</ol>
+<h2 id="1-static-webpages">1. Static webpages</h2>
+<p>Get a simple static page (server side rendered) with <code>curl</code> or <code>wget</code> and parse them</p>
+<p>Example:</p>
+<pre><code class="language-bash">page_html=$(curl -s $URL)
+title=$(echo $page_html | pup 'title' text{})
+echo $title
 
-
-shellcheck yourscript
+col_A=$(echo $page_html | pup 'a.bb1c_ attr{href}')
+col_B=$(echo $page_html | pup 'span.price-sale text{}')
+table=$(paste col_A col_B)
 </code></pre>
-<p>https://www.shellcheck.net</p>
+<blockquote>
+<p>https://www.youtube.com/watch?v=GJum2O2JM6M</p>
+</blockquote>
+<h2 id="2-api-reverse-engineering">2. API reverse engineering</h2>
+<p>Useful for dynamic websites. Find the hidden api that makes XHR requests to fullfill the webpage. XMLHttpRequest is used heavily in AJAX programming.</p>
+<ul>
+<li>Step 1: See the requests that the web is doing: Chrome or Firefox dev tools &gt; Network &gt; XHR requests</li>
+<li>Step 2: Copy the target request as cURL (right click)</li>
+<li>Step 3: Paste the target request in <a href="https://www.postman.com">Postman</a> or <a href="https://insomnia.rest">Insomnia</a></li>
+<li>Step 4: Elaborate your own script using <code>curl</code> + <code>jq</code></li>
+</ul>
+<h2 id="3-headless-browser-selenium">3. Headless browser &amp; Selenium</h2>
+<p>Use Selenium or Headless browser for automate the interaction with the web.</p>
+<ul>
+<li><strong>Selenium</strong></li>
+<li><strong>Google Chrome cli</strong></li>
+<li>lynx</li>
+<li>
+<p>lynx -dump -listonly http://aligajani.com </p>
+</li>
+<li>
+<p><code>google-chrome-stable --headless --disable-gpu --dump-dom 'URL' &gt; ~/file.html</code></p>
+</li>
+</ul>
               
             </div>
           </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../video/" class="btn btn-neutral float-left" title="Video (ffmepg)"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../ai/deep_learning/" class="btn btn-neutral float-right" title="Deep Learning">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
 
   <hr/>
 
@@ -184,6 +227,10 @@ shellcheck yourscript
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
+      <span><a href="../video/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../ai/deep_learning/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
