@@ -3,7 +3,7 @@
 ### Bash
 - [Bash Reference Manual](https://www.gnu.org/software/bash/manual/bash.html) ⭐
 - [The Bash Hackers Wiki](https://wiki.bash-hackers.org) ⭐⭐
-	- [Greg Wooledge's Wiki](http://mywiki.wooledge.org/) ⭐⭐⭐ **Massive** information about Bash and UNIX.
+- [Greg Wooledge's Wiki](http://mywiki.wooledge.org/) ⭐⭐⭐ **Massive** information about Bash and UNIX.
 	- [BashGuide](http://mywiki.wooledge.org/BashGuide) For learing Bash. Start here.
 	- [BashSheet](http://mywiki.wooledge.org/BashSheet) For a quick reference of Bash.
 	- [BashProgramming](http://mywiki.wooledge.org/BashProgramming) For more advanced shell topics.
@@ -22,7 +22,6 @@
 
 ### Linux internals
 - [linux-insides](https://github.com/0xAX/linux-insides/blob/master/SUMMARY.md)
-	- [Summary](https://github.com/0xAX/linux-insides/blob/master/SUMMARY.md)
 - [Understanding the bin, sbin, usr/bin, usr/sbin split](http://lists.busybox.net/pipermail/busybox/2010-December/074114.html)
 
 ### Misc
