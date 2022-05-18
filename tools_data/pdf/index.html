@@ -155,7 +155,7 @@
               
                 <h3 id="parsing-pdf-xpdf-or-poppler">Parsing PDF: <a href="https://www.xpdfreader.com"><code>Xpdf</code></a> or <a href="https://poppler.freedesktop.org"><code>poppler</code></a></h3>
 <ul>
-<li><strong>Xpdf</strong></li>
+<li><strong>Xpdf</strong>: Viewer for Portable Document Format (PDF) files<ul>
 <li><code>xpdf</code>: PDF viewer (click for a screenshot)</li>
 <li><code>pdftotext</code>: converts PDF to text</li>
 <li><code>pdftops</code>: converts PDF to PostScript</li>
@@ -166,7 +166,9 @@
 <li><code>pdfimages</code>: extracts raw images from PDF files</li>
 <li><code>pdffonts</code>: lists fonts used in PDF files</li>
 <li><code>pdfdetach</code>: extracts attached files from PDF files</li>
-<li><strong>Poppler</strong></li>
+</ul>
+</li>
+<li><strong>Poppler</strong>:  PDF rendering library based on xpdf<ul>
 <li><code>pdfattach</code></li>
 <li><code>pdfdetach</code></li>
 <li><code>pdffonts</code></li>
@@ -178,14 +180,44 @@
 <li><code>pdftohtml</code></li>
 <li><code>pdftoppm</code></li>
 <li><code>pdftops</code></li>
-<li><strong><code>pdftotext</code></strong>: Portable Document Format (PDF) to text converter<ul>
+<li><strong><code>pdftotext</code></strong>: Portable Document Format (PDF) to text converter</li>
 <li><code>pdftotext [options] someFile.pdf</code></li>
+<li><code>pdfunite</code></li>
 </ul>
 </li>
-<li><code>pdfunite</code></li>
-<li><strong>textutil</strong>: Only in MacOS (Usado por Pascual Perez)</li>
+<li><strong>MuPDF</strong></li>
+<li><strong>textutil</strong>: Only in MacOS (Usado por Pascual Perez)<ul>
 <li><code>textutil -convert txt ~/Desktop/DrectorioDeArchivosEnPDF/*.pdf</code></li>
 </ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>Xpdf</strong></th>
+<th><strong>Poppler</strong></th>
+<th><strong>MuPDF</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Installation</td>
+<td><code>sudo pacman -S xpdf</code></td>
+<td><code>sudo pacman -S poppler</code></td>
+<td><code>sudo pacman -S mupdf-tools</code></td>
+</tr>
+<tr>
+<td>PDF to text</td>
+<td></td>
+<td><code>pdftotext -layout in.pdf out.txt</code></td>
+<td><code>mutool convert -o out.txt in.pdf</code></td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-bash">for file in *.pdf; do pdftotext -layout &quot;$file&quot;; done
+for file in *.pdf; do mutool convert -o $file.txt $file; done
+</code></pre>
 <h2 id="parse-with-ocr-ocrmypdf">Parse with OCR!: <code>ocrmypdf</code></h2>
 <h1 id="documents">Documents</h1>
 <ul>
