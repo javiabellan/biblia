@@ -6,16 +6,15 @@ nav:
 - Linux tools:
   - Bash fundamentals: tools/bash_basics.md
   - Bash scripting: tools/bash_scripting.md
+  - Editors (Nano, VIM): tools/editors.md
   - CRON: tools/cron.md
   - cURL: tools/curl.md
   - GIT: tools/git.md
   - TMUX: tools/tmux.md
   - GNU parallel: tools/gnu_parallel.md
   - Pacman: tools/pacman.md
-  - NANO: tools/nano.md
   - Jupyter: tools/jupyter.md
   - SSH: tools/ssh.md
-  - VIM: tools/vim.md
   - WGET: tools/wget.md
   - youtube-dl: tools/youtube_dl.md
 - Data tools:

@@ -1,6 +1,24 @@
-# Vim
+# Editors
 
-## Modes
+## Nano
+
+
+### Dotfile: `~/.nanorc`
+
+```bash
+set autoindent  # Tthe newly created line will contain the same indent as the preceding line
+set tabsize 4   # Use a tab size of number columns. The default value is 8.
+set softwrap    # Enable soft line wrapping for easier viewing of very long lines
+set nowrap      # Don’t hard-wrap text at all
+set nohelp      # Don’t display the two help lines at the bottom of the screen.
+set linenumbers # Display of line numbers in front of the text.
+```
+
+
+
+## Vim
+
+### Modes
 - **`ESC`**: Normal mode. For moving around a file; reading; going to file to file
 - **`i`**: Insert mode. For inserting text
 - **`:`**: Command-line mode. For running a command
@@ -10,7 +28,7 @@
 - **`Ctrl` + `v`**: Visual block mode
 
 
-## Command-line
+### Command-line
 
 Command mode can be entered by typing `:` in Normal mode. Your cursor will jump
 to the command line at the bottom of the screen upon pressing `:`. This mode
@@ -27,13 +45,13 @@ has many functionalities, including opening, saving, and closing files, and
     - `:help w` opens help for the `w` movement
 
 
-## NeoVIM
+### NeoVIM
 
 - NvimTreeToogle: left tree panel
 - nvchad
 
 
-## Dotfile: `~/.vimrc`
+### Dotfile: `~/.vimrc`
 
 ```
 " Comments in Vimscript start with a `"`.
