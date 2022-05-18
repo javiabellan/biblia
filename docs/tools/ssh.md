@@ -45,20 +45,27 @@ cat .ssh/id_ed25519.pub | ssh foobar@remote 'cat >> ~/.ssh/authorized_keys'
 
 ## Dejar un programa largo en ejecucion
 
-Opcion simple
+### Simple option (`nohup`)
 ```bash
 nohup COMMAND        # Run a command immune to hangups
 nohup COMMAND > FILE # Ademas puede guardar su salida estandar en un fichero
 ```
 
-Opción con programas que mantienen la sesion activa (`tmux` or `screen`)
-1. `ssh` log in into your remote box. 
+### Session programs option (`screen` or `tmux`)
+
+Son programas que mantienen la sesion activa.
+
+1. `ssh` log in into your remote machine. 
 2. `tmux` or `screen`
 3. Start the long process you want.
 4. Leave/detach `tmux` or `screen` session, but leave your processes running.
    - Ctrl+A then Ctrl+D (para salir de screen)
    - Ctrl+B then Ctrl+D (para salir de tmux)
 5. `exit` ssh
-6. `ssh` log in into your remote box. 
-7. `screen -r` "resume" your screen session, and you can see the output of your process.
 
+...One eternity later...
+
+1. `ssh` log in again into your remote machine. 
+2. Return back to see the output of your process.
+   - `screen -r`: "resume" your screen session
+   - `tmux a`: "atach" to the last tmux session

@@ -23,6 +23,9 @@ lsb_release -a # Ver mi sistema operativo
   - `echo 'Value is $myvarible'`: Print some variable correctly (with newlines)
   - `echo "Value is $myvarible"`: Print some variable correctly (with newlines)
   - `echo $PATH`: Sitios donde la shell busca programas
+  - `echo -n "no new line"`: do not output the newline
+  - `echo -e "[33m ERROR"`: interpret backslash escapes (useful for displaying colors)
+enable interpretation of backslash escapes
 - `printf`
   - `printf "dfadf"` Sitios donde la shell busca programas
 

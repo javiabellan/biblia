@@ -28,6 +28,55 @@ Every command (every porcess in fact) has its own file despcriptor table. By def
 | 2               | **stderr** | `/dev/tty0`   |
 
 
+
+## Style output
+
+Use ~ncurses~ scape charaacters !!!
+
+### Colours
+
+```bash
+greenColour="\e[0;32m\033[1m"
+endColour="\033[0m\e[0m"
+redColour="\e[0;31m\033[1m"
+blueColour="\e[0;34m\033[1m"
+yellowColour="\e[0;33m\033[1m"
+purpleColour="\e[0;35m\033[1m"
+turquoiseColour="\e[0;36m\033[1m"
+grayColour="\e[0;37m\033[1m"
+
+
+# Example of usage
+echo -e "\n\n${yellowColour}[*]${endColour}${grayColour} Exiting...\n${endColour}"
+```
+
+
+
+
+
+
+## Process
+
+- Every process has a parent
+- When you close/kill the parent pocess you kill all the chol processes
+- `disown -a` Idepedizar tareas hijas (que probablemente estan en segundo plano)
+
+```bash
+CTRL + l   # Clean terminal
+CTRL + c   # Interrumpir programa (SIGINT)
+CTRL + \   # Salir programa (SIGQUIT)
+CTRL + z   # Pausar programa que se puede reunaudar (SIGSTOP)
+jobs        # See all the jobs that are running or suspended.
+my_command &  # When you append " &"  it becomes a "background job".
+my_command_2 && my_command_2 # Do my_command_2 only if my_command_2 was success
+fg          # Bring the job to the foreground.
+bg          # Send the job to the background.
+stop {PID} or Ctrl + z          # Suspend the job.
+kill {PID} or Ctrl + c          # Terminate the job.
+```
+
+
+
 ## IO Redirection
 
 IO Redirection modifies the file descriptors table of a command.

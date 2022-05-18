@@ -40,3 +40,4 @@ nav:
   - Public IP: server/public_ip.md
   - Security: server/security.md
 - Hardware: hardware.md
+- Linux insides: linux_insides.md
