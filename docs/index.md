@@ -11,7 +11,7 @@
 	- [BashPitfalls](http://mywiki.wooledge.org/BashPitfalls) Common mistakes made by Bash programmers.
 
 ### Data science
-	- [Data Science at the Command Line](https://www.datascienceatthecommandline.com)
+- [Data Science at the Command Line](https://www.datascienceatthecommandline.com)
 	- [2nd edition of the book](https://datascienceatthecommandline.com/2e) 
 - [Command Line Data Wrangling](https://github.com/rufuspollock/command-line-data-wrangling) (Github readme)
 - [Command-line Tools can be 235x Faster than your Hadoop Cluster](https://adamdrake.com/command-line-tools-can-be-235x-faster-than-your-hadoop-cluster.html)
@@ -21,7 +21,7 @@
 - [Course 2019](https://missing.csail.mit.edu/2019)
 
 ### Linux internals
-	- [linux-insides](https://github.com/0xAX/linux-insides/blob/master/SUMMARY.md)
+- [linux-insides](https://github.com/0xAX/linux-insides/blob/master/SUMMARY.md)
 	- [Summary](https://github.com/0xAX/linux-insides/blob/master/SUMMARY.md)
 - [Understanding the bin, sbin, usr/bin, usr/sbin split](http://lists.busybox.net/pipermail/busybox/2010-December/074114.html)
 
