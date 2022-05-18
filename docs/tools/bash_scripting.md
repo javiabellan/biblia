@@ -31,7 +31,7 @@ Every command (every porcess in fact) has its own file despcriptor table. By def
 
 ## Style output
 
-Use ~ncurses~ scape charaacters !!!
+Use ~~ncurses~~ scape charaacters !!!
 
 ### Colours
 
