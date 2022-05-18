@@ -4,22 +4,22 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>File system - Documentación de Javi</title>
-    <link rel="stylesheet" href="../../css/theme.css" />
-    <link rel="stylesheet" href="../../css/theme_extra.css" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Linux insides - Documentación de Javi</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "File system";
-        var mkdocs_page_input_path = "os/file_system.md";
+        var mkdocs_page_name = "Linux insides";
+        var mkdocs_page_input_path = "linux_insides.md";
         var mkdocs_page_url = null;
       </script>
     
-    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
     <!--[if lt IE 9]>
-      <script src="../../js/html5shiv.min.js"></script>
+      <script src="../js/html5shiv.min.js"></script>
     <![endif]-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
       <script>hljs.initHighlightingOnLoad();</script> 
@@ -31,9 +31,9 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> Documentación de Javi
+          <a href=".." class="icon icon-home"> Documentación de Javi
         </a><div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
@@ -41,88 +41,120 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
                 </li>
               </ul>
               <p class="caption"><span class="caption-text">Linux tools</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools/bash_basics/">Bash fundamentals</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../tools/bash_basics/">Bash fundamentals</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools/bash_scripting/">Bash scripting</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../tools/bash_scripting/">Bash scripting</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools/cron/">CRON</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../tools/cron/">CRON</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools/curl/">cURL</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../tools/curl/">cURL</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools/git/">GIT</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../tools/git/">GIT</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools/tmux/">TMUX</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../tools/tmux/">TMUX</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools/gnu_parallel/">GNU parallel</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../tools/gnu_parallel/">GNU parallel</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools/pacman/">Pacman</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../tools/pacman/">Pacman</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools/nano/">NANO</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../tools/nano/">NANO</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools/jupyter/">Jupyter</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../tools/jupyter/">Jupyter</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools/ssh/">SSH</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../tools/ssh/">SSH</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools/vim/">VIM</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../tools/vim/">VIM</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools/wget/">WGET</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../tools/wget/">WGET</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools/youtube_dl/">youtube-dl</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../tools/youtube_dl/">youtube-dl</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Data tools</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/csv/">CVS,TSV (q, awk)</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../tools_data/csv/">CVS,TSV (q, awk)</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/html/">HTML (pup)</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../tools_data/html/">HTML (pup)</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/json/">JSON (jq)</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../tools_data/json/">JSON (jq)</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/pdf/">PDF (Xpdf, poppler)</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../tools_data/pdf/">PDF (Xpdf, poppler)</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/image/">Image (ImageMagick)</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../tools_data/image/">Image (ImageMagick)</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/sound/">Sound (ffmepg, sox)</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../tools_data/sound/">Sound (ffmepg, sox)</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/video/">Video (ffmepg)</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../tools_data/video/">Video (ffmepg)</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/web_scraping/">Web Scraping</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../tools_data/web_scraping/">Web Scraping</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">AI</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../ai/deep_learning/">Deep Learning</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../ai/deep_learning/">Deep Learning</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Programming</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../programming/makefile/">Makefile</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../programming/makefile/">Makefile</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../programming/profiling/">Profiling</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../programming/profiling/">Profiling</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../programming/debugging/">Debugging</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../programming/debugging/">Debugging</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Server</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../server/wakeonlan/">Wakeonlan</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../server/wakeonlan/">Wakeonlan</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../server/firewall/">Firewall</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../server/firewall/">Firewall</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../server/load_balancer/">Load balancer</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../server/load_balancer/">Load balancer</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../server/public_ip/">Public IP</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../server/public_ip/">Public IP</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../server/security/">Security</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../server/security/">Security</a>
                   </li>
               </ul>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../../hardware/">Hardware</a>
+                <li class="toctree-l1"><a class="reference internal" href="../hardware/">Hardware</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Linux insides</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#kernel">Kernel</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#daemons-services">Daemons &amp; services</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#manage-services">Manage services</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#create-your-own-service">Create your own service</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#file-system">File system</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#btrfs">BTRFS</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#zfs">ZFS</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#ext4">EXT4</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#xfs">XFS</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#optimizacion-trick-1-desactivar-el-atributo-atime">Optimizacion trick 1: Desactivar el atributo atime</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#io-schedulers">I/O schedulers</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
                 </li>
               </ul>
       </div>
@@ -132,13 +164,13 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">Documentación de Javi</a>
+          <a href="..">Documentación de Javi</a>
         
       </nav>
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>File system</li>
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>Linux insides</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -148,8 +180,20 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="file-system">File system</h1>
-<h2 id="btrfs">BTRFS</h2>
+                <h1 id="linux-insides">Linux insides</h1>
+<h2 id="kernel">Kernel</h2>
+<ul>
+<li>Xanmod</li>
+</ul>
+<h2 id="daemons-services">Daemons &amp; services</h2>
+<p>SystemD --&gt; systemctl</p>
+<h3 id="manage-services">Manage services</h3>
+<pre><code>systemctl enable NetworkManager.service  # Internet
+systemctl enable wpa_supplicant          # ???
+</code></pre>
+<h3 id="create-your-own-service">Create your own service</h3>
+<h2 id="file-system">File system</h2>
+<h3 id="btrfs">BTRFS</h3>
 <ul>
 <li>Recomendado por andres torrubia...</li>
 <li>...No por prestaciones, lo ha elegido por funcionalidad</li>
@@ -158,7 +202,7 @@
 <li>sucesor natural del sistema de archivos EXT4</li>
 <li>menos velocidad de lectura y escritura que EXT4</li>
 </ul>
-<h2 id="zfs">ZFS</h2>
+<h3 id="zfs">ZFS</h3>
 <ul>
 <li>Recomendado por profe ASORC carrera informatica</li>
 <li>Sistema por defecto de freeBSD</li>
@@ -167,12 +211,12 @@
 <li>Es sinónimo de escalabilidad</li>
 <li>Desventaja: consumo alto de memoria RAM</li>
 </ul>
-<h2 id="ext4">EXT4</h2>
+<h3 id="ext4">EXT4</h3>
 <ul>
 <li>Mas comun en linux.</li>
 <li>Tambien es rapido (mas que btrfs)</li>
 </ul>
-<h2 id="xfs">XFS</h2>
+<h3 id="xfs">XFS</h3>
 <ul>
 <li>Tambien es rapido</li>
 </ul>
@@ -215,6 +259,9 @@ https://www.salvagedata.com/btrfs-zfs-xfs-ext4-how-are-they-different/</p>
               
             </div>
           </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../hardware/" class="btn btn-neutral float-left" title="Hardware"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
 
   <hr/>
 
@@ -236,13 +283,15 @@ https://www.salvagedata.com/btrfs-zfs-xfs-ext4-how-are-they-different/</p>
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
+      <span><a href="../hardware/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
     
   </span>
 </div>
-    <script>var base_url = '../..';</script>
-    <script src="../../js/theme_extra.js" defer></script>
-    <script src="../../js/theme.js" defer></script>
-      <script src="../../search/main.js" defer></script>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
     <script defer>
         window.onload = function () {
             SphinxRtdTheme.Navigation.enable(true);

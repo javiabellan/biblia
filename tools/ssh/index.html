@@ -77,6 +77,12 @@
     <li class="toctree-l2"><a class="reference internal" href="#key-generation">Key generation</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#dejar-un-programa-largo-en-ejecucion">Dejar un programa largo en ejecucion</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#simple-option-nohup">Simple option (nohup)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#session-programs-option-screen-or-tmux">Session programs option (screen or tmux)</a>
+    </li>
+        </ul>
     </li>
     </ul>
                   </li>
@@ -137,6 +143,10 @@
                 <li class="toctree-l1"><a class="reference internal" href="../../hardware/">Hardware</a>
                 </li>
               </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../linux_insides/">Linux insides</a>
+                </li>
+              </ul>
       </div>
     </div>
     </nav>
@@ -193,20 +203,28 @@ cat .ssh/id_ed25519.pub | ssh foobar@remote 'cat &gt;&gt; ~/.ssh/authorized_keys
 <li><code>-f</code>: Specify the filename of the generated key file. If you want it to be discovered automatically by the SSH agent, it must be stored in the default <code>.ssh</code> directory within your home directory.</li>
 </ul>
 <h2 id="dejar-un-programa-largo-en-ejecucion">Dejar un programa largo en ejecucion</h2>
-<p>Opcion simple</p>
+<h3 id="simple-option-nohup">Simple option (<code>nohup</code>)</h3>
 <pre><code class="language-bash">nohup COMMAND        # Run a command immune to hangups
 nohup COMMAND &gt; FILE # Ademas puede guardar su salida estandar en un fichero
 </code></pre>
-<p>Opción con programas que mantienen la sesion activa (<code>tmux</code> or <code>screen</code>)
-1. <code>ssh</code> log in into your remote box. 
-2. <code>tmux</code> or <code>screen</code>
-3. Start the long process you want.
-4. Leave/detach <code>tmux</code> or <code>screen</code> session, but leave your processes running.
-   - Ctrl+A then Ctrl+D (para salir de screen)
-   - Ctrl+B then Ctrl+D (para salir de tmux)
-5. <code>exit</code> ssh
-6. <code>ssh</code> log in into your remote box. 
-7. <code>screen -r</code> "resume" your screen session, and you can see the output of your process.</p>
+<h3 id="session-programs-option-screen-or-tmux">Session programs option (<code>screen</code> or <code>tmux</code>)</h3>
+<p>Son programas que mantienen la sesion activa.</p>
+<ol>
+<li><code>ssh</code> log in into your remote machine. </li>
+<li><code>tmux</code> or <code>screen</code></li>
+<li>Start the long process you want.</li>
+<li>Leave/detach <code>tmux</code> or <code>screen</code> session, but leave your processes running.</li>
+<li>Ctrl+A then Ctrl+D (para salir de screen)</li>
+<li>Ctrl+B then Ctrl+D (para salir de tmux)</li>
+<li><code>exit</code> ssh</li>
+</ol>
+<p>...One eternity later...</p>
+<ol>
+<li><code>ssh</code> log in again into your remote machine. </li>
+<li>Return back to see the output of your process.</li>
+<li><code>screen -r</code>: "resume" your screen session</li>
+<li><code>tmux a</code>: "atach" to the last tmux session</li>
+</ol>
               
             </div>
           </div><footer>
