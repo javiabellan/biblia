@@ -11,8 +11,7 @@
 	- [BashPitfalls](http://mywiki.wooledge.org/BashPitfalls) Common mistakes made by Bash programmers.
 
 ### Data science
-- [Data Science at the Command Line](https://www.datascienceatthecommandline.com)
-	- [2nd edition of the book](https://datascienceatthecommandline.com/2e) 
+- [Data Science at the Command Line](https://www.datascienceatthecommandline.com) [2nd edition (2021)](https://datascienceatthecommandline.com/2e)
 - [Command Line Data Wrangling](https://github.com/rufuspollock/command-line-data-wrangling) (Github readme)
 - [Command-line Tools can be 235x Faster than your Hadoop Cluster](https://adamdrake.com/command-line-tools-can-be-235x-faster-than-your-hadoop-cluster.html)
 
