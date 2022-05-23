@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>ZSH - Documentación de Javi</title>
+    <title>Install soft (pacman, pip, conda) - Documentación de Javi</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "ZSH";
-        var mkdocs_page_input_path = "tools/zsh.md";
+        var mkdocs_page_name = "Install soft (pacman, pip, conda)";
+        var mkdocs_page_input_path = "tools/install.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -45,12 +45,30 @@
                 </li>
               </ul>
               <p class="caption"><span class="caption-text">Linux tools</span></p>
-              <ul>
+              <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../bash_basics/">Bash fundamentals</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../bash_scripting/">Bash scripting</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../editors/">Editors (Nano, VIM)</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Install soft (pacman, pip, conda)</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#pip-pip-install-user-package">PIP: pip install --user package</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#conda">Conda</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#pacman">Pacman</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#arch-user-repository-aur">Arch User Repository (AUR)</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#yay">YAY</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#paru">PARU</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../cron/">CRON</a>
                   </li>
@@ -61,10 +79,6 @@
                   <li class="toctree-l1"><a class="reference internal" href="../tmux/">TMUX</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../gnu_parallel/">GNU parallel</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../pacman/">Pacman</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../jupyter/">Jupyter</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../ssh/">SSH</a>
                   </li>
@@ -99,11 +113,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Programming</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../programming/makefile/">Makefile</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/monitoring/">Monitoring</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../programming/profiling/">Profiling</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../programming/debugging/">Debugging</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/makefile/">Makefile</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Server</span></p>
@@ -140,7 +156,8 @@
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>ZSH</li>
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Linux tools &raquo;</li><li>Install soft (pacman, pip, conda)</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -150,20 +167,72 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="zsh">ZSH</h1>
-<p>Change to zsh: <code>sudo chsh -s /usr/bin/zsh javi</code>
-curl -L http://install.ohmyz.sh | sh</p>
-<h2 id="plugins">Plugins</h2>
-<ul>
-<li>powerlevel10k</li>
-<li>zsh-sudo   -&gt; con esc esc  te pone sudo al principio</li>
-<li>zsh-syntax-highlining</li>
-<li>zsh-suggestions</li>
-<li>fzf -&gt; con ctrl + T busca</li>
-</ul>
+                <h1 id="install-software">Install software</h1>
+<h2 id="pip-pip-install-user-package">PIP: <code>pip install --user package</code></h2>
+<p>Note we’ve installed here using the user flag to install this Python package only for the current user. However, you might prefer to use a tool like pipx to install Python applications in an isolated environment.</p>
+<h2 id="conda">Conda</h2>
+<p>Conda is SLOOOOOOOW. If you really need to use conda you can use <strong>Mamba</strong></p>
+<h2 id="pacman">Pacman</h2>
+<pre><code class="language-bash">pacman -S {pkg}    # Install package
+pacman -Syu        # Update packages. Update database (-y) and upgrade packages (-u)
+pacman -Ss {pkg}   # Search for a new package
+
+pacman -Q          # Display all installed packages
+pacman -Qe         # Display only packages explicitly installed
+pacman -Qn         # Display only packages installed from main repositories
+pacman -Qm         # Display only packages installed from AUR
+pacman -Qdt        # Display orphaned dependencies
+pacman -Qs {pkg}   # Search local repository for package
+
+pacman -R {pkg}    # Remove package {pkg}
+pacman -Rs {pkg}   # Remove package as well as unneeded dependencies (-s)
+pacman -Rns {pkg}  # Remove package, dependencies (-s), and system config files (-n)
+</code></pre>
+<h2 id="arch-user-repository-aur"><a href="https://aur.archlinux.org/packages">Arch User Repository (AUR)</a></h2>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th>Manually</th>
+<th><code>yay</code> (AUR Helper)</th>
+<th><code>pamac</code> (AUR Helper)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Preparation<br>(install yay)</td>
+<td></td>
+<td><code>sudo pacman -S --needed base-devel git</code><br><code>git clone https://aur.archlinux.org/yay.git</code><br><code>cd yay</code><br><code>makepkg -si</code></td>
+<td>Default in manjaro</td>
+</tr>
+<tr>
+<td align="center">Install<br>some package<br>(chrome)</td>
+<td><code>git clone https://aur.archlinux.org/google-chrome.git</code><br><code>cd google-chrome</code><br><code>makepkg -si</code></td>
+<td><code>yay -S google-chrome</code></td>
+<td><code>pamac install google-chrome</code></td>
+</tr>
+<tr>
+<td align="center">Upgrade<br>some package<br>(chrome)</td>
+<td><code>cd google-chrome</code><br><code>git pull</code><br><code>makepkg -si</code></td>
+<td><code>yay -Syu</code></td>
+<td><code>pamac upgrade -a</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="yay">YAY</h3>
+<p>https://www.chrisatmachine.com/Linux/03-AUR-yay/</p>
+<h3 id="paru">PARU</h3>
+<pre><code class="language-bash">git clone https://aur.archlinux.org/paru-bin.git
+cd paru-bin
+makepkg -si
+</code></pre>
               
             </div>
           </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../editors/" class="btn btn-neutral float-left" title="Editors (Nano, VIM)"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../cron/" class="btn btn-neutral float-right" title="CRON">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
 
   <hr/>
 
@@ -185,6 +254,10 @@ curl -L http://install.ohmyz.sh | sh</p>
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
+      <span><a href="../editors/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../cron/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

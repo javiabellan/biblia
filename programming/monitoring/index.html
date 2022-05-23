@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Pacman - Documentación de Javi</title>
+    <title>Monitoring - Documentación de Javi</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Pacman";
-        var mkdocs_page_input_path = "tools/pacman.md";
+        var mkdocs_page_name = "Monitoring";
+        var mkdocs_page_input_path = "programming/monitoring.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -45,42 +45,30 @@
                 </li>
               </ul>
               <p class="caption"><span class="caption-text">Linux tools</span></p>
-              <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" href="../bash_basics/">Bash fundamentals</a>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/bash_basics/">Bash fundamentals</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../bash_scripting/">Bash scripting</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/bash_scripting/">Bash scripting</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../editors/">Editors (Nano, VIM)</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/editors/">Editors (Nano, VIM)</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../cron/">CRON</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/install/">Install soft (pacman, pip, conda)</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../curl/">cURL</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/cron/">CRON</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../git/">GIT</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/curl/">cURL</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../tmux/">TMUX</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/git/">GIT</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../gnu_parallel/">GNU parallel</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/tmux/">TMUX</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Pacman</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#arch-user-repository-aur">Arch User Repository (AUR)</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#yay">YAY</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#paru">PARU</a>
-    </li>
-        </ul>
-    </li>
-    </ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/gnu_parallel/">GNU parallel</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../jupyter/">Jupyter</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/ssh/">SSH</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../ssh/">SSH</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/wget/">WGET</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../wget/">WGET</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../youtube_dl/">youtube-dl</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/youtube_dl/">youtube-dl</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Data tools</span></p>
@@ -108,12 +96,20 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Programming</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../programming/makefile/">Makefile</a>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Monitoring</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#top">top</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#htop">htop</a>
+    </li>
+    </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../programming/profiling/">Profiling</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../profiling/">Profiling</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../programming/debugging/">Debugging</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../debugging/">Debugging</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../makefile/">Makefile</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Server</span></p>
@@ -151,7 +147,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>Linux tools &raquo;</li><li>Pacman</li>
+          <li>Programming &raquo;</li><li>Monitoring</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -161,66 +157,43 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="pacman">Pacman</h1>
-<pre><code class="language-bash">pacman -S {pkg}    # Install package
-pacman -Syu        # Update packages. Update database (-y) and upgrade packages (-u)
-pacman -Ss {pkg}   # Search for a new package
-
-pacman -Q          # Display all installed packages
-pacman -Qe         # Display only packages explicitly installed
-pacman -Qn         # Display only packages installed from main repositories
-pacman -Qm         # Display only packages installed from AUR
-pacman -Qdt        # Display orphaned dependencies
-pacman -Qs {pkg}   # Search local repository for package
-
-pacman -R {pkg}    # Remove package {pkg}
-pacman -Rs {pkg}   # Remove package as well as unneeded dependencies (-s)
-pacman -Rns {pkg}  # Remove package, dependencies (-s), and system config files (-n)
-</code></pre>
-<h2 id="arch-user-repository-aur"><a href="https://aur.archlinux.org/packages">Arch User Repository (AUR)</a></h2>
-<table>
-<thead>
-<tr>
-<th align="center"></th>
-<th>Manually</th>
-<th><code>yay</code> (AUR Helper)</th>
-<th><code>pamac</code> (AUR Helper)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="center">Preparation<br>(install yay)</td>
-<td></td>
-<td><code>sudo pacman -S --needed base-devel git</code><br><code>git clone https://aur.archlinux.org/yay.git</code><br><code>cd yay</code><br><code>makepkg -si</code></td>
-<td>Default in manjaro</td>
-</tr>
-<tr>
-<td align="center">Install<br>some package<br>(chrome)</td>
-<td><code>git clone https://aur.archlinux.org/google-chrome.git</code><br><code>cd google-chrome</code><br><code>makepkg -si</code></td>
-<td><code>yay -S google-chrome</code></td>
-<td><code>pamac install google-chrome</code></td>
-</tr>
-<tr>
-<td align="center">Upgrade<br>some package<br>(chrome)</td>
-<td><code>cd google-chrome</code><br><code>git pull</code><br><code>makepkg -si</code></td>
-<td><code>yay -Syu</code></td>
-<td><code>pamac upgrade -a</code></td>
-</tr>
-</tbody>
-</table>
-<h3 id="yay">YAY</h3>
-<p>https://www.chrisatmachine.com/Linux/03-AUR-yay/</p>
-<h3 id="paru">PARU</h3>
-<pre><code class="language-bash">git clone https://aur.archlinux.org/paru-bin.git
-cd paru-bin
-makepkg -si
-</code></pre>
+                <h2 id="cpu-ram">CPU &amp; RAM</h2>
+<h3 id="top"><code>top</code></h3>
+<h3 id="htop"><code>htop</code></h3>
+<h2 id="gpu">GPU</h2>
+<h3 id="nvidia-smi"><code>nvidia-smi</code></h3>
+<p><code>watch -n 0.1 nvidia-smi</code>: Watch every 0.1 seconds the output of nvidia-smi</p>
+<p><a href="../../img/monitoring/gpu/1-nvidiasmi.png"></a></p>
+<p><code>nvidia-smi --query-gpu=timestamp,name,pci.bus_id,temperature.gpu,utilization.gpu,utilization.memory --format=csv -l 1</code></p>
+<p><a href="../../img/monitoring/gpu/2-nvidiasmi2.png"></a></p>
+<p>Others:
+- <code>nvidia-smi -q -d TEMPERATURE,PERFORMANCE</code>: To see the slowdown/shutdown behavieour based on their temperature. If you frequently see HW Slowdown is activated, you probably need to improve the cooling of your machine. 
+- <code>nvidia-smi topo -m</code>: shows the “GPU topology“, which describes how GPUs are connected. The topology is important to understand if data transfers between GPUs are being made via direct memory access (DMA) or through host devices.</p>
+<h3 id="gpustat"><code>gpustat</code></h3>
+<p>a Python libary (<code>pip install --user gpustat</code>) to in a more concise, prettier, and simpler way (one line per GPU)</p>
+<p><a href="../../img/monitoring/gpu/3-gpustat.png"></a></p>
+<h3 id="nvtop"><code>nvtop</code></h3>
+<p><a href="../../img/monitoring/gpu/4-nvtop.png"></a></p>
+<h3 id="nvitop"><code>nvitop</code></h3>
+<p><a href="../img/monitoring/gpu/5-nvtop.png"></a></p>
+<p><a href="../img/monitoring/gpu/6-nvtop2.png"></a></p>
+<h3 id="jupyterlab-nvdashboard">jupyterlab-nvdashboard</h3>
+<ul>
+<li><code>pip install --user jupyterlab_nvdashboard</code></li>
+</ul>
+<p><a href="../../img/monitoring/gpu/7-jupyterlab-nvdashboard.png"></a></p>
+<h3 id="weights-biases">Weights &amp; Biases</h3>
+<p><a href="../../img/monitoring/gpu/8-wandb.png"></a></p>
+<h3 id="grafana">Grafana</h3>
+<p><a href="../../img/monitoring/gpu/9-grafana.png"></a></p>
+<h3 id="reference">Reference</h3>
+<p>https://lambdalabs.com/blog/keeping-an-eye-on-your-gpus-2/</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../gnu_parallel/" class="btn btn-neutral float-left" title="GNU parallel"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../jupyter/" class="btn btn-neutral float-right" title="Jupyter">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../../ai/deep_learning/" class="btn btn-neutral float-left" title="Deep Learning"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../profiling/" class="btn btn-neutral float-right" title="Profiling">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -243,10 +216,10 @@ makepkg -si
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../gnu_parallel/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../../ai/deep_learning/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../jupyter/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../profiling/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

@@ -52,6 +52,12 @@
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#shells">Shells</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#zsh">ZSH</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#plugins">Plugins</a>
+    </li>
+        </ul>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#file-descriptors-fd">File descriptors (fd)</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#style-output">Style output</a>
@@ -98,6 +104,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../editors/">Editors (Nano, VIM)</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../install/">Install soft (pacman, pip, conda)</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../cron/">CRON</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../curl/">cURL</a>
@@ -107,10 +115,6 @@
                   <li class="toctree-l1"><a class="reference internal" href="../tmux/">TMUX</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../gnu_parallel/">GNU parallel</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../pacman/">Pacman</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../jupyter/">Jupyter</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../ssh/">SSH</a>
                   </li>
@@ -145,11 +149,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Programming</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../programming/makefile/">Makefile</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/monitoring/">Monitoring</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../programming/profiling/">Profiling</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../programming/debugging/">Debugging</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/makefile/">Makefile</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Server</span></p>
@@ -240,6 +246,17 @@
 - <code>#!/bin/bash</code>:  Bash shell script <code>./myScript.sh</code>
 - <code>#!/usr/bin/python</code>:  Python script <code>./myScript.py</code>
 - <code>#!/usr/bin/env python</code>:  Python script (more portable because looks for python comand)  <code>./myScript.py</code></p>
+<h2 id="zsh">ZSH</h2>
+<p>Change to zsh: <code>sudo chsh -s /usr/bin/zsh javi</code>
+curl -L http://install.ohmyz.sh | sh</p>
+<h3 id="plugins">Plugins</h3>
+<ul>
+<li>powerlevel10k</li>
+<li>zsh-sudo   -&gt; con esc esc  te pone sudo al principio</li>
+<li>zsh-syntax-highlining</li>
+<li>zsh-suggestions</li>
+<li>fzf -&gt; con ctrl + T busca</li>
+</ul>
 <h2 id="file-descriptors-fd">File descriptors (fd)</h2>
 <p>Every command (every porcess in fact) has its own file despcriptor table. By default (assuming your terminal is /dev/tty0):</p>
 <table>
