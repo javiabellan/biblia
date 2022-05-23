@@ -7,13 +7,12 @@ nav:
   - Bash fundamentals: tools/bash_basics.md
   - Bash scripting: tools/bash_scripting.md
   - Editors (Nano, VIM): tools/editors.md
+  - Install soft (pacman, pip, conda): tools/install.md
   - CRON: tools/cron.md
   - cURL: tools/curl.md
   - GIT: tools/git.md
   - TMUX: tools/tmux.md
   - GNU parallel: tools/gnu_parallel.md
-  - Pacman: tools/pacman.md
-  - Jupyter: tools/jupyter.md
   - SSH: tools/ssh.md
   - WGET: tools/wget.md
   - youtube-dl: tools/youtube_dl.md
@@ -29,9 +28,10 @@ nav:
 - AI:
   - Deep Learning: ai/deep_learning.md
 - Programming:
-  - Makefile: programming/makefile.md
-  - Profiling: programming/profiling.md
-  - Debugging: programming/debugging.md
+  - Monitoring: programming/monitoring.md
+  - Profiling:  programming/profiling.md
+  - Debugging:  programming/debugging.md
+  - Makefile:   programming/makefile.md
 - Server:
   - Wakeonlan: server/wakeonlan.md
   - Firewall: server/firewall.md

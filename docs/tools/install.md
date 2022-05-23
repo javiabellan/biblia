@@ -1,4 +1,16 @@
-# Pacman
+# Install software
+
+
+## PIP: `pip install --user package`
+
+Note we’ve installed here using the user flag to install this Python package only for the current user. However, you might prefer to use a tool like pipx to install Python applications in an isolated environment.
+
+## Conda
+
+Conda is SLOOOOOOOW. If you really need to use conda you can use **Mamba**
+
+
+## Pacman
 
 ```bash
 pacman -S {pkg}    # Install package

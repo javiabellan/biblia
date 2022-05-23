@@ -17,6 +17,22 @@
 - `#!/usr/bin/env python`:  Python script (more portable because looks for python comand)  `./myScript.py`
 
 
+
+## ZSH
+
+Change to zsh: `sudo chsh -s /usr/bin/zsh javi`
+curl -L http://install.ohmyz.sh | sh
+
+### Plugins
+
+- powerlevel10k
+- zsh-sudo   -> con esc esc  te pone sudo al principio
+- zsh-syntax-highlining
+- zsh-suggestions
+- fzf -> con ctrl + T busca
+
+
+
 ## File descriptors (fd)
 
 Every command (every porcess in fact) has its own file despcriptor table. By default (assuming your terminal is /dev/tty0):
