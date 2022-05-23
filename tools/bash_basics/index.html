@@ -76,8 +76,6 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#deep-remove-files">Deep remove files</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#see-content">See content</a>
-    </li>
     </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../bash_scripting/">Bash scripting</a>
@@ -105,7 +103,7 @@
               </ul>
               <p class="caption"><span class="caption-text">Data tools</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/csv/">CVS,TSV (q, awk)</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/text/">TEXT,CVS,TSV (cut, paste, tr, sed, awk)</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../tools_data/html/">HTML (pup)</a>
                   </li>
@@ -381,47 +379,6 @@ rwxrwxrwx  ownerUser userGroup 13B file
   shred -zun 10 -v $1
 }
 </code></pre>
-<h2 id="see-content">See content</h2>
-<ul>
-<li><strong><code>sort</code></strong>: Sorting</li>
-<li><code>sort -r</code>: Reverse order</li>
-<li><code>sort -n</code>: Numerically</li>
-<li><code>sort -rn</code>: Numerically reversed</li>
-<li><code>sort --field-separator=',' --key=2,1,3 {file}</code>: Sort a CSV file by 2nd, 1st and 3rd columns.</li>
-<li><code>sort -R</code>: Randomly (each time is different). Similar to <strong><code>shuf</code></strong></li>
-<li><strong><code>uniq</code></strong> See <strong>uniq</strong>ues. <strong>need to <code>sort</code> first</strong>.</li>
-<li><code>uniq -c</code>: Count uniques</li>
-<li><strong><code>wc</code>:</strong> count lines, words and chars</li>
-<li><code>wc -l</code>: count only lines</li>
-<li><code>wc -w</code>: count only words</li>
-<li><code>wc -c</code>: count only chars</li>
-<li><strong><code>column</code></strong>: Display in <strong>column</strong>s</li>
-<li><code>| column -t</code>: Pretty print TSV file</li>
-<li><code>column iris.csv -t -s ,</code></li>
-<li><code>column file.csv -s "," -t | less -#2 -N -S</code>: CSV viewer</li>
-<li><strong><code>cut</code></strong>: Selecting fields (columns) (default is to delimit by tab).</li>
-<li><code>cut -d',' -f1</code>: Delimiter="," Field (col)=1st</li>
-<li><code>cut -d, -f 2</code>: Delimit by coma (CSV). Select 2nd field.</li>
-<li><code>cut -d, -f 2,3</code>: Delimit by coma (CSV). Select 2nd and 3rd fields.</li>
-<li><code>cut -d, -f-4,6-</code>: Delimit by coma (CSV). Select all except 5th field.</li>
-<li><code>cut -c 5-</code>: skip the first 4 characters of each line (start on the 5th char).</li>
-<li><strong><code>paste</code></strong>: join 2 (or more) files line by line</li>
-<li><strong><code>split</code></strong>: split a file into pieces (less useful)</li>
-<li><strong><code>nl</code></strong>: prepend line numbers</li>
-<li><strong><code>tr</code></strong> Translate (replace) patterns.</li>
-<li><code>tr '\t' ,</code> Replace tabs with commas (TSV to CSV)</li>
-<li><code>tr '[:upper:]' '[:lower:]'</code> <strong>tr</strong>anslate from upper to lower characters</li>
-<li><code>tr -d " "</code> <strong>D</strong>elete some pattern</li>
-<li><code>tr -s " "</code> <strong>S</strong>queeze multiple occurrences (convert a consecutive repeated character into a single one)</li>
-<li><strong><code>grep</code></strong>: print lines matching a pattern</li>
-<li><strong><code>egrep</code></strong>: can handle extended regular expressions (EREs)</li>
-<li><strong><code>sed</code></strong>: stream editor for filtering and transforming text. replace (and much more). useful for search and replace - one liners</li>
-<li><strong><code>awk</code></strong>: pattern scanning and text processing language, useful for tab-delimited data - one liners (default is to delimit by spaces)</li>
-<li><code>awk '{print "First column " $1 " second column " $2}'</code></li>
-<li><code>awk -F "|" '{print $1}'</code> Use awk as the <code>cut</code> command to get a specific column by saying the separator</li>
-<li>https://stackoverflow.com/tags/awk/info</li>
-<li>https://ferd.ca/awk-in-20-minutes.html</li>
-</ul>
 <h1 id="alias">Alias</h1>
 <pre><code class="language-bash"># ZSH pluggins
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

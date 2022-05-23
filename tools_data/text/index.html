@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>CVS,TSV (q, awk) - Documentación de Javi</title>
+    <title>TEXT,CVS,TSV (cut, paste, tr, sed, awk) - Documentación de Javi</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "CVS,TSV (q, awk)";
-        var mkdocs_page_input_path = "tools_data/csv.md";
+        var mkdocs_page_name = "TEXT,CVS,TSV (cut, paste, tr, sed, awk)";
+        var mkdocs_page_input_path = "tools_data/text.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -73,9 +73,47 @@
               </ul>
               <p class="caption"><span class="caption-text">Data tools</span></p>
               <ul class="current">
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">CVS,TSV (q, awk)</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">TEXT,CVS,TSV (cut, paste, tr, sed, awk)</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#q-sql-over-csvs">Q: SQL over CSVs</a>
+    <li class="toctree-l2"><a class="reference internal" href="#sort">sort</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#uniq">uniq</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#wc">wc</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#column">column</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#cut">cut</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#paste">paste</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#split">split</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#nl">nl</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tr">tr</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#grep">grep</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#egrep">egrep</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#sed">sed</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#awk">awk</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#awk-flag-options">AWK FLAG OPTIONS</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#awk-variables">AWK VARIABLES</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#awk-patterns">AWK PATTERNS</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#awk-actions">AWK ACTIONS</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#awk-reference">AWK REFERENCE</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#q">Q</a>
     </li>
     </ul>
                   </li>
@@ -145,7 +183,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>Data tools &raquo;</li><li>CVS,TSV (q, awk)</li>
+          <li>Data tools &raquo;</li><li>TEXT,CVS,TSV (cut, paste, tr, sed, awk)</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -155,8 +193,117 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="csv">CSV</h1>
-<h2 id="q-sql-over-csvs"><a href="http://harelba.github.io/q">Q</a>: SQL over CSVs</h2>
+                <h1 id="text-data">Text data</h1>
+<h2 id="sort"><code>sort</code></h2>
+<p>Sorting
+- <code>sort -r</code>: Reverse order
+- <code>sort -n</code>: Numerically
+- <code>sort -rn</code>: Numerically reversed
+- <code>sort -R</code>: Randomly (each time is different). Similar to <strong><code>shuf</code></strong>
+- <code>sort --field-separator=',' --key=2,1,3 {file}</code>: Sort a CSV file by 2nd, 1st and 3rd columns.</p>
+<h2 id="uniq"><code>uniq</code></h2>
+<p>See <strong>uniq</strong>ues. <strong>need to <code>sort</code> first</strong>.
+- <code>sort | uniq</code>: Display uniques
+- <code>sort | uniq -c</code>: Count uniques
+- <code>sort | uniq -d</code>: Display duplicates</p>
+<h2 id="wc"><code>wc</code></h2>
+<p>Count lines, words and chars
+- <code>wc -l</code>: count only lines
+- <code>wc -w</code>: count only words
+- <code>wc -c</code>: count only chars</p>
+<h2 id="column"><code>column</code></h2>
+<p>Display in <strong>column</strong>s
+- <code>| column -t</code>: Pretty print TSV file
+- <code>column iris.csv -t -s ,</code>
+- <code>column file.csv -s "," -t | less -#2 -N -S</code>: CSV viewer</p>
+<h2 id="cut"><code>cut</code></h2>
+<p>Selecting fields (columns) (default is to delimit by tab).
+- <code>cut -d',' -f1</code>: Delimiter="," Field (col)=1st
+- <code>cut -d, -f 2</code>: Delimit by coma (CSV). Select 2nd field.
+- <code>cut -d, -f 2,3</code>: Delimit by coma (CSV). Select 2nd and 3rd fields.
+- <code>cut -d, -f-4,6-</code>: Delimit by coma (CSV). Select all except 5th field.
+- <code>cut -c 5-</code>: skip the first 4 characters of each line (start on the 5th char).</p>
+<h2 id="paste"><code>paste</code></h2>
+<p>Join 2 (or more) files line by line</p>
+<h2 id="split"><code>split</code></h2>
+<p>Split a file into pieces (less useful)</p>
+<h2 id="nl"><code>nl</code></h2>
+<p>Prepend line numbers</p>
+<h2 id="tr"><code>tr</code></h2>
+<p>Translate (replace) patterns.
+- <code>tr '\t' ,</code> Replace tabs with commas (TSV to CSV)
+- <code>tr '[:upper:]' '[:lower:]'</code> <strong>tr</strong>anslate from upper to lower characters
+- <code>tr -d " "</code> <strong>D</strong>elete some pattern
+- <code>tr -s " "</code> <strong>S</strong>queeze multiple occurrences (convert a consecutive repeated character into a single one)</p>
+<h2 id="grep"><code>grep</code></h2>
+<p>Print lines matching a pattern</p>
+<h2 id="egrep"><code>egrep</code></h2>
+<p>San handle extended regular expressions (EREs)</p>
+<h2 id="sed"><code>sed</code></h2>
+<ul>
+<li><strong>S</strong>tream <strong>ed</strong>itor for filtering, transforming and replace text (and much more).</li>
+<li>Useful for search and replace.</li>
+<li>Convinient for free-form text data.</li>
+</ul>
+<h2 id="awk"><code>awk</code></h2>
+<ul>
+<li>Pattern scanning and text processing language</li>
+<li>Convinient for tabular data (table with columns)</li>
+<li>Default input field separator is the blank/space: <code></code></li>
+<li>Default output field separator is the blank/space: <code></code></li>
+<li>Default record separator is the new_line: <code>\n</code></li>
+</ul>
+<p>Syntax:</p>
+<pre><code class="language-bash">awk FLAG_OPTIONS 'PATTERN {ACTION}
+                  PATTERN {ACTION}
+                  PATTERN {ACTION}' INPUT_FILE(S)
+</code></pre>
+<h3 id="awk-flag-options">AWK FLAG OPTIONS</h3>
+<ul>
+<li><code>awk -F "|" '........'</code>: Set <code>|</code> as the input field separator</li>
+</ul>
+<h3 id="awk-variables">AWK VARIABLES</h3>
+<ul>
+<li><code>$1</code>: Field 1</li>
+<li><code>$2</code>: Field 2</li>
+<li><code>$3</code>: Field 3</li>
+<li><code>$0</code>: The entire line</li>
+<li><code>NR</code>: Number of the current record/line</li>
+</ul>
+<h3 id="awk-patterns">AWK PATTERNS</h3>
+<ul>
+<li>Keywords</li>
+<li><code>awk 'BEGIN {...}'</code>: Do this before iterating the file</li>
+<li>Logical operators: </li>
+<li><code>awk '$3 &gt; 1000 || $4 &lt; 300 {...}'</code></li>
+<li><code>awk 'NR&lt;3 {...}'</code></li>
+<li><code>awk toupper($3 == "TEXAS")'</code></li>
+<li><code>awk toupper($3 != "TEXAS")'</code></li>
+<li>Regular expresions:</li>
+<li><code>awk '/D6.jpg/ {...}'</code></li>
+<li><code>awk '! /D6.jpg/ {...}'</code></li>
+<li><code>awk '$4 ~ /D6.jpg/ {...}'</code>: Field match a regex</li>
+<li><code>awk '$4 !~ /D6.jpg/ {...}'</code>: Field do not match a regex</li>
+<li><code>awk '/(TEXAS|Texas).*[Oo]il.*extraction/ {...}'</code>: Complex regex</li>
+<li>Regular expresions with logical operators:</li>
+<li><code>awk '( /TEXAS/ || /Texas/ ) &amp;&amp; /*[Oo]il.*extraction/ {...}'</code></li>
+</ul>
+<h3 id="awk-actions">AWK ACTIONS</h3>
+<ul>
+<li><code>awk '{print $0}'</code>: Print the entire line.</li>
+<li><code>awk '{print $1}'</code>: Print fisrt column.</li>
+<li><code>awk '{print "First column " $1 " second column " $2}'</code></li>
+<li><code>awk 'BEGIN {FS="\t";OFS="\t"} ...</code>: Set the tab as the input and output separators</li>
+<li><code>awk 'BEGIN {FS=OFS="\t"} ...</code>: Same of above</li>
+</ul>
+<h3 id="awk-reference">AWK REFERENCE</h3>
+<ul>
+<li>https://stackoverflow.com/tags/awk/info</li>
+<li>https://ferd.ca/awk-in-20-minutes.html</li>
+<li>https://www.youtube.com/watch?v=WaNIi0ZJMu0</li>
+</ul>
+<h2 id="q"><a href="http://harelba.github.io/q">Q</a></h2>
+<p>SQL over CSVs</p>
               
             </div>
           </div><footer>
