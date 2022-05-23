@@ -197,12 +197,6 @@ rwxrwxrwx  ownerUser userGroup 13B file
 - `df /`
 
 
-
-
-
-
-
-
 ## Deep remove files
 
 - `scrub`: Real delete files in disk
@@ -214,48 +208,6 @@ deep_rm () {
   shred -zun 10 -v $1
 }
 ```
-
-## See content
-
-- **`sort`**: Sorting
-  - `sort -r`: Reverse order
-  - `sort -n`: Numerically
-  - `sort -rn`: Numerically reversed
-  - `sort --field-separator=',' --key=2,1,3 {file}`: Sort a CSV file by 2nd, 1st and 3rd columns.
-  - `sort -R`: Randomly (each time is different). Similar to **`shuf`**
-- **`uniq`** See **uniq**ues. **need to `sort` first**.
-  - `uniq -c`: Count uniques
-- **`wc`:** count lines, words and chars
-  - `wc -l`: count only lines
-  - `wc -w`: count only words
-  - `wc -c`: count only chars
-- **`column`**: Display in **column**s
-  - `| column -t`: Pretty print TSV file
-  - `column iris.csv -t -s ,`
-  - `column file.csv -s "," -t | less -#2 -N -S`: CSV viewer
-- **`cut`**: Selecting fields (columns) (default is to delimit by tab).
-  - `cut -d',' -f1`: Delimiter="," Field (col)=1st
-  - `cut -d, -f 2`: Delimit by coma (CSV). Select 2nd field.
-  - `cut -d, -f 2,3`: Delimit by coma (CSV). Select 2nd and 3rd fields.
-  - `cut -d, -f-4,6-`: Delimit by coma (CSV). Select all except 5th field.
-  - `cut -c 5-`: skip the first 4 characters of each line (start on the 5th char).
-- **`paste`**: join 2 (or more) files line by line
-- **`split`**: split a file into pieces (less useful)
-- **`nl`**: prepend line numbers
-- **`tr`** Translate (replace) patterns.
-  - `tr '\t' ,` Replace tabs with commas (TSV to CSV)
-  - `tr '[:upper:]' '[:lower:]'` **tr**anslate from upper to lower characters
-  - `tr -d " "` **D**elete some pattern
-  - `tr -s " "` **S**queeze multiple occurrences (convert a consecutive repeated character into a single one)
-- **`grep`**: print lines matching a pattern
-- **`egrep`**: can handle extended regular expressions (EREs)
-- **`sed`**: stream editor for filtering and transforming text. replace (and much more). useful for search and replace - one liners
-- **`awk`**: pattern scanning and text processing language, useful for tab-delimited data - one liners (default is to delimit by spaces)
-  - `awk '{print "First column " $1 " second column " $2}'`
-  - `awk -F "|" '{print $1}'` Use awk as the `cut` command to get a specific column by saying the separator
-  - https://stackoverflow.com/tags/awk/info
-  - https://ferd.ca/awk-in-20-minutes.html
-
 
 
 

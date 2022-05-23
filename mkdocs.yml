@@ -17,7 +17,7 @@ nav:
   - WGET: tools/wget.md
   - youtube-dl: tools/youtube_dl.md
 - Data tools:
-  - CVS,TSV (q, awk): tools_data/csv.md
+  - TEXT,CVS,TSV (cut, paste, tr, sed, awk): tools_data/text.md
   - HTML (pup): tools_data/html.md
   - JSON (jq): tools_data/json.md
   - PDF (Xpdf, poppler): tools_data/pdf.md
