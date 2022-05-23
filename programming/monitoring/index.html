@@ -99,9 +99,33 @@
               <ul class="current">
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Monitoring</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#top">top</a>
+    <li class="toctree-l2"><a class="reference internal" href="#cpu-ram">CPU &amp; RAM</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#top">top</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#htop">htop</a>
+    <li class="toctree-l3"><a class="reference internal" href="#htop">htop</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#gpu">GPU</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#nvidia-smi">nvidia-smi</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#gpustat">gpustat</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#nvtop">nvtop</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#nvitop">nvitop</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#jupyterlab-nvdashboard">jupyterlab-nvdashboard</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#weights-biases">Weights &amp; Biases</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#grafana">Grafana</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#reference">Reference</a>
+    </li>
+        </ul>
     </li>
     </ul>
                   </li>
@@ -157,35 +181,36 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="cpu-ram">CPU &amp; RAM</h2>
-<h3 id="top"><code>top</code></h3>
-<h3 id="htop"><code>htop</code></h3>
+                <h1 id="monitoring">Monitoring</h1>
+<h2 id="cpu-ram">CPU &amp; RAM</h2>
+<h3 id="top">top</h3>
+<h3 id="htop">htop</h3>
 <h2 id="gpu">GPU</h2>
-<h3 id="nvidia-smi"><code>nvidia-smi</code></h3>
+<h3 id="nvidia-smi">nvidia-smi</h3>
 <p><code>watch -n 0.1 nvidia-smi</code>: Watch every 0.1 seconds the output of nvidia-smi</p>
-<p><a href="../../img/monitoring/gpu/1-nvidiasmi.png"></a></p>
+<p><img alt="" src="../../img/monitoring/gpu/1-nvidiasmi.png" /></p>
 <p><code>nvidia-smi --query-gpu=timestamp,name,pci.bus_id,temperature.gpu,utilization.gpu,utilization.memory --format=csv -l 1</code></p>
-<p><a href="../../img/monitoring/gpu/2-nvidiasmi2.png"></a></p>
+<p><img alt="" src="../../img/monitoring/gpu/2-nvidiasmi2.png" /></p>
 <p>Others:
 - <code>nvidia-smi -q -d TEMPERATURE,PERFORMANCE</code>: To see the slowdown/shutdown behavieour based on their temperature. If you frequently see HW Slowdown is activated, you probably need to improve the cooling of your machine. 
 - <code>nvidia-smi topo -m</code>: shows the “GPU topology“, which describes how GPUs are connected. The topology is important to understand if data transfers between GPUs are being made via direct memory access (DMA) or through host devices.</p>
-<h3 id="gpustat"><code>gpustat</code></h3>
+<h3 id="gpustat">gpustat</h3>
 <p>a Python libary (<code>pip install --user gpustat</code>) to in a more concise, prettier, and simpler way (one line per GPU)</p>
-<p><a href="../../img/monitoring/gpu/3-gpustat.png"></a></p>
-<h3 id="nvtop"><code>nvtop</code></h3>
-<p><a href="../../img/monitoring/gpu/4-nvtop.png"></a></p>
-<h3 id="nvitop"><code>nvitop</code></h3>
-<p><a href="../img/monitoring/gpu/5-nvtop.png"></a></p>
-<p><a href="../img/monitoring/gpu/6-nvtop2.png"></a></p>
+<p><img alt="" src="../../img/monitoring/gpu/3-gpustat.png" /></p>
+<h3 id="nvtop">nvtop</h3>
+<p><img alt="" src="../../img/monitoring/gpu/4-nvtop.png" /></p>
+<h3 id="nvitop">nvitop</h3>
+<p><img alt="" src="../img/monitoring/gpu/5-nvtop.png" /></p>
+<p><img alt="" src="../img/monitoring/gpu/6-nvtop2.png" /></p>
 <h3 id="jupyterlab-nvdashboard">jupyterlab-nvdashboard</h3>
 <ul>
 <li><code>pip install --user jupyterlab_nvdashboard</code></li>
 </ul>
-<p><a href="../../img/monitoring/gpu/7-jupyterlab-nvdashboard.png"></a></p>
+<p><img alt="" src="../../img/monitoring/gpu/7-jupyterlab-nvdashboard.png" /></p>
 <h3 id="weights-biases">Weights &amp; Biases</h3>
-<p><a href="../../img/monitoring/gpu/8-wandb.png"></a></p>
+<p><img alt="" src="../../img/monitoring/gpu/8-wandb.png" /></p>
 <h3 id="grafana">Grafana</h3>
-<p><a href="../../img/monitoring/gpu/9-grafana.png"></a></p>
+<p><img alt="" src="../../img/monitoring/gpu/9-grafana.png" /></p>
 <h3 id="reference">Reference</h3>
 <p>https://lambdalabs.com/blog/keeping-an-eye-on-your-gpus-2/</p>
               
