@@ -48,9 +48,9 @@ a Python libary (`pip install --user gpustat`) to in a more concise, prettier, a
 
 ### nvitop
 
-![](../img/monitoring/gpu/5-nvtop.png)
+![](../img/monitoring/gpu/5-nvitop.png)
 
-![](../img/monitoring/gpu/6-nvtop2.png)
+![](../img/monitoring/gpu/6-nvitop2.png)
 
 
 
