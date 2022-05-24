@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Youtube dl - Documentación de Javi</title>
+    <title>Web Scraping - Documentación de Javi</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Youtube dl";
-        var mkdocs_page_input_path = "tools/youtube_dl.md";
+        var mkdocs_page_name = "Web Scraping";
+        var mkdocs_page_input_path = "tools/web_scraping.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -50,11 +50,13 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../bash_scripting/">Bash scripting</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../editors/">Editors (nano, vim, jupyter)</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../editors/">📝 Editors (nano, vim, jupyter)</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../install/">🛠️ Install software (pacman, pip, conda)</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../downloaders/">⬇️ Download data (curl, wget, youtube-dl)</a>
+                  <li class="toctree-l1"><a class="" href="../../tools_data/web_scraping.md">⬇️ Web Scraping (curl, wget, api)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../tools_data/cryptography.md">🔑 Cryptography</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../git/">GIT</a>
                   </li>
@@ -67,21 +69,17 @@
               </ul>
               <p class="caption"><span class="caption-text">Data tools</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/text/">TEXT,CVS,TSV (cut, paste, tr, sed, awk)</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/text/">⚪️ TEXT,CSV (cut, paste, tr, sed, awk)</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/html/">HTML (pup)</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/html/">🟡 HTML (pup)</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/json/">JSON (jq)</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/json/">🟠 JSON (jq)</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/pdf/">PDF (Xpdf, poppler)</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/pdf/">🔴 PDF (Xpdf, poppler)</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/image/">Image (ImageMagick)</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/image/">🔵 Image (ImageMagick)</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/sound/">🔈 Sound (ffmepg, sox)</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/video/">Video (ffmepg)</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/web_scraping/">Web Scraping</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/sound_video/">🟢 Sound,Video (ffmepg, sox)</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">AI</span></p>
@@ -134,7 +132,7 @@
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>Youtube dl</li>
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>Web Scraping</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -144,7 +142,87 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                
+                <h1 id="web-scraping">Web Scraping</h1>
+<h2 id="curl">Curl</h2>
+<ul>
+<li><code>curl -s</code>: </li>
+</ul>
+<h2 id="wget">Wget</h2>
+<pre><code class="language-bash">wget URL                    # Download and store in the current directory.
+wget -O CUSTOM_FILENAME URL # Download and store in the current directory with a different file name.
+wget -O - URL               # Download and redirects to stdout
+wget --limit-rate=200k URL  # Specify download speed. Here speed is limited to 200k.
+wget -c URL                 # Continue the Incomplete Download
+wget -b URL                 # Download in the Background
+wget --spider URL           # Not download the webpage, just check that it is there.
+wget --tries=75 URL         # Increase Total Number of Retry Attempts
+wget -i FILE_WITH_URLS.txt  # Download multiple URLs. Each line in the txt document is a URL.
+-m --mirror                 # Turns on infinite recursion and time-stamping, and keeps FTP directory listings.
+  -r --recursive            # Turn on recursive retrieving. The default maximum depth is 5.
+  -l depth --level=depth    # Set the maximum number of subdirectories that Wget will recurse into to depth. inf means infinite
+  -N --timestamping         # Turn on time-stamping.
+  --no-remove-listing       # Don't remove the .listing files generated by FTP retrievals.
+-p --page-requisites      # Downloads all files that are necessary to properly display a given HTML page.
+-k --convert-links        # After the download, convert the external links to make the work.
+-P ./LOCAL-DIR              # saves all the files and directories to the specified directory.
+wget --mirror --page-requisites --convert-links -P ./LOCAL_DIR URL # Download a Full Website
+wget -Q5m -i FILE_WITH_URLS.txt   # Quit Downloading When it Exceeds Certain Size
+wget --ftp-user=USERNAME --ftp-password=PASSWORD URL # FTP Download With wget
+wget --reject=gif URL       # Reject Certain File Types while Downloading
+wget -o download.log URL    # Log messages to a log file instead of stderr Using wget -o
+</code></pre>
+<blockquote>
+<h3 id="reference">Reference</h3>
+<ul>
+<li>https://www.queryhome.com/tech/54364/overview-about-wget-command</li>
+<li>https://www.linuxtechi.com/wget-command-practical-examples/</li>
+<li>https://www.youtube.com/watch?v=GJum2O2JM6M</li>
+<li>https://www.youtube.com/watch?v=-GCDJ26B4Ho</li>
+</ul>
+</blockquote>
+<h2 id="youtube_dl">Youtube_dl</h2>
+<h2 id="web-scraping-methods">Web Scraping methods</h2>
+<p>There are 3 approaches of web scrapping:</p>
+<ol>
+<li>Download static webpages + parse HTML with <code>pup</code></li>
+<li>Do API reverse engineering + parse JSON with <code>jq</code></li>
+<li>Use Selenium or Headless browser</li>
+</ol>
+<h3 id="1-static-webpages">1. Static webpages</h3>
+<p>Get a simple static page (server side rendered) with <code>curl</code> or <code>wget</code> and parse them</p>
+<p>Example:</p>
+<pre><code class="language-bash">page_html=$(curl -s $URL)
+title=$(echo $page_html | pup 'title' text{})
+echo $title
+
+col_A=$(echo $page_html | pup 'a.bb1c_ attr{href}')
+col_B=$(echo $page_html | pup 'span.price-sale text{}')
+table=$(paste col_A col_B)
+</code></pre>
+<blockquote>
+<p>https://www.youtube.com/watch?v=GJum2O2JM6M</p>
+</blockquote>
+<h3 id="2-api-reverse-engineering">2. API reverse engineering</h3>
+<p>Useful for dynamic websites. Find the hidden api that makes XHR requests to fullfill the webpage. XMLHttpRequest is used heavily in AJAX programming.</p>
+<ul>
+<li>Step 1: See the requests that the web is doing: Chrome or Firefox dev tools &gt; Network &gt; XHR requests</li>
+<li>Step 2: Copy the target request as cURL (right click)</li>
+<li>Step 3: Paste the target request in <a href="https://www.postman.com">Postman</a> or <a href="https://insomnia.rest">Insomnia</a></li>
+<li>Step 4: Elaborate your own script using <code>curl</code> + <code>jq</code></li>
+</ul>
+<h3 id="3-headless-browser-selenium">3. Headless browser &amp; Selenium</h3>
+<p>Use Selenium or Headless browser for automate the interaction with the web.</p>
+<ul>
+<li><strong>Selenium</strong></li>
+<li><strong>Google Chrome cli</strong></li>
+<li>lynx</li>
+<li>
+<p>lynx -dump -listonly http://aligajani.com </p>
+</li>
+<li>
+<p><code>google-chrome-stable --headless --disable-gpu --dump-dom 'URL' &gt; ~/file.html</code></p>
+</li>
+</ul>
               
             </div>
           </div><footer>

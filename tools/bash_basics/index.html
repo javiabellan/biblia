@@ -52,9 +52,11 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#navigate">Navigate</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#see-files">See files</a>
+    <li class="toctree-l2"><a class="reference internal" href="#see-files">👁️ See files</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#rename-move-and-copy-files">Rename, Move and copy files</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#compression">📦 Compression</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#compare-files-and-find-duplicates">Compare files and Find duplicates</a>
     </li>
@@ -62,29 +64,31 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#users-and-privileges-when-ls-l">Users and Privileges (when ls -l)</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#search">Search</a>
+    <li class="toctree-l3"><a class="reference internal" href="#search">🔎 Search</a>
         <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#see-current-date">See current date</a>
+    <li class="toctree-l4"><a class="reference internal" href="#see-current-date">📅 See current date</a>
     </li>
         </ul>
     </li>
         </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#hard-drives">Hard drives</a>
+    <li class="toctree-l2"><a class="reference internal" href="#hard-drives">💽 Hard drives</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#disk-usage">Disk usage</a>
+    <li class="toctree-l2"><a class="reference internal" href="#disk-usage">💽 Disk usage</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#deep-remove-files">Deep remove files</a>
+    <li class="toctree-l2"><a class="reference internal" href="#deep-remove-files">🗑️ Deep remove files</a>
     </li>
     </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../bash_scripting/">Bash scripting</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../editors/">Editors (nano, vim, jupyter)</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../editors/">📝 Editors (nano, vim, jupyter)</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../install/">🛠️ Install software (pacman, pip, conda)</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../downloaders/">⬇️ Download data (curl, wget, youtube-dl)</a>
+                  <li class="toctree-l1"><a class="" href="../../tools_data/web_scraping.md">⬇️ Web Scraping (curl, wget, api)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../tools_data/cryptography.md">🔑 Cryptography</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../git/">GIT</a>
                   </li>
@@ -97,21 +101,17 @@
               </ul>
               <p class="caption"><span class="caption-text">Data tools</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/text/">TEXT,CVS,TSV (cut, paste, tr, sed, awk)</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/text/">⚪️ TEXT,CSV (cut, paste, tr, sed, awk)</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/html/">HTML (pup)</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/html/">🟡 HTML (pup)</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/json/">JSON (jq)</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/json/">🟠 JSON (jq)</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/pdf/">PDF (Xpdf, poppler)</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/pdf/">🔴 PDF (Xpdf, poppler)</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/image/">Image (ImageMagick)</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/image/">🔵 Image (ImageMagick)</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/sound/">🔈 Sound (ffmepg, sox)</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/video/">Video (ffmepg)</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/web_scraping/">Web Scraping</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/sound_video/">🟢 Sound,Video (ffmepg, sox)</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">AI</span></p>
@@ -225,7 +225,7 @@ enable interpretation of backslash escapes</li>
 <li><code>ranger</code></li>
 </ul>
 </blockquote>
-<h2 id="see-files">See files</h2>
+<h2 id="see-files">👁️ See files</h2>
 <ul>
 <li><strong><code>cat</code></strong>: con<strong>cat</strong>enate and print files.</li>
 <li><strong><code>less</code></strong>: Interactive file viwer. Load the file dynamically (faster)</li>
@@ -263,6 +263,30 @@ enable interpretation of backslash escapes</li>
 <li><code>ln -s src_file dest_file</code>: Symbolic link</li>
 <li><code>ln -s -f src_file dest_file</code>: Symbolyc link</li>
 </ul>
+<h2 id="compression">📦 Compression</h2>
+<p>| Format | Compress    | Preview               | Decompress |
+|-------------|-----------------------|--------------
+|             | <code>7z l compressedFile</code> | <code>7z x compressedFile</code> | 
+| <code>| base64</code>  |                       | <code>base64 -d</code>
+| <code>zip file</code>  |             |
+        | <code>tar -cvf compr.tar /dir/</code>tar file<code>|             |</code>tar -xf<code>|             |
+|</code>.gz<code>|</code>gunzip<code>|             |
+        |</code>bzip2`     |             |</p>
+<p>| Format  | Extension       | Tool 
+|---------|-----------------|
+| ZIP     |                 |
+| TAR     | <code>.tar.gz</code> o <code>.tgz</code> |
+| GNU zip | <code>.gz</code> o <code>.gzip</code> |
+| p7zip   | <code>.7z</code>           |
+| BZIP2   | <code>.bz2</code>          | <code>bzip2 FILE(S)</code> | <code>bzip2 –d test.txt</code></p>
+<p>XZ
+GZIP 
+TAR
+WIM</p>
+<p>.tar.bz2 o .tbz2
+.tar.xz o .xz o .txz
+.gz o .gzip o .bzip2
+.tar.lzma o .tlz:</p>
 <h2 id="compare-files-and-find-duplicates">Compare files and Find duplicates</h2>
 <ul>
 <li><strong>OPTION A)</strong> Comparing filenames</li>
@@ -320,9 +344,9 @@ rwxrwxrwx  ownerUser userGroup 13B file
 <li><code>chattr +i file</code> Change special atributes of file (add i atribute)</li>
 <li><code>chattr -i file</code> Change special atributes of file (remove i atribute)</li>
 </ul>
-<h3 id="search">Search</h3>
+<h3 id="search">🔎 Search</h3>
 <ul>
-<li><code>find</code>: search on many paths</li>
+<li><code>find</code>: Search on many paths</li>
 <li><code>find /etc</code></li>
 <li><code>find {where} -name {what} -type {what type}</code></li>
 <li><code>find . -name src -type d</code> Find all directories named src</li>
@@ -336,12 +360,12 @@ rwxrwxrwx  ownerUser userGroup 13B file
 <li><code>updatedb</code> compiles some sort of indexed database for quickly searching. Usually updated daily via <code>cron</code></li>
 <li><code>locate</code> uses the database for quickly searching.</li>
 </ul>
-<h4 id="see-current-date">See current date</h4>
+<h4 id="see-current-date">📅 See current date</h4>
 <ul>
 <li><code>date</code></li>
 <li><code>cal</code></li>
 </ul>
-<h2 id="hard-drives">Hard drives</h2>
+<h2 id="hard-drives">💽 Hard drives</h2>
 <ol>
 <li>See available drives</li>
 <li>Option 1: <code>lsblk</code></li>
@@ -353,7 +377,7 @@ rwxrwxrwx  ownerUser userGroup 13B file
 <li>Umount</li>
 <li><code>umount /hdd</code></li>
 </ol>
-<h2 id="disk-usage">Disk usage</h2>
+<h2 id="disk-usage">💽 Disk usage</h2>
 <ul>
 <li><code>du</code>: <strong>d</strong>isk <strong>u</strong>sage</li>
 <li><code>du FILE</code>: Disk usage of a file</li>
@@ -363,7 +387,7 @@ rwxrwxrwx  ownerUser userGroup 13B file
 <li><code>duf</code></li>
 <li><code>df /</code></li>
 </ul>
-<h2 id="deep-remove-files">Deep remove files</h2>
+<h2 id="deep-remove-files">🗑️ Deep remove files</h2>
 <ul>
 <li><code>scrub</code>: Real delete files in disk</li>
 <li><code>shred</code>: Real delete files in disk</li>
