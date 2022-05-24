@@ -8,8 +8,8 @@ nav:
   - Bash scripting: tools/bash_scripting.md
   - 📝 Editors (nano, vim, jupyter): tools/editors.md
   - 🛠️ Install software (pacman, pip, conda): tools/install.md
-  - ⬇️ Web Scraping (curl, wget, api): tools_data/web_scraping.md
-  - 🔑 Cryptography: tools_data/cryptography.md
+  - ⬇️ Web Scraping (curl, wget, api): tools/web_scraping.md
+  - 🔑 Cryptography: tools/cryptography.md
   - GIT: tools/git.md
   - TMUX: tools/tmux.md
   - GNU parallel: tools/gnu_parallel.md
