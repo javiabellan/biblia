@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>cURL - Documentación de Javi</title>
+    <title>⬇️ Download data (curl, wget, youtube-dl) - Documentación de Javi</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "cURL";
-        var mkdocs_page_input_path = "tools/curl.md";
+        var mkdocs_page_name = "\u2b07\ufe0f Download data (curl, wget, youtube-dl)";
+        var mkdocs_page_input_path = "tools/downloaders.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -46,18 +46,26 @@
               </ul>
               <p class="caption"><span class="caption-text">Linux tools</span></p>
               <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" href="../bash_basics/">Bash fundamentals</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../bash_basics/">Bash fundamentals (cd, ls, ...)</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../bash_scripting/">Bash scripting</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../editors/">Editors (Nano, VIM)</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../editors/">Editors (nano, vim, jupyter)</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../install/">Install soft (pacman, pip, conda)</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../install/">🛠️ Install software (pacman, pip, conda)</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../cron/">CRON</a>
-                  </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">cURL</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">⬇️ Download data (curl, wget, youtube-dl)</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#curl">Curl</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#wget">Wget</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#reference">Reference</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#youtube_dl">Youtube_dl</a>
+    </li>
     </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../git/">GIT</a>
@@ -67,10 +75,6 @@
                   <li class="toctree-l1"><a class="reference internal" href="../gnu_parallel/">GNU parallel</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../ssh/">SSH</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../wget/">WGET</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../youtube_dl/">youtube-dl</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Data tools</span></p>
@@ -85,7 +89,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../tools_data/image/">Image (ImageMagick)</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/sound/">Sound (ffmepg, sox)</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/sound/">🔈 Sound (ffmepg, sox)</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../tools_data/video/">Video (ffmepg)</a>
                   </li>
@@ -143,7 +147,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>Linux tools &raquo;</li><li>cURL</li>
+          <li>Linux tools &raquo;</li><li>⬇️ Download data (curl, wget, youtube-dl)</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -153,12 +157,48 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="curl">Curl</h1>
+                <h1 id="download-data">Download data</h1>
+<h2 id="curl">Curl</h2>
+<h2 id="wget">Wget</h2>
+<ul>
+<li><code>wget URL</code>:                    Download and store in the current directory.</li>
+<li><code>wget -O CUSTOM_FILENAME URL</code>: Download and store in the current directory with a different file name.</li>
+<li><code>wget -O - URL</code>:               Download and redirects to stdout</li>
+<li><code>wget --limit-rate=200k URL</code>:  Specify download speed. Here speed is limited to 200k.</li>
+<li><code>wget -c URL</code>:                 Continue the Incomplete Download</li>
+<li><code>wget -b URL</code>:                 Download in the Background</li>
+<li><code>wget --spider URL</code>:           Not download the webpage, just check that it is there.</li>
+<li><code>wget --tries=75 URL</code>:         Increase Total Number of Retry Attempts</li>
+<li><code>wget -i FILE_WITH_URLS.txt</code>   Download multiple URLs. Each line in the txt document is a URL.</li>
+<li><code>-m</code> <code>--mirror</code>:               Turns on infinite recursion and time-stamping, and keeps FTP directory listings.</li>
+<li><code>-r</code> <code>--recursive</code>           Turn on recursive retrieving. The default maximum depth is 5.</li>
+<li><code>-l depth</code> <code>--level=depth</code>   Set the maximum number of subdirectories that Wget will recurse into to depth. <code>inf</code> means infinite</li>
+<li><code>-N</code> <code>--timestamping</code>        Turn on time-stamping.</li>
+<li><code>--no-remove-listing</code>        Don't remove the .listing files generated by FTP retrievals.</li>
+<li><code>-p</code> <code>--page-requisites</code>       Downloads all files that are necessary to properly display a given HTML page.</li>
+<li><code>-k</code> <code>--convert-links</code>         After the download, convert the external links to make the work.</li>
+</ul>
+<p>-P ./LOCAL-DIR saves all the files and directories to the specified directory.
+- <code>wget --mirror --page-requisites --convert-links -P ./LOCAL_DIR URL</code>: Download a Full Website
+- <code>wget -Q5m -i FILE_WITH_URLS.txt</code>:   Quit Downloading When it Exceeds Certain Size
+- <code>wget --ftp-user=USERNAME --ftp-password=PASSWORD URL</code>: FTP Download With wget
+- <code>wget --reject=gif URL</code>:       Reject Certain File Types while Downloading
+- <code>wget -o download.log URL</code>:    Log messages to a log file instead of stderr Using wget -o</p>
+<blockquote>
+<h3 id="reference">Reference</h3>
+<ul>
+<li>https://www.queryhome.com/tech/54364/overview-about-wget-command</li>
+<li>https://www.linuxtechi.com/wget-command-practical-examples/</li>
+<li>https://www.youtube.com/watch?v=GJum2O2JM6M</li>
+<li>https://www.youtube.com/watch?v=-GCDJ26B4Ho</li>
+</ul>
+</blockquote>
+<h2 id="youtube_dl">Youtube_dl</h2>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../cron/" class="btn btn-neutral float-left" title="CRON"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../install/" class="btn btn-neutral float-left" title="🛠️ Install software (pacman, pip, conda)"><span class="icon icon-circle-arrow-left"></span> Previous</a>
         <a href="../git/" class="btn btn-neutral float-right" title="GIT">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
@@ -182,7 +222,7 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../cron/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../install/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
       <span><a href="../git/" style="color: #fcfcfc">Next &raquo;</a></span>
