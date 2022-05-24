@@ -1,4 +1,8 @@
-# `Wget`
+# Download data
+
+## Curl
+
+## Wget
 
 - `wget URL`:                    Download and store in the current directory.
 - `wget -O CUSTOM_FILENAME URL`: Download and store in the current directory with a different file name.
@@ -30,3 +34,6 @@
 > - https://www.linuxtechi.com/wget-command-practical-examples/
 > - https://www.youtube.com/watch?v=GJum2O2JM6M
 > - https://www.youtube.com/watch?v=-GCDJ26B4Ho
+
+
+## Youtube_dl
