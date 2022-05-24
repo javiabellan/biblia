@@ -6,22 +6,21 @@ nav:
 - Linux tools:
   - Bash fundamentals (cd, ls, ...): tools/bash_basics.md
   - Bash scripting: tools/bash_scripting.md
-  - Editors (nano, vim, jupyter): tools/editors.md
+  - 📝 Editors (nano, vim, jupyter): tools/editors.md
   - 🛠️ Install software (pacman, pip, conda): tools/install.md
-  - ⬇️ Download data (curl, wget, youtube-dl): tools/downloaders.md
+  - ⬇️ Web Scraping (curl, wget, api): tools_data/web_scraping.md
+  - 🔑 Cryptography: tools_data/cryptography.md
   - GIT: tools/git.md
   - TMUX: tools/tmux.md
   - GNU parallel: tools/gnu_parallel.md
   - SSH: tools/ssh.md
 - Data tools:
-  - TEXT,CVS,TSV (cut, paste, tr, sed, awk): tools_data/text.md
-  - HTML (pup): tools_data/html.md
-  - JSON (jq): tools_data/json.md
-  - PDF (Xpdf, poppler): tools_data/pdf.md
-  - Image (ImageMagick): tools_data/image.md
-  - 🔈 Sound (ffmepg, sox): tools_data/sound.md
-  - Video (ffmepg): tools_data/video.md
-  - Web Scraping: tools_data/web_scraping.md
+  - ⚪️ TEXT,CSV (cut, paste, tr, sed, awk): tools_data/text.md
+  - 🟡 HTML (pup): tools_data/html.md
+  - 🟠 JSON (jq): tools_data/json.md
+  - 🔴 PDF (Xpdf, poppler): tools_data/pdf.md
+  - 🔵 Image (ImageMagick): tools_data/image.md
+  - 🟢 Sound,Video (ffmepg, sox): tools_data/sound_video.md
 - AI:
   - Deep Learning: ai/deep_learning.md
 - Programming:

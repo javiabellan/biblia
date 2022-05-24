@@ -1,24 +1,4 @@
-# Cryptography
-
-
-
-## Compresion (encode decode)
-
-| Encode      | Decode      |
-|-------------|-------------|
-| `| base64`  | `base64 -d` |
-| `zip file`  |             |
-| `tar file`  |             |
-| `tar -xf`   |             |
-| `gunzip`    |             |
-| `bzip2`     |             |
-
-### `7z` is universal
-
-- `7z l compressedFile`: Preview file names inside the comressed file
-- `7z x compressedFile`: Decompress
-
-
+# 🔑 Cryptography
 
 
 ## Hash function: MD5, SHA-1, SHA-256

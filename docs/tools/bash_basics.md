@@ -52,7 +52,7 @@ enable interpretation of backslash escapes
 > - `ranger`
 
 
-## See files
+## 👁️ See files
 
 - **`cat`**: con**cat**enate and print files.
 - **`less`**: Interactive file viwer. Load the file dynamically (faster)
@@ -88,6 +88,41 @@ enable interpretation of backslash escapes
   - `ln src_file dest_file`: Hard link
   - `ln -s src_file dest_file`: Symbolic link
   - `ln -s -f src_file dest_file`: Symbolyc link
+
+
+
+## 📦 Compression
+
+
+| Format | Compress    | Preview               | Decompress |
+|-------------|-----------------------|--------------
+|             | `7z l compressedFile` | `7z x compressedFile` | 
+| `| base64`  |                       | `base64 -d`
+| `zip file`  |             |
+        | `tar -cvf compr.tar /dir/  `tar file`  |             | `tar -xf`   |             |
+| `.gz` | `gunzip`    |             |
+        | `bzip2`     |             |
+
+
+| Format  | Extension       | Tool 
+|---------|-----------------|
+| ZIP     |                 |
+| TAR     | `.tar.gz` o `.tgz` |
+| GNU zip | `.gz` o `.gzip` |
+| p7zip   | `.7z`           |
+| BZIP2   | `.bz2`          | `bzip2 FILE(S)` | `bzip2 –d test.txt`
+
+XZ
+GZIP 
+TAR
+WIM
+
+.tar.bz2 o .tbz2
+.tar.xz o .xz o .txz
+.gz o .gzip o .bzip2
+.tar.lzma o .tlz:
+
+
 
 
 ## Compare files and Find duplicates
@@ -151,9 +186,9 @@ rwxrwxrwx  ownerUser userGroup 13B file
 
 
 
-### Search
+### 🔎 Search
 
-- `find`: search on many paths
+- `find`: Search on many paths
   - `find /etc`
   - `find {where} -name {what} -type {what type}`
   - `find . -name src -type d` Find all directories named src
@@ -167,12 +202,12 @@ rwxrwxrwx  ownerUser userGroup 13B file
   - `updatedb` compiles some sort of indexed database for quickly searching. Usually updated daily via `cron`
   - `locate` uses the database for quickly searching.
 
-#### See current date
+#### 📅 See current date
 - `date`
 - `cal`
 
 
-## Hard drives
+## 💽 Hard drives
 
 1. See available drives
    - Option 1: `lsblk`
@@ -187,7 +222,7 @@ rwxrwxrwx  ownerUser userGroup 13B file
 
 
 
-## Disk usage
+## 💽 Disk usage
 - `du`: **d**isk **u**sage
   - `du FILE`: Disk usage of a file
   - `du -sh */ | sort -rh`
@@ -197,7 +232,7 @@ rwxrwxrwx  ownerUser userGroup 13B file
 - `df /`
 
 
-## Deep remove files
+## 🗑️ Deep remove files
 
 - `scrub`: Real delete files in disk
 - `shred`: Real delete files in disk
