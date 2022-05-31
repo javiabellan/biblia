@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Hacking & Cibersecurity - Documentación de Javi</title>
+    <title>Cybersecurity - Documentación de Javi</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Hacking \u0026 Cibersecurity";
-        var mkdocs_page_input_path = "hacking.md";
+        var mkdocs_page_name = "Cybersecurity";
+        var mkdocs_page_input_path = "cybersecurity.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -108,8 +108,20 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../server/public_ip/">Public IP</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../server/security/">Security</a>
-                  </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Cybersecurity</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#blackarch-repos-in-arch-linux">Blackarch repos in Arch linux</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#encryption-in-communication">Encryption in communication</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#basic-auth-user-y-password">Basic Auth (user y password)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#restrict-by-ip">Restrict by IP</a>
+    </li>
+    </ul>
+                </li>
               </ul>
               <ul>
                 <li class="toctree-l1"><a class="reference internal" href="../hardware/">Hardware</a>
@@ -132,7 +144,7 @@
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>Hacking & Cibersecurity</li>
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>Cybersecurity</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -142,41 +154,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="hacking-cibersecurity">Hacking &amp; Cibersecurity</h1>
-<h2 id="videos">Videos</h2>
-<ul>
-<li><a href="https://youtube.com/s4vitar">Canal de YouTube primario de S4vitar</a> (En Español)</li>
-<li><a href="https://www.youtube.com/c/S4viOnLive">Canal de YouTube secundario de S4vitar</a> (En Español)</li>
-<li><a href="https://twitch.tv/s4vitaar">Twitch de S4vitar</a> con directos todos los días a las 21 horas (España peninsular!)</li>
-<li><a href="https://odysee.com/@s4vitar:f">S4vitar en Odysee</a> (En Español)</li>
-<li><a href="https://www.youtube.com/channel/UC0ArlFuFYMpEewyRBzdLHiw">Canal de YouTube de CyberMentor</a> (En Inglés)</li>
-<li><a href="https://youtube.com/ippsec">Canal de YouTube de Ippsec</a> (En Inglés)</li>
-<li><a href="https://www.youtube.com/user/RootOfTheNull">Canal de YouTube de John Hammond</a> (En Inglés)</li>
-</ul>
-<h2 id="plataformas-para-practicar-pentesting">Plataformas para practicar pentesting</h2>
-<ul>
-<li><a href="https://hackthebox.eu">HackTheBox</a></li>
-<li><a href="https://vulnhub.com">VulnHub</a></li>
-<li><a href="https://overthewire.org">OverTheWire</a></li>
-<li><a href="http://labs.gf0s.com">gf0s Labs</a></li>
-<li><a href="https://root-me.org">Root-Me</a></li>
-<li><a href="https://hackthissite.org">HackThisSite</a></li>
-<li><a href="https://picoctf.com">PicoCTF</a></li>
-<li><a href="https://defendtheweb.net">DefendTheWeb</a></li>
-<li><a href="https://google-gruyere.appspot.com">GoogleGruyere</a></li>
-<li><a href="http://www.itsecgames.com">bWapp</a></li>
-<li><a href="https://www.offensive-security.com">OffensiveSecurity</a></li>
-<li><a href="https://www.cybrary.it">Crybary</a></li>
-<li><a href="https://hackrocks.com">HackRocks</a></li>
-<li><a href="https://atenea.ccn-cert.cni.es">Atenea</a></li>
-<li><a href="https://hackmyvm.eu">HackMyVM</a></li>
-<li><a href="https://tryhackme.com">TryHackMe</a> warning  Con cuidado!</li>
-</ul>
-<blockquote>
-<ul>
-<li>https://www.sothis.tech/capture-the-flag-aprende-hacking-jugando</li>
-</ul>
-</blockquote>
+                <h1 id="cybersecurity">Cybersecurity</h1>
 <h2 id="blackarch-repos-in-arch-linux">Blackarch repos in Arch linux</h2>
 <pre><code class="language-bash">curl -O https://blackarch.org/strap.sh                               # Download script
 echo 8bfe5a569ba7d3b055077a4e5ceada94119cccef strap.sh | sha1sum -c  # Verify the SHA1 sum
@@ -184,9 +162,21 @@ chmod +x strap.sh                                                    # Set execu
 sudo ./strap.sh                                                      # Run strap.sh
 sudo pacman -Syu                                                     # Enable multilib
 </code></pre>
+<p>Prevent attacks and uses</p>
+<h2 id="encryption-in-communication">Encryption in communication</h2>
+<ul>
+<li>SSL</li>
+<li>TLS</li>
+</ul>
+<h2 id="basic-auth-user-y-password">Basic Auth (user y password)</h2>
+<h2 id="restrict-by-ip">Restrict by IP</h2>
               
             </div>
           </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../server/public_ip/" class="btn btn-neutral float-left" title="Public IP"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../hardware/" class="btn btn-neutral float-right" title="Hardware">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
 
   <hr/>
 
@@ -208,6 +198,10 @@ sudo pacman -Syu                                                     # Enable mu
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
+      <span><a href="../server/public_ip/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../hardware/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
