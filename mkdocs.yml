@@ -33,6 +33,6 @@ nav:
   - Firewall: server/firewall.md
   - Load balancer: server/load_balancer.md
   - Public IP: server/public_ip.md
-  - Security: server/security.md
+- Cybersecurity: cybersecurity.md
 - Hardware: hardware.md
 - Linux insides: linux_insides.md
