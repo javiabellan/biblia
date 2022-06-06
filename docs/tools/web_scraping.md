@@ -3,7 +3,7 @@
 
 ## Curl
 
-- `curl -s`: 
+- `curl -s`: Silent mode
 
 ## Wget
 
@@ -48,12 +48,23 @@ wget -o download.log URL    # Log messages to a log file instead of stderr Using
 
 ## Web Scraping methods
 
-There are 3 approaches of web scrapping:
+There are many approaches of web scrapping:
 
-1. Download static webpages + parse HTML with `pup`
-2. Do API reverse engineering + parse JSON with `jq`
-3. Use Selenium or Headless browser
+- Text browser (`lynx`) + parse text (`grep`)
+- Download HTML (`cURL`) + to text (`html2text`) + parse text (`grep`)
+- Download HTML (`cURL`) + parse HTML (`pup`)
+- Do API reverse engineering + parse JSON (`jq`)
+- Use Selenium or Headless browser
 
+
+
+### Text browser (`lynx`) + parse text (`grep`)
+
+```bash
+lynx -dump "$the_url" | grep "$the_str")
+```
+
+Reference: https://funprojects.blog/2022/04/07/web-scraping-with-1-line-of-bash/
 
 
 ### 1. Static webpages

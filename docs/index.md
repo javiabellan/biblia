@@ -1,7 +1,7 @@
 # Useful resources
 
 ### Bash
-- [Advanced Bash-Scripting Guide](calendar.google.com) by Mendel Cooper
+- [Advanced Bash-Scripting Guide](https://linux.die.net/abs-guide) by Mendel Cooper
 - [Bash Reference Manual](https://www.gnu.org/software/bash/manual/bash.html) ⭐
 - [The Bash Hackers Wiki](https://wiki.bash-hackers.org) ⭐⭐
 - [Greg Wooledge's Wiki](http://mywiki.wooledge.org/) ⭐⭐⭐ **Massive** information about Bash and UNIX.
@@ -72,6 +72,8 @@ https://www.youtube.com/user/Nietmetal
 
 
 ### Misc
+- [Fun Tech Projects](https://funprojects.blog)
+  - [A Web Server in 1 Line of Bash](https://funprojects.blog/2021/04/11/a-web-server-in-1-line-of-bash)
 - [Everything you ever wanted to know about terminals (but were afraid to ask)](http://xn--rpa.cc/irl/term.html)
 - [Why is using a shell loop to process text considered bad practice?](https://unix.stackexchange.com/questions/169716/why-is-using-a-shell-loop-to-process-text-considered-bad-practice)
 - [Documentación de Alvaro Sainz-Pardo](http://docs.alvarosainzpardo.com)

@@ -1,5 +1,14 @@
 # Bash scripting
 
+
+
+- variables in funcions has global scope by defualt, (unless you define with `local`)
+- functions can only return an integer in range of 0 - 255.
+
+
+
+
+
 ## Shells
 
 | Terminal        | Promt | Hashbang/Shebang | Configuration file |
