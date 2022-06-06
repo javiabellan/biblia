@@ -68,6 +68,8 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#web-scraping-methods">Web Scraping methods</a>
         <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#text-browser-lynx-parse-text-grep">Text browser (lynx) + parse text (grep)</a>
+    </li>
     <li class="toctree-l3"><a class="reference internal" href="#1-static-webpages">1. Static webpages</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#2-api-reverse-engineering">2. API reverse engineering</a>
@@ -170,7 +172,7 @@
                 <h1 id="web-scraping">Web Scraping</h1>
 <h2 id="curl">Curl</h2>
 <ul>
-<li><code>curl -s</code>: </li>
+<li><code>curl -s</code>: Silent mode</li>
 </ul>
 <h2 id="wget">Wget</h2>
 <pre><code class="language-bash">wget URL                    # Download and store in the current directory.
@@ -207,12 +209,18 @@ wget -o download.log URL    # Log messages to a log file instead of stderr Using
 </blockquote>
 <h2 id="youtube_dl">Youtube_dl</h2>
 <h2 id="web-scraping-methods">Web Scraping methods</h2>
-<p>There are 3 approaches of web scrapping:</p>
-<ol>
-<li>Download static webpages + parse HTML with <code>pup</code></li>
-<li>Do API reverse engineering + parse JSON with <code>jq</code></li>
+<p>There are many approaches of web scrapping:</p>
+<ul>
+<li>Text browser (<code>lynx</code>) + parse text (<code>grep</code>)</li>
+<li>Download HTML (<code>cURL</code>) + to text (<code>html2text</code>) + parse text (<code>grep</code>)</li>
+<li>Download HTML (<code>cURL</code>) + parse HTML (<code>pup</code>)</li>
+<li>Do API reverse engineering + parse JSON (<code>jq</code>)</li>
 <li>Use Selenium or Headless browser</li>
-</ol>
+</ul>
+<h3 id="text-browser-lynx-parse-text-grep">Text browser (<code>lynx</code>) + parse text (<code>grep</code>)</h3>
+<pre><code class="language-bash">lynx -dump &quot;$the_url&quot; | grep &quot;$the_str&quot;)
+</code></pre>
+<p>Reference: https://funprojects.blog/2022/04/07/web-scraping-with-1-line-of-bash/</p>
 <h3 id="1-static-webpages">1. Static webpages</h3>
 <p>Get a simple static page (server side rendered) with <code>curl</code> or <code>wget</code> and parse them</p>
 <p>Example:</p>
