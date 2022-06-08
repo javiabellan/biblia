@@ -41,10 +41,11 @@
 	- [Canal de YouTube secundario de S4vitar](https://www.youtube.com/c/S4viOnLive) (En Español)
 	- [Twitch de S4vitar](https://twitch.tv/s4vitaar) con directos todos los días a las 21 horas (España peninsular!)
 	- [S4vitar en Odysee](https://odysee.com/@s4vitar:f) (En Español)
-- [Canal de YouTube de CyberMentor](https://www.youtube.com/channel/UC0ArlFuFYMpEewyRBzdLHiw) (En Inglés)
-- [Canal de YouTube de Ippsec](https://youtube.com/ippsec) (En Inglés)
-- [Canal de YouTube de John Hammond](https://www.youtube.com/user/RootOfTheNull) (En Inglés)
-
+- Canales de Youtube en inglés:
+	- [Canal de YouTube de CyberMentor](https://www.youtube.com/channel/UC0ArlFuFYMpEewyRBzdLHiw)
+	- [Canal de YouTube de Ippsec](https://youtube.com/ippsec) 
+	- [Canal de YouTube de John Hammond](https://www.youtube.com/user/RootOfTheNull)
+	- [Canal de YouTube de HackerSploit](https://www.youtube.com/c/HackerSploit)
 
 ### Plataformas para practicar
 - [HackTheBox](https://hackthebox.eu)
