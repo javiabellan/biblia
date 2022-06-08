@@ -64,7 +64,17 @@
     </li>
         </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#youtube_dl">Youtube_dl</a>
+    <li class="toctree-l2"><a class="reference internal" href="#loginsessioncookie">Login/Session/Cookie</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#hide-yoir-ip-with-proxy-servers">Hide yoir IP with proxy servers</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#1-gimmeproxy">1. gimmeproxy</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#2-they-will-provide-json-response-with-all-proxy-data-which-you-can-use-later-as-needed">2. They will provide JSON response with all proxy data which you can use later as needed:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#3-use-the-proxy-with-curl">3. Use the proxy with curl</a>
+    </li>
+        </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#web-scraping-methods">Web Scraping methods</a>
         <ul>
@@ -77,6 +87,8 @@
     <li class="toctree-l3"><a class="reference internal" href="#3-headless-browser-selenium">3. Headless browser &amp; Selenium</a>
     </li>
         </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#refenrences">Refenrences</a>
     </li>
     </ul>
                   </li>
@@ -207,7 +219,31 @@ wget -o download.log URL    # Log messages to a log file instead of stderr Using
 <li>https://www.youtube.com/watch?v=-GCDJ26B4Ho</li>
 </ul>
 </blockquote>
-<h2 id="youtube_dl">Youtube_dl</h2>
+<h2 id="loginsessioncookie">Login/Session/Cookie</h2>
+<h2 id="hide-yoir-ip-with-proxy-servers">Hide yoir IP with proxy servers</h2>
+<blockquote>
+<ul>
+<li><strong>BAD</strong>: you ---------&gt; request to target</li>
+<li><strong>GOOD</strong>: you ---------&gt; requets to proxy server -------&gt; request to target</li>
+</ul>
+</blockquote>
+<h3 id="1-gimmeproxy">1. <a href="https://gimmeproxy.com">gimmeproxy</a></h3>
+<p>Make the following request:</p>
+<p>https://gimmeproxy.com/api/getProxy</p>
+<h3 id="2-they-will-provide-json-response-with-all-proxy-data-which-you-can-use-later-as-needed">2. They will provide JSON response with all proxy data which you can use later as needed:</h3>
+<pre><code class="language-json">{
+  &quot;supportsHttps&quot;: true,
+  &quot;protocol&quot;: &quot;socks5&quot;,
+  &quot;ip&quot;: &quot;179.162.22.82&quot;,
+  &quot;port&quot;: &quot;36915&quot;,
+  ...
+}
+</code></pre>
+<h3 id="3-use-the-proxy-with-curl">3. Use the proxy with curl</h3>
+<pre><code class="language-bash"># -x      [protocol://]host[:port]
+# --proxy [protocol://]host[:port]
+curl -x socks5://179.162.22.82:36915 http://example.com
+</code></pre>
 <h2 id="web-scraping-methods">Web Scraping methods</h2>
 <p>There are many approaches of web scrapping:</p>
 <ul>
@@ -255,6 +291,13 @@ table=$(paste col_A col_B)
 <li>
 <p><code>google-chrome-stable --headless --disable-gpu --dump-dom 'URL' &gt; ~/file.html</code></p>
 </li>
+</ul>
+<h2 id="refenrences">Refenrences</h2>
+<ul>
+<li>https://www.youtube.com/c/JohnWatsonRooney</li>
+<li>https://www.youtube.com/channel/UCBGkweoKCtSBx6GEXRYIWLg/videos</li>
+<li>https://www.youtube.com/playlist?list=PLcUid3OP_4OU0zHx1qlCMdB6pEP1zeaY3</li>
+<li>https://www.youtube.com/watch?v=kmlYp8I1MJs&amp;list=PLISuMnTdVU-xOHf3jEtiK1B_g5HFgXCb-</li>
 </ul>
               
             </div>
