@@ -39,11 +39,46 @@ wget -o download.log URL    # Log messages to a log file instead of stderr Using
 > - https://www.youtube.com/watch?v=-GCDJ26B4Ho
 
 
-## Youtube_dl
+
+## Login/Session/Cookie
 
 
 
 
+
+
+
+
+
+## Hide yoir IP with proxy servers
+
+> - **BAD**: you ---------> request to target
+> - **GOOD**: you ---------> requets to proxy server -------> request to target
+
+### 1. [gimmeproxy](https://gimmeproxy.com)
+
+Make the following request:
+
+https://gimmeproxy.com/api/getProxy
+
+
+### 2. They will provide JSON response with all proxy data which you can use later as needed:
+```json
+{
+  "supportsHttps": true,
+  "protocol": "socks5",
+  "ip": "179.162.22.82",
+  "port": "36915",
+  ...
+}
+```
+
+### 3. Use the proxy with curl
+```bash
+# -x      [protocol://]host[:port]
+# --proxy [protocol://]host[:port]
+curl -x socks5://179.162.22.82:36915 http://example.com
+```
 
 
 ## Web Scraping methods
@@ -107,3 +142,14 @@ Use Selenium or Headless browser for automate the interaction with the web.
   - lynx -dump -listonly http://aligajani.com 
 
   - `google-chrome-stable --headless --disable-gpu --dump-dom 'URL' > ~/file.html`
+
+
+
+
+
+## Refenrences
+
+- https://www.youtube.com/c/JohnWatsonRooney
+- https://www.youtube.com/channel/UCBGkweoKCtSBx6GEXRYIWLg/videos
+- https://www.youtube.com/playlist?list=PLcUid3OP_4OU0zHx1qlCMdB6pEP1zeaY3
+- https://www.youtube.com/watch?v=kmlYp8I1MJs&list=PLISuMnTdVU-xOHf3jEtiK1B_g5HFgXCb-
