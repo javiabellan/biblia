@@ -1,9 +1,14 @@
 # Web Scraping
 
 
+
 ## Curl
 
-- `curl -s`: Silent mode
+- `-d, --data <data>`: (HTTP) Sends the specified data in a POST request to the HTTP server.
+- `-i, --include`: Show HTTP response headers.
+- `-s, --silent`: Silent or quiet mode. Don't show progress meter or error messages.
+- `-v, --verbose`: Verbose. Show request headers (>) and response headers (<).
+
 
 ## Wget
 

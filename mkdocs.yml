@@ -23,6 +23,9 @@ nav:
   - 🟢 Sound,Video (ffmepg, sox): tools_data/sound_video.md
 - AI:
   - Deep Learning: ai/deep_learning.md
+- Cybersecurity:
+  - 🗡️ Pentesting: cybersecurity/pentesting.md
+  - 🛡️ Deffensive: cybersecurity/deffensive.md
 - Programming:
   - Monitoring: programming/monitoring.md
   - Profiling:  programming/profiling.md
@@ -33,6 +36,6 @@ nav:
   - Firewall: server/firewall.md
   - Load balancer: server/load_balancer.md
   - Public IP: server/public_ip.md
-- Cybersecurity: cybersecurity.md
+
 - Hardware: hardware.md
 - Linux insides: linux_insides.md
