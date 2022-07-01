@@ -118,6 +118,29 @@ command >   /dev/null   # When we dont care about the output of a command
 echo hello >  hello.txt # Crea (o sobrescribe) un fichero con la salida del programa anterior
 ```
 
+### Redirect output of several comandas
+
+```bash
+{
+   command1
+   command2 
+} > /some/file
+
+{ command1;  command2;  } >/some/file
+
+{ command1 & command2 & } >/some/file
+```
+
+
+### Inplace modify the same file: `sponge`
+
+```bash
+some_command_which_modifies /some/file | sponge /some/file
+
+head /some/file | sponge /some/file
+```
+
+
 ### Append to file: `>>`
 
 ```bash
@@ -155,6 +178,39 @@ rm $(ls)       # same of above
 ### Named Pipes: `mkfifo`
 
 
+
+
+## CRON
+
+```
+┌───────────── minute (0 - 59)
+│ ┌───────────── hour (0 - 23)
+│ │ ┌───────────── day of the month (1 - 31)
+│ │ │ ┌───────────── month (1 - 12)
+│ │ │ │ ┌───────────── day of the week (0=Sun - 6=Sat)
+│ │ │ │ │                                   
+* * * * *
+```
+
+| minute | hour  | day of the month | month | day of the week       |
+|--------|-------|------------------|-------|-----------------------|
+| 0..59  | 0..23 | 1..31            | 1..12 | 0..6 (Sun,Mon,..,Sat) |
+
+- `*` means “every” 
+- `,` value list separator
+- `-` Range of values.
+- `/` step values. Eg. `/5 * * * *` means every 5 minutes. 
+
+### Examples:
+
+- `* * * * *`: Every minute
+- `0 * * * *`: Every hour (at minute 0)
+- `0 0 * * *`: Every day (at 00:00)
+- `0 0 * * 0`: Every week (at 00:00 on Sunday)
+- `0 0 1 * *`: Mothly (at 00:00 on day 1)
+- `0 0 1 1 *`: Yearly (at 00:00 on day 1 of January)
+
+Check [crontab guru](https://crontab.guru) to come up with the cron syntax for your schedule.
 
 
 
