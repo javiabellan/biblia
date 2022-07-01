@@ -60,13 +60,29 @@
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">GIT</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#git-basics">Git basics</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#setup-save-github-credential">Setup: Save Github credential</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#old-way-deprecated-and-unsecure">Old way (deprecated and unsecure)</a>
     </li>
         </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#undo-local-changes">Undo local changes</a>
+    <li class="toctree-l2"><a class="reference internal" href="#github-actions">Github actions</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#basic-syntax">Basic syntax</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#ejemplos-de-triggers-disponibles">Ejemplos de triggers disponibles</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#ejemplos-de-acciones-disponibles">Ejemplos de acciones disponibles</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#ejecucion-de-trabajos-en-paralelo">Ejecucion de trabajos en paralelo</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#ejecucion-condicional">Ejecucion condicional</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#references">References</a>
+    </li>
+        </ul>
     </li>
     </ul>
                   </li>
@@ -159,6 +175,11 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="git">Git</h1>
+<h2 id="git-basics">Git basics</h2>
+<p>Undo local changes:</p>
+<pre><code class="language-bash">git checkout .  # Revert modified files (in this . directory)
+git clean -fd   # Remove new untracked files (-f) and new directories (-d): 
+</code></pre>
 <h2 id="setup-save-github-credential">Setup: Save Github credential</h2>
 <ol>
 <li>Go to Github.com -&gt; Settings -&gt; Developer settings -&gt; Personal access tokens <a href="https://github.com/settings/tokens">https://github.com/settings/tokens</a></li>
@@ -180,10 +201,116 @@
 <li>Execute <code>git config --global credential.helper store</code></li>
 </ol>
 </blockquote>
-<h2 id="undo-local-changes">Undo local changes</h2>
-<pre><code class="language-bash">git checkout .  # Revert modified files (in this . directory)
-git clean -fd   # Remove new untracked files (-f) and new directories (-d): 
+<h2 id="github-actions">Github actions</h2>
+<p>Archivo YAML ubicado en: <code>.github/workflows/mi_nombre.yml</code></p>
+<h3 id="basic-syntax">Basic syntax</h3>
+<p>Minimal action example:</p>
+<pre><code class="language-yaml">name: Simple workflow          # 1) Nombre de la acción/workflow [OPTIONAL]
+on: [push]                     # 2) Cuando se ejecutará (el trigger) [REQUIRED]
+jobs:                          # 3) Que hará
+   example-job-1:              #    Trabajo 1
+      runs-on: ubuntu-latest   #    Maquina virtual donde se ejecuta
+      steps:                
+         - run: echo &quot;The job 1 was automatically triggered!&quot;
 </code></pre>
+<h3 id="ejemplos-de-triggers-disponibles">Ejemplos de triggers disponibles</h3>
+<pre><code class="language-yaml">on:
+   # MANUALMENTE (desde la interfaz de github)
+   workflow_dispatch:
+
+   # PERIODICAMENTE
+   schedule:
+      # * is a special character in YAML so you have to quote this string
+      - cron:  '30 5,17 * * *'
+
+   # Cuando haces un push al repo
+   [push]
+
+   # Cuando haces un push en la rama master
+   push:
+      branches:
+            - master
+
+   # Cuando te hacen crean un pull request o un issue
+   [pull_request_target, issues]
+</code></pre>
+<h3 id="ejemplos-de-acciones-disponibles">Ejemplos de acciones disponibles</h3>
+<ul>
+<li><code>run</code>: Acciones propias para ejecutar comandos</li>
+<li><code>uses</code>: Acciones de terceros disponibles el github actions marketplace. sintaxis: <code>user/repo@version</code>.</li>
+</ul>
+<pre><code class="language-yaml"># ACCION QUE TE CLONA EL REPO EN LA MAQUINA VIRTUAL
+- name: ⬇️ Checkout the repo
+  uses: actions/checkout@master
+  with:
+    fetch-depth: 1
+
+#######################
+
+# ACCION QUE PONE EL PYTHON EN LA MAQUINA VIRTUAL
+- name: 🐍 Set up Python 3.8
+  uses: actions/setup-python@v2
+  with:
+    python-version: '3.8'
+
+# ACCION QUE TE INSTALA ALGUN PAQUETE DE PYTHON
+- name: 💿 Install Zotero2Readwise Python package
+  run: pip install zotero2readwise
+
+# ACCION QUE EJECUTA ALGUN SCRIPT DE PYTHON
+- name: 🚀 Run Automation
+  run: python run.py ${{ secrets.READWISE_TOKEN }} ${{ secrets.ZOTERO_KEY }} ${{ secrets.ZOTERO_ID }}
+
+##################
+
+- name: Give permision to some script
+  run: chmod +x my_script
+
+- name: Run script
+  run: ./permision
+
+##################
+
+- name: Commit and push changes
+  run: |
+    git config --global user.name &quot;your username&quot;
+    git config --global user.email &quot;your email&quot;
+
+    git add -A
+    git commit -m &quot;commit message&quot;
+    git push
+</code></pre>
+<h3 id="ejecucion-de-trabajos-en-paralelo">Ejecucion de trabajos en paralelo</h3>
+<pre><code class="language-yaml">name: Simple workflow  # Nombre de la acción/workflow
+on: [push]             # Cuando se ejecuta (el trigger)
+jobs:
+   example-job-1:     # Trabajo 1
+      runs-on: ubuntu-latest # Maquina virtual donde se ejecuta
+      steps:
+         - run: echo &quot;The job 1 was automatically triggered!&quot;
+
+   example-job-1:     # Trabajo 2 (se ejecuta en paralelo al trabajo 1)
+      runs-on: windows-latest # Maquina virtual donde se ejecuta
+      steps:
+         - run: echo &quot;The job 2 was automatically triggered!&quot;
+</code></pre>
+<h3 id="ejecucion-condicional">Ejecucion condicional</h3>
+<pre><code class="language-yaml">name: Simple workflow  # Nombre de la acción/workflow
+on: [push]             # Cuando se ejecuta (el trigger)
+jobs:
+   example-job-1:     # Trabajo 1
+      runs-on: ubuntu-latest # Maquina virtual donde se ejecuta
+      steps:
+         - run: echo &quot;The job 1 was automatically triggered!&quot;
+
+   example-job-1:     # Trabajo 2 (se ejecuta despues del trabajo 1)
+      needs: example-job-1
+      runs-on: windows-latest # Maquina virtual donde se ejecuta
+      steps:
+         - run: echo &quot;The job 2 was automatically triggered!&quot;
+</code></pre>
+<h3 id="references">References</h3>
+<p>https://www.aaronsaray.com/2021/github-actions-pages-scheduled-data-updates</p>
               
             </div>
           </div><footer>

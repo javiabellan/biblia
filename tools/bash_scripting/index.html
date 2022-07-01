@@ -72,6 +72,10 @@
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#redirect-fromto-file">Redirect from/to file: &lt; &gt;</a>
     </li>
+    <li class="toctree-l3"><a class="reference internal" href="#redirect-output-of-several-comandas">Redirect output of several comandas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#inplace-modify-the-same-file-sponge">Inplace modify the same file: sponge</a>
+    </li>
     <li class="toctree-l3"><a class="reference internal" href="#append-to-file">Append to file: &gt;&gt;</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#_1">&lt;&lt;</a>
@@ -85,6 +89,12 @@
     <li class="toctree-l3"><a class="reference internal" href="#regular-pipes">Regular Pipes |</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#named-pipes-mkfifo">Named Pipes: mkfifo</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#cron">CRON</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#examples">Examples:</a>
     </li>
         </ul>
     </li>
@@ -331,6 +341,21 @@ command &amp;&gt;  file    # Redirect stdout &amp; stderr to file  FD1 = FD2 = f
 command &gt;   /dev/null   # When we dont care about the output of a command
 echo hello &gt;  hello.txt # Crea (o sobrescribe) un fichero con la salida del programa anterior
 </code></pre>
+<h3 id="redirect-output-of-several-comandas">Redirect output of several comandas</h3>
+<pre><code class="language-bash">{
+   command1
+   command2 
+} &gt; /some/file
+
+{ command1;  command2;  } &gt;/some/file
+
+{ command1 &amp; command2 &amp; } &gt;/some/file
+</code></pre>
+<h3 id="inplace-modify-the-same-file-sponge">Inplace modify the same file: <code>sponge</code></h3>
+<pre><code class="language-bash">some_command_which_modifies /some/file | sponge /some/file
+
+head /some/file | sponge /some/file
+</code></pre>
 <h3 id="append-to-file">Append to file: <code>&gt;&gt;</code></h3>
 <pre><code class="language-bash">command &gt;&gt;  file    # Redirect and append stdout to a file.
 command 1&gt;&gt; file    # Redirect and append stdout to file
@@ -357,6 +382,51 @@ ls | xargs rm  # | xargs is when the inputs is IN THE ARGUMENTS
 rm $(ls)       # same of above
 </code></pre>
 <h3 id="named-pipes-mkfifo">Named Pipes: <code>mkfifo</code></h3>
+<h2 id="cron">CRON</h2>
+<pre><code>┌───────────── minute (0 - 59)
+│ ┌───────────── hour (0 - 23)
+│ │ ┌───────────── day of the month (1 - 31)
+│ │ │ ┌───────────── month (1 - 12)
+│ │ │ │ ┌───────────── day of the week (0=Sun - 6=Sat)
+│ │ │ │ │                                   
+* * * * *
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>minute</th>
+<th>hour</th>
+<th>day of the month</th>
+<th>month</th>
+<th>day of the week</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0..59</td>
+<td>0..23</td>
+<td>1..31</td>
+<td>1..12</td>
+<td>0..6 (Sun,Mon,..,Sat)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>*</code> means “every” </li>
+<li><code>,</code> value list separator</li>
+<li><code>-</code> Range of values.</li>
+<li><code>/</code> step values. Eg. <code>/5 * * * *</code> means every 5 minutes. </li>
+</ul>
+<h3 id="examples">Examples:</h3>
+<ul>
+<li><code>* * * * *</code>: Every minute</li>
+<li><code>0 * * * *</code>: Every hour (at minute 0)</li>
+<li><code>0 0 * * *</code>: Every day (at 00:00)</li>
+<li><code>0 0 * * 0</code>: Every week (at 00:00 on Sunday)</li>
+<li><code>0 0 1 * *</code>: Mothly (at 00:00 on day 1)</li>
+<li><code>0 0 1 1 *</code>: Yearly (at 00:00 on day 1 of January)</li>
+</ul>
+<p>Check <a href="https://crontab.guru">crontab guru</a> to come up with the cron syntax for your schedule.</p>
 <h2 id="example-bash-script">Example Bash script</h2>
 <pre><code class="language-bash">############## Variables
 myVar=someValue
