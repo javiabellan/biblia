@@ -62,13 +62,13 @@
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#git-basics">Git basics</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#setup-save-github-credential">Setup: Save Github credential</a>
+    <li class="toctree-l2"><a class="reference internal" href="#github-cli-setup-save-github-credential">Github CLI (Setup: Save Github credential)</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#old-way-deprecated-and-unsecure">Old way (deprecated and unsecure)</a>
     </li>
         </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#github-actions">Github actions</a>
+    <li class="toctree-l2"><a class="reference internal" href="#github-actions">Github Actions</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#basic-syntax">Basic syntax</a>
     </li>
@@ -180,7 +180,8 @@
 <pre><code class="language-bash">git checkout .  # Revert modified files (in this . directory)
 git clean -fd   # Remove new untracked files (-f) and new directories (-d): 
 </code></pre>
-<h2 id="setup-save-github-credential">Setup: Save Github credential</h2>
+<h2 id="github-cli-setup-save-github-credential">Github CLI (Setup: Save Github credential)</h2>
+<p>https://atareao.es/software/programacion/github-en-el-terminal/</p>
 <ol>
 <li>Go to Github.com -&gt; Settings -&gt; Developer settings -&gt; Personal access tokens <a href="https://github.com/settings/tokens">https://github.com/settings/tokens</a></li>
 <li>Generate a Personal Access Token (PAT) with the minimum required scopes are 'repo', 'read:org', 'workflow'</li>
@@ -201,7 +202,7 @@ git clean -fd   # Remove new untracked files (-f) and new directories (-d):
 <li>Execute <code>git config --global credential.helper store</code></li>
 </ol>
 </blockquote>
-<h2 id="github-actions">Github actions</h2>
+<h2 id="github-actions">Github Actions</h2>
 <p>Archivo YAML ubicado en: <code>.github/workflows/mi_nombre.yml</code></p>
 <h3 id="basic-syntax">Basic syntax</h3>
 <p>Minimal action example:</p>
@@ -310,7 +311,10 @@ jobs:
          - run: echo &quot;The job 2 was automatically triggered!&quot;
 </code></pre>
 <h3 id="references">References</h3>
-<p>https://www.aaronsaray.com/2021/github-actions-pages-scheduled-data-updates</p>
+<ul>
+<li><a href="https://www.aaronsaray.com/2021/github-actions-pages-scheduled-data-updates">Using Github Actions &amp; Pages to Publish Static Pages Based on Dynamic Data</a> (Oct 2, 2021)</li>
+<li><a href="https://dagshub.com/blog/ci-cd-for-machine-learning-test-and-and-deploy-your-ml-model-with-github-actions">CI/CD for Machine Learning: Test and Deploy Your ML Model with GitHub Actions</a> (Jun 08, 2022)</li>
+</ul>
               
             </div>
           </div><footer>

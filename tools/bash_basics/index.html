@@ -48,6 +48,8 @@
               <ul class="current">
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Bash fundamentals (cd, ls, ...)</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#your-system-is-alive">Your system is alive!</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#print-echo-printf">Print: echo, printf</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#navigate">Navigate</a>
@@ -188,10 +190,26 @@ tldr echo   # Muestra el manual de ejemplos de un programa
 lsb_release -a # Ver mi sistema operativo
 
 ############## Sitios
+/dev        # devices
+/proc       # Porcesos 
 /sys        # Los ficheros representan los propios devices del ordenador
   # se puede cambiar el brillo de la pantalla, los leds, etc
   cat /sys/class/thermal/thermal_zone*/temp # Ver temperatura CPU
 </code></pre>
+<h2 id="your-system-is-alive">Your system is alive!</h2>
+<ul>
+<li><code>lsof</code>: lists open files (belonging to active processes).<ul>
+<li><code>lsof -iTCP -sTCP:LISTEN</code> to list all processes that are listening on a TCP port for network requests.</li>
+</ul>
+</li>
+<li><code>inotify</code>: monitoring filesystem events</li>
+<li><code>inotifywait</code>: wait for changes to files using inotify</li>
+<li><code>iostat</code>: Report Central Processing Unit (CPU) statistics and input/output statistics for devices, partitions and network filesystems (NFS).</li>
+<li><code>socat</code>:<ul>
+<li><code>socat TCP-LISTEN:9000,fork,reuseaddr,bind=localhost TCP:$HOSTNAME:9000</code>: If the connection is refused by the server, will use socat to forward traffic from localhost:9000 to $HOSTNAME:9000 and back.</li>
+</ul>
+</li>
+</ul>
 <h2 id="print-echo-printf">Print: <code>echo</code>, <code>printf</code></h2>
 <ul>
 <li><code>echo</code></li>
@@ -310,6 +328,7 @@ WIM</p>
 </ul>
 </li>
 </ul>
+<p>fdupes: https://atareao.es/software/utilidades/eliminar-duplicados</p>
 <blockquote>
 <ul>
 <li>https://unix.stackexchange.com/questions/28895/open-source-duplicate-image-finder-for-linux</li>
@@ -325,10 +344,10 @@ WIM</p>
 <li><code>89 50 4e 47 0d 0a 1a 0a</code> magic number of PNG file</li>
 </ul>
 <h2 id="users-and-privileges-when-ls-l">Users and Privileges (when <code>ls -l</code>)</h2>
-<pre><code> -------&gt; Permission of owner
- |  ----&gt; Permission of users of same group
- |  |  -&gt; Permission of other users 
- |  |  |
+<pre><code> ┌───────&gt; Permission of owner
+ │  ┌────&gt; Permission of users of same group
+ │  │  ┌─&gt; Permission of other users 
+ │  │  │
 / \/ \/ \
 rwxrwxrwx  ownerUser userGroup 13B file
 </code></pre>

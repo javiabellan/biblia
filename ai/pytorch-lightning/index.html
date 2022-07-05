@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>HTTP server - Documentación de Javi</title>
+    <title>Pytorch lightning - Documentación de Javi</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "HTTP server";
-        var mkdocs_page_input_path = "server/http_protocol.md";
+        var mkdocs_page_name = "Pytorch lightning";
+        var mkdocs_page_input_path = "ai/pytorch-lightning.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -84,7 +84,7 @@
               </ul>
               <p class="caption"><span class="caption-text">AI</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../ai/deep_learning/">Deep Learning</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../deep_learning/">Deep Learning</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Cybersecurity</span></p>
@@ -107,13 +107,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Server</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../wakeonlan/">Wakeonlan</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../server/wakeonlan/">Wakeonlan</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../firewall/">Firewall</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../server/firewall/">Firewall</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../load_balancer/">Load balancer</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../server/load_balancer/">Load balancer</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../public_ip/">Public IP</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../server/public_ip/">Public IP</a>
                   </li>
               </ul>
               <ul>
@@ -137,7 +137,7 @@
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>HTTP server</li>
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>Pytorch lightning</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -147,80 +147,49 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="http-server">HTTP server</h1>
-<p>https://atareao.es/software/utilidades/httpie-un-cliente-http-para-la-linea-de-comandos/</p>
-<h2 id="python-http-server">Python HTTP server</h2>
-<pre><code class="language-bash">python3 -m http.server 9000
+                <p>from pytorch_lightning.utilities.cli import LightningCLI</p>
+<p>cli = LightningCLI()</p>
+<h1 id="fit-runs-the-full-optimization-routine">fit         Runs the full optimization routine.</h1>
+<h1 id="validate-perform-one-evaluation-epoch-over-the-validation-set">validate    Perform one evaluation epoch over the validation set.</h1>
+<h1 id="test-perform-one-evaluation-epoch-over-the-test-set">test        Perform one evaluation epoch over the test set.</h1>
+<h1 id="predict-run-inference-on-your-data">predict     Run inference on your data.</h1>
+<h1 id="tune-runs-routines-to-tune-hyperparameters-before-training">tune        Runs routines to tune hyperparameters before training.</h1>
+<p>$ python trainer.py test --trainer.limit_test_batches=10 [...]</p>
+<h6 id="config-files"># CONFIG FILES</h6>
+<p>trainer:
+  max_epochs: 10
+  limit_train_batches: 100
+  callbacks:
+    - class_path: pytorch_lightning.callbacks.EarlyStopping
+      init_args:
+        patience: 5
+    - class_path: pytorch_lightning.callbacks.LearningRateMonitor
+      init_args:
+        ...</p>
+<h1 id="python-trainerpy-fit-print_config">python trainer.py fit --print_config</h1>
+<h1 id="python-trainerpy-fit-config-experiment_defaultsyaml-trainermax_epochs-100">python trainer.py fit --config experiment_defaults.yaml --trainer.max_epochs 100</h1>
+<p># python trainer.py --config config1.yaml \
+                    --config config2.yaml test --config config3.yaml [...]</p>
+<h6 id="train">## TRAIN</h6>
+<p># python trainer.py fit \
+#   --optimizer=Adam \
+#   --optimizer.lr=0.01 \
+#   --lr_scheduler=ExponentialLR \
+#   --lr_scheduler.gamma=0.1 \
+#   --trainer.callbacks=EarlyStopping \
+#   --trainer.callbacks.patience=5 \
+#   --trainer.callbacks=LearningRateMonitor \</p>
+<h1 id="-trainercallbackslogging_intervalepoch">--trainer.callbacks.logging_interval=epoch</h1>
+<h1 id="-traineraccelerator-null">--trainer.accelerator: null</h1>
+<h1 id="-traineraccumulate_grad_batches-1">--trainer.accumulate_grad_batches: 1</h1>
+<h1 id="-traineramp_backend-native">--trainer.amp_backend: native</h1>
+<h1 id="-traineramp_level-o2">--trainer.amp_level: O2</h1>
+<pre><code>--model=MyModel
+--model.feat_dim=64
+--data=MyData
 </code></pre>
-<p>Now, create the simple index.html file inside that server directory where you have started the server. go to <a href="http://localhost:9000">http://localhost:9000</a></p>
-<h2 id="netcat-http-server">Netcat HTTP server</h2>
-<pre><code class="language-bash">while true
-do
-  echo -e &quot;HTTP/1.1 200 OK\r\n\r\n$(date)&quot; | nc -l localhost 8888
-done
-
-# ncat -lk -p 8080 --exec $(server_response) # --listen --keep-open
-
-# https://www.youtube.com/watch?v=pYjoqsFjzgQ
-
-function response {
-  echo -en &quot;HTTP/1.1 200 OK\r\n\r\n&quot;
-  echo '&lt;!DOCTYPE html&gt;'
-  echo '&lt;html lang=&quot;es&quot;&gt;'
-  echo '  &lt;head&gt;'
-  echo '    &lt;title&gt;HTML&lt;/title&gt;'
-  echo '    &lt;meta charset=&quot;utf-8&quot;&gt;'
-  echo '    &lt;meta http-equiv=&quot;refresh&quot; content=&quot;5&quot;&gt;' # Update frontend every 5 seconds
-  echo '  &lt;/head&gt;'
-  echo '  &lt;body&gt;'
-  echo &quot; $(date)&quot;
-  echo '  &lt;/body&gt;'
-  echo '&lt;/html&gt;'
-}
-
-while true; do
-  response | nc -l localhost 8888
-  # here netcat waits for 1 connection, 
-  # When the user concet to http://localhost:8888
-  # The program flow continues
-  echo &quot;================================================&quot;
-done
-</code></pre>
-<h2 id="http-protocol">HTTP protocol</h2>
-<h3 id="http-request">HTTP request</h3>
-<pre><code>GET / HTTP/1.1             -&gt; request line
-Host: localhost:8000       \
-User-Agent: curl/7.54.0    | Request headers
-Accept: */*                /
-</code></pre>
-<h3 id="http-response">HTTP response</h3>
-<pre><code>HTTP/1.1 200 OK
-Content-Type: text/html
-Content-Lenght: 11
-
-Hello world
-</code></pre>
-<pre><code>INTERNET --http--&gt; WEB SERVER --http--&gt; APPLICATION SERVER --wsgi--&gt; WEB FRAMEWORK
-                   ==========           ==================           =============
-                   apache               gunicorn                     Django
-                   ngixn                uWSGI                        Flask
-                                                                     FastAPI
-</code></pre>
-<p>https://www.youtube.com/watch?v=UklcIDgHtwQ
-https://www.youtube.com/watch?v=WqrCnVAkLIo</p>
-<p>CGI: Common Gateway Interface (1997)
-WSGI: Web Server Gateway Interface (2003)</p>
-<ul>
-<li>caching mechanism:</li>
-<li>
-<p>Reverse proxy: a system that forwards all requests from the web to our web server and back</p>
-</li>
-<li>
-<p>Que pasa si alguien sube una imagen (o imagenens) muy pesada? Relentiza el servidor?</p>
-</li>
-<li>gunicorn bloquearia la petición</li>
-<li>Pero ngixn haria offloading buffering </li>
-</ul>
+<h1 id="python-trainerpy-test-chpt_pathypur_best_modelckpt">python trainer.py test chpt_path="ypur_best_model.ckpt"</h1>
+<h1 id="python-trainerpy-test-trainerlimit_test_batches10">python trainer.py test --trainer.limit_test_batches=10</h1>
               
             </div>
           </div><footer>

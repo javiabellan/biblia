@@ -100,6 +100,8 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#example-bash-script">Example Bash script</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#variables">Variables</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#special-variables">Special variables</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#arrays">Arrays</a>
@@ -211,10 +213,6 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="bash-scripting">Bash scripting</h1>
-<ul>
-<li>variables in funcions has global scope by defualt, (unless you define with <code>local</code>)</li>
-<li>functions can only return an integer in range of 0 - 255.</li>
-</ul>
 <h2 id="shells">Shells</h2>
 <table>
 <thead>
@@ -255,6 +253,7 @@
 <p>[Shebang line](https://en.wikipedia.org/wiki/Shebang_(Unix): First line, This is going to be the interpreter:
 - <code>#!/bin/sh</code>:  Bourne shell script
 - <code>#!/bin/bash</code>:  Bash shell script <code>./myScript.sh</code>
+- <code>#!/usr/bin/env bash</code>: Bash shell script
 - <code>#!/usr/bin/python</code>:  Python script <code>./myScript.py</code>
 - <code>#!/usr/bin/env python</code>:  Python script (more portable because looks for python comand)  <code>./myScript.py</code></p>
 <h2 id="zsh">ZSH</h2>
@@ -330,6 +329,7 @@ bg          # Send the job to the background.
 stop {PID} or Ctrl + z          # Suspend the job.
 kill {PID} or Ctrl + c          # Terminate the job.
 </code></pre>
+<p>It has PID 28, so we check the /proc</p>
 <h2 id="io-redirection">IO Redirection</h2>
 <p>IO Redirection modifies the file descriptors table of a command.</p>
 <h3 id="redirect-fromto-file">Redirect from/to file: <code>&lt;</code> <code>&gt;</code></h3>
@@ -420,6 +420,8 @@ rm $(ls)       # same of above
 <h3 id="examples">Examples:</h3>
 <ul>
 <li><code>* * * * *</code>: Every minute</li>
+<li><code>*/5 * * * *</code>: Every 5 minutes</li>
+<li><code>*/5 8-16 * * 1-5</code>: Every 5 minutes from 8:00 to 16:00, from Mon to Fri.</li>
 <li><code>0 * * * *</code>: Every hour (at minute 0)</li>
 <li><code>0 0 * * *</code>: Every day (at 00:00)</li>
 <li><code>0 0 * * 0</code>: Every week (at 00:00 on Sunday)</li>
@@ -453,6 +455,8 @@ myDir=$(pwd) # The output of a command in a varaible
 echo &quot;we are in $(pwd)&quot;
 for file in $(ls)
 </code></pre>
+<h2 id="variables">Variables</h2>
+<p>variables in funcions has <strong>global scope</strong> by defualt, (unless you define with <code>local</code>)</p>
 <h2 id="special-variables">Special variables</h2>
 <ul>
 <li><code>$0</code>: Name of the script</li>
@@ -547,6 +551,17 @@ do
 done
 </code></pre>
 <h1 id="while-loop">While loop</h1>
+<pre><code class="language-bash">while /bin/true
+do
+  # Code goes here
+done
+
+while true; do
+  # Code goes here
+done
+</code></pre>
+<h1 id="functions">Functions</h1>
+<p>Functions can only return an integer in range of 0 - 255.</p>
 <h1 id="parameter-expansion">Parameter expansion</h1>
 <p>http://mywiki.wooledge.org/BashGuide/Parameters#Parameter_Expansion</p>
 <ul>
