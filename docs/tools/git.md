@@ -12,7 +12,10 @@ git clean -fd   # Remove new untracked files (-f) and new directories (-d):
 
 
 
-## Setup: Save Github credential
+
+## Github CLI (Setup: Save Github credential)
+
+https://atareao.es/software/programacion/github-en-el-terminal/
 
 1. Go to Github.com -> Settings -> Developer settings -> Personal access tokens [https://github.com/settings/tokens](https://github.com/settings/tokens)
 2. Generate a Personal Access Token (PAT) with the minimum required scopes are 'repo', 'read:org', 'workflow'
@@ -35,7 +38,7 @@ git clean -fd   # Remove new untracked files (-f) and new directories (-d):
 
 
 
-## Github actions
+## Github Actions
 
 Archivo YAML ubicado en: `.github/workflows/mi_nombre.yml`
 
@@ -167,4 +170,5 @@ jobs:
 
 ### References
 
-https://www.aaronsaray.com/2021/github-actions-pages-scheduled-data-updates
+- [Using Github Actions & Pages to Publish Static Pages Based on Dynamic Data](https://www.aaronsaray.com/2021/github-actions-pages-scheduled-data-updates) (Oct 2, 2021)
+- [CI/CD for Machine Learning: Test and Deploy Your ML Model with GitHub Actions](https://dagshub.com/blog/ci-cd-for-machine-learning-test-and-and-deploy-your-ml-model-with-github-actions) (Jun 08, 2022)

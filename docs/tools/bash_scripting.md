@@ -2,13 +2,6 @@
 
 
 
-- variables in funcions has global scope by defualt, (unless you define with `local`)
-- functions can only return an integer in range of 0 - 255.
-
-
-
-
-
 ## Shells
 
 | Terminal        | Promt | Hashbang/Shebang | Configuration file |
@@ -22,6 +15,7 @@
 [Shebang line](https://en.wikipedia.org/wiki/Shebang_(Unix): First line, This is going to be the interpreter:
 - `#!/bin/sh`:  Bourne shell script
 - `#!/bin/bash`:  Bash shell script `./myScript.sh`
+- `#!/usr/bin/env bash`: Bash shell script
 - `#!/usr/bin/python`:  Python script `./myScript.py`
 - `#!/usr/bin/env python`:  Python script (more portable because looks for python comand)  `./myScript.py`
 
@@ -99,6 +93,9 @@ bg          # Send the job to the background.
 stop {PID} or Ctrl + z          # Suspend the job.
 kill {PID} or Ctrl + c          # Terminate the job.
 ```
+
+
+It has PID 28, so we check the /proc
 
 
 
@@ -204,6 +201,8 @@ rm $(ls)       # same of above
 ### Examples:
 
 - `* * * * *`: Every minute
+- `*/5 * * * *`: Every 5 minutes
+  - `*/5 8-16 * * 1-5`: Every 5 minutes from 8:00 to 16:00, from Mon to Fri.
 - `0 * * * *`: Every hour (at minute 0)
 - `0 0 * * *`: Every day (at 00:00)
 - `0 0 * * 0`: Every week (at 00:00 on Sunday)
@@ -211,6 +210,10 @@ rm $(ls)       # same of above
 - `0 0 1 1 *`: Yearly (at 00:00 on day 1 of January)
 
 Check [crontab guru](https://crontab.guru) to come up with the cron syntax for your schedule.
+
+
+
+
 
 
 
@@ -245,6 +248,12 @@ for file in $(ls)
 ```
 
 
+
+
+
+## Variables
+
+variables in funcions has **global scope** by defualt, (unless you define with `local`)
 
 
 ## Special variables
@@ -371,7 +380,20 @@ done
 
 # While loop
 
+```bash
+while /bin/true
+do
+  # Code goes here
+done
 
+while true; do
+  # Code goes here
+done
+```
+
+# Functions
+
+Functions can only return an integer in range of 0 - 255.
 
 
 

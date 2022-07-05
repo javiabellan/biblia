@@ -15,7 +15,7 @@
 - [Data Science at the Command Line, 2nd edition (2021)](https://datascienceatthecommandline.com/2e)
 - [Command Line Data Wrangling](https://github.com/rufuspollock/command-line-data-wrangling) (Github readme)
 - [Command-line Tools can be 235x Faster than your Hadoop Cluster](https://adamdrake.com/command-line-tools-can-be-235x-faster-than-your-hadoop-cluster.html)
-
+- [Reverse Engineering Google Colab](https://dagshub.com/blog/reverse-engineering-google-colab)
 
 ### The Missing Semester MIT
 - [Course 2020](https://missing.csail.mit.edu/2020)

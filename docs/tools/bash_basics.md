@@ -9,11 +9,23 @@ tldr echo   # Muestra el manual de ejemplos de un programa
 lsb_release -a # Ver mi sistema operativo
 
 ############## Sitios
+/dev        # devices
+/proc       # Porcesos 
 /sys        # Los ficheros representan los propios devices del ordenador
   # se puede cambiar el brillo de la pantalla, los leds, etc
   cat /sys/class/thermal/thermal_zone*/temp # Ver temperatura CPU
 ```
 
+
+## Your system is alive!
+
+- `lsof`: lists open files (belonging to active processes).
+	- `lsof -iTCP -sTCP:LISTEN` to list all processes that are listening on a TCP port for network requests.
+- `inotify`: monitoring filesystem events
+- `inotifywait`: wait for changes to files using inotify
+- `iostat`: Report Central Processing Unit (CPU) statistics and input/output statistics for devices, partitions and network filesystems (NFS).
+- `socat`:
+	- `socat TCP-LISTEN:9000,fork,reuseaddr,bind=localhost TCP:$HOSTNAME:9000`: If the connection is refused by the server, will use socat to forward traffic from localhost:9000 to $HOSTNAME:9000 and back.
 
 
 ## Print: `echo`, `printf`
@@ -141,6 +153,9 @@ WIM
   - Some filesytems already computes th checksums
     - ZFS: Performs automatic file integrity checking using checksums
 
+fdupes: https://atareao.es/software/utilidades/eliminar-duplicados
+
+
 > - https://unix.stackexchange.com/questions/28895/open-source-duplicate-image-finder-for-linux
 
 
@@ -160,10 +175,10 @@ Magic numbers:
 ## Users and Privileges (when `ls -l`)
 
 ```
- -------> Permission of owner
- |  ----> Permission of users of same group
- |  |  -> Permission of other users 
- |  |  |
+ ┌───────> Permission of owner
+ │  ┌────> Permission of users of same group
+ │  │  ┌─> Permission of other users 
+ │  │  │
 / \/ \/ \
 rwxrwxrwx  ownerUser userGroup 13B file
 ```
