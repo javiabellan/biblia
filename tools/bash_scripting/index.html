@@ -44,7 +44,7 @@
                 <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
                 </li>
               </ul>
-              <p class="caption"><span class="caption-text">Linux tools</span></p>
+              <p class="caption"><span class="caption-text">Linux</span></p>
               <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../bash_basics/">Bash fundamentals (cd, ls, ...)</a>
                   </li>
@@ -65,8 +65,6 @@
     <li class="toctree-l3"><a class="reference internal" href="#colours">Colours</a>
     </li>
         </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#process">Process</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#io-redirection">IO Redirection</a>
         <ul>
@@ -113,6 +111,8 @@
     <li class="toctree-l2"><a class="reference internal" href="#if">If</a>
     </li>
     </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../process/">Process</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../editors/">📝 Editors (nano, vim, jupyter)</a>
                   </li>
@@ -202,7 +202,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>Linux tools &raquo;</li><li>Bash scripting</li>
+          <li>Linux &raquo;</li><li>Bash scripting</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -311,25 +311,6 @@ grayColour=&quot;\e[0;37m\033[1m&quot;
 # Example of usage
 echo -e &quot;\n\n${yellowColour}[*]${endColour}${grayColour} Exiting...\n${endColour}&quot;
 </code></pre>
-<h2 id="process">Process</h2>
-<ul>
-<li>Every process has a parent</li>
-<li>When you close/kill the parent pocess you kill all the chol processes</li>
-<li><code>disown -a</code> Idepedizar tareas hijas (que probablemente estan en segundo plano)</li>
-</ul>
-<pre><code class="language-bash">CTRL + l   # Clean terminal
-CTRL + c   # Interrumpir programa (SIGINT)
-CTRL + \   # Salir programa (SIGQUIT)
-CTRL + z   # Pausar programa que se puede reunaudar (SIGSTOP)
-jobs        # See all the jobs that are running or suspended.
-my_command &amp;  # When you append &quot; &amp;&quot;  it becomes a &quot;background job&quot;.
-my_command_2 &amp;&amp; my_command_2 # Do my_command_2 only if my_command_2 was success
-fg          # Bring the job to the foreground.
-bg          # Send the job to the background.
-stop {PID} or Ctrl + z          # Suspend the job.
-kill {PID} or Ctrl + c          # Terminate the job.
-</code></pre>
-<p>It has PID 28, so we check the /proc</p>
 <h2 id="io-redirection">IO Redirection</h2>
 <p>IO Redirection modifies the file descriptors table of a command.</p>
 <h3 id="redirect-fromto-file">Redirect from/to file: <code>&lt;</code> <code>&gt;</code></h3>
@@ -715,7 +696,7 @@ ${name%.*}    polish.ostrich.racing
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../bash_basics/" class="btn btn-neutral float-left" title="Bash fundamentals (cd, ls, ...)"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../editors/" class="btn btn-neutral float-right" title="📝 Editors (nano, vim, jupyter)">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../process/" class="btn btn-neutral float-right" title="Process">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -741,7 +722,7 @@ ${name%.*}    polish.ostrich.racing
       <span><a href="../bash_basics/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../editors/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../process/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

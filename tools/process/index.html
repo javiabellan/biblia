@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Process - Documentación de Javi</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Process";
+        var mkdocs_page_input_path = "tools/process.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Documentación de Javi
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Linux</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../bash_basics/">Bash fundamentals (cd, ls, ...)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../bash_scripting/">Bash scripting</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Process</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#basics">Basics</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#how-to-start-a-process">How to start a process</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#process-states">Process states</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#process-priorities">Process priorities</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tracking-ongoing-processes-ps">Tracking ongoing processes (ps)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#basics-commands">Basics commands</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#process-managers">Process managers</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#boot-time-system-v">Boot time (System V)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#boot-time-systemd">Boot time (SystemD)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#proc-dir">Proc dir</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#inter-process-comunication-ipc">Inter Process Comunication (IPC)</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../editors/">📝 Editors (nano, vim, jupyter)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../install/">🛠️ Install software (pacman, pip, conda)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../web_scraping/">⬇️ Web Scraping (curl, wget, api)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cryptography/">🔑 Cryptography</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../git/">GIT</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tmux/">TMUX</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../gnu_parallel/">GNU parallel</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ssh/">SSH</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Data tools</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/text/">⚪️ TEXT,CSV (cut, paste, tr, sed, awk)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/html/">🟡 HTML (pup)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/json/">🟠 JSON (jq)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/pdf/">🔴 PDF (Xpdf, poppler)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/image/">🔵 Image (ImageMagick)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/sound_video/">🟢 Sound,Video (ffmepg, sox)</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">AI</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ai/deep_learning/">Deep Learning</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Cybersecurity</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cybersecurity/pentesting/">🗡️ Pentesting</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cybersecurity/deffensive/">🛡️ Deffensive</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Programming</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/monitoring/">Monitoring</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/profiling/">Profiling</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/debugging/">Debugging</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/makefile/">Makefile</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Server</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../server/wakeonlan/">Wakeonlan</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../server/firewall/">Firewall</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../server/load_balancer/">Load balancer</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../server/public_ip/">Public IP</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../hardware/">Hardware</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../linux_insides/">Linux insides</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Documentación de Javi</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Linux &raquo;</li><li>Process</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="processes">Processes</h1>
+<h2 id="basics">Basics</h2>
+<ul>
+<li>A process is an instance of a program/command.</li>
+<li>Each process has a unique PID (5 digits number).</li>
+<li>Every process has a parent (the one who create the process).</li>
+<li>When you close/kill the parent pocess you kill all the child processes</li>
+</ul>
+<h2 id="how-to-start-a-process">How to start a process</h2>
+<ul>
+<li>Manually (run command in terminal)</li>
+<li>At boot time (services or daemons)</li>
+<li>Scheduled ( crontab )</li>
+<li>From anothter process (child process)</li>
+</ul>
+<h2 id="process-states">Process states</h2>
+<p>Processes can have several states:</p>
+<ul>
+<li>Running (R)</li>
+<li>Uninterruptible Sleep (D)</li>
+<li>Interruptable Sleep (S)</li>
+<li>Stopped (T)</li>
+<li>
+<p>Zombie (Z)</p>
+</li>
+<li>
+<p>Foreground Process : (default mode) receives input from the keyboard, and sends output to the screen</p>
+</li>
+</ul>
+<h2 id="process-priorities">Process priorities</h2>
+<p>https://www.tecmint.com/set-linux-process-priority-using-nice-and-renice-commands/</p>
+<h2 id="tracking-ongoing-processes-ps">Tracking ongoing processes (<code>ps</code>)</h2>
+<ul>
+<li><code>ps</code> (Process status) can be used to see/list all the running processes.</li>
+<li><code>ps -f</code> (full) For more information variables</li>
+<li><code>ps 19</code> For single-process information, ps along with process id is used  </li>
+</ul>
+<p>UID:   User ID that this process belongs to (the person running it)
+PID:   Process ID
+PPID:  Parent process ID (the ID of the process that started it)
+C:     CPU utilization of process
+STIME: Process start time
+TTY:   Terminal type associated with the process
+TIME:  CPU time is taken by the process
+CMD:   The command that started this process</p>
+<p>UID   PID  PPID   C STIME   TTY           TIME CMD
+    0     1     0   0  5may22 ??        98:12.93 /sbin/launchd
+    0    69     1   0  5may22 ??         4:07.06 /usr/sbin/syslogd</p>
+<h2 id="basics-commands">Basics commands</h2>
+<ul>
+<li><code>disown -a</code> Idepedizar tareas hijas (que probablemente estan en segundo plano)</li>
+</ul>
+<pre><code class="language-bash">CTRL + l   # Clean terminal
+CTRL + c   # Interrumpir programa (SIGINT)
+CTRL + \   # Salir programa (SIGQUIT)
+CTRL + z   # Pausar programa que se puede reunaudar (SIGSTOP)
+jobs        # See all the jobs that are running or suspended.
+my_command  # Foreground process.
+my_command &amp;  # When you append &quot; &amp;&quot;  it becomes a &quot;background process&quot;.
+my_command_2 &amp;&amp; my_command_2 # Do my_command_2 only if my_command_2 was success
+fg          # Bring the job to the foreground.
+bg          # Send the job to the background.
+stop {PID} or Ctrl + z          # Suspend the job.
+kill {PID} or Ctrl + c          # Terminate the job.
+</code></pre>
+<h3 id="process-managers">Process managers</h3>
+<ul>
+<li>launchd (OS X)</li>
+<li>Upstart (Ubuntu) (antiguo y tradicional sistema init)</li>
+<li>SystemV (SysV) (antiguo y tradicional sistema init)</li>
+<li>SystemD (el mas usado (y odiado) en la acutailidad</li>
+<li>Systemd-shim (alternativa moderna)</li>
+<li>In BSD, the init binary doesn't do much regarding startup, basically just executes /etc/rc; it's shell scripts all the way afterwards.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>SystemV</th>
+<th>SystemD</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Distros</td>
+<td>Gentoo, Slackware, Linux from Scratch</td>
+<td>ArchLinux, AWS, Red Hat, CentOS, Fedora, Debian, Ubuntu</td>
+</tr>
+<tr>
+<td>Restart</td>
+<td><code>/etc/init.d/sshd start</code></td>
+<td><code>systemctl restart sshd</code></td>
+</tr>
+<tr>
+<td>Enable</td>
+<td></td>
+<td><code>systemctl enable NetworkManager.service</code></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><code>systemctl enable wpa_supplicant</code></td>
+</tr>
+</tbody>
+</table>
+<p>https://papers.freebsd.org/2018/bsdcan/rice-the_tragedy_of_systemd/</p>
+<p>FreeBSD ventajas: init system, LLVM, documentation, ZFS, dtrace</p>
+<h3 id="boot-time-system-v">Boot time (System V)</h3>
+<ol>
+<li><strong>BIOS</strong> (Basic Input/Output System)</li>
+<li><strong>MBR</strong> (Master Boot Record)</li>
+<li><strong>GRUB</strong> (Grand Unified Bootloader)</li>
+<li><strong>Kernel</strong><ul>
+<li>Mounts the root file system as specified in the “root=” in grub.conf</li>
+<li>Kernel executes the <code>/sbin/init</code> program</li>
+</ul>
+</li>
+<li><strong>Init</strong> (PID=1)<ul>
+<li>Es el primer proceso que se inicia durante el arranque del sistema por parte del kernel.</li>
+<li>Se ejecutará en segundo plano continuamente hasta que el sistema se apague.</li>
+<li>Lee el archivo <code>/etc/inittab</code> para decidir el nivel de ejecución de Linux.</li>
+<li>luego inicia todos los demás procesos.</li>
+<li>Run level 0 –&gt; halt (CAUTION: never set initdefault to this)</li>
+<li>Run level 1 –&gt; Single user mode</li>
+<li>Run level 2 –&gt; Multiuser, without NFS (The same as 3, if you do not have networking)</li>
+<li>Run level 3 –&gt; Full multiuser mode (common initdefault)</li>
+<li>Run level 4 –&gt; unused</li>
+<li>Run level 5 –&gt; X11 (common initdefault)</li>
+<li>Run level 6 –&gt; reboot (CAUTION: never set initdefault to this)</li>
+<li>Ejemplo de inittab: <code>id:3:initdefault:</code></li>
+</ul>
+</li>
+<li><strong>Runlevel programs</strong>
+Depending on your default init level setting, the system will execute the programs from one of the following directories.<ul>
+<li>Run level 0 –&gt; <code>/etc/rc.d/rc0.d/</code></li>
+<li>Run level 1 –&gt; <code>/etc/rc.d/rc1.d/</code></li>
+<li>Run level 2 –&gt; <code>/etc/rc.d/rc2.d/</code></li>
+<li>Run level 3 –&gt; <code>/etc/rc.d/rc3.d/</code></li>
+<li>Run level 4 –&gt; <code>/etc/rc.d/rc4.d/</code></li>
+<li>Run level 5 –&gt; <code>/etc/rc.d/rc5.d/</code></li>
+<li>Run level 6 –&gt; <code>/etc/rc.d/rc6.d/</code></li>
+</ul>
+</li>
+<li>Programs starts with S are used during startup. S for startup.</li>
+<li>Programs starts with K are used during shutdown. K for kill.</li>
+</ol>
+<p>Ejemplo de un script que:</p>
+<pre><code class="language-bash">#      ┌───────────── rc3: Será ejecutado en el Run level 3
+#      │   ┌───────── S:   Será ejecutado al encenderse
+#      │   │ ┌─────── 98:  Momento de ejecución, a menor número, antes se ejecuta
+#      │   │ │  
+/etc/rc3.d/S98miscript
+
+# Puede ser un enlace simbolico a un script que esté en otro sitio
+ln -s  /etc/init.d/mi_script /etc/rc3.d/S98miscript
+</code></pre>
+<p><img alt="" src="../../img/linux-boot-process.png" /></p>
+<p>Reference: https://www.thegeekstuff.com/2011/02/linux-boot-process/</p>
+<h3 id="boot-time-systemd">Boot time (SystemD)</h3>
+<p>SystemD uses "targets" instead of runlevels.</p>
+<p>By default, there are two main targets:
+- multi-user.target: analogous to runlevel 3
+- graphical.target: analogous to runlevel 5</p>
+<pre><code class="language-bash"># To view current default target, run:
+systemctl get-default
+
+# To set a default target, run:
+#systemctl set-default TARGET.target
+
+# Establezca el nivel de ejecución actual en 3 (comenzar en modo de línea de comando)
+systemctl set-default multi-user.target
+
+# Establezca el nivel de ejecución actual en 5 (encendido para la interfaz gráfica)
+systemctl set-default graphical.target
+</code></pre>
+<h2 id="proc-dir">Proc dir</h2>
+<p>It has PID 28, so we check the /proc</p>
+<h2 id="inter-process-comunication-ipc">Inter Process Comunication (IPC)</h2>
+<ul>
+<li>Shared files</li>
+<li>Shared memory (with semaphores)</li>
+<li>Pipes</li>
+<li>unnamed pipes <code>|</code></li>
+<li>named pipes <code>mkfifo my_pipe</code></li>
+<li>Message queues</li>
+<li>Sockets</li>
+<li>Unix domain sockets</li>
+<li>TCP/IP sockets</li>
+<li>Signals</li>
+<li>semaphores</li>
+</ul>
+<p>https://opensource.com/article/20/1/inter-process-communication-linux</p>
+<p>https://opensource.com/downloads/guide-inter-process-communication-linux</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../bash_scripting/" class="btn btn-neutral float-left" title="Bash scripting"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../editors/" class="btn btn-neutral float-right" title="📝 Editors (nano, vim, jupyter)">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../bash_scripting/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../editors/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

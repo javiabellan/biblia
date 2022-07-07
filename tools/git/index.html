@@ -44,11 +44,13 @@
                 <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
                 </li>
               </ul>
-              <p class="caption"><span class="caption-text">Linux tools</span></p>
+              <p class="caption"><span class="caption-text">Linux</span></p>
               <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../bash_basics/">Bash fundamentals (cd, ls, ...)</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../bash_scripting/">Bash scripting</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../process/">Process</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../editors/">📝 Editors (nano, vim, jupyter)</a>
                   </li>
@@ -164,7 +166,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>Linux tools &raquo;</li><li>GIT</li>
+          <li>Linux &raquo;</li><li>GIT</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -219,7 +221,9 @@ jobs:                          # 3) Que hará
    # MANUALMENTE (desde la interfaz de github)
    workflow_dispatch:
 
-   # PERIODICAMENTE
+   # PERIODICAMENTE ( with delay :( )
+   # Generally, the delay time is about 3 to 10 minutes.
+   # Sometimes, it may be more, even dozens of minutes, or more than one hour.
    schedule:
       # * is a special character in YAML so you have to quote this string
       - cron:  '30 5,17 * * *'

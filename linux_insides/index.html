@@ -44,11 +44,13 @@
                 <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
                 </li>
               </ul>
-              <p class="caption"><span class="caption-text">Linux tools</span></p>
+              <p class="caption"><span class="caption-text">Linux</span></p>
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../tools/bash_basics/">Bash fundamentals (cd, ls, ...)</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../tools/bash_scripting/">Bash scripting</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tools/process/">Process</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../tools/editors/">📝 Editors (nano, vim, jupyter)</a>
                   </li>
@@ -125,14 +127,6 @@
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#kernel">Kernel</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#daemons-services">Daemons &amp; services</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#manage-services">Manage services</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#create-your-own-service">Create your own service</a>
-    </li>
-        </ul>
-    </li>
     <li class="toctree-l2"><a class="reference internal" href="#file-system">File system</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#btrfs">BTRFS</a>
@@ -180,13 +174,6 @@
 <ul>
 <li>Xanmod</li>
 </ul>
-<h2 id="daemons-services">Daemons &amp; services</h2>
-<p>SystemD --&gt; systemctl</p>
-<h3 id="manage-services">Manage services</h3>
-<pre><code>systemctl enable NetworkManager.service  # Internet
-systemctl enable wpa_supplicant          # ???
-</code></pre>
-<h3 id="create-your-own-service">Create your own service</h3>
 <h2 id="file-system">File system</h2>
 <h3 id="btrfs">BTRFS</h3>
 <ul>
