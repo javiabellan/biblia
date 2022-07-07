@@ -32,8 +32,11 @@ https://www.youtube.com/user/Nietmetal
 
 
 ### Misc
+- [DevOps notes readthedocs](https://devops-notes.readthedocs.io)
+- [Julia Evans](https://jvns.ca)
+- [a tornado of razorblades BY ADAM WIGGINS](http://adam.herokuapp.com/past)
 - [Fun Tech Projects](https://funprojects.blog)
-  - [A Web Server in 1 Line of Bash](https://funprojects.blog/2021/04/11/a-web-server-in-1-line-of-bash)
+	- [A Web Server in 1 Line of Bash](https://funprojects.blog/2021/04/11/a-web-server-in-1-line-of-bash)
 - [Everything you ever wanted to know about terminals (but were afraid to ask)](http://xn--rpa.cc/irl/term.html)
 - [Why is using a shell loop to process text considered bad practice?](https://unix.stackexchange.com/questions/169716/why-is-using-a-shell-loop-to-process-text-considered-bad-practice)
 - [Documentación de Alvaro Sainz-Pardo](http://docs.alvarosainzpardo.com)

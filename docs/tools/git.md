@@ -65,7 +65,9 @@ on:
    # MANUALMENTE (desde la interfaz de github)
    workflow_dispatch:
 
-   # PERIODICAMENTE
+   # PERIODICAMENTE ( with delay :( )
+   # Generally, the delay time is about 3 to 10 minutes.
+   # Sometimes, it may be more, even dozens of minutes, or more than one hour.
    schedule:
       # * is a special character in YAML so you have to quote this string
       - cron:  '30 5,17 * * *'

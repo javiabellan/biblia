@@ -3,9 +3,10 @@ remote_branch: gh-deploy
 theme: readthedocs
 nav:
 - Home: index.md
-- Linux tools:
+- Linux:
   - Bash fundamentals (cd, ls, ...): tools/bash_basics.md
   - Bash scripting: tools/bash_scripting.md
+  - Process: tools/process.md
   - 📝 Editors (nano, vim, jupyter): tools/editors.md
   - 🛠️ Install software (pacman, pip, conda): tools/install.md
   - ⬇️ Web Scraping (curl, wget, api): tools/web_scraping.md
