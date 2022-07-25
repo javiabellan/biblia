@@ -9,12 +9,10 @@ nav:
   - Process: tools/process.md
   - 📝 Editors (nano, vim, jupyter): tools/editors.md
   - 🛠️ Install software (pacman, pip, conda): tools/install.md
-  - ⬇️ Web Scraping (curl, wget, api): tools/web_scraping.md
   - 🔑 Cryptography: tools/cryptography.md
   - GIT: tools/git.md
-  - TMUX: tools/tmux.md
-  - GNU parallel: tools/gnu_parallel.md
-  - SSH: tools/ssh.md
+  - Linux insides: linux_insides.md
+  - Hardware: hardware.md
 - Data tools:
   - ⚪️ TEXT,CSV (cut, paste, tr, sed, awk): tools_data/text.md
   - 🟡 HTML (pup): tools_data/html.md
@@ -23,20 +21,22 @@ nav:
   - 🔵 Image (ImageMagick): tools_data/image.md
   - 🟢 Sound,Video (ffmepg, sox): tools_data/sound_video.md
 - AI:
-  - Deep Learning: ai/deep_learning.md
-- Cybersecurity:
-  - 🗡️ Pentesting: cybersecurity/pentesting.md
-  - 🛡️ Deffensive: cybersecurity/deffensive.md
+  - 🔳 Machine Learning (skit-learn): ai/machine_learning.md
+  - 🔲 Deep Learning (pytorch): ai/deep_learning.md
+- Networking:
+  - 🖥️ Remote administration (ssh, tmux, wakeonlan): networking/ssh.md
+  - ⬇️ Web Scraping (curl, wget): networking/web_scraping.md
+  - 🗡️ Pentesting (nmap): networking/pentesting.md
+  - 🛡️ Deffensive: networking/deffensive.md
+  - DNS (dig, nslookup, whois): networking/dns.md
+  - 📛 Firewall: networking/firewall.md
+  - 📦 Packets (wireshark): networking/packets.md
+  - Load balancer: networking/load_balancer.md
+  - Public IP: networking/public_ip.md
 - Programming:
   - Monitoring: programming/monitoring.md
   - Profiling:  programming/profiling.md
   - Debugging:  programming/debugging.md
   - Makefile:   programming/makefile.md
-- Server:
-  - Wakeonlan: server/wakeonlan.md
-  - Firewall: server/firewall.md
-  - Load balancer: server/load_balancer.md
-  - Public IP: server/public_ip.md
 
-- Hardware: hardware.md
-- Linux insides: linux_insides.md
+

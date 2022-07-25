@@ -8,13 +8,100 @@
 - Each process has a unique PID (5 digits number).
 - Every process has a parent (the one who create the process).
 - When you close/kill the parent pocess you kill all the child processes
+- How to start a process:
+	- Manually (run command in terminal)
+	- At boot time (services or daemons)
+	- Scheduled ( crontab )
+	- From anothter process (child process)
 
-## How to start a process
 
-- Manually (run command in terminal)
-- At boot time (services or daemons)
-- Scheduled ( crontab )
-- From anothter process (child process)
+## Processes VS Jobs
+
+A job is a concept used by the shell. Foreground process, backegraund process and suspended processces in the current shell is a job.
+
+You can have a large number of background jobs running at the same time, but you can only have one foreground job
+
+|            | processes                           | jobs                           |
+|------------|-------------------------------------|--------------------------------|
+| definition | instances of a program/command      | processes of the current shell |
+| tracked by | the Operating System                | the current shell              |
+| identifier | pid (example: `1`)                  | jobspec (example: `%1`)        |
+| see all    | `ps`                                | `jobs`                         |
+| commands   | `kill`, `wait`, `disown`, `suspend` | `fg`, `bg`, `jobs`
+
+
+![](img/job-control.jpg)
+
+
+| Action                                    | Command      | Shortcut |
+|-------------------------------------------|--------------|----------|
+| Start a foreground process                | `command`    |          |
+| Start a background process (shell depen.) | `command &`  |          |
+| Start a background process (independent)  | `nohup command &` |     |
+| See all the jobs (running & stopped)      | `jobs`       |          |
+| Stop/pause current process (SIGSTOP)      | `stop {PID}` | `Ctrl Z` |
+| Resume last stopped job in background     | `bg`         |          |
+| Resume last stopped job in foreground     | `fg`         |          |
+| Resume job number 2 in foreground         | `fg %2`      |          |
+| Waits for all background jobs to finish   | `wait`       |          |
+| Waits for job number 1 to finish          | `wait %1`    |          |
+| Independice all background jobs           | `disown -a`  |          |
+| Kill/finish job (SIGINT)                  | `kill {PID}` | `Ctrl C` |
+| Kill/finish job (SIGQUIT)                 |              | `Ctrl \` |
+| Clean terminal                            |              | `Ctrl L` |
+
+
+
+```graphviz
+digraph {
+
+    /////////////////////// NODES
+
+    rankdir=LR; // Left to Right node direction
+    ranksep=.5;
+    { rank = same; "fg"; "st"; "bg";};
+    nodesep=.5;
+
+    start [shape=point]
+    fg  [ label="Running in\nforegroung" ]
+    bg  [ label="Running in\nbackgroung" ]
+    bg2 [ label="Running in\nbackgroung" ]
+    st  [ label="Stopped\n(paused)" ]
+    end [shape=point]
+
+    /////////////////////// EDGES
+    subgraph cluster1 {
+        label = "Processes with Parent PID = current shell\n(when shell dies, Processes dies too)\n($ jobs to see all these processes)";
+
+        fg -> st [ label="Ctrl Z" ];
+        st -> fg [ label="fg" ];
+
+        st -> bg [ label="bg" ];
+        bg -> st [ label="stop job#" ];
+    }
+
+    start -> fg  [ label="command" ];
+    start -> bg  [ label="command &" ];
+    start -> bg2 [ label="nohup command &" ];
+
+    fg -> end [ label="Ctrl C" ];
+    st -> end [ label="kill job#" ];
+    bg -> end [ label="kill job#" ];
+
+    bg -> bg2 [ label="disown job#"];
+}
+```
+
+> - https://copyconstruct.medium.com/bash-job-control-4a36da3e4aa7
+> - https://www.baeldung.com/linux/foreground-background-process
+> - https://www.baeldung.com/linux/jobs-job-control-bash
+> - https://fsl.fmrib.ox.ac.uk/fslcourse/unix_intro/job.html
+
+
+
+> Coprocess
+> https://copyconstruct.medium.com/bash-coprocess-2092a93ad912
+
 
 
 ## Process states
@@ -28,7 +115,8 @@ Processes can have several states:
 - Zombie (Z)
 
 
-- Foreground Process : (default mode) receives input from the keyboard, and sends output to the screen
+
+## Processes and Threads
 
 
 ## Process priorities
@@ -59,24 +147,7 @@ CMD:   The command that started this process
     0    69     1   0  5may22 ??         4:07.06 /usr/sbin/syslogd
 
 
-## Basics commands
 
-- `disown -a` Idepedizar tareas hijas (que probablemente estan en segundo plano)
-
-```bash
-CTRL + l   # Clean terminal
-CTRL + c   # Interrumpir programa (SIGINT)
-CTRL + \   # Salir programa (SIGQUIT)
-CTRL + z   # Pausar programa que se puede reunaudar (SIGSTOP)
-jobs        # See all the jobs that are running or suspended.
-my_command  # Foreground process.
-my_command &  # When you append " &"  it becomes a "background process".
-my_command_2 && my_command_2 # Do my_command_2 only if my_command_2 was success
-fg          # Bring the job to the foreground.
-bg          # Send the job to the background.
-stop {PID} or Ctrl + z          # Suspend the job.
-kill {PID} or Ctrl + c          # Terminate the job.
-```
 
 
 
@@ -212,8 +283,11 @@ It has PID 28, so we check the /proc
 - semaphores
 
 
-https://opensource.com/article/20/1/inter-process-communication-linux
 
-https://opensource.com/downloads/guide-inter-process-communication-linux
+- https://www.digitalocean.com/community/tutorials/how-to-use-top-netstat-du-other-tools-to-monitor-server-resources
+- https://www.digitalocean.com/community/tutorials/how-to-use-ps-kill-and-nice-to-manage-processes-in-linux
+- https://www.digitalocean.com/community/tutorials/understanding-systemd-units-and-unit-files
+- https://opensource.com/article/20/1/inter-process-communication-linux
+- https://opensource.com/downloads/guide-inter-process-communication-linux
 
 

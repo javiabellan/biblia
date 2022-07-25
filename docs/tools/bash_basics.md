@@ -17,6 +17,17 @@ lsb_release -a # Ver mi sistema operativo
 ```
 
 
+## Files
+
+- file
+- directory
+- executable
+- symbolic link
+- socket
+- FIFO
+- whiteout (not in Linux, only in UNIX) Linux. it's a type of file that stops further lookup for a file but reports that it doesn't exist.
+
+
 ## Your system is alive!
 
 - `lsof`: lists open files (belonging to active processes).
@@ -346,5 +357,25 @@ Protocolo para dejar el ordenador lejos (hasta 100 metros de distancia) y coneta
   - `primes 1 100 | gnuplot -p -e 'plot "/dev/stdin"'`
 - `feedgnuplot`
   - https://github.com/dkogan/feedgnuplot/blob/master/guide/guide.org 
+
+
+# GNU Parallel
+
+https://www.baeldung.com/linux/processing-commands-in-parallel
+
+
+cat photos.txt | sed 's/,/  /' > photosTAB.txt
+
+####### Option 1 (sequential with for loop)
+cat ../photosTAB.txt | while read id url; do wget -O "$id" "$url"; done
+
+####### Option 2 (sequential with for loop)
+wget --input-file=<(tail ../photosTAB.txt | cut -d "," -f 2)
+
+####### Option 3 (parallel with xargs)
+echo $URL_LIST | xargs -n 1 -P 8 wget -q
+
+####### Option 4 (parallel with gnu parallel)
+cat ../photosTAB.txt | parallel --jobs 100 --colsep '\t' wget -O {1} {2}
 
 

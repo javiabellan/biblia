@@ -1,16 +1,21 @@
 # Web Scraping
 
+- `curl`: make any HTTP you want
+- `httpie`: like curl but easier (http get)
+- `wget`: Download files
+- `aria2c`: a fancier wget
 
 
-## Curl
+## curl
 
 - `-d, --data <data>`: (HTTP) Sends the specified data in a POST request to the HTTP server.
 - `-i, --include`: Show HTTP response headers.
 - `-s, --silent`: Silent or quiet mode. Don't show progress meter or error messages.
 - `-v, --verbose`: Verbose. Show request headers (>) and response headers (<).
 
+## httpie
 
-## Wget
+## wget
 
 ```bash
 wget URL                    # Download and store in the current directory.

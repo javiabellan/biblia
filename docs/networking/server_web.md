@@ -102,4 +102,20 @@ WSGI: Web Server Gateway Interface (2003)
 
 - Que pasa si alguien sube una imagen (o imagenens) muy pesada? Relentiza el servidor?
   - gunicorn bloquearia la petición
-  - Pero ngixn haria offloading buffering 
+  - Pero ngixn haria offloading buffering
+
+
+
+
+## Load balancing
+
+"failover" or "load balancing", which is where two servers provide the same service but allow for distribution in the event of problems.
+
+Services like NGINX, Cloudflare, Apigee, AWS ELB, [HAProxy](http://www.haproxy.org/)
+
+
+Existen distintos criterios para balancear:
+
+- Por tamaño de paquete
+- Por numero de peticiones
+- ... 

@@ -142,7 +142,9 @@ ls -l | tail -n2        # Pipe: Imprime solo los ultimos 2 ficheros
 ls -l | tail -n2 >  hello.txt # Pipe and file writting
 ls | xargs rm  # | xargs is when the inputs is IN THE ARGUMENTS
 rm $(ls)       # same of above
+cmd1 |& cmd1   #  command1's stdout AND stderr is redirected to command2's stdin
 ```
+
 
 ### Named Pipes: `mkfifo`
 
@@ -269,7 +271,10 @@ An array is a numbered list of strings: It maps integers to strings.
 
 ## Control Operators (`&&` and `||`)
 
+
 ```bash
+my_command_2 && my_command_2 # Do my_command_2 only if my_command_2 was success
+
 someCommand && echo "Previos comand worked (exit estatus==0)"
 someCommand || echo "Previos comand failed (exit estatus!=0)"
 ```

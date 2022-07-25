@@ -1,0 +1,3 @@
+• Mensajería instantánea
+XMPP
+Jabber
