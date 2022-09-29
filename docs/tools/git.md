@@ -1,21 +1,21 @@
 # Git
 
 
+## Setup
 
-## Git basics
+### 1. Git
 
-Undo local changes:
+Install git: `sudo pacman -S github-cli`
+
+Configure git:
 ```bash
-git checkout .  # Revert modified files (in this . directory)
-git clean -fd   # Remove new untracked files (-f) and new directories (-d): 
+$ git config --global user.name "Javi"
+$ git config --global user.email franfdk17@gmail.com
+$ git config --global core.editor nano
 ```
 
+### 2. Github
 
-
-
-## Github CLI (Setup: Save Github credential)
-
-https://atareao.es/software/programacion/github-en-el-terminal/
 
 1. Go to Github.com -> Settings -> Developer settings -> Personal access tokens [https://github.com/settings/tokens](https://github.com/settings/tokens)
 2. Generate a Personal Access Token (PAT) with the minimum required scopes are 'repo', 'read:org', 'workflow'
@@ -33,6 +33,15 @@ https://atareao.es/software/programacion/github-en-el-terminal/
 > 1. Save in `~/.git-credentials` -> https://USER:PASS@github.com
 > 2. Execute `git config --global credential.helper store `
 
+https://atareao.es/software/programacion/github-en-el-terminal/
+
+## Git basics
+
+Undo local changes:
+```bash
+git checkout .  # Revert modified files (in this . directory)
+git clean -fd   # Remove new untracked files (-f) and new directories (-d): 
+```
 
 
 
