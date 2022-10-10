@@ -1,60 +1,7 @@
-# Editors
 
+# Vim
 
-
-## Jupyter
-
-
-### Start jupyter when conected with SSH
-
-```bash
-jupyter notebook --no-browser
-```
-
-### [Jupyter extensions](https://jupyter-contrib-nbextensions.readthedocs.io/en/latest/install.html)
-
-1. `sudo pip install jupyter_contrib_nbextensions`
-2. `sudo jupyter contrib nbextension install`
-
-
-
-
-## Jupyter Lab
-
-#### On the Remote Server
-1. Get the IP address of your server: `$ hostname -I  # 192.168.0.120`
-2. Configure Jupyter Lab Password
-   - `$ jupyter notebook --generate-config`
-   - `$ jupyter notebook password`
-   - `Enter password:  ****`
-   - `Verify password: ****`
-3. Starting Jupyter Lab `$ jupyter-lab --ip 0.0.0.0 --port 8888 --no-browser`
-
-#### On client
-1. Navigate to `http://<your-routers-public-ip>:8888`
-2. Enter password
-
-
-
-## Nano
-
-
-### Dotfile: `~/.nanorc`
-
-```bash
-set autoindent  # Tthe newly created line will contain the same indent as the preceding line
-set tabsize 4   # Use a tab size of number columns. The default value is 8.
-set softwrap    # Enable soft line wrapping for easier viewing of very long lines
-set nowrap      # Don’t hard-wrap text at all
-set nohelp      # Don’t display the two help lines at the bottom of the screen.
-set linenumbers # Display of line numbers in front of the text.
-```
-
-
-
-## Vim
-
-### Modes
+## Modes
 - **`ESC`**: Normal mode. For moving around a file; reading; going to file to file
 - **`i`**: Insert mode. For inserting text
 - **`:`**: Command-line mode. For running a command
@@ -64,7 +11,7 @@ set linenumbers # Display of line numbers in front of the text.
 - **`Ctrl` + `v`**: Visual block mode
 
 
-### Command-line
+## Command-line
 
 Command mode can be entered by typing `:` in Normal mode. Your cursor will jump
 to the command line at the bottom of the screen upon pressing `:`. This mode
@@ -81,13 +28,13 @@ has many functionalities, including opening, saving, and closing files, and
     - `:help w` opens help for the `w` movement
 
 
-### NeoVIM
+## NeoVIM
 
 - NvimTreeToogle: left tree panel
 - nvchad
 
 
-### Dotfile: `~/.vimrc`
+## Dotfile: `~/.vimrc`
 
 ```
 " Comments in Vimscript start with a `"`.

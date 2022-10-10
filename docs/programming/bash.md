@@ -21,21 +21,7 @@
 
 
 
-## ZSH
 
-Change to zsh: `sudo chsh -s /usr/bin/zsh javi`
-curl -L http://install.ohmyz.sh | sh
-
-### Plugins
-
-- zsh-theme-powerlevel10k
-- zsh-completions
-- grml-zsh-config
-- zsh-sudo   -> con esc esc  te pone sudo al principio
-- zsh-syntax-highlining
-- zsh-suggestions
-- zsh-autosuggestions
-- fzf -> con ctrl + T busca
 
 
 ## File descriptors (fd)

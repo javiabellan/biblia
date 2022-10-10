@@ -6,6 +6,7 @@
 ```bash
 sudo systemctl status sshd  # Ver si esta encendido
 sudo systemctl start sshd   # Encender
+sudo systemctl restart sshd # Reiniciar
 sudo systemctl stop sshd    # Apagar
 sudo systemctl enable sshd  # Al arrancar por defecto: encendido
 sudo systemctl disable sshd # Al arrancar por defecto: apagado
