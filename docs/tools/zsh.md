@@ -23,8 +23,11 @@ $ echo $SHELL                           # Comprobar la nueva shell
 
 ```bash
 $ sudo pacman -S zsh-theme-powerlevel10k
+$ echo 'source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc
 $ p10k configure
 ```
+
+> - https://github.com/ahillio/powerlevel10k/blob/master/README.md#arch-linux
 
 ## ZSH: Other plugins
 
