@@ -16,6 +16,7 @@ The most popular terminal multiplexer these days is [`tmux`](https://www.man7.or
   - `tmux ls`: lists the current sessions.
   - `tmux a`: attaches the last session.
   - `tmux -t sesName`: attaches to specific session.
+  - `tmux kill-server`: Removes all sessions and kill tmux server
 - **Inside tmux**:
   - `[Ctrl+b] c`: Creates a new window. To close it you can just terminate the shells doing `<C-d>`
   - `[Ctrl+b] 0`: Go to window 0
