@@ -1,2 +1,2 @@
-mkdocs
-mkdocs-gen-files
+jinja2<3.1.0
+Markdown<3.2

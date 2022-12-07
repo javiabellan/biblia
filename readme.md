@@ -3,6 +3,9 @@
 See [this tutorial](https://www.mkdocs.org/user-guide/writing-your-docs/)
 
 
+
+
+
 ## Deploy With Read the Docs: https://biblia.readthedocs.io
 
 #### Necessary files
@@ -10,25 +13,32 @@ See [this tutorial](https://www.mkdocs.org/user-guide/writing-your-docs/)
 - File `.readthedocs.yaml` according to [this](https://docs.readthedocs.io/en/stable/config-file/v2.html)
 - File `requirements` according to [this](https://github.com/mkdocs/mkdocs/issues/2799)
 
-The docommestation is updated automatically withe every commit
+The documentation is deployed **automatically** on every commit.
+
+
+
 
 ## Deploy with Github Pages: https://javiabellan.github.io/biblia
 
 #### Necessary files
 
-This extra lines in mkdocs.yml file
+Add this extra line in `mkdocs.yml` file
 ```yaml
 remote_branch: gh-deploy
-theme: readthedocs
 ```
 
-#### Comandos principales de MkDocs
-
-- `mkdocs gh-deploy --clean` - Desplegar/Actualizar la documentación MkDocs en la rama `gh-deploy`.
-
-#### Otros comandos
+#### Test deploy on localhost
 
 - `mkdocs new [dir-name]` - Create a new project.
 - `mkdocs serve` - Start the live-reloading docs server.
 - `mkdocs build` - Build the documentation site.
-- `mkdocs help` - Print this help message.
+
+#### Manual deploy on Github pages
+
+- `mkdocs gh-deploy --clean` - Desplegar/Actualizar la documentación MkDocs en la rama `gh-deploy`.
+
+#### Automatic deploy on Github pages with github Actions
+
+See the Githug action file `.github/workflows/deploy-gh-pages.yml`
+
+[Source](https://medium.com/medialesson/documentation-in-github-pages-with-mkdocs-readthedocs-theme-920b283215d1)
