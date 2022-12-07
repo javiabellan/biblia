@@ -176,251 +176,251 @@
 <thead>
 <tr>
 <th></th>
-<th>Basic REs<br><code>grep</code><br><code>sed</code></th>
-<th>Extended REs<br><code>grep -E</code>, <code>egrep</code><br><code>sed -E</code></th>
-<th>Pearl/Python REs<br><code>grep -P</code></th>
+<th align="center">Basic REs<br><code>grep</code><br><code>sed</code></th>
+<th align="center">Extended REs<br><code>grep -E</code>, <code>egrep</code><br><code>sed -E</code>, <code>awk</code></th>
+<th align="center">Pearl/Python REs<br><code>grep -P</code><br>Python's <code>re</code></th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>CHARACTERS</strong></td>
-<td></td>
-<td></td>
-<td></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
 <td>Any char (except newline)</td>
-<td><code>.</code></td>
-<td><code>.</code></td>
-<td><code>.</code></td>
+<td align="center"><code>.</code></td>
+<td align="center"><code>.</code></td>
+<td align="center"><code>.</code></td>
 </tr>
 <tr>
 <td>a,b,c characters</td>
-<td><code>[abc]</code></td>
-<td><code>[abc]</code></td>
-<td><code>[abc]</code></td>
+<td align="center"><code>[abc]</code></td>
+<td align="center"><code>[abc]</code></td>
+<td align="center"><code>[abc]</code></td>
 </tr>
 <tr>
 <td>Any chars except a,b,c</td>
-<td><code>[^abc]</code></td>
-<td><code>[^abc]</code></td>
-<td><code>[^abc]</code></td>
+<td align="center"><code>[^abc]</code></td>
+<td align="center"><code>[^abc]</code></td>
+<td align="center"><code>[^abc]</code></td>
 </tr>
 <tr>
 <td>Any digit</td>
-<td><code>[0-9]</code></td>
-<td><code>[0-9]</code></td>
-<td><code>[0-9]</code> <code>\d</code></td>
+<td align="center"><code>[0-9]</code></td>
+<td align="center"><code>[0-9]</code></td>
+<td align="center"><code>[0-9]</code> <code>\d</code></td>
 </tr>
 <tr>
 <td>Any chars except digits</td>
-<td><code>[^0-9]</code></td>
-<td><code>[^0-9]</code></td>
-<td><code>[^0-9]</code> <code>\D</code></td>
+<td align="center"><code>[^0-9]</code></td>
+<td align="center"><code>[^0-9]</code></td>
+<td align="center"><code>[^0-9]</code> <code>\D</code></td>
 </tr>
 <tr>
 <td>Any letter</td>
-<td><code>[a-zA-Z]</code></td>
-<td><code>[a-zA-Z]</code></td>
-<td><code>[a-zA-Z]</code></td>
+<td align="center"><code>[a-zA-Z]</code></td>
+<td align="center"><code>[a-zA-Z]</code></td>
+<td align="center"><code>[a-zA-Z]</code></td>
 </tr>
 <tr>
 <td>Any letter, digit or "_"</td>
-<td><code>\w</code></td>
-<td><code>\w</code></td>
-<td><code>\w</code></td>
+<td align="center"><code>\w</code></td>
+<td align="center"><code>\w</code></td>
+<td align="center"><code>\w</code></td>
 </tr>
 <tr>
 <td>Not letter, digit or "_"</td>
-<td></td>
-<td></td>
-<td><code>\W</code></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><code>\W</code></td>
 </tr>
 <tr>
 <td>Whitespace char</td>
-<td><code>\s</code></td>
-<td><code>\s</code></td>
-<td></td>
+<td align="center"><code>\s</code></td>
+<td align="center"><code>\s</code></td>
+<td align="center"></td>
 </tr>
 <tr>
 <td>Whitespace char &amp; newline</td>
-<td></td>
-<td></td>
-<td><code>\s</code></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><code>\s</code></td>
 </tr>
 <tr>
 <td></td>
-<td></td>
-<td></td>
-<td></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
 <td><strong>QUANTIFIERS</strong></td>
-<td></td>
-<td></td>
-<td></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
 <td>0 or More</td>
-<td><code>*</code></td>
-<td><code>*</code></td>
-<td><code>*</code></td>
+<td align="center"><code>*</code></td>
+<td align="center"><code>*</code></td>
+<td align="center"><code>*</code></td>
 </tr>
 <tr>
 <td>1 or More</td>
-<td><code>\+</code></td>
-<td><code>+</code></td>
-<td><code>+</code></td>
+<td align="center"><code>\+</code></td>
+<td align="center"><code>+</code></td>
+<td align="center"><code>+</code></td>
 </tr>
 <tr>
 <td>0 or 1</td>
-<td><code>\?</code></td>
-<td><code>?</code></td>
-<td><code>?</code></td>
+<td align="center"><code>\?</code></td>
+<td align="center"><code>?</code></td>
+<td align="center"><code>?</code></td>
 </tr>
 <tr>
 <td>Exact Number</td>
-<td><code>\{3\}</code></td>
-<td><code>{3}</code></td>
-<td><code>{3}</code></td>
+<td align="center"><code>\{3\}</code></td>
+<td align="center"><code>{3}</code></td>
+<td align="center"><code>{3}</code></td>
 </tr>
 <tr>
 <td>Range min max</td>
-<td><code>\{3,4\}</code></td>
-<td><code>{3,4}</code></td>
-<td><code>{3,4}</code></td>
+<td align="center"><code>\{3,4\}</code></td>
+<td align="center"><code>{3,4}</code></td>
+<td align="center"><code>{3,4}</code></td>
 </tr>
 <tr>
 <td>2 or More</td>
-<td><code>\{2,}\</code></td>
-<td><code>{2,}</code></td>
-<td><code>{2,}</code></td>
+<td align="center"><code>\{2,}\</code></td>
+<td align="center"><code>{2,}</code></td>
+<td align="center"><code>{2,}</code></td>
 </tr>
 <tr>
 <td>3 or Less</td>
-<td><code>\{,3}\</code></td>
-<td><code>{,3}</code></td>
-<td><code>{,3}</code></td>
+<td align="center"><code>\{,3}\</code></td>
+<td align="center"><code>{,3}</code></td>
+<td align="center"><code>{,3}</code></td>
 </tr>
 <tr>
 <td></td>
-<td></td>
-<td></td>
-<td></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
 <td><strong>LIMITS</strong></td>
-<td></td>
-<td></td>
-<td></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
 <td>Beginning of line</td>
-<td><code>^</code></td>
-<td><code>^</code></td>
-<td><code>^</code></td>
+<td align="center"><code>^</code></td>
+<td align="center"><code>^</code></td>
+<td align="center"><code>^</code></td>
 </tr>
 <tr>
 <td>End of line</td>
-<td><code>$</code></td>
-<td><code>$</code></td>
-<td><code>$</code></td>
+<td align="center"><code>$</code></td>
+<td align="center"><code>$</code></td>
+<td align="center"><code>$</code></td>
 </tr>
 <tr>
 <td>Word boundary</td>
-<td><code>\b</code></td>
-<td><code>\b</code></td>
-<td><code>\b</code></td>
+<td align="center"><code>\b</code></td>
+<td align="center"><code>\b</code></td>
+<td align="center"><code>\b</code></td>
 </tr>
 <tr>
 <td>Not word boundary</td>
-<td><code>\B</code></td>
-<td><code>\B</code></td>
-<td><code>\B</code></td>
+<td align="center"><code>\B</code></td>
+<td align="center"><code>\B</code></td>
+<td align="center"><code>\B</code></td>
 </tr>
 <tr>
 <td></td>
-<td></td>
-<td></td>
-<td></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
 <td><strong>ALTERNATION</strong></td>
-<td></td>
-<td></td>
-<td></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
 <td>a or b</td>
-<td><code>\(a|b\)</code></td>
-<td><code>(a|b)</code></td>
-<td><code>(a|b)</code></td>
+<td align="center"><code>\(a|b\)</code></td>
+<td align="center"><code>(a|b)</code></td>
+<td align="center"><code>(a|b)</code></td>
 </tr>
 <tr>
 <td>a or b</td>
-<td><code>[ab]</code></td>
-<td><code>[ab]</code></td>
-<td><code>[ab]</code></td>
+<td align="center"><code>[ab]</code></td>
+<td align="center"><code>[ab]</code></td>
+<td align="center"><code>[ab]</code></td>
 </tr>
 <tr>
 <td></td>
-<td></td>
-<td></td>
-<td></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
 <td><strong>GROUPING</strong></td>
-<td></td>
-<td></td>
-<td></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
 <td>Capturing a group</td>
-<td><code>\(...\)</code></td>
-<td><code>(...)</code></td>
-<td><code>(...)</code></td>
+<td align="center"><code>\(...\)</code></td>
+<td align="center"><code>(...)</code></td>
+<td align="center"><code>(...)</code></td>
 </tr>
 <tr>
 <td>Backreference a group</td>
-<td><code>\1</code></td>
-<td><code>\1</code></td>
-<td><code>\1</code></td>
+<td align="center"><code>\1</code></td>
+<td align="center"><code>\1</code></td>
+<td align="center"><code>\1</code></td>
 </tr>
 <tr>
 <td></td>
-<td></td>
-<td></td>
-<td></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
 <td><strong>LOOK-AROUND</strong></td>
-<td></td>
-<td></td>
-<td></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
 <td>Positive look-behind</td>
-<td></td>
-<td></td>
-<td><code>(?&lt;=prefijo)mi_patron</code></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><code>(?&lt;=prefijo)mi_patron</code></td>
 </tr>
 <tr>
 <td>Negative look-behind</td>
-<td></td>
-<td></td>
-<td><code>(?&lt;!prefijo)mi_patron</code></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><code>(?&lt;!prefijo)mi_patron</code></td>
 </tr>
 <tr>
 <td>Positive look-ahead</td>
-<td></td>
-<td></td>
-<td><code>mi_patron(?=sufijo)</code></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><code>mi_patron(?=sufijo)</code></td>
 </tr>
 <tr>
 <td>Positive look-ahead</td>
-<td></td>
-<td></td>
-<td><code>mi_patron(?!sufijo)</code></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><code>mi_patron(?!sufijo)</code></td>
 </tr>
 </tbody>
 </table>
