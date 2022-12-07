@@ -379,3 +379,12 @@ echo $URL_LIST | xargs -n 1 -P 8 wget -q
 cat ../photosTAB.txt | parallel --jobs 100 --colsep '\t' wget -O {1} {2}
 
 
+## `lsof`
+
+https://copyconstruct.medium.com/lsof-f2b224eee7b5
+
+
+
+## `socat`
+
+https://copyconstruct.medium.com/socat-29453e9fc8a6

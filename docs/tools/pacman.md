@@ -41,3 +41,14 @@ git clone https://aur.archlinux.org/paru-bin.git
 cd paru-bin
 makepkg -si
 ```
+
+
+## Create pacman packege
+
+Templates:
+
+- Single package (with specific vesion): `/usr/share/pacman/PKGBUILD.proto`
+- Single package (with latest vesion, suffix `-git`): `/usr/share/pacman/PKGBUILD-vcs.proto`
+- Multiple package: `/usr/share/pacman/PKGBUILD-split.proto`
+
+
