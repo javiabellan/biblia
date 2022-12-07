@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Deep Learning - Documentación de Javi</title>
+    <title>Deep learning PRO - Documentación de Javi</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Deep Learning";
+        var mkdocs_page_name = "Deep learning PRO";
         var mkdocs_page_input_path = "ai/deep_learning.md";
         var mkdocs_page_url = null;
       </script>
@@ -44,34 +44,32 @@
                 <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
                 </li>
               </ul>
-              <p class="caption"><span class="caption-text">Linux</span></p>
+              <p class="caption"><span class="caption-text">CLI tools</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools/bash_basics/">Bash fundamentals (cd, ls, ...)</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools/bash_scripting/">Bash scripting</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools/process/">Process</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools/editors/">📝 Editors (nano, vim, jupyter)</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools/install/">🛠️ Install software (pacman, pip, conda)</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools/web_scraping/">⬇️ Web Scraping (curl, wget, api)</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools/cryptography/">🔑 Cryptography</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/bash/">Bash</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../tools/git/">GIT</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools/tmux/">TMUX</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/jupyter/">Jupyter</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools/gnu_parallel/">GNU parallel</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/nano/">Nano</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/pacman/">Pacman</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../tools/ssh/">SSH</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/tmux/">TMUX</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/vim/">Vim</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/bash/">ZSH</a>
+                  </li>
               </ul>
-              <p class="caption"><span class="caption-text">Data tools</span></p>
+              <p class="caption"><span class="caption-text">CLI data tools</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/text/">⚪️ TEXT,CSV (cut, paste, tr, sed, awk)</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/free_text/">⚪️ FREE TEXT (regex)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/csv/">🟢 Excel,CSV,TSV (cut, paste, tr, sed, awk)</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../tools_data/html/">🟡 HTML (pup)</a>
                   </li>
@@ -81,53 +79,17 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../tools_data/image/">🔵 Image (ImageMagick)</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/sound_video/">🟢 Sound,Video (ffmepg, sox)</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/sound_video/">🟣 Sound,Video (ffmepg, sox)</a>
                   </li>
               </ul>
-              <p class="caption"><span class="caption-text">AI</span></p>
-              <ul class="current">
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Deep Learning</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#1-read-data-from-disk-fast">1. Read data from disk fast</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#2-fast-dataaug-transfoms">2. Fast DataAug &amp; transfoms</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#3-model-optimizaation">3. Model optimizaation</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#4-training-loop-optimization">4. Training loop optimization</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#5-distributed-treainng-several-gpus">5. Distributed treainng (Several GPUs)</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#references">References</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#avoid-cuda-out-of-memory-oom-error-5-1-tricks">AVOID CUDA OUT OF MEMORY (OOM) ERROR. 5 + 1 tricks</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#extra-6th-trick-do-not-store-the-unnecesary-cuda-variables-in-the-training-loop">Extra 6th trick: Do not store the unnecesary cuda variables in the training loop.</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#faq">FAQ</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#why-do-i-need-to-store-the-activations-during-the-foward-pass">Why do I need to store the activations during the foward pass?</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#reference">Reference</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#layer-wise-learning-rate-in-pytorch">Layer-Wise Learning Rate in PyTorch</a>
-    </li>
-    </ul>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">Cybersecurity</span></p>
+              <p class="caption"><span class="caption-text">Software 1.0</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../cybersecurity/pentesting/">🗡️ Pentesting</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/bash/">Bash</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../cybersecurity/deffensive/">🛡️ Deffensive</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/python/">Python</a>
                   </li>
-              </ul>
-              <p class="caption"><span class="caption-text">Programming</span></p>
-              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/ruby/">♦️ Ruby</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../programming/monitoring/">Monitoring</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../programming/profiling/">Profiling</a>
@@ -137,24 +99,49 @@
                   <li class="toctree-l1"><a class="reference internal" href="../../programming/makefile/">Makefile</a>
                   </li>
               </ul>
-              <p class="caption"><span class="caption-text">Server</span></p>
+              <p class="caption"><span class="caption-text">Software 2.0</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../server/wakeonlan/">Wakeonlan</a>
+                  <li class="toctree-l1"><a class="" href="../numpy.md">🟦 Numpy</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../server/firewall/">Firewall</a>
+                  <li class="toctree-l1"><a class="" href="../machine_learning.md">🟫 Sklearn</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../server/load_balancer/">Load balancer</a>
+                  <li class="toctree-l1"><a class="" href="../pytorch.md">🟥 Pytorch</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../server/public_ip/">Public IP</a>
+                  <li class="toctree-l1"><a class="" href="../tensorflow.md">🟧 Tensorflow</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../onnx.md">⬜️ ONNX</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../tensorrt.md">🟩 TensorRT</a>
                   </li>
               </ul>
+              <p class="caption"><span class="caption-text">Others</span></p>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../../hardware/">Hardware</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../../linux_insides/">Linux insides</a>
-                </li>
+                  <li class="toctree-l1"><a class="" href="../../others/process.md">⏳ Process</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../others/cryptography.md">🔑 Cryptography</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../others/linux_insides/">Linux insides</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../others/remote_administration/">🖥️ Remote admin</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../others/web_scraping/">⬇️ Web Scraping (curl, wget)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../others/pentesting/">🗡️ Pentesting (nmap)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../others/deffensive/">🛡️ Deffensive</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../others/dns.md">DNS (dig, nslookup, whois)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../others/vpn/">VPN</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../others/firewall/">📛 Firewall</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../others/packets.md">📦 Packets (wireshark)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../others/load_balancer.md">Load balancer</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../others/public_ip/">Public IP</a>
+                  </li>
               </ul>
       </div>
     </div>
@@ -169,8 +156,7 @@
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>AI &raquo;</li><li>Deep Learning</li>
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>Deep learning PRO</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -368,10 +354,6 @@ gc.collect()
               
             </div>
           </div><footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../../tools_data/sound_video/" class="btn btn-neutral float-left" title="🟢 Sound,Video (ffmepg, sox)"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../../cybersecurity/pentesting/" class="btn btn-neutral float-right" title="🗡️ Pentesting">Next <span class="icon icon-circle-arrow-right"></span></a>
-    </div>
 
   <hr/>
 
@@ -393,10 +375,6 @@ gc.collect()
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../../tools_data/sound_video/" style="color: #fcfcfc">&laquo; Previous</a></span>
-    
-    
-      <span><a href="../../cybersecurity/pentesting/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

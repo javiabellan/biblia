@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Server users - Documentación de Javi</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Server users";
+        var mkdocs_page_input_path = "others/server_users.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Documentación de Javi
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CLI tools</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/bash/">Bash</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/git/">GIT</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/jupyter/">Jupyter</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/nano/">Nano</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/pacman/">Pacman</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/ssh/">SSH</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/tmux/">TMUX</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/vim/">Vim</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/bash/">ZSH</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CLI data tools</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/free_text/">⚪️ FREE TEXT (regex)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/csv/">🟢 Excel,CSV,TSV (cut, paste, tr, sed, awk)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/html/">🟡 HTML (pup)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/json/">🟠 JSON (jq)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/pdf/">🔴 PDF (Xpdf, poppler)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/image/">🔵 Image (ImageMagick)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/sound_video/">🟣 Sound,Video (ffmepg, sox)</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Software 1.0</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/bash/">Bash</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/python/">Python</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/ruby/">♦️ Ruby</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/monitoring/">Monitoring</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/profiling/">Profiling</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/debugging/">Debugging</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/makefile/">Makefile</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Software 2.0</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../../ai/numpy.md">🟦 Numpy</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../ai/machine_learning.md">🟫 Sklearn</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../ai/pytorch.md">🟥 Pytorch</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../ai/tensorflow.md">🟧 Tensorflow</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../ai/onnx.md">⬜️ ONNX</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../ai/tensorrt.md">🟩 TensorRT</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Others</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../process.md">⏳ Process</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../cryptography.md">🔑 Cryptography</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../linux_insides/">Linux insides</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../remote_administration/">🖥️ Remote admin</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../web_scraping/">⬇️ Web Scraping (curl, wget)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../pentesting/">🗡️ Pentesting (nmap)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../deffensive/">🛡️ Deffensive</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../dns.md">DNS (dig, nslookup, whois)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../vpn/">VPN</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../firewall/">📛 Firewall</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../packets.md">📦 Packets (wireshark)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../load_balancer.md">Load balancer</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../public_ip/">Public IP</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Documentación de Javi</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>Server users</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>File servers generally offer some form of system security to limit access to files to specific users or groups. In large organizations, this is a task usually delegated to directory services, such as openLDAP, Novell's eDirectory or Microsoft's Active Directory.</p>
+<ul>
+<li>Directory Server (user permission to directories)<ul>
+<li>OpenLDAP</li>
+<li>Microsoft's Active Directory</li>
+<li>Fedora Directory Server</li>
+</ul>
+</li>
+<li>User Management<ul>
+<li>Local</li>
+<li>NIS</li>
+<li>LDAP</li>
+</ul>
+</li>
+<li>Servidor de terminales de usuario<ul>
+<li>LTSP</li>
+<li>PXE</li>
+<li>DRBL</li>
+</ul>
+</li>
+<li>Servidor de trabajo en grupo<ul>
+<li>Zimbra</li>
+<li>OpenXchange</li>
+<li>Opengroupware</li>
+<li>Microsoft Exchange</li>
+</ul>
+</li>
+<li>Proxy Cache (Squid): Restricción de contenidos, páginas, usuarios, autenticación LDAP.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

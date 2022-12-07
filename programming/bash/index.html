@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Bash - Documentación de Javi</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Bash";
+        var mkdocs_page_input_path = "programming/bash.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Documentación de Javi
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CLI tools</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/bash/">Bash</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/git/">GIT</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/jupyter/">Jupyter</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/nano/">Nano</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/pacman/">Pacman</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/ssh/">SSH</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/tmux/">TMUX</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/vim/">Vim</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/bash/">ZSH</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CLI data tools</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/free_text/">⚪️ FREE TEXT (regex)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/csv/">🟢 Excel,CSV,TSV (cut, paste, tr, sed, awk)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/html/">🟡 HTML (pup)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/json/">🟠 JSON (jq)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/pdf/">🔴 PDF (Xpdf, poppler)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/image/">🔵 Image (ImageMagick)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/sound_video/">🟣 Sound,Video (ffmepg, sox)</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Software 1.0</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Bash</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#shells">Shells</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#file-descriptors-fd">File descriptors (fd)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#style-output">Style output</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#colours">Colours</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#io-redirection">IO Redirection</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#redirect-fromto-file">Redirect from/to file: &lt; &gt;</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#redirect-output-of-several-comandas">Redirect output of several comandas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#inplace-modify-the-same-file-sponge">Inplace modify the same file: sponge</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#append-to-file">Append to file: &gt;&gt;</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_1">&lt;&lt;</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#read-from-variable">Read from variable: &lt;&lt;&lt;</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#pipelines">Pipelines</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#regular-pipes">Regular Pipes |</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#named-pipes-mkfifo">Named Pipes: mkfifo</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#cron">CRON</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#examples">Examples:</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#example-bash-script">Example Bash script</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#variables">Variables</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#special-variables">Special variables</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#arrays">Arrays</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#associative-arrays-dictionaries">Associative Arrays (Dictionaries)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#control-operators-and">Control Operators (&amp;&amp; and ||)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#if">If</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../python/">Python</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ruby/">♦️ Ruby</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../monitoring/">Monitoring</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../profiling/">Profiling</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../debugging/">Debugging</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../makefile/">Makefile</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Software 2.0</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../../ai/numpy.md">🟦 Numpy</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../ai/machine_learning.md">🟫 Sklearn</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../ai/pytorch.md">🟥 Pytorch</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../ai/tensorflow.md">🟧 Tensorflow</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../ai/onnx.md">⬜️ ONNX</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../ai/tensorrt.md">🟩 TensorRT</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Others</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../../others/process.md">⏳ Process</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../others/cryptography.md">🔑 Cryptography</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../others/linux_insides/">Linux insides</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../others/remote_administration/">🖥️ Remote admin</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../others/web_scraping/">⬇️ Web Scraping (curl, wget)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../others/pentesting/">🗡️ Pentesting (nmap)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../others/deffensive/">🛡️ Deffensive</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../others/dns.md">DNS (dig, nslookup, whois)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../others/vpn/">VPN</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../others/firewall/">📛 Firewall</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../others/packets.md">📦 Packets (wireshark)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../others/load_balancer.md">Load balancer</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../others/public_ip/">Public IP</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Documentación de Javi</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Software 1.0 &raquo;</li><li>Bash</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="bash-scripting">Bash scripting</h1>
+<h2 id="shells">Shells</h2>
+<table>
+<thead>
+<tr>
+<th>Terminal</th>
+<th align="left">Promt</th>
+<th>Hashbang/Shebang</th>
+<th>Configuration file</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sh</code></td>
+<td align="left"><code>$</code></td>
+<td><code>#!/bin/sh</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>bash</code></td>
+<td align="left"><code>$</code></td>
+<td><code>#!/bin/bash</code></td>
+<td><code>.bashrc</code></td>
+</tr>
+<tr>
+<td><code>zsh</code></td>
+<td align="left"><code>$</code></td>
+<td><code>#!/bin/zsh</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>csh</code> or <code>tcsh</code></td>
+<td align="left"><code>%</code></td>
+<td><code>#!/bin/csh</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>[Shebang line](https://en.wikipedia.org/wiki/Shebang_(Unix): First line, This is going to be the interpreter:
+- <code>#!/bin/sh</code>:  Bourne shell script
+- <code>#!/bin/bash</code>:  Bash shell script <code>./myScript.sh</code>
+- <code>#!/usr/bin/env bash</code>: Bash shell script
+- <code>#!/usr/bin/python</code>:  Python script <code>./myScript.py</code>
+- <code>#!/usr/bin/env python</code>:  Python script (more portable because looks for python comand)  <code>./myScript.py</code></p>
+<h2 id="file-descriptors-fd">File descriptors (fd)</h2>
+<p>Every command (every porcess in fact) has its own file despcriptor table. By default (assuming your terminal is /dev/tty0):</p>
+<table>
+<thead>
+<tr>
+<th>File descriptor</th>
+<th>Meaning</th>
+<th>Initial value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td><strong>stdin</strong></td>
+<td><code>/dev/tty0</code></td>
+</tr>
+<tr>
+<td>1</td>
+<td><strong>stdout</strong></td>
+<td><code>/dev/tty0</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>stderr</strong></td>
+<td><code>/dev/tty0</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="style-output">Style output</h2>
+<p>Use ~~ncurses~~ scape charaacters !!!</p>
+<h3 id="colours">Colours</h3>
+<pre><code class="language-bash">greenColour=&quot;\e[0;32m\033[1m&quot;
+endColour=&quot;\033[0m\e[0m&quot;
+redColour=&quot;\e[0;31m\033[1m&quot;
+blueColour=&quot;\e[0;34m\033[1m&quot;
+yellowColour=&quot;\e[0;33m\033[1m&quot;
+purpleColour=&quot;\e[0;35m\033[1m&quot;
+turquoiseColour=&quot;\e[0;36m\033[1m&quot;
+grayColour=&quot;\e[0;37m\033[1m&quot;
+
+
+# Example of usage
+echo -e &quot;\n\n${yellowColour}[*]${endColour}${grayColour} Exiting...\n${endColour}&quot;
+</code></pre>
+<h2 id="io-redirection">IO Redirection</h2>
+<p>IO Redirection modifies the file descriptors table of a command.</p>
+<h3 id="redirect-fromto-file">Redirect from/to file: <code>&lt;</code> <code>&gt;</code></h3>
+<pre><code class="language-bash">command &lt;   file    # Redirect stdin to the command.    FD0 = file
+command &gt;   file    # Redirect stdout to file.          FD1 = file
+command 1&gt;  file    # Redirect stdout to file.          FD1 = file
+command 2&gt;  file    # Redirect stderr to file.          FD2 = file
+command &amp;&gt;  file    # Redirect stdout &amp; stderr to file  FD1 = FD2 = file
+command &gt;   /dev/null   # When we dont care about the output of a command
+echo hello &gt;  hello.txt # Crea (o sobrescribe) un fichero con la salida del programa anterior
+</code></pre>
+<h3 id="redirect-output-of-several-comandas">Redirect output of several comandas</h3>
+<pre><code class="language-bash">{
+   command1
+   command2 
+} &gt; /some/file
+
+{ command1;  command2;  } &gt;/some/file
+
+{ command1 &amp; command2 &amp; } &gt;/some/file
+</code></pre>
+<h3 id="inplace-modify-the-same-file-sponge">Inplace modify the same file: <code>sponge</code></h3>
+<pre><code class="language-bash">some_command_which_modifies /some/file | sponge /some/file
+
+head /some/file | sponge /some/file
+</code></pre>
+<h3 id="append-to-file">Append to file: <code>&gt;&gt;</code></h3>
+<pre><code class="language-bash">command &gt;&gt;  file    # Redirect and append stdout to a file.
+command 1&gt;&gt; file    # Redirect and append stdout to file
+command 2&gt;&gt; file    # Redirect and append stderr to file
+echo hello &gt;&gt; hello.txt # Añade (append) a un fichero la salida del programa anterior
+</code></pre>
+<h3 id="_1"><code>&lt;&lt;</code></h3>
+<ul>
+<li><code>&lt;&lt;</code> is known as here-document structure</li>
+</ul>
+<h3 id="read-from-variable">Read from variable: <code>&lt;&lt;&lt;</code></h3>
+<ul>
+<li><code>&lt;&lt;&lt;</code> is known as here-string structure</li>
+</ul>
+<h2 id="pipelines">Pipelines</h2>
+<h3 id="regular-pipes">Regular Pipes <code>|</code></h3>
+<ul>
+<li>Assign the stdout (FD1) of the first command to the pipe.</li>
+<li>Assign the stdin (FD0) of the second command to the pipe.</li>
+</ul>
+<pre><code class="language-bash">ls -l | tail -n2        # Pipe: Imprime solo los ultimos 2 ficheros
+ls -l | tail -n2 &gt;  hello.txt # Pipe and file writting
+ls | xargs rm  # | xargs is when the inputs is IN THE ARGUMENTS
+rm $(ls)       # same of above
+cmd1 |&amp; cmd1   #  command1's stdout AND stderr is redirected to command2's stdin
+</code></pre>
+<h3 id="named-pipes-mkfifo">Named Pipes: <code>mkfifo</code></h3>
+<h2 id="cron">CRON</h2>
+<pre><code>┌───────────── minute (0 - 59)
+│ ┌───────────── hour (0 - 23)
+│ │ ┌───────────── day of the month (1 - 31)
+│ │ │ ┌───────────── month (1 - 12)
+│ │ │ │ ┌───────────── day of the week (0=Sun - 6=Sat)
+│ │ │ │ │                                   
+* * * * *
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>minute</th>
+<th>hour</th>
+<th>day of the month</th>
+<th>month</th>
+<th>day of the week</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0..59</td>
+<td>0..23</td>
+<td>1..31</td>
+<td>1..12</td>
+<td>0..6 (Sun,Mon,..,Sat)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>*</code> means “every” </li>
+<li><code>,</code> value list separator</li>
+<li><code>-</code> Range of values.</li>
+<li><code>/</code> step values. Eg. <code>/5 * * * *</code> means every 5 minutes. </li>
+</ul>
+<h3 id="examples">Examples:</h3>
+<ul>
+<li><code>* * * * *</code>: Every minute</li>
+<li><code>*/5 * * * *</code>: Every 5 minutes</li>
+<li><code>*/5 8-16 * * 1-5</code>: Every 5 minutes from 8:00 to 16:00, from Mon to Fri.</li>
+<li><code>0 * * * *</code>: Every hour (at minute 0)</li>
+<li><code>0 0 * * *</code>: Every day (at 00:00)</li>
+<li><code>0 0 * * 0</code>: Every week (at 00:00 on Sunday)</li>
+<li><code>0 0 1 * *</code>: Mothly (at 00:00 on day 1)</li>
+<li><code>0 0 1 1 *</code>: Yearly (at 00:00 on day 1 of January)</li>
+</ul>
+<p>Check <a href="https://crontab.guru">crontab guru</a> to come up with the cron syntax for your schedule.</p>
+<h2 id="example-bash-script">Example Bash script</h2>
+<pre><code class="language-bash">############## Variables
+myVar=someValue
+echo $myVar
+myVar = someValue      # No funciona con espacios
+echo &quot;Value is $myVar&quot; # Imprime: Value is someValue
+echo 'Value is $myVar' # Imprime: Value is $myVar
+
+
+############## Functions
+#!/bin/bash
+mcd () {
+    mkdir -p &quot;$1&quot;
+    cd &quot;$1&quot;
+}
+
+# $0: The name of the script
+# $1: The 1st argument
+# $9: The 9th argument
+
+
+########## command substitution
+myDir=$(pwd) # The output of a command in a varaible
+echo &quot;we are in $(pwd)&quot;
+for file in $(ls)
+</code></pre>
+<h2 id="variables">Variables</h2>
+<p>variables in funcions has <strong>global scope</strong> by defualt, (unless you define with <code>local</code>)</p>
+<h2 id="special-variables">Special variables</h2>
+<ul>
+<li><code>$0</code>: Name of the script</li>
+<li><code>$1</code> to <code>$9</code>: Arguments to the script. <code>"$10"</code> and so on for the rest.</li>
+<li><code>$@</code>: All the arguments</li>
+<li><code>$#</code>: Number of arguments</li>
+<li><code>$$</code>: Process identification number (PID) for the current script</li>
+<li><code>$?</code>: Return code of the previous command</li>
+<li><code>!!</code>: Entire last command, including arguments. A common pattern is to execute a command only for it to fail due to missing permissions; you can quickly re-execute the command with sudo by doing <code>sudo !!</code></li>
+<li><code>$_</code>: Last argument from the last command. If you are in an interactive shell, you can also quickly get this value by typing Esc followed by . or Alt+.</li>
+</ul>
+<h2 id="arrays">Arrays</h2>
+<p>An array is a numbered list of strings: It maps integers to strings.</p>
+<ul>
+<li>Creating Arrays</li>
+<li><code>names=("Bob" "Peter" "$USER" "Big Bad John")</code> Simple way</li>
+<li><code>names=([0]="Bob" [1]="Peter" [20]="$USER" [21]="Big Bad John")</code> Explicit indexes (sparse array)</li>
+<li><code>names[0]="Bob"</code></li>
+<li><code>files=(~/*.jpg)</code> Result of a glob</li>
+<li><code>photos=(~/"My Photos"/*.jpg)</code> Result of a glob</li>
+<li><code>files=$(ls)</code>  BAD, BAD, BAD!</li>
+<li><code>files=($(ls))</code> STILL BAD!</li>
+<li><code>files=(*)</code> GOOD: filenames in the current directory</li>
+</ul>
+<blockquote>
+<ul>
+<li>http://mywiki.wooledge.org/BashGuide/Arrays</li>
+<li>http://mywiki.wooledge.org/BashFAQ/005</li>
+</ul>
+</blockquote>
+<h2 id="associative-arrays-dictionaries">Associative Arrays (Dictionaries)</h2>
+<ul>
+<li><code>fullNames=( ["lhunath"]="Maarten Billemont" ["greycat"]="Greg Wooledge" )</code></li>
+</ul>
+<blockquote>
+<ul>
+<li>http://mywiki.wooledge.org/BashGuide/Arrays#Associative_Arrays</li>
+<li>http://mywiki.wooledge.org/BashFAQ/006</li>
+</ul>
+</blockquote>
+<h2 id="control-operators-and">Control Operators (<code>&amp;&amp;</code> and <code>||</code>)</h2>
+<pre><code class="language-bash">my_command_2 &amp;&amp; my_command_2 # Do my_command_2 only if my_command_2 was success
+
+someCommand &amp;&amp; echo &quot;Previos comand worked (exit estatus==0)&quot;
+someCommand || echo &quot;Previos comand failed (exit estatus!=0)&quot;
+</code></pre>
+<pre><code class="language-bash">rm /etc/some_file.conf || echo &quot;I couldn't remove the file&quot;
+</code></pre>
+<pre><code class="language-bash">[ a = a ]; echo $?  # 0 (True)
+[ a = b ]; echo $?  # 1 (False)
+
+true;      echo $?  # 0 (True)
+false;     echo $?  # 1 (False)
+</code></pre>
+<h2 id="if">If</h2>
+<pre><code class="language-bash">if [[ $filename = *.jpg ]]; then
+    echo &quot;$filename is a jpeg&quot;
+fi
+</code></pre>
+<h1 id="6-choices-case-and-select">6. Choices (case and select)</h1>
+<p>Each choice in a case statement consists of a pattern (or a list of patterns)</p>
+<pre><code class="language-bash">case $LANG in
+    en*) echo 'Hello!' ;;
+    fr*) echo 'Salut!' ;;
+    de*) echo 'Guten Tag!' ;;
+    nl*) echo 'Hallo!' ;;
+    it*) echo 'Ciao!' ;;
+    es*) echo 'Hola!' ;;
+    C|POSIX) echo 'hello world' ;;
+    *)   echo 'I do not speak your language.' ;;
+esac
+</code></pre>
+<h1 id="loops">Loops</h1>
+<p>There are 4 different loops expressions:</p>
+<ol>
+<li><code>for</code> <em>variable</em> <code>in</code> <em>words</em>: Repeat the loop for each word, setting variable to each word in turn.</li>
+<li><code>for i in 1 2 3 4</code></li>
+<li><code>for i in {1..4}</code></li>
+<li><code>for file in *.mp3</code></li>
+<li><code>for file in *.jpg *.jpeg</code></li>
+<li><code>for ((</code> <em>expr</em><code>;</code> <em>expr</em><code>;</code> <em>expr</em> <code>))</code>: C style for loop</li>
+<li><code>for (( i=1; i &lt; 5; i++ ))</code></li>
+<li><code>while</code> <em>command</em>: Repeat so long as command is executed successfully (exit code is 0).</li>
+<li><code>while (( i &lt; 5 ))</code></li>
+<li><code>while true</code>: Infinite loop</li>
+<li><code>while sleep 300</code> Infinite loop every 5 minutes</li>
+<li><code>while read -p "Input something:" input_variable</code> Wait for user input</li>
+<li><code>until</code> <em>command</em>: Repeat so long as command is executed unsuccessfully (exit code is not 0).</li>
+<li>Not very used because is the same as <code>while ! command</code></li>
+</ol>
+<pre><code class="language-bash">loop_expresion
+do
+    commads
+done
+</code></pre>
+<h1 id="while-loop">While loop</h1>
+<pre><code class="language-bash">while /bin/true
+do
+  # Code goes here
+done
+
+while true; do
+  # Code goes here
+done
+</code></pre>
+<h1 id="functions">Functions</h1>
+<p>Functions can only return an integer in range of 0 - 255.</p>
+<h1 id="parameter-expansion">Parameter expansion</h1>
+<p>http://mywiki.wooledge.org/BashGuide/Parameters#Parameter_Expansion</p>
+<ul>
+<li>Simple usage</li>
+<li>$VARIABLE</li>
+<li>${VARIABLE}</li>
+<li>Indirection</li>
+<li>${!VARIABLE}</li>
+<li>Case modification</li>
+<li>${VARIABLE^}</li>
+<li>${VARIABLE^^}</li>
+<li>${VARIABLE,}</li>
+<li>${VARIABLE,,}</li>
+<li>${VARIABLE~}</li>
+<li>${VARIABLE~~}</li>
+<li>Variable name expansion</li>
+<li>${!PREFIX*}</li>
+<li>
+<p>${!PREFIX@}</p>
+</li>
+<li>
+<p>Substring removal</p>
+</li>
+<li>${VARIABLE#PATTERN}</li>
+<li>${VARIABLE##PATTERN}</li>
+<li>${VARIABLE%PATTERN}</li>
+<li>${VARIABLE%%PATTERN}</li>
+<li>Search and replace</li>
+<li>${VARIABLE/PATTERN/STRING}</li>
+<li>${VARIABLE//PATTERN/STRING}<ul>
+<li><code>for file in *; do; mv "$file ${file// /_}"; done;</code>: Replace spaces with underscores</li>
+</ul>
+</li>
+<li>${VARIABLE/PATTERN}</li>
+<li>
+<p>${VARIABLE//PATTERN}</p>
+</li>
+<li>
+<p>String or array length</p>
+</li>
+<li>${#VARIABLE}</li>
+<li>Substring expansion</li>
+<li>${VARIABLE:OFFSET}</li>
+<li>
+<p>${VARIABLE:OFFSET:LENGTH}</p>
+</li>
+<li>
+<p>Use a default value</p>
+</li>
+<li>${VARIABLE:-WORD}</li>
+<li>${VARIABLE-WORD}</li>
+<li>Assign a default value</li>
+<li>${VARIABLE:=WORD}</li>
+<li>${VARIABLE=WORD}</li>
+<li>Use an alternate value</li>
+<li>${VARIABLE:+WORD}</li>
+<li>
+<p>${VARIABLE+WORD}</p>
+</li>
+<li>
+<p>Display error if null or unset</p>
+</li>
+<li>${VARIABLE:?WORD}</li>
+<li>${VARIABLE?WORD}</li>
+</ul>
+<pre><code class="language-bash">file=&quot;$HOME/.secrets/007&quot;
+
+echo &quot;File location: $file&quot;    # /home/lhunath/.secrets/007
+echo &quot;Filename: ${file##*/}&quot;   # 007
+echo &quot;Directory: ${file%/*}&quot;   # /home/lhunath/.secrets
+echo
+echo &quot;Non-secret file: ${file/secrets/not_secret}&quot; # /home/lhunath/.not_secret/007
+echo
+echo &quot;Other file location: ${other:-There is no other file}&quot; # There is no other file
+echo &quot;Using file if there is no other file: ${other:=$file}&quot; # /home/lhunath/.secrets/007
+echo &quot;Other filename: ${other##*/}&quot;                          # 007
+echo &quot;Other file location length: ${#other}&quot;                 # 26
+
+
+# Note: You cannot use multiple Param Exps together
+file=$HOME/image.jpg
+file=${file##*/}
+echo &quot;${file%.*}&quot; # image
+
+
+version=1.5.9
+echo &quot;MAJOR: ${version%%.*}&quot; # MAJOR: 1
+echo &quot;MINOR: ${version#*.}.&quot; # MINOR: 5.9.
+echo &quot;Dash: ${version/./-}&quot;     # Dash: 1-5.9
+echo &quot;Dashes: ${version//./-}.&quot; # Dashes: 1-5-9.
+
+
+parameter     result
+-----------   ------------------------------
+$name         polish.ostrich.racing.champion
+${name#*.}           ostrich.racing.champion
+${name##*.}                         champion
+${name%%.*}   polish
+${name%.*}    polish.ostrich.racing
+
+
+</code></pre>
+<h1 id="brace-expansions"><a href="http://mywiki.wooledge.org/BraceExpansion">Brace expansions</a></h1>
+<p>Brace expansions can only be used to <strong>generate lists</strong> of words.</p>
+<p>You can not use with variables because brace expansion happens before parameter expansion.
+<code>for i in {1..$n}</code> Won't work!</p>
+<ul>
+<li><code>{a,b,c}</code>: a b c</li>
+<li><code>{foo,bar}</code>: foo bar</li>
+<li><code>{1..15}</code>: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15</li>
+<li><code>{9..1}</code>: 9 8 7 6 5 4 3 2 1</li>
+<li><code>{A..g}</code>: A B C D E F G H I J K L M N O P Q R S T U V W X Y Z [ \ ] ^ _ ´ a b c d e f g</li>
+<li><code>{e..a}</code>: e d c b a</li>
+<li><code>{a..c} {x..z}</code>: a b c x y z</li>
+<li><code>{1..3} {a..c}</code> 1 2 3 a b c</li>
+<li><code>{1..3}{a..c}</code>: 1a 1b 1c 2a 2b 2c 3a 3b 3c</li>
+<li><code>{0,1}{0..9}</code>: 00 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19</li>
+</ul>
+<blockquote>
+<ul>
+<li>https://www.gnu.org/software/bash/manual/html_node/Brace-Expansion.html</li>
+<li><a href="https://www.gnu.org/software/bash/manual/html_node/Pattern-Matching.html">Pattern Matching</a></li>
+</ul>
+</blockquote>
+<h1 id="globs-filename-expansion"><a href="http://mywiki.wooledge.org/glob">Globs</a> (filename expansion)</h1>
+<p>You can use it with <code>ls</code>, <code>mkdir</code>, <code>echo</code>, <code>for i in {}</code></p>
+<ul>
+<li>Globs</li>
+<li><code>*</code>: Matches any string, including the null string. But no the <code>/</code> chararcater<ul>
+<li><code>*/bin</code> might match <code>foo/bin</code> but it cannot match <code>/usr/local/bin</code>. </li>
+</ul>
+</li>
+<li><code>?</code>: Matches any single character. But no the <code>/</code> chararcater</li>
+<li><code>[...]</code>: Matches any one of the enclosed characters.</li>
+<li>Extended Globs (off by default, activate with <code>shopt -s extglob</code>)</li>
+<li><code>?(pattern-list)</code>: Matches zero or one occurrence of the given patterns.</li>
+<li><code>*(pattern-list)</code>: Matches zero or more occurrences of the given patterns.</li>
+<li><code>+(pattern-list)</code>: Matches one or more occurrences of the given patterns.</li>
+<li><code>@(pattern-list)</code>: Matches one of the given patterns.</li>
+<li><code>!(pattern-list)</code>: Matches anything except one of the given patterns.<ul>
+<li><code>!(*jpg|*bmp)</code>: anything that does not match the <code>*jpg</code> or the <code>*bmp</code> pattern</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<h3 id="globs-with-brace-expansion">Globs with brace expansion</h3>
+<p>Because Brace expansion happens <strong>before</strong> Filename expansion, <code>ls *{.jpg,.png}</code> will become <code>ls *.jpg *.png</code> and then execute the comand.</p>
+</blockquote>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../tools_data/sound_video/" class="btn btn-neutral float-left" title="🟣 Sound,Video (ffmepg, sox)"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../python/" class="btn btn-neutral float-right" title="Python">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../../tools_data/sound_video/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../python/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

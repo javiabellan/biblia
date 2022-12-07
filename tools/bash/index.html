@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>ZSH - Documentación de Javi</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "ZSH";
+        var mkdocs_page_input_path = "tools/bash.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Documentación de Javi
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CLI tools</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="./">Bash</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../git/">GIT</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../jupyter/">Jupyter</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../nano/">Nano</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../pacman/">Pacman</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ssh/">SSH</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tmux/">TMUX</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../vim/">Vim</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">ZSH</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#files">Files</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#your-system-is-alive">Your system is alive!</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#print-echo-printf">Print: echo, printf</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#navigate">Navigate</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#see-files">👁️ See files</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#rename-move-and-copy-files">Rename, Move and copy files</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#compression">📦 Compression</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#compare-files-and-find-duplicates">Compare files and Find duplicates</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#type-of-files-and-magic-numbers">Type of files and magic numbers</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#users-and-privileges-when-ls-l">Users and Privileges (when ls -l)</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#search">🔎 Search</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#see-current-date">📅 See current date</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#hard-drives">💽 Hard drives</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#disk-usage">💽 Disk usage</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#deep-remove-files">🗑️ Deep remove files</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CLI data tools</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/free_text/">⚪️ FREE TEXT (regex)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/csv/">🟢 Excel,CSV,TSV (cut, paste, tr, sed, awk)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/html/">🟡 HTML (pup)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/json/">🟠 JSON (jq)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/pdf/">🔴 PDF (Xpdf, poppler)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/image/">🔵 Image (ImageMagick)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/sound_video/">🟣 Sound,Video (ffmepg, sox)</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Software 1.0</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/bash/">Bash</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/python/">Python</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/ruby/">♦️ Ruby</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/monitoring/">Monitoring</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/profiling/">Profiling</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/debugging/">Debugging</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/makefile/">Makefile</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Software 2.0</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../../ai/numpy.md">🟦 Numpy</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../ai/machine_learning.md">🟫 Sklearn</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../ai/pytorch.md">🟥 Pytorch</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../ai/tensorflow.md">🟧 Tensorflow</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../ai/onnx.md">⬜️ ONNX</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../ai/tensorrt.md">🟩 TensorRT</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Others</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../../others/process.md">⏳ Process</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../others/cryptography.md">🔑 Cryptography</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../others/linux_insides/">Linux insides</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../others/remote_administration/">🖥️ Remote admin</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../others/web_scraping/">⬇️ Web Scraping (curl, wget)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../others/pentesting/">🗡️ Pentesting (nmap)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../others/deffensive/">🛡️ Deffensive</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../others/dns.md">DNS (dig, nslookup, whois)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../others/vpn/">VPN</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../others/firewall/">📛 Firewall</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../others/packets.md">📦 Packets (wireshark)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../others/load_balancer.md">Load balancer</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../others/public_ip/">Public IP</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Documentación de Javi</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>CLI tools &raquo;</li><li>ZSH</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="the-shell">The Shell</h1>
+<pre><code class="language-bash">############## Programas
+which echo  # En que path está el programa echo
+man echo    # Muestra el manual de un programa
+tldr echo   # Muestra el manual de ejemplos de un programa
+lsb_release -a # Ver mi sistema operativo
+
+############## Sitios
+/dev        # devices
+/proc       # Porcesos 
+/sys        # Los ficheros representan los propios devices del ordenador
+  # se puede cambiar el brillo de la pantalla, los leds, etc
+  cat /sys/class/thermal/thermal_zone*/temp # Ver temperatura CPU
+</code></pre>
+<h2 id="files">Files</h2>
+<ul>
+<li>file</li>
+<li>directory</li>
+<li>executable</li>
+<li>symbolic link</li>
+<li>socket</li>
+<li>FIFO</li>
+<li>whiteout (not in Linux, only in UNIX) Linux. it's a type of file that stops further lookup for a file but reports that it doesn't exist.</li>
+</ul>
+<h2 id="your-system-is-alive">Your system is alive!</h2>
+<ul>
+<li><code>lsof</code>: lists open files (belonging to active processes).<ul>
+<li><code>lsof -iTCP -sTCP:LISTEN</code> to list all processes that are listening on a TCP port for network requests.</li>
+</ul>
+</li>
+<li><code>inotify</code>: monitoring filesystem events</li>
+<li><code>inotifywait</code>: wait for changes to files using inotify</li>
+<li><code>iostat</code>: Report Central Processing Unit (CPU) statistics and input/output statistics for devices, partitions and network filesystems (NFS).</li>
+<li><code>socat</code>:<ul>
+<li><code>socat TCP-LISTEN:9000,fork,reuseaddr,bind=localhost TCP:$HOSTNAME:9000</code>: If the connection is refused by the server, will use socat to forward traffic from localhost:9000 to $HOSTNAME:9000 and back.</li>
+</ul>
+</li>
+</ul>
+<h2 id="print-echo-printf">Print: <code>echo</code>, <code>printf</code></h2>
+<ul>
+<li><code>echo</code></li>
+<li><code>echo Value is $myvarible</code>: Print some variable badly</li>
+<li><code>echo 'Value is $myvarible'</code>: Print some variable correctly (with newlines)</li>
+<li><code>echo "Value is $myvarible"</code>: Print some variable correctly (with newlines)</li>
+<li><code>echo $PATH</code>: Sitios donde la shell busca programas</li>
+<li><code>echo -n "no new line"</code>: do not output the newline</li>
+<li><code>echo -e "[33m ERROR"</code>: interpret backslash escapes (useful for displaying colors)
+enable interpretation of backslash escapes</li>
+<li><code>printf</code></li>
+<li><code>printf "dfadf"</code> Sitios donde la shell busca programas</li>
+</ul>
+<h2 id="navigate">Navigate</h2>
+<ul>
+<li><code>pwd</code>: <strong>p</strong>rint <strong>w</strong>orking <strong>d</strong>irectory</li>
+<li><code>cd</code> <strong>c</strong>hange <strong>d</strong>irectory</li>
+<li><code>cd</code>: go to home</li>
+<li><code>cd ~</code>: go to home</li>
+<li><code>cd /</code>: go to root</li>
+<li><code>cd -</code>: go to previous dir</li>
+<li><code>ls</code>: <strong>l</strong>i<strong>s</strong>t directories</li>
+<li><code>ls -a</code>: show hidden too</li>
+<li><code>ls -l</code>: show long (more info: permissions, size, date)</li>
+<li>`ls -lh: Human readable size</li>
+<li>`ls -S: Sort files by size </li>
+<li><code>ls *.png</code>: only png files</li>
+<li><code>ls *.??g</code>: only png and jpg files</li>
+</ul>
+<blockquote>
+<ul>
+<li><code>lsd</code>: Better ls</li>
+<li><code>tree</code></li>
+<li><code>broot</code></li>
+<li><code>nnn</code></li>
+<li><code>ranger</code></li>
+</ul>
+</blockquote>
+<h2 id="see-files">👁️ See files</h2>
+<ul>
+<li><strong><code>cat</code></strong>: con<strong>cat</strong>enate and print files.</li>
+<li><strong><code>less</code></strong>: Interactive file viwer. Load the file dynamically (faster)</li>
+<li><code>less -N</code> Add line number</li>
+<li><strong><code>more</code></strong>:</li>
+<li><strong><code>head</code></strong>: shows the beginning of a file (defaults to first 10 lines).</li>
+<li><code>head -n5</code>: only 5 lines</li>
+<li><strong><code>tail</code></strong>: shows the ending of a file (defaults to last 10 lines).</li>
+<li><code>tail -n5</code>: only 5 lines</li>
+<li><strong><code>hexdump</code></strong>: Para ver ficheros binarios</li>
+<li><strong><code>xxd</code></strong>: make a hexdump or do the reverse.</li>
+<li><code>hexeditor</code>:</li>
+<li><code>xdg-open  myFile.txt</code>: Open a file with default program</li>
+</ul>
+<blockquote>
+<ul>
+<li><code>bat</code>: Better cat</li>
+<li><code>mdcat</code>: cat for markdown</li>
+</ul>
+</blockquote>
+<h2 id="rename-move-and-copy-files">Rename, Move and copy files</h2>
+<ul>
+<li><code>mv OLD NEW</code>: Move or rename files or directories</li>
+<li><code>for file in *; do; mv "$file ${file// /_}"; done;</code>: Replace spaces with underscores</li>
+<li><code>cp FROM TO</code>: Copy a file</li>
+<li><code>rm PATH</code>: Remove a file</li>
+<li><code>rm -r PATH</code>: Remove a directory recusively</li>
+<li><code>rmdir PATH</code>: Remove an empty directory</li>
+<li><code>touch NEW_FILE</code>: Create a file</li>
+<li><code>mkdir PATH</code>: Make a directory</li>
+<li><code>mkdir My\ photos</code>: Make a directory with spaces</li>
+<li><code>mkdir "My photos"</code>: Make a directory with spaces</li>
+<li><code>ln FROM TO</code>: Create link (acceso directo)</li>
+<li><code>ln src_file dest_file</code>: Hard link</li>
+<li><code>ln -s src_file dest_file</code>: Symbolic link</li>
+<li><code>ln -s -f src_file dest_file</code>: Symbolyc link</li>
+</ul>
+<h2 id="compression">📦 Compression</h2>
+<p>| Format | Compress    | Preview               | Decompress |
+|-------------|-----------------------|--------------
+|             | <code>7z l compressedFile</code> | <code>7z x compressedFile</code> | 
+| <code>| base64</code>  |                       | <code>base64 -d</code>
+| <code>zip file</code>  |             |
+        | <code>tar -cvf compr.tar /dir/</code>tar file<code>|             |</code>tar -xf<code>|             |
+|</code>.gz<code>|</code>gunzip<code>|             |
+        |</code>bzip2`     |             |</p>
+<p>| Format  | Extension       | Tool 
+|---------|-----------------|
+| ZIP     |                 |
+| TAR     | <code>.tar.gz</code> o <code>.tgz</code> |
+| GNU zip | <code>.gz</code> o <code>.gzip</code> |
+| p7zip   | <code>.7z</code>           |
+| BZIP2   | <code>.bz2</code>          | <code>bzip2 FILE(S)</code> | <code>bzip2 –d test.txt</code></p>
+<p>XZ
+GZIP 
+TAR
+WIM</p>
+<p>.tar.bz2 o .tbz2
+.tar.xz o .xz o .txz
+.gz o .gzip o .bzip2
+.tar.lzma o .tlz:</p>
+<h2 id="compare-files-and-find-duplicates">Compare files and Find duplicates</h2>
+<ul>
+<li><strong>OPTION A)</strong> Comparing filenames</li>
+<li><code>ls | sort | uniq -d</code></li>
+<li><strong>OPTION B)</strong> Comparing line by line (text files)</li>
+<li><code>diff {file1} {file2}</code>: See differencs between files</li>
+<li><code>sdiff {file1} {file2}</code>: side-by-side merge of file differences</li>
+<li><code>cmp {file1} {file2}</code>: See differencs between files</li>
+<li><code>comm</code>: select or reject lines <strong>comm</strong>on to two files</li>
+<li><strong>OPTION C)</strong> Comparing Byte by byte (binary files)</li>
+<li><strong>OPTION D)</strong> Comparing Checksums, hashes, fingerprints</li>
+<li>md5sum</li>
+<li>sha1sum, </li>
+<li>Some filesytems already computes th checksums<ul>
+<li>ZFS: Performs automatic file integrity checking using checksums</li>
+</ul>
+</li>
+</ul>
+<p>fdupes: https://atareao.es/software/utilidades/eliminar-duplicados</p>
+<blockquote>
+<ul>
+<li>https://unix.stackexchange.com/questions/28895/open-source-duplicate-image-finder-for-linux</li>
+</ul>
+</blockquote>
+<h2 id="type-of-files-and-magic-numbers">Type of files and magic numbers</h2>
+<p>The first bytes of a file determine the type of file</p>
+<ul>
+<li><code>file *</code>: see the types of every file in the current directory</li>
+</ul>
+<p>Magic numbers:</p>
+<ul>
+<li><code>89 50 4e 47 0d 0a 1a 0a</code> magic number of PNG file</li>
+</ul>
+<h2 id="users-and-privileges-when-ls-l">Users and Privileges (when <code>ls -l</code>)</h2>
+<pre><code> ┌───────&gt; Permission of owner
+ │  ┌────&gt; Permission of users of same group
+ │  │  ┌─&gt; Permission of other users 
+ │  │  │
+/ \/ \/ \
+rwxrwxrwx  ownerUser userGroup 13B file
+</code></pre>
+<ul>
+<li>Manage users</li>
+<li><code>whoami</code>: See the current user i am</li>
+<li><code>su otherUser</code>: Change to other user</li>
+<li>`exit: Change to prevous user</li>
+<li>Manage files</li>
+<li><code>chmod +x file</code>: Add execution permission to the owner</li>
+<li><code>chmod o-r file</code>: Remove read permission to other users.</li>
+<li><code>chmod o+rw file</code>: Add read and write permission to other users.</li>
+<li><code>chmod g+w file</code>: Add write permission to group users.</li>
+<li><code>chmod g+r,o-w file</code>: Modifiy several users permission at the same time</li>
+<li><code>chmod 640 file</code>:  Modifiy several users permission at the same time</li>
+<li><code>chgrp userGroup file</code>: Change the user group</li>
+<li><code>lsattr file</code> List special atributers of file</li>
+<li><code>chattr +i file</code> Change special atributes of file (add i atribute)</li>
+<li><code>chattr -i file</code> Change special atributes of file (remove i atribute)</li>
+</ul>
+<h3 id="search">🔎 Search</h3>
+<ul>
+<li><code>find</code>: Search on many paths</li>
+<li><code>find /etc</code></li>
+<li><code>find {where} -name {what} -type {what type}</code></li>
+<li><code>find . -name src -type d</code> Find all directories named src</li>
+<li><code>find . -path '*/test/*.py' -type f</code> Find all python files that have a folder named test in their path</li>
+<li><code>find . -mtime -1</code> Find all files modified in the last day</li>
+<li><code>find . -size +500k -size -10M -name '*.tar.gz'</code> Find all zip files with size in range 500k to 10M</li>
+<li><code>find . -name '*.tmp' -exec rm {} \;</code> Delete all files with .tmp extension</li>
+<li><code>find . -name '*.png' -exec convert {} {}.jpg \;</code> Find all PNG files and convert them to JPG</li>
+<li><a href="https://github.com/sharkdp/fd"><code>fd</code></a>: a simple, fast, and user-friendly alternative to <code>find</code>.</li>
+<li><code>updatedb</code> and <code>locate</code>: indexed search.</li>
+<li><code>updatedb</code> compiles some sort of indexed database for quickly searching. Usually updated daily via <code>cron</code></li>
+<li><code>locate</code> uses the database for quickly searching.</li>
+</ul>
+<h4 id="see-current-date">📅 See current date</h4>
+<ul>
+<li><code>date</code></li>
+<li><code>cal</code></li>
+</ul>
+<h2 id="hard-drives">💽 Hard drives</h2>
+<ol>
+<li>See available drives</li>
+<li>Option 1: <code>lsblk</code></li>
+<li>Option 2: <code>fdisk -l</code></li>
+<li>Option 3: <code>ls /dev/sd??</code></li>
+<li>Mount</li>
+<li><code>sudo mkdir /hdd</code></li>
+<li><code>sudo mount -t auto /dev/sda1 /hdd</code></li>
+<li>Umount</li>
+<li><code>umount /hdd</code></li>
+</ol>
+<h2 id="disk-usage">💽 Disk usage</h2>
+<ul>
+<li><code>du</code>: <strong>d</strong>isk <strong>u</strong>sage</li>
+<li><code>du FILE</code>: Disk usage of a file</li>
+<li><code>du -sh */ | sort -rh</code></li>
+<li><code>ncdu FILE</code>: Interactive version of Disk usage</li>
+<li><code>dust</code></li>
+<li><code>duf</code></li>
+<li><code>df /</code></li>
+</ul>
+<h2 id="deep-remove-files">🗑️ Deep remove files</h2>
+<ul>
+<li><code>scrub</code>: Real delete files in disk</li>
+<li><code>shred</code>: Real delete files in disk</li>
+</ul>
+<pre><code class="language-bash">deep_rm () {
+  scrub -p dod $1
+  shred -zun 10 -v $1
+}
+</code></pre>
+<h1 id="alias">Alias</h1>
+<pre><code class="language-bash"># ZSH pluggins
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+
+
+# General
+alias l='lsd'
+alias ls='lsd'
+alias ll='lsd -l'
+alias la='lsd -a'
+alias lla='lsd -la'
+alias lt='lsd --tree'
+
+# Disk usage of current dir
+alias du='du -sh -- * | sort -h -r'
+
+
+# Jupyter notebook
+alias jn=&quot;jupyter notebook&quot;
+
+# Pacman
+alias i=&quot;sudo pacman -S&quot;        # install a package
+alias s=&quot;pacman -Ss&quot;            # search for a package
+alias u=&quot;sudo pacman -Syu&quot;      # update the packages
+alias r=&quot;sudo pacman -Rns&quot;      # remove a package
+
+alias install=&quot;sudo pacman -S&quot;  # install a package
+alias search=&quot;pacman -Ss&quot;       # search for a package
+alias update=&quot;sudo pacman -Syu&quot; # update the packages
+alias remove=&quot;sudo pacman -Rns&quot; # remove a package
+
+# Others
+alias title=&quot;figlet&quot; # r: remove a package
+
+# Git
+function commit() {
+    git add .
+    msg=$@ # Every argument
+    git commit -m &quot;$msg&quot;
+    git push
+}
+
+# Data wraling
+alias uniq=&quot;sort | uniq&quot; # uniq reqires previous sorting
+alias lc=&quot;wc --lines&quot; # lines count
+alias wc=&quot;wc --words&quot; # words count
+alias cc=&quot;wc --chars&quot; # chars count
+</code></pre>
+<hr />
+<h1 id="set-ntp-time">Set NTP time</h1>
+<pre><code class="language-bash">sudo pacman -S ntp
+sudo timedatectl set-ntp true
+</code></pre>
+<h1 id="hdbaset">HDBaseT</h1>
+<p>Protocolo para dejar el ordenador lejos (hasta 100 metros de distancia) y conetar todo (video, USB) por un cable Ethernet (categoría 5E para distancias cortas o categoria 6 o 7 para distancias largas).</p>
+<h1 id="generate-data">Generate data</h1>
+<ul>
+<li><code>touch</code> Create a new file or changes the Last Modified time of an existing file.</li>
+<li>echo "bla bla bla" &gt; file.txt</li>
+<li>seq</li>
+<li>seq 10</li>
+<li>seq 3 9</li>
+<li>primes 1 100</li>
+</ul>
+<h1 id="plotting">Plotting</h1>
+<ul>
+<li><code>gnuplot</code></li>
+<li><code>gnuplot -e "set terminal jpeg; plot [-5:5] sin(x)" | display</code></li>
+<li><code>gnuplot -e "set terminal jpeg; plot [-5:5] sin(x)" &gt; sin.jpg</code></li>
+<li><code>primes 1 100 | gnuplot -p -e 'plot "/dev/stdin"'</code></li>
+<li><code>feedgnuplot</code></li>
+<li>https://github.com/dkogan/feedgnuplot/blob/master/guide/guide.org </li>
+</ul>
+<h1 id="gnu-parallel">GNU Parallel</h1>
+<p>https://www.baeldung.com/linux/processing-commands-in-parallel</p>
+<p>cat photos.txt | sed 's/,/  /' &gt; photosTAB.txt</p>
+<h6 id="option-1-sequential-with-for-loop"># Option 1 (sequential with for loop)</h6>
+<p>cat ../photosTAB.txt | while read id url; do wget -O "$id" "$url"; done</p>
+<h6 id="option-2-sequential-with-for-loop"># Option 2 (sequential with for loop)</h6>
+<p>wget --input-file=&lt;(tail ../photosTAB.txt | cut -d "," -f 2)</p>
+<h6 id="option-3-parallel-with-xargs"># Option 3 (parallel with xargs)</h6>
+<p>echo $URL_LIST | xargs -n 1 -P 8 wget -q</p>
+<h6 id="option-4-parallel-with-gnu-parallel"># Option 4 (parallel with gnu parallel)</h6>
+<p>cat ../photosTAB.txt | parallel --jobs 100 --colsep '\t' wget -O {1} {2}</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../vim/" class="btn btn-neutral float-left" title="Vim"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../tools_data/free_text/" class="btn btn-neutral float-right" title="⚪️ FREE TEXT (regex)">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../vim/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../tools_data/free_text/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

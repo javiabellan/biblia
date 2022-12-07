@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Linux insides - Documentación de Javi</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Linux insides";
+        var mkdocs_page_input_path = "others/linux_insides.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Documentación de Javi
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CLI tools</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/bash/">Bash</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/git/">GIT</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/jupyter/">Jupyter</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/nano/">Nano</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/pacman/">Pacman</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/ssh/">SSH</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/tmux/">TMUX</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/vim/">Vim</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/bash/">ZSH</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CLI data tools</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/free_text/">⚪️ FREE TEXT (regex)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/csv/">🟢 Excel,CSV,TSV (cut, paste, tr, sed, awk)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/html/">🟡 HTML (pup)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/json/">🟠 JSON (jq)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/pdf/">🔴 PDF (Xpdf, poppler)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/image/">🔵 Image (ImageMagick)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools_data/sound_video/">🟣 Sound,Video (ffmepg, sox)</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Software 1.0</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/bash/">Bash</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/python/">Python</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/ruby/">♦️ Ruby</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/monitoring/">Monitoring</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/profiling/">Profiling</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/debugging/">Debugging</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/makefile/">Makefile</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Software 2.0</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../../ai/numpy.md">🟦 Numpy</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../ai/machine_learning.md">🟫 Sklearn</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../ai/pytorch.md">🟥 Pytorch</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../ai/tensorflow.md">🟧 Tensorflow</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../ai/onnx.md">⬜️ ONNX</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../ai/tensorrt.md">🟩 TensorRT</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Others</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="" href="../process.md">⏳ Process</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../cryptography.md">🔑 Cryptography</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Linux insides</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#kernel">Kernel</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#file-system">File system</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#btrfs">BTRFS</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#zfs">ZFS</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#ext4">EXT4</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#xfs">XFS</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#optimizacion-trick-1-desactivar-el-atributo-atime">Optimizacion trick 1: Desactivar el atributo atime</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#io-schedulers">I/O schedulers</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../remote_administration/">🖥️ Remote admin</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../web_scraping/">⬇️ Web Scraping (curl, wget)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../pentesting/">🗡️ Pentesting (nmap)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../deffensive/">🛡️ Deffensive</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../dns.md">DNS (dig, nslookup, whois)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../vpn/">VPN</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../firewall/">📛 Firewall</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../packets.md">📦 Packets (wireshark)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../load_balancer.md">Load balancer</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../public_ip/">Public IP</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Documentación de Javi</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Others &raquo;</li><li>Linux insides</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="linux-insides">Linux insides</h1>
+<h2 id="kernel">Kernel</h2>
+<ul>
+<li>Xanmod</li>
+</ul>
+<h2 id="file-system">File system</h2>
+<h3 id="btrfs">BTRFS</h3>
+<ul>
+<li>Recomendado por andres torrubia...</li>
+<li>...No por prestaciones, lo ha elegido por funcionalidad</li>
+<li>Copias autoamáticas (equvalente a la Time Machine de apple)</li>
+<li>Con <a href="https://wiki.archlinux.org/title/snapper">snapper</a> que es un sofware que va por encima, tienes facilmente recuperable como estaba tu ordenador hace 1 hora, hace 1 dia, ... te salva la vida cuando borras datos por accidente</li>
+<li>sucesor natural del sistema de archivos EXT4</li>
+<li>menos velocidad de lectura y escritura que EXT4</li>
+</ul>
+<h3 id="zfs">ZFS</h3>
+<ul>
+<li>Recomendado por profe ASORC carrera informatica</li>
+<li>Sistema por defecto de freeBSD</li>
+<li>Puedes meter y quitar Discos ampliando o reduciendo el espacio (y el logical volume y ZFS se adapta)</li>
+<li>ASi que va bien para tener hot-swapable disks</li>
+<li>Es sinónimo de escalabilidad</li>
+<li>Desventaja: consumo alto de memoria RAM</li>
+</ul>
+<h3 id="ext4">EXT4</h3>
+<ul>
+<li>Mas comun en linux.</li>
+<li>Tambien es rapido (mas que btrfs)</li>
+</ul>
+<h3 id="xfs">XFS</h3>
+<ul>
+<li>Tambien es rapido</li>
+</ul>
+<p>copy-on-write (COW) mechanism: when you modify a file, the file system won’t overwrite the existing data on the drive. Instead, the newer data is written elsewhere. Once the write operation is over, the file system simply points to the newer data blocks.
+  - Ventaja: asegurar la integridad de los archivos en caso de corte eléctrico. 
+  - Desventaja: una alta fragmentación, </p>
+<p>journaling (mejora la integridad del sistema de archivos), por lo que no deberías tener pérdida de datos en caso de corte de alimentación</p>
+<pre><code>      Asegurar integridad        How to               Scalable for
+      en caso de corte corr      RAID?                hot-swap disks
+</code></pre>
+<hr />
+<p>EXT4       journaling              need to format             no
+BTRFS      copy-on-write
+ZFS       copy-on-write                                    pool of vdevs</p>
+<p>vdevs == Virtual DEVice. A pool is made up of vdevs. A vdev is made up of physical devices.
+Let's say you have 12 physical disks. You might have a pool consisting of 6 mirrors. Each two disk mirror is a vdev. So your pool has 6 vdevs.</p>
+<blockquote>
+<h3 id="optimizacion-trick-1-desactivar-el-atributo-atime">Optimizacion trick 1: Desactivar el atributo atime</h3>
+<p>El atributo atime (access time) es recopilado y actualizado cada vez que el usuario lee o modifica un determinado archivo. En total, se recogen 3 atributos:</p>
+<ul>
+<li>Access: la última vez que el archivo fue leído</li>
+<li>Modify: la última vez que el archivo fue modificado (su contenido)</li>
+<li>Change: la última vez que los meta-datos del archivo fueron modificados (permisos, nombre, propietario, etc)</li>
+</ul>
+<p>Mediante <code>noatime</code> desactivamos esta funcionalidad y ganamos algo de velocidad al leer y escribira archivos.</p>
+</blockquote>
+<p>https://markmcb.com/2020/01/07/five-years-of-btrfs/
+https://carfax.org.uk/btrfs-usage/
+https://www.linuxjournal.com/content/hot-swappable-filesystems-smooth-btrfs
+https://www.salvagedata.com/btrfs-zfs-xfs-ext4-how-are-they-different/</p>
+<h3 id="io-schedulers">I/O schedulers</h3>
+<blockquote>
+<ul>
+<li>https://wiki.archlinux.org/title/improving_performance</li>
+<li>https://wiki.ubuntu.com/Kernel/Reference/IOSchedulers</li>
+<li>https://community.clearlinux.org/t/arch-linux-outperforms-clear-linux/5462</li>
+<li>https://clearlinux.org/</li>
+</ul>
+</blockquote>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../programming/makefile/" class="btn btn-neutral float-left" title="Makefile"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../remote_administration/" class="btn btn-neutral float-right" title="🖥️ Remote admin">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../../programming/makefile/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../remote_administration/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
