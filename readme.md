@@ -1,8 +1,26 @@
-# Biblia (aka Documentación de Javi)
+# How to write mkdocs documentation
 
-Esta documentación está hecha con [MkDocs](http://mkdocs.org) y se aloja en:
-- Github Pages: https://javiabellan.github.io/biblia
-- Read the Docs: https://biblia.readthedocs.io
+See [this tutorial](https://www.mkdocs.org/user-guide/writing-your-docs/)
+
+
+# Deploy With Read the Docs: https://biblia.readthedocs.io
+
+### Necessary files
+
+- File `.readthedocs.yaml` according to [this](https://docs.readthedocs.io/en/stable/config-file/v2.html)
+- File `requirements` according to [this](https://github.com/mkdocs/mkdocs/issues/2799)
+
+The docommestation is updated automatically withe every commit
+
+# Deploy with Github Pages: https://javiabellan.github.io/biblia
+
+### Necessary files
+
+This extra lines in mkdocs.yml file
+```yaml
+remote_branch: gh-deploy
+theme: readthedocs
+```
 
 ### Comandos principales de MkDocs
 
