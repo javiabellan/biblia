@@ -1,6 +1,4 @@
 site_name: Documentación de Javi
-remote_branch: gh-deploy
-theme: readthedocs
 nav:
 - Home: index.md
 - CLI tools:
