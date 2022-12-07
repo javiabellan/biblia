@@ -46,6 +46,7 @@
 
 
 > ### Pseudo look-around in `sed`
+> 
 > ```bash
 > # Remove something behind
 > sed 's/pattern2remove\(pattern2keep\)/\1/g' file.txt
@@ -67,6 +68,8 @@
 ## Examples
 
 - `.+`     Selececcionar cada linea
+- `\b[A-Z]+\b`   palabras solo en mayyscula (cada palabra es un match)
+- `([A-Z]+[ \t]+)+` frases solo en mayyscula (cada frase es un match)
 - `\.(png|jpg|gif)$`
 
 
@@ -93,7 +96,6 @@
 - https://regex101.com/
 - `man re_format`
 - [Char ranges](https://blog.robertelder.org/character-ranges-class-negation-regular-expressions)
-
 - https://www.youtube.com/playlist?list=PLp31D6HATKfdc5PSJTx7rIvlTLCSM5nDi
 - https://www.youtube.com/watch?v=w61mxJcUV-o
 - https://remram44.github.io/regex-cheatsheet/regex.html
