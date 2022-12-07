@@ -76,6 +76,11 @@ San handle extended regular expressions (EREs)
 
 
 
+- `sed '' file` View content of file
+- `sed 's/old_word/new_word/' file` Substituting Text
+- `sed 's/old_word/new_word/i' file` Substituting Text (case insensitive)
+
+
 ## `awk`
 
 - Pattern scanning and text processing language
