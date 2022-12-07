@@ -6,7 +6,7 @@ See [this tutorial](https://www.mkdocs.org/user-guide/writing-your-docs/)
 
 
 
-## Deploy With Read the Docs: https://biblia.readthedocs.io
+## Deploy on Read the Docs: https://biblia.readthedocs.io
 
 #### Necessary files
 
@@ -18,7 +18,7 @@ The documentation is deployed **automatically** on every commit.
 
 
 
-## Deploy with Github Pages: https://javiabellan.github.io/biblia
+## Deploy on Github Pages: https://javiabellan.github.io/biblia
 
 #### Necessary files
 
