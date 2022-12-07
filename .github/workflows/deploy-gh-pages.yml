@@ -1,0 +1,24 @@
+# https://medium.com/medialesson/documentation-in-github-pages-with-mkdocs-readthedocs-theme-920b283215d1
+name: Deploy on Github pages   # 1) Nombre de la acción/workflow [OPTIONAL]
+on: [push]                     # 2) Cuando se ejecutará (el trigger) [REQUIRED]
+jobs:                          # 3) Que hará
+   deploy:                     #    Trabajo 1
+      runs-on: ubuntu-latest   #    Maquina virtual donde se ejecuta
+      steps:
+        # ACCION QUE TE CLONA EL REPO EN LA MAQUINA VIRTUAL
+        - name: ⬇️ Checkout the repo
+          uses: actions/checkout@v2
+          with:
+            fetch-depth: 0
+        # ACCION QUE PONE EL PYTHON EN LA MAQUINA VIRTUAL
+        - name: 🐍 Set up Python 3.9
+          uses: actions/setup-python@v2
+          with:
+            python-version: '3.9'
+        # INSTALAR MKDOCS
+        - name: Install MKDOCS
+          run: pip install --upgrade pip && pip install mkdocs mkdocs-gen-files
+        - name:
+          run: git config user.name 'github-actions[bot]' && git config user.email 'github-actions[bot]@users.noreply.github.com'
+        - name: Publish docs
+          run: mkdocs gh-deploy --clean
