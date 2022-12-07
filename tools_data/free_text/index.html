@@ -69,6 +69,24 @@
               <ul class="current">
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">⚪️ FREE TEXT (regex)</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#coincidencias-basicas">Coincidencias Basicas</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#caracteres-especiales">Caracteres especiales</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#limites">Limites</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#cuantificadores">Cuantificadores</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#grupos">Grupos</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#conjuntos-de-caracteres">Conjuntos de Caracteres</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#look-around">Look around</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#pseudo-regex-in-terminal">Pseudo-regex in terminal</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#reference">Reference</a>
     </li>
     </ul>
@@ -172,6 +190,68 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="regular-expressions">Regular Expressions</h1>
+<h3 id="coincidencias-basicas">Coincidencias Basicas</h3>
+<ul>
+<li><code>.</code>        Cualquier Caracter, excepto nueva linea</li>
+<li><code>\d</code>       Cualquier Digitos (0-9)</li>
+<li><code>\D</code>       No es un Digito (0-9)</li>
+<li><code>\w</code>       Caracter de Palabra (a-z, A-Z, 0-9, _)</li>
+<li><code>\W</code>       No es un Caracter de Palabra.</li>
+<li><code>\s</code>       Espacios de cualquier tipo. (espacio, tab, nueva linea)</li>
+<li><code>\S</code>       No es un Espacio, Tab o nueva linea.</li>
+</ul>
+<h3 id="caracteres-especiales">Caracteres especiales</h3>
+<ul>
+<li><code>\.</code>  .</li>
+<li><code>\*</code>  *</li>
+<li><code>\(</code>  (</li>
+<li><code>\)</code>  )</li>
+</ul>
+<h3 id="limites">Limites</h3>
+<ul>
+<li><code>\b</code>       Limite de Palabra</li>
+<li><code>\B</code>       No es un Limite de Palabra</li>
+<li><code>^</code>        Inicio de una cadena de texto</li>
+<li><code>$</code>        Final de una cadena de texto</li>
+</ul>
+<h3 id="cuantificadores">Cuantificadores</h3>
+<ul>
+<li><code>*</code>        0 o Más</li>
+<li><code>+</code>        1 o Más</li>
+<li><code>?</code>        0 o Uno</li>
+<li><code>{3}</code>      Numero Exacto</li>
+<li><code>{3,4}</code>    Rango de Numeros (Minimo, Maximo)</li>
+<li><code>{2,}</code>     2 o Más</li>
+</ul>
+<h3 id="grupos">Grupos</h3>
+<ul>
+<li><code>( )</code>      Grupo</li>
+<li><code>|</code>        Uno u otro</li>
+<li><code>\1</code>       Referencias (duplicar) el grupo 1 </li>
+</ul>
+<h3 id="conjuntos-de-caracteres">Conjuntos de Caracteres</h3>
+<ul>
+<li><code>[]</code>       Caracteres dentro de los brackets</li>
+<li><code>[abc]</code>  Caracteres <code>a</code> ó <code>b</code> ó <code>c</code></li>
+<li><code>[a-z]</code>  Cualquir caracteres de la <code>a</code> a la <code>z</code></li>
+<li><code>[a-z-]</code>  Cualquir caracteres de la <code>a</code> a la <code>z</code> o tambien <code>-</code></li>
+<li><code>[a-z0-9]</code>  Cualquir caracteres de la <code>a</code> a la <code>z</code> y numeros</li>
+<li><code>[^ ]</code>     Caracteres que NO ESTAN dentro de los brackets</li>
+</ul>
+<blockquote>
+<p><code>(a|b|c)</code> es lo mismo que <code>[abc]</code></p>
+</blockquote>
+<h3 id="look-around">Look around</h3>
+<p><code>(?&lt;=prefijo)mi_patron</code>  Lookbehind          Asserts that what immediately PRECEDES the current position in the string is prefijo
+<code>mi_patron(?=sufijo)</code>    Lookahead           Asserts that what immediately FOLLOWS the current position in the string is sufijo
+<code>(?&lt;!prefijo)mi_patron</code>  Negative Lookbehind Asserts that what immediately PRECEDES the current position in the string is NOT prefijo
+<code>mi_patron(?!sufijo)</code>    Negative Lookahead  Asserts that what immediately FOLLOWS the current position in the string is NOT sufijo</p>
+<h2 id="examples">Examples</h2>
+<ul>
+<li><code>.+</code>     Selececcionar cada linea</li>
+<li><code>\.(png|jpg|gif)$</code></li>
+</ul>
+<h2 id="pseudo-regex-in-terminal">Pseudo-regex in terminal</h2>
 <ul>
 <li><code>*</code>: Matches zero or more.</li>
 <li><code>{a,b,c}</code>: <a href="https://www.gnu.org/software/bash/manual/html_node/Brace-Expansion.html"><strong>Brace Expansion</strong></a>. Examples:</li>
@@ -184,9 +264,10 @@
 <li><code>@(pattern-list)</code>: Matches one of the given patterns.</li>
 <li><code>!(pattern-list)</code>: Matches anything except one of the given patterns.</li>
 </ul>
-<blockquote>
-<h4 id="reference">Reference</h4>
+<h2 id="reference">Reference</h2>
 <ul>
+<li>https://regexr.com/</li>
+<li>https://regex101.com/</li>
 <li><code>man re_format</code></li>
 <li>https://remram44.github.io/regex-cheatsheet/regex.html</li>
 <li>https://linuxize.com/post/regular-expressions-in-grep</li>
@@ -194,7 +275,6 @@
 <li><strong><code>grep</code></strong>: print lines matching a pattern</li>
 <li><strong><code>egrep</code></strong>: can handle extended regular expressions (EREs)</li>
 </ul>
-</blockquote>
               
             </div>
           </div><footer>

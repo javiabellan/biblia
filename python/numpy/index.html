@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Pacman - Documentación de Javi</title>
+    <title>Numpy - Documentación de Javi</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Pacman";
-        var mkdocs_page_input_path = "tools/pacman.md";
+        var mkdocs_page_name = "Numpy";
+        var mkdocs_page_input_path = "python/numpy.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -45,36 +45,24 @@
                 </li>
               </ul>
               <p class="caption"><span class="caption-text">CLI tools</span></p>
-              <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" href="../bash/">Bash</a>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/bash/">Bash</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../git/">GIT</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/git/">GIT</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../jupyter/">Jupyter</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/jupyter/">Jupyter</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../nano/">Nano</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/nano/">Nano</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Pacman</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#arch-user-repository-aur">Arch User Repository (AUR)</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#yay">YAY</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#paru">PARU</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#create-pacman-packege">Create pacman packege</a>
-    </li>
-    </ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/pacman/">Pacman</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../ssh/">SSH</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/ssh/">SSH</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../tmux/">TMUX</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/tmux/">TMUX</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../vim/">Vim</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/vim/">Vim</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../bash/">ZSH</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tools/bash/">ZSH</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">CLI data tools</span></p>
@@ -169,8 +157,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>CLI tools &raquo;</li>
-      <li>Pacman</li>
+      <li>Numpy</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -179,74 +166,25 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="pacman">Pacman</h1>
-<pre><code class="language-bash">pacman -S {pkg}    # Install package
-pacman -Syu        # Update packages. Update database (-y) and upgrade packages (-u)
-pacman -Ss {pkg}   # Search for a new package
+                <h3 id="write">Write</h3>
+<pre><code class="language-python">file_imgIdPerFaces  = open(dest_path+'editorial_imgIdPerFaces_uint32', mode='wb')
 
-pacman -Q          # Display all installed packages
-pacman -Qe         # Display only packages explicitly installed
-pacman -Qn         # Display only packages installed from main repositories
-pacman -Qm         # Display only packages installed from AUR
-pacman -Qdt        # Display orphaned dependencies
-pacman -Qs {pkg}   # Search local repository for package
+for path in tqdm(paths_editorial):
+    np.array(img_id, dtype=&quot;uint32&quot;).tofile(file_imgIds)
+    np.load(path + &quot;/emb_img.npy&quot;).tofile(file_imgEmbs)
 
-pacman -R {pkg}    # Remove package {pkg}
-pacman -Rs {pkg}   # Remove package as well as unneeded dependencies (-s)
-pacman -Rns {pkg}  # Remove package, dependencies (-s), and system config files (-n)
+os.rename(dest_path+'editorial_imgIds_uint32',        dest_path+f'editorial_imgIds_{num_total_imgs}_uint32')
 </code></pre>
-<h2 id="arch-user-repository-aur"><a href="https://aur.archlinux.org/packages">Arch User Repository (AUR)</a></h2>
-<table>
-<thead>
-<tr>
-<th align="center"></th>
-<th>Manually</th>
-<th><code>yay</code> (AUR Helper)</th>
-<th><code>pamac</code> (AUR Helper)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="center">Preparation<br>(install yay)</td>
-<td></td>
-<td><code>sudo pacman -S --needed base-devel git</code><br><code>git clone https://aur.archlinux.org/yay.git</code><br><code>cd yay</code><br><code>makepkg -si</code></td>
-<td>Default in manjaro</td>
-</tr>
-<tr>
-<td align="center">Install<br>some package<br>(chrome)</td>
-<td><code>git clone https://aur.archlinux.org/google-chrome.git</code><br><code>cd google-chrome</code><br><code>makepkg -si</code></td>
-<td><code>yay -S google-chrome</code></td>
-<td><code>pamac install google-chrome</code></td>
-</tr>
-<tr>
-<td align="center">Upgrade<br>some package<br>(chrome)</td>
-<td><code>cd google-chrome</code><br><code>git pull</code><br><code>makepkg -si</code></td>
-<td><code>yay -Syu</code></td>
-<td><code>pamac upgrade -a</code></td>
-</tr>
-</tbody>
-</table>
-<h3 id="yay">YAY</h3>
-<p>https://www.chrisatmachine.com/Linux/03-AUR-yay/</p>
-<h3 id="paru">PARU</h3>
-<pre><code class="language-bash">git clone https://aur.archlinux.org/paru-bin.git
-cd paru-bin
-makepkg -si
+<h3 id="read">Read</h3>
+<pre><code class="language-python">embs_creat = np.memmap(path+&quot;creativo_imgEmbs_1103426x512_float32&quot;,
+                       dtype='float32',
+                       mode='r',
+                       shape=(1103426,512))
 </code></pre>
-<h2 id="create-pacman-packege">Create pacman packege</h2>
-<p>Templates:</p>
-<ul>
-<li>Single package (with specific vesion): <code>/usr/share/pacman/PKGBUILD.proto</code></li>
-<li>Single package (with latest vesion, suffix <code>-git</code>): <code>/usr/share/pacman/PKGBUILD-vcs.proto</code></li>
-<li>Multiple package: <code>/usr/share/pacman/PKGBUILD-split.proto</code></li>
-</ul>
+<p>https://stackoverflow.com/questions/51086704/append-numpy-matrix-to-binary-file-without-numpy-header</p>
               
             </div>
           </div><footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../nano/" class="btn btn-neutral float-left" title="Nano"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../ssh/" class="btn btn-neutral float-right" title="SSH">Next <span class="icon icon-circle-arrow-right"></span></a>
-    </div>
 
   <hr/>
 
@@ -268,10 +206,6 @@ makepkg -si
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../nano/" style="color: #fcfcfc">&laquo; Previous</a></span>
-    
-    
-      <span><a href="../ssh/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
