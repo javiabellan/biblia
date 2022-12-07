@@ -443,6 +443,8 @@ sed -E 's/(pattern2keep)pattern2remove/\1/g' file.txt
 <h2 id="examples">Examples</h2>
 <ul>
 <li><code>.+</code>     Selececcionar cada linea</li>
+<li><code>\b[A-Z]+\b</code>   palabras solo en mayyscula (cada palabra es un match)</li>
+<li><code>([A-Z]+[ \t]+)+</code> frases solo en mayyscula (cada frase es un match)</li>
 <li><code>\.(png|jpg|gif)$</code></li>
 </ul>
 <h2 id="pseudo-regex-in-terminal">Pseudo-regex in terminal</h2>
@@ -463,12 +465,8 @@ sed -E 's/(pattern2keep)pattern2remove/\1/g' file.txt
 <li>https://regexr.com/</li>
 <li>https://regex101.com/</li>
 <li><code>man re_format</code></li>
-<li>
-<p><a href="https://blog.robertelder.org/character-ranges-class-negation-regular-expressions">Char ranges</a></p>
-</li>
-<li>
-<p>https://www.youtube.com/playlist?list=PLp31D6HATKfdc5PSJTx7rIvlTLCSM5nDi</p>
-</li>
+<li><a href="https://blog.robertelder.org/character-ranges-class-negation-regular-expressions">Char ranges</a></li>
+<li>https://www.youtube.com/playlist?list=PLp31D6HATKfdc5PSJTx7rIvlTLCSM5nDi</li>
 <li>https://www.youtube.com/watch?v=w61mxJcUV-o</li>
 <li>https://remram44.github.io/regex-cheatsheet/regex.html</li>
 <li>https://linuxize.com/post/regular-expressions-in-grep</li>
