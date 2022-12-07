@@ -1,8 +1,8 @@
 # Regular Expressions
 
 
-| | Basic REs<br>`grep`<br>`sed` | Extended REs<br>`grep -E`, `egrep`<br>`sed -E` | Pearl/Python REs<br>`grep -P` |
-|---------------------------|-------------|-------------|-----------------|
+| | Basic REs<br>`grep`<br>`sed` | Extended REs<br>`grep -E`, `egrep`<br>`sed -E`, `awk` | Pearl/Python REs<br>`grep -P`<br>Python's `re` |
+|---------------------------|:-----------:|:-----------:|:---------------:|
 | **CHARACTERS**            |             |             |                 |
 | Any char (except newline) | `.`         | `.`         | `.`             |
 | a,b,c characters          | `[abc]`     | `[abc]`     | `[abc]`         |
