@@ -538,6 +538,31 @@ sudo timedatectl set-ntp true
 <p>echo $URL_LIST | xargs -n 1 -P 8 wget -q</p>
 <h6 id="option-4-parallel-with-gnu-parallel"># Option 4 (parallel with gnu parallel)</h6>
 <p>cat ../photosTAB.txt | parallel --jobs 100 --colsep '\t' wget -O {1} {2}</p>
+<pre><code class="language-bash"># this code
+
+for i in *gz; do 
+  zcat $i &gt; $(basename $i .gz).unpacked
+done
+
+# Can be remplazed with
+parallel 'zcat {} &gt; {.}.unpacked' ::: *.gz
+</code></pre>
+<h3 id="real-world-examples">Real world examples</h3>
+<pre><code class="language-bash">### Download files
+cat ../photosTAB.txt | parallel --jobs 100 --colsep '\t' wget -O {1} {2}
+
+### Check if images are corrupted
+cut -d, -f5 main.csv | parallel --progress 'identify {} &gt; /dev/null || echo {} &gt;&gt; bad_imgs'
+</code></pre>
+<ul>
+<li><code>{}</code>  Input line</li>
+<li><code>{.}</code> Input line without extension.</li>
+<li><code>{/}</code> Basename of input line</li>
+<li><code>{//}</code> Dirname of input line</li>
+<li><code>{/.}</code> Basename of input line without extension.</li>
+<li><code>{0}</code> 1st culumn of input_line </li>
+<li><code>{1}</code> 2nd culumn of input_line </li>
+</ul>
 <h2 id="lsof"><code>lsof</code></h2>
 <p>https://copyconstruct.medium.com/lsof-f2b224eee7b5</p>
 <h2 id="socat"><code>socat</code></h2>
