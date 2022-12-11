@@ -401,6 +401,9 @@ parallel 'zcat {} > {.}.unpacked' ::: *.gz
 ### Download files
 cat ../photosTAB.txt | parallel --jobs 100 --colsep '\t' wget -O {1} {2}
 
+### Find files that doenst't exists
+cut -d, -f5 main.csv | parallel --progress '[ -f {} ] || echo {} >> bad_imgs'
+
 ### Check if images are corrupted
 cut -d, -f5 main.csv | parallel --progress 'identify {} > /dev/null || echo {} >> bad_imgs'
 ```
