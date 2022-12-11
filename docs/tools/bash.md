@@ -379,6 +379,44 @@ echo $URL_LIST | xargs -n 1 -P 8 wget -q
 cat ../photosTAB.txt | parallel --jobs 100 --colsep '\t' wget -O {1} {2}
 
 
+
+
+
+
+
+```bash
+# this code
+
+for i in *gz; do 
+  zcat $i > $(basename $i .gz).unpacked
+done
+
+# Can be remplazed with
+parallel 'zcat {} > {.}.unpacked' ::: *.gz
+```
+
+### Real world examples
+
+```bash
+### Download files
+cat ../photosTAB.txt | parallel --jobs 100 --colsep '\t' wget -O {1} {2}
+
+### Check if images are corrupted
+cut -d, -f5 main.csv | parallel --progress 'identify {} > /dev/null || echo {} >> bad_imgs'
+```
+
+
+
+
+- `{}`  Input line
+- `{.}` Input line without extension.
+- `{/}` Basename of input line
+- `{//}` Dirname of input line
+- `{/.}` Basename of input line without extension.
+- `{0}` 1st culumn of input_line 
+- `{1}` 2nd culumn of input_line 
+
+
 ## `lsof`
 
 https://copyconstruct.medium.com/lsof-f2b224eee7b5
