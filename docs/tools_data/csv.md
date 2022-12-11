@@ -21,7 +21,7 @@ See **uniq**ues. **need to `sort` first**.
 Count lines, words and chars
 - `wc -l`: count only lines
 - `wc -w`: count only words
-- `wc -c`: count only chars
+- `wc -c`: count only chars/bytes (useful for getting size of stdin)
 
 
 ## `column`
@@ -42,7 +42,8 @@ Selecting fields (columns) (default is to delimit by tab).
 
 ## `paste`
 Join 2 (or more) files line by line
-
+- `pase file_a file_b`
+- `pase <(cut -d, -f1,2,3 some.csv) other_file`
 
 ## `split`
 Split a file into pieces (less useful)
