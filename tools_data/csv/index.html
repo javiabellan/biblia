@@ -226,7 +226,7 @@
 <p>Count lines, words and chars
 - <code>wc -l</code>: count only lines
 - <code>wc -w</code>: count only words
-- <code>wc -c</code>: count only chars</p>
+- <code>wc -c</code>: count only chars/bytes (useful for getting size of stdin)</p>
 <h2 id="column"><code>column</code></h2>
 <p>Display in <strong>column</strong>s
 - <code>| column -t</code>: Pretty print TSV file
@@ -240,7 +240,9 @@
 - <code>cut -d, -f-4,6-</code>: Delimit by coma (CSV). Select all except 5th field.
 - <code>cut -c 5-</code>: skip the first 4 characters of each line (start on the 5th char).</p>
 <h2 id="paste"><code>paste</code></h2>
-<p>Join 2 (or more) files line by line</p>
+<p>Join 2 (or more) files line by line
+- <code>pase file_a file_b</code>
+- <code>pase &lt;(cut -d, -f1,2,3 some.csv) other_file</code></p>
 <h2 id="split"><code>split</code></h2>
 <p>Split a file into pieces (less useful)</p>
 <h2 id="nl"><code>nl</code></h2>
