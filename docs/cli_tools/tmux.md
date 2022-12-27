@@ -49,24 +49,6 @@ The most popular terminal multiplexer these days is [`tmux`](https://www.man7.or
 > Reference: https://stackoverflow.com/questions/35421819/tmux-in-multiple-terminal-app-windows
 
 
-## .tmux.conf
-
-```
-####### SAME PROMT
-set -g default-terminal "screen-256color"
-if 'infocmp -x tmux-256color > /dev/null 2>&1' 'set -g default-terminal "tmux-256color"'
-
-
-####### MOUSE (enable scroll)
-set -g mouse on        # For tmux version 2.1 and above
-
-####### Number windows and panes start at 1 instead of 0
-set -g base-index 1
-set -g pane-base-index 1
-```
-
-- [Oh my tmux!](https://github.com/gpakosz/.tmux): Self-contained, pretty & versatile tmux configuration
-
 
 ## TMUX Server ([Autostart with systemd](https://wiki.archlinux.org/title/tmux#Autostart_with_systemd))
 

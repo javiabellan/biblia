@@ -21,4 +21,14 @@ embs_creat = np.memmap(path+"creativo_imgEmbs_1103426x512_float32",
 ```
 
 
+## IO Redirection `<` `>`
+
+```python
+import sys, numpy
+
+sys.stdout.buffer.write(a.data)
+numpy.savetxt( sys.stdout.buffer, a  )
+```
+
+
 https://stackoverflow.com/questions/51086704/append-numpy-matrix-to-binary-file-without-numpy-header

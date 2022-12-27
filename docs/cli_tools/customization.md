@@ -1,40 +1,143 @@
-
-# Vim
-
-## Modes
-- **`ESC`**: Normal mode. For moving around a file; reading; going to file to file
-- **`i`**: Insert mode. For inserting text
-- **`:`**: Command-line mode. For running a command
-- **`r`**: Replace mode. For replacing text
-- **`v`**: Visual mode. For selecting blocks of text
-- **`SHIFT` + `v`**: Visual line mode
-- **`Ctrl` + `v`**: Visual block mode
+# 🎨 Customization (dotfiles)
 
 
-## Command-line
 
-Command mode can be entered by typing `:` in Normal mode. Your cursor will jump
-to the command line at the bottom of the screen upon pressing `:`. This mode
-has many functionalities, including opening, saving, and closing files, and
-[quitting Vim](https://twitter.com/iamdevloper/status/435555976687923200).
+## ZSH `~/.zshrc`
 
-- `:q` quit (close window)
-- `:w` save ("write")
-- `:wq` save and quit
-- `:e {name of file}` open file for editing
-- `:ls` show open buffers
-- `:help {topic}` open help
-    - `:help :w` opens help for the `:w` command
-    - `:help w` opens help for the `w` movement
+Change to zsh: `sudo chsh -s /usr/bin/zsh javi`
+curl -L http://install.ohmyz.sh | sh
+
+### Change Bash to ZSH
+
+```bash
+$ sudo pacman -S zsh                    # Install ZSH (and extras)
+$ zsh                                   # Make sure that ZSH has been installed correctly
+$ chsh -l                               # List all installed shells
+$ chsh -s /usr/bin/zsh                  # WAY 1) Set new default shell (zsh) for your user
+$ usermod --shell /usr/bin/zsh username # WAY 2) Set new default shell (zsh) for a user
+$ nano /etc/passwd                      # WAY 3) Set new default shell (zsh) for a user
+$ echo $SHELL                           # Comprobar la nueva shell
+```
+
+> - https://wiki.archlinux.org/title/zsh#Installation
+> - https://wiki.archlinux.org/title/Command-line_shell#Changing_your_default_shell
+> - [3 Ways to Change a Users Default Shell](https://www.tecmint.com/change-a-users-default-shell-in-linux/)
+
+### ZSH: Better prompt -> Powerlevel10k
+
+```bash
+$ sudo pacman -S zsh-theme-powerlevel10k
+$ echo 'source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme' >> ~/.zshrc
+$ p10k configure
+```
 
 
-## NeoVIM
+### Colors on the terminal (grep, ls)
 
-- NvimTreeToogle: left tree panel
-- nvchad
+> - https://github.com/ahillio/powerlevel10k/blob/master/README.md#arch-linux
+
+### ZSH: Other plugins
+
+- zsh-completions
+- grml-zsh-config
+- zsh-sudo   -> con esc esc  te pone sudo al principio
+- zsh-syntax-highlining
+- zsh-suggestions
+- zsh-autosuggestions
+- fzf -> con ctrl + T busca
+
+```bash
+# ZSH pluggins
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+
+# General
+alias l='lsd'
+alias ls='lsd'
+alias ll='lsd -l'
+alias la='lsd -a'
+alias lla='lsd -la'
+alias lt='lsd --tree'
+
+# Disk usage of current dir
+alias du='du -sh -- * | sort -h -r'
 
 
-## Dotfile: `~/.vimrc`
+# Jupyter notebook
+alias jn="jupyter notebook"
+
+# Pacman
+alias i="sudo pacman -S"        # install a package
+alias s="pacman -Ss"            # search for a package
+alias u="sudo pacman -Syu"      # update the packages
+alias r="sudo pacman -Rns"      # remove a package
+
+alias install="sudo pacman -S"  # install a package
+alias search="pacman -Ss"       # search for a package
+alias update="sudo pacman -Syu" # update the packages
+alias remove="sudo pacman -Rns" # remove a package
+
+# Others
+alias title="figlet" # r: remove a package
+
+# Git
+function commit() {
+    git add .
+    msg=$@ # Every argument
+    git commit -m "$msg"
+    git push
+}
+
+# Data wraling
+alias uniq="sort | uniq" # uniq reqires previous sorting
+alias lc="wc --lines" # lines count
+alias wc="wc --words" # words count
+alias cc="wc --chars" # chars count
+```
+
+
+
+
+
+
+
+
+## Nano: `~/.nanorc`
+
+```bash
+set autoindent  # Tthe newly created line will contain the same indent as the preceding line
+set tabsize 4   # Use a tab size of number columns. The default value is 8.
+set softwrap    # Enable soft line wrapping for easier viewing of very long lines
+set nowrap      # Don’t hard-wrap text at all
+set nohelp      # Don’t display the two help lines at the bottom of the screen.
+set linenumbers # Display of line numbers in front of the text.
+```
+
+
+
+## TMUX `~/.tmux.conf`
+
+```bash
+####### SAME PROMT
+set -g default-terminal "screen-256color"
+if 'infocmp -x tmux-256color > /dev/null 2>&1' 'set -g default-terminal "tmux-256color"'
+
+####### MOUSE (enable scroll)
+set -g mouse on        # For tmux version 2.1 and above
+
+####### Number windows and panes start at 1 instead of 0
+set -g base-index 1
+set -g pane-base-index 1
+```
+
+- [Oh my tmux!](https://github.com/gpakosz/.tmux): Self-contained, pretty & versatile tmux configuration
+
+
+
+
+
+## VIM: `~/.vimrc`
 
 ```
 " Comments in Vimscript start with a `"`.
@@ -136,4 +239,19 @@ inoremap <Left>  <ESC>:echoe "Use h"<CR>
 inoremap <Right> <ESC>:echoe "Use l"<CR>
 inoremap <Up>    <ESC>:echoe "Use k"<CR>
 inoremap <Down>  <ESC>:echoe "Use j"<CR>
+```
+
+IMACAT
+
+Ranger + imgcat
+
+
+
+
+
+# Set NTP time
+
+```bash
+sudo pacman -S ntp
+sudo timedatectl set-ntp true
 ```

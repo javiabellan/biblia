@@ -4,51 +4,47 @@ theme: readthedocs
 nav:
 - Home: index.md
 - CLI tools:
-  - Bash:    tools/bash.md
-  - GIT:     tools/git.md
-  - Jupyter: tools/jupyter.md
-  - Nano:    tools/nano.md
-  - Pacman:  tools/pacman.md
-  - SSH:     tools/ssh.md
-  - TMUX:    tools/tmux.md
-  - Vim:     tools/vim.md
-  - ZSH:     tools/bash.md
+  - 📁 Dirs (cd,ls,find,ranger):   cli_tools/1_dirs.md
+  - 📄 Files (cat,file,stat):      cli_tools/2_files.md
+  - ⏳ Process (ps,top):           cli_tools/3_process.md
+  - 🗜️ Compress (zip,tar,bz):      cli_tools/compression.md
+  - 🔑 Cryptography (base64):      cli_tools/cryptography.md
+  - 📊 Plotting (gnuplot):         cli_tools/plotting.md
+  - 👨‍💻 Scripting:                  cli_tools/scripting.md
+  - 🎨 Customization (dotfiles):   cli_tools/customization.md
+  - GIT:                           cli_tools/git.md
+  - 📝 Editors (nano,vim,jupyter): cli_tools/editors.md
+  - 📦 Software (pacman,aur,pip):  cli_tools/pacman.md
+  - SSH:                           cli_tools/ssh.md
+  - TMUX:                          cli_tools/tmux.md
 - CLI data tools:
-  - ⚪️ FREE TEXT (regex):  tools_data/free_text.md
-  - 🟢 Excel,CSV,TSV (cut, paste, tr, sed, awk): tools_data/csv.md
-  - 🟡 HTML (pup):          tools_data/html.md
-  - 🟠 JSON (jq):           tools_data/json.md
-  - 🔴 PDF (Xpdf, poppler): tools_data/pdf.md
-  - 🔵 Image (ImageMagick): tools_data/image.md
-  - 🟣 Sound,Video (ffmepg, sox): tools_data/sound_video.md
-- Software 1.0:
-  - Bash:       programming/bash.md
-  - Python:     programming/python.md
+  - ⚪️ Free text (regex,grep,tr,sed):  cli_tools_data/free_text.md
+  - 🟢 Excel,csv,tsv (cut,paste,awk):  cli_tools_data/csv.md
+  - 🟡 HTML (pup) XML:                 cli_tools_data/html.md
+  - 🟠 JSON (jq):                      cli_tools_data/json.md
+  - 🔴 PDF (Xpdf,poppler):             cli_tools_data/pdf.md
+  - 🔵 Image (ImageMagick):            cli_tools_data/image.md
+  - 🟣 Sound,Video (ffmepg,sox):       cli_tools_data/sound_video.md
+- CLI networking tools:
+  - ⬇️ Web Scraping (curl,wget): cli_tools_net/web_scraping.md
+  - 🗡️ Pentesting (nmap):        cli_tools_net/pentesting.md
+  - 🛡️ Deffensive:               cli_tools_net/deffensive.md
+  - 📒 DNS (dig,nslookup,whois): cli_tools_net/dns.md
+  - 🔒 VPN:                      cli_tools_net/vpn.md
+  - 📛 Firewall:                 cli_tools_net/firewall.md
+- Python:
+  - 🟦 Numpy:      python/numpy.md
+  - 🟫 Sklearn:    python/machine_learning.md
+  - 🟥 Pytorch:    python/pytorch.md
+  - 🟧 Tensorflow: python/tensorflow.md
+  - ⬜️ ONNX:       python/onnx.md
+  - 🟩 TensorRT:   python/tensorrt.md
+  - 🟦 Parallel:   python/numpy.md
+- C++:
   - ♦️ Ruby:    programming/ruby.md
   - Monitoring: programming/monitoring.md
   - Profiling:  programming/profiling.md
   - Debugging:  programming/debugging.md
   - Makefile:   programming/makefile.md
-- Software 2.0:
-  - 🟦 Numpy:      ai/numpy.md
-  - 🟫 Sklearn:    ai/machine_learning.md
-  - 🟥 Pytorch:    ai/pytorch.md
-  - 🟧 Tensorflow: ai/tensorflow.md
-  - ⬜️ ONNX:       ai/onnx.md
-  - 🟩 TensorRT:   ai/tensorrt.md
-- Others:
-  - ⏳ Process:      others/process.md
-  - 🔑 Cryptography: others/cryptography.md
-  - Linux insides:   others/linux_insides.md
-  - 🖥️ Remote admin: others/remote_administration.md
-  - ⬇️ Web Scraping (curl, wget): others/web_scraping.md
-  - 🗡️ Pentesting (nmap): others/pentesting.md
-  - 🛡️ Deffensive:   others/deffensive.md
-  - DNS (dig, nslookup, whois): others/dns.md
-  - VPN: others/vpn.md
-  - 📛 Firewall: others/firewall.md
-  - 📦 Packets (wireshark): others/packets.md
-  - Load balancer: others/load_balancer.md
-  - Public IP:     others/public_ip.md
 
 

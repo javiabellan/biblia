@@ -22,6 +22,32 @@
 
 
 
+## Print: `echo`, `printf`
+
+- `echo`
+  - `echo Value is $myvarible`: Print some variable badly
+  - `echo 'Value is $myvarible'`: Print some variable correctly (with newlines)
+  - `echo "Value is $myvarible"`: Print some variable correctly (with newlines)
+  - `echo $PATH`: Sitios donde la shell busca programas
+  - `echo -n "no new line"`: do not output the newline
+  - `echo -e "[33m ERROR"`: interpret backslash escapes (useful for displaying colors)
+enable interpretation of backslash escapes
+- `printf`
+  - `printf "dfadf"` Sitios donde la shell busca programas
+
+
+## Generate data
+- `touch` Create a new file or changes the Last Modified time of an existing file.
+- echo "bla bla bla" > file.txt
+- seq
+  - seq 10
+  - seq 3 9
+- primes 1 100
+
+
+## 📅 See current date
+- `date`
+- `cal`
 
 
 ## File descriptors (fd)

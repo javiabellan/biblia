@@ -168,3 +168,8 @@ RAID 0: lass velocidades de lectura y escritura. Normalmente es la suma de las v
 - ECC RAM: Good for servers
 
 
+
+# HDBaseT
+Protocolo para dejar el ordenador lejos (hasta 100 metros de distancia) y conetar todo (video, USB) por un cable Ethernet (categoría 5E para distancias cortas o categoria 6 o 7 para distancias largas).
+
+

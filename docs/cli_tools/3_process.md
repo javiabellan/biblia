@@ -15,6 +15,53 @@
 	- From anothter process (child process)
 
 
+
+====== PROCESSES
+
+COMMAND &      # EJecuta el proceso n 2o plano
+
+
+diswon         # independiza el proceso
+
+
+pwdx 1732127  # En que ruta se inicio el proceso con PID=1732127
+
+
+
+
+## `lsof`
+
+Lists open files (belonging to active processes).
+
+- `lsof -i:80`  Que procesos eta ocupando el puerto 80
+- `lsof -iTCP -sTCP:LISTEN` to list all processes that are listening on a TCP port for network requests.
+
+https://copyconstruct.medium.com/lsof-f2b224eee7b5
+
+
+
+## `socat`
+
+
+- `socat TCP-LISTEN:9000,fork,reuseaddr,bind=localhost TCP:$HOSTNAME:9000`: If the connection is refused by the server, will use socat to forward traffic from localhost:9000 to $HOSTNAME:9000 and back.
+
+
+https://copyconstruct.medium.com/socat-29453e9fc8a6
+
+
+## `ss`
+
+Sockets
+
+
+## Your system is alive!
+
+
+- `inotify`: monitoring filesystem events
+- `inotifywait`: wait for changes to files using inotify
+- `iostat`: Report Central Processing Unit (CPU) statistics and input/output statistics for devices, partitions and network filesystems (NFS).
+
+
 ## Processes VS Jobs
 
 A job is a concept used by the shell. Foreground process, backegraund process and suspended processces in the current shell is a job.

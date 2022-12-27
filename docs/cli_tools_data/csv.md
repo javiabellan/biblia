@@ -15,7 +15,7 @@ See **uniq**ues. **need to `sort` first**.
 - `sort | uniq`: Display uniques
 - `sort | uniq -c`: Count uniques
 - `sort | uniq -d`: Display duplicates
-
+- `sort | uniq -u`: Show non repeated lines
 
 ## `wc`
 Count lines, words and chars
@@ -44,6 +44,7 @@ Selecting fields (columns) (default is to delimit by tab).
 Join 2 (or more) files line by line
 - `pase file_a file_b`
 - `pase <(cut -d, -f1,2,3 some.csv) other_file`
+
 
 ## `split`
 Split a file into pieces (less useful)
