@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>📁 Dirs (cd,ls,find,ranger) - Documentación de Javi</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "\ud83d\udcc1 Dirs (cd,ls,find,ranger)";
+        var mkdocs_page_input_path = "cli_tools/1_dirs.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Documentación de Javi
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CLI tools</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">📁 Dirs (cd,ls,find,ranger)</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#navigate">🚶🏻‍♂️ Navigate</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#search-find">🔎 Search find</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#filter-by-typenamepath">Filter by type/name/path</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#filter-by-modification-time">Filter by modification time</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#filter-by-permission">Filter by permission</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#filter-by-size">Filter by size</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#find-then-do-some-action">Find, then do some action</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#disk-usage">💽 Disk usage</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#hard-drives">💽 Hard drives</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#special-dirs">📍 Special dirs</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../2_files/">📄 Files (cat,file,stat)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../3_process/">⏳ Process (ps,top)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../compression/">🗜️ Compress (zip,tar,bz)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cryptography/">🔑 Cryptography (base64)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../plotting/">📊 Plotting (gnuplot)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../scripting.md">👨‍💻 Scripting</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../customization/">🎨 Customization (dotfiles)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../git/">GIT</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../editors.md">📝 Editors (nano,vim,jupyter)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../pacman/">📦 Software (pacman,aur,pip)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ssh/">SSH</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tmux/">TMUX</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CLI data tools</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_data/free_text/">⚪️ Free text (regex,grep,tr,sed)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_data/csv/">🟢 Excel,csv,tsv (cut,paste,awk)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_data/html/">🟡 HTML (pup) XML</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_data/json/">🟠 JSON (jq)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_data/pdf/">🔴 PDF (Xpdf,poppler)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_data/image/">🔵 Image (ImageMagick)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_data/sound_video/">🟣 Sound,Video (ffmepg,sox)</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CLI networking tools</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_net/web_scraping/">⬇️ Web Scraping (curl,wget)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_net/pentesting/">🗡️ Pentesting (nmap)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_net/deffensive/">🛡️ Deffensive</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools_net/dns.md">📒 DNS (dig,nslookup,whois)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_net/vpn/">🔒 VPN</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_net/firewall/">📛 Firewall</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Python</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../python/numpy/">🟦 Numpy</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../python/machine_learning.md">🟫 Sklearn</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../python/pytorch/">🟥 Pytorch</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../python/tensorflow.md">🟧 Tensorflow</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../python/onnx.md">⬜️ ONNX</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../python/tensorrt.md">🟩 TensorRT</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../python/numpy/">🟦 Parallel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">C++</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/ruby/">♦️ Ruby</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/monitoring/">Monitoring</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/profiling/">Profiling</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/debugging/">Debugging</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/makefile/">Makefile</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Documentación de Javi</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>CLI tools &raquo;</li>
+      <li>📁 Dirs (cd,ls,find,ranger)</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="directories">Directories</h1>
+<pre><code class="language-bash">############## Programas
+which echo  # En que path está el programa echo
+man echo    # Muestra el manual de un programa
+tldr echo   # Muestra el manual de ejemplos de un programa
+lsb_release -a # Ver mi sistema operativo
+</code></pre>
+<h2 id="navigate">🚶🏻‍♂️ Navigate</h2>
+<ul>
+<li><code>pwd</code>: <strong>p</strong>rint <strong>w</strong>orking <strong>d</strong>irectory</li>
+<li><code>cd</code> <strong>c</strong>hange <strong>d</strong>irectory</li>
+<li><code>cd</code>: go to home</li>
+<li><code>cd ~</code>: go to home</li>
+<li><code>cd /</code>: go to root</li>
+<li><code>cd -</code>: go to previous dir</li>
+<li><code>ls</code>: <strong>l</strong>i<strong>s</strong>t directories</li>
+<li><code>ls -a</code>: show hidden too</li>
+<li><code>ls -l</code>: show long (more info: permissions, size, date)</li>
+<li>`ls -lh: Human readable size</li>
+<li>`ls -S: Sort files by size </li>
+<li><code>ls *.png</code>: only png files</li>
+<li><code>ls *.??g</code>: only png and jpg files</li>
+</ul>
+<blockquote>
+<ul>
+<li><code>lsd</code>: Better ls</li>
+<li><code>tree</code></li>
+<li><code>broot</code></li>
+<li><code>nnn</code></li>
+<li><code>ranger</code></li>
+</ul>
+</blockquote>
+<h2 id="search-find">🔎 Search <code>find</code></h2>
+<ul>
+<li><code>find ..... 2&gt;/dev/null</code> Do not show STDERR (denied acces)</li>
+<li><code>find {where} -name {what} -type {what type}</code></li>
+<li><code>find /etc</code></li>
+</ul>
+<h3 id="filter-by-typenamepath">Filter by type/name/path</h3>
+<ul>
+<li><code>find . -type f</code> Find only files</li>
+<li><code>find . -type d</code> Find only directories</li>
+<li><code>find . -name '*.tar.gz'</code></li>
+<li><code>find . -name src -type d</code> Find all directories named src</li>
+<li><code>find . -path '*/test/*.py' -type f</code> Find all python files that have a folder named test in their path</li>
+</ul>
+<h3 id="filter-by-modification-time">Filter by modification time</h3>
+<ul>
+<li><code>find . -mtime -1</code> Find all files modified in the last day</li>
+</ul>
+<h3 id="filter-by-permission">Filter by permission</h3>
+<ul>
+<li><code>find -readable -writabe -executable</code></li>
+<li><code>find -readable -writabe ! -executable</code></li>
+</ul>
+<h3 id="filter-by-size">Filter by size</h3>
+<ul>
+<li><code>find . -size 500c</code> Exact 500 bytes</li>
+<li><code>find . -size +500k -size -10M</code> Find all zip files with size in range 500k to 10M</li>
+</ul>
+<h3 id="find-then-do-some-action">Find, then do some action</h3>
+<ul>
+<li><code>find . -name '*.tmp' -exec rm {} \;</code> Delete all files with .tmp extension</li>
+<li><code>find . -name '*.png' -exec convert {} {}.jpg \;</code> Find all PNG files and convert them to JPG</li>
+</ul>
+<blockquote>
+<ul>
+<li><a href="https://github.com/sharkdp/fd"><code>fd</code></a>: a simple, fast, and user-friendly alternative to <code>find</code>.</li>
+<li><code>updatedb</code> and <code>locate</code>: indexed search.</li>
+<li><code>updatedb</code> compiles some sort of indexed database for quickly searching. Usually updated daily via <code>cron</code></li>
+<li><code>locate</code> uses the database for quickly searching.</li>
+</ul>
+</blockquote>
+<h2 id="disk-usage">💽 Disk usage</h2>
+<ul>
+<li><code>du</code>: <strong>d</strong>isk <strong>u</strong>sage</li>
+<li><code>du FILE</code>: Disk usage of a file</li>
+<li><code>du -sh */ | sort -rh</code></li>
+<li><code>ncdu FILE</code>: Interactive version of Disk usage</li>
+<li><code>dust</code></li>
+<li><code>duf</code></li>
+<li><code>df /</code></li>
+</ul>
+<h2 id="hard-drives">💽 Hard drives</h2>
+<ol>
+<li>See available drives</li>
+<li>Option 1: <code>lsblk</code></li>
+<li>Option 2: <code>fdisk -l</code></li>
+<li>Option 3: <code>ls /dev/sd??</code></li>
+<li>Mount</li>
+<li><code>sudo mkdir /hdd</code></li>
+<li><code>sudo mount -t auto /dev/sda1 /hdd</code></li>
+<li>Umount</li>
+<li><code>umount /hdd</code></li>
+</ol>
+<h2 id="special-dirs">📍 Special dirs</h2>
+<ul>
+<li><code>/dev</code> devices</li>
+<li><code>/dev/sd??</code> Hard drive</li>
+<li><code>/dev/tcp/127.0.0.1/30000</code> TCP connection on 127.0.0.1:3000</li>
+<li><code>/proc</code> Procesos </li>
+<li><code>/sys</code> System hardware (brightness, leds, sensors,...)</li>
+<li><code>/sys/class/thermal/thermal_zone*/temp</code> CPU temperature</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../.." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../2_files/" class="btn btn-neutral float-right" title="📄 Files (cat,file,stat)">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../.." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../2_files/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

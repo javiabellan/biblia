@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Over the wire - Documentación de Javi</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Over the wire";
+        var mkdocs_page_input_path = "cli_tools/overthewire.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Documentación de Javi
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CLI tools</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../1_dirs/">📁 Dirs (cd,ls,find,ranger)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../2_files/">📄 Files (cat,file,stat)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../3_process/">⏳ Process (ps,top)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../compression/">🗜️ Compress (zip,tar,bz)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cryptography/">🔑 Cryptography (base64)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../plotting/">📊 Plotting (gnuplot)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../scripting.md">👨‍💻 Scripting</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../customization/">🎨 Customization (dotfiles)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../git/">GIT</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../editors.md">📝 Editors (nano,vim,jupyter)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../pacman/">📦 Software (pacman,aur,pip)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ssh/">SSH</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tmux/">TMUX</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CLI data tools</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_data/free_text/">⚪️ Free text (regex,grep,tr,sed)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_data/csv/">🟢 Excel,csv,tsv (cut,paste,awk)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_data/html/">🟡 HTML (pup) XML</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_data/json/">🟠 JSON (jq)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_data/pdf/">🔴 PDF (Xpdf,poppler)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_data/image/">🔵 Image (ImageMagick)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_data/sound_video/">🟣 Sound,Video (ffmepg,sox)</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CLI networking tools</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_net/web_scraping/">⬇️ Web Scraping (curl,wget)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_net/pentesting/">🗡️ Pentesting (nmap)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_net/deffensive/">🛡️ Deffensive</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools_net/dns.md">📒 DNS (dig,nslookup,whois)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_net/vpn/">🔒 VPN</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_net/firewall/">📛 Firewall</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Python</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../python/numpy/">🟦 Numpy</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../python/machine_learning.md">🟫 Sklearn</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../python/pytorch/">🟥 Pytorch</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../python/tensorflow.md">🟧 Tensorflow</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../python/onnx.md">⬜️ ONNX</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../python/tensorrt.md">🟩 TensorRT</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../python/numpy/">🟦 Parallel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">C++</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/ruby/">♦️ Ruby</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/monitoring/">Monitoring</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/profiling/">Profiling</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/debugging/">Debugging</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/makefile/">Makefile</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Documentación de Javi</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>Over the wire</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="over-the-wire">Over the wire</h1>
+<h2 id="bandit">Bandit</h2>
+<pre><code class="language-bash">ssh bandit0@bandit.labs.overthewire.org -p 2220
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Entry SSH password</th>
+<th>Answer command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bandit0</td>
+<td>bandit0</td>
+<td><code>cat readme</code></td>
+</tr>
+<tr>
+<td>bandit1</td>
+<td>NH2SXQwcBdpmTEzi3bvBHMM9H66vVXjL</td>
+<td><code>cat ./-</code></td>
+</tr>
+<tr>
+<td>bandit2</td>
+<td>rRGizSaX8Mk1RTb1CNQoXTcYZWU6lgzi</td>
+<td><code>cat spaces\ in\ this\ filename</code></td>
+</tr>
+<tr>
+<td>bandit3</td>
+<td>aBZ0W5EmUfAf7kHTQeOwd8bauFJ2lAiG</td>
+<td><code>cat inhere/.hidden</code></td>
+</tr>
+<tr>
+<td>bandit4</td>
+<td>2EW7BBsr6aMMoJ2HjW067dm8EgX26xNe</td>
+<td><code>file inhere/*</code> o <code>ls inhere/* | xargs file</code></td>
+</tr>
+<tr>
+<td>bandit5</td>
+<td>lrIWWI6bB37kxfiCQZqUdOIYfr6eEeqR</td>
+<td><code>find . -readable ! -executable -size 1033c</code></td>
+</tr>
+<tr>
+<td>bandit6</td>
+<td>P4L4vucdmLnm8I7Vl7jG1ApGSfjYKqJU</td>
+<td><code>find / -user bandit7 -group bandit6 -size 33c 2&gt; /dev/null</code></td>
+</tr>
+<tr>
+<td>bandit7</td>
+<td>z7WtoNQU2XfjmMtWA8u5rN4vzqu4v99S</td>
+<td><code>grep millionth data.txt</code></td>
+</tr>
+<tr>
+<td>bandit8</td>
+<td>TESKZC0XvTetK0S9xNwm25STk5iWrBvP</td>
+<td><code>sort data.txt | uniq -u</code></td>
+</tr>
+<tr>
+<td>bandit9</td>
+<td>EN632PlfYiZbn3PhVK3XOGSlNInNE00t</td>
+<td><code>strings data.txt | grep =</code></td>
+</tr>
+<tr>
+<td>bandit10</td>
+<td>G7w8LIi6J3kTb8A7j9LgrywtEUlyyp6s</td>
+<td><code>base64 -d data.txt</code></td>
+</tr>
+<tr>
+<td>bandit11</td>
+<td>6zPeziLdR2RKNdNYFNb6nVCKzphlXHBM</td>
+<td><code>cat data.txt | tr a-zA-Z n-za-mN-ZA-M</code></td>
+</tr>
+<tr>
+<td>bandit12</td>
+<td>JVNBBFSmZwKKOP0XbFXOoW8chDz5yVRv</td>
+<td><code>cat data.txt | xxd -r | gzip -d - | .....</code></td>
+</tr>
+<tr>
+<td>bandit13</td>
+<td>wbWdlBxEir4CaE8LaPhauuOo6pwRmrDw</td>
+<td><code>ssh -i sshkey.private bandit14@localhost -p 2220</code></td>
+</tr>
+<tr>
+<td>bandit14</td>
+<td>fGrHPx402xGC7U7rXKDaxiWFTOiF0ENq</td>
+<td><code>telnet localhost 30000</code> then enter pass.</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Or <code>cat /etc/bandit_pass/bandit14 |  nc localhost 30000</code></td>
+</tr>
+<tr>
+<td>bandit15</td>
+<td>jN2kgmIXJ6fShzhT2avhotn4Zcka6tnt</td>
+<td><code>openssl s_client -connect localhost:30001</code> then enter pass</td>
+</tr>
+<tr>
+<td>bandit16</td>
+<td>JQttfApK4SeyHwDlI9SXGR50qclOAil1</td>
+<td><code>nmap --open -T5 -v -n -p31000-32000 127.0.0.1</code></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><code>openssl s_client -connect localhost:31790</code></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>e introducir contenido de /etc/bandit_pass/bandit16</td>
+</tr>
+<tr>
+<td>bandit17</td>
+<td>VwOSWtCA7lRKkTfbr2IDh6awj9RNZM5e</td>
+<td><code>diff passwords.new  passwords.old</code></td>
+</tr>
+<tr>
+<td>bandit18</td>
+<td>hga5tuuCLF6fFzUpnagiMN8ssu9LFrdg</td>
+<td><code>ssh bandit18@bandit.labs.overthewire.org -p 2220 cat readme</code></td>
+</tr>
+<tr>
+<td>bandit19</td>
+<td>awhqfNnAbc1naukrpqDYcF95h7HoMTrC</td>
+<td><code>./bandit20-do cat /etc/bandit_pass/bandit20</code></td>
+</tr>
+<tr>
+<td>bandit20</td>
+<td>VxCazJaVykI6W36BkBU0mJTCM8rR95XT</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

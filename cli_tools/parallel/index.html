@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>GNU Parallel - Documentación de Javi</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "GNU Parallel";
+        var mkdocs_page_input_path = "cli_tools/parallel.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Documentación de Javi
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CLI tools</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../1_dirs/">📁 Dirs (cd,ls,find,ranger)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../2_files/">📄 Files (cat,file,stat)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../3_process/">⏳ Process (ps,top)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../compression/">🗜️ Compress (zip,tar,bz)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cryptography/">🔑 Cryptography (base64)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../plotting/">📊 Plotting (gnuplot)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../scripting.md">👨‍💻 Scripting</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../customization/">🎨 Customization (dotfiles)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../git/">GIT</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../editors.md">📝 Editors (nano,vim,jupyter)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../pacman/">📦 Software (pacman,aur,pip)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ssh/">SSH</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tmux/">TMUX</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CLI data tools</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_data/free_text/">⚪️ Free text (regex,grep,tr,sed)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_data/csv/">🟢 Excel,csv,tsv (cut,paste,awk)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_data/html/">🟡 HTML (pup) XML</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_data/json/">🟠 JSON (jq)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_data/pdf/">🔴 PDF (Xpdf,poppler)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_data/image/">🔵 Image (ImageMagick)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_data/sound_video/">🟣 Sound,Video (ffmepg,sox)</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CLI networking tools</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_net/web_scraping/">⬇️ Web Scraping (curl,wget)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_net/pentesting/">🗡️ Pentesting (nmap)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_net/deffensive/">🛡️ Deffensive</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools_net/dns.md">📒 DNS (dig,nslookup,whois)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_net/vpn/">🔒 VPN</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_net/firewall/">📛 Firewall</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Python</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../python/numpy/">🟦 Numpy</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../python/machine_learning.md">🟫 Sklearn</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../python/pytorch/">🟥 Pytorch</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../python/tensorflow.md">🟧 Tensorflow</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../python/onnx.md">⬜️ ONNX</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../python/tensorrt.md">🟩 TensorRT</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../python/numpy/">🟦 Parallel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">C++</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/ruby/">♦️ Ruby</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/monitoring/">Monitoring</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/profiling/">Profiling</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/debugging/">Debugging</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/makefile/">Makefile</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Documentación de Javi</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>GNU Parallel</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="gnu-parallel">GNU Parallel</h1>
+<p>https://www.baeldung.com/linux/processing-commands-in-parallel</p>
+<p>cat photos.txt | sed 's/,/  /' &gt; photosTAB.txt</p>
+<h6 id="option-1-sequential-with-for-loop"># Option 1 (sequential with for loop)</h6>
+<p>cat ../photosTAB.txt | while read id url; do wget -O "$id" "$url"; done</p>
+<h6 id="option-2-sequential-with-for-loop"># Option 2 (sequential with for loop)</h6>
+<p>wget --input-file=&lt;(tail ../photosTAB.txt | cut -d "," -f 2)</p>
+<h6 id="option-3-parallel-with-xargs"># Option 3 (parallel with xargs)</h6>
+<p>echo $URL_LIST | xargs -n 1 -P 8 wget -q</p>
+<h6 id="option-4-parallel-with-gnu-parallel"># Option 4 (parallel with gnu parallel)</h6>
+<p>cat ../photosTAB.txt | parallel --jobs 100 --colsep '\t' wget -O {1} {2}</p>
+<pre><code class="language-bash"># this code
+
+for i in *gz; do 
+  zcat $i &gt; $(basename $i .gz).unpacked
+done
+
+# Can be remplazed with
+parallel 'zcat {} &gt; {.}.unpacked' ::: *.gz
+</code></pre>
+<h3 id="real-world-examples">Real world examples</h3>
+<pre><code class="language-bash">### Download files
+cat ../photosTAB.txt | parallel --jobs 100 --colsep '\t' wget -O {1} {2}
+
+### Find files that doenst't exists
+cut -d, -f5 main.csv | parallel --progress '[ -f {} ] || echo {} &gt;&gt; bad_imgs'
+
+### Check if images are corrupted
+cut -d, -f5 main.csv | parallel --progress 'identify {} &gt; /dev/null || echo {} &gt;&gt; bad_imgs'
+</code></pre>
+<ul>
+<li><code>{}</code>  Input line</li>
+<li><code>{.}</code> Input line without extension.</li>
+<li><code>{/}</code> Basename of input line</li>
+<li><code>{//}</code> Dirname of input line</li>
+<li><code>{/.}</code> Basename of input line without extension.</li>
+<li><code>{0}</code> 1st culumn of input_line </li>
+<li><code>{1}</code> 2nd culumn of input_line </li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

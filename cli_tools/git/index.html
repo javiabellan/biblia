@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>GIT - Documentación de Javi</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "GIT";
+        var mkdocs_page_input_path = "cli_tools/git.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Documentación de Javi
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CLI tools</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../1_dirs/">📁 Dirs (cd,ls,find,ranger)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../2_files/">📄 Files (cat,file,stat)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../3_process/">⏳ Process (ps,top)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../compression/">🗜️ Compress (zip,tar,bz)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cryptography/">🔑 Cryptography (base64)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../plotting/">📊 Plotting (gnuplot)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../scripting.md">👨‍💻 Scripting</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../customization/">🎨 Customization (dotfiles)</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">GIT</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#setup">Setup</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#1-git">1. Git</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#2-github">2. Github</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#old-way-deprecated-and-unsecure">Old way (deprecated and unsecure)</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#git-basics">Git basics</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#github-actions">Github Actions</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#basic-syntax">Basic syntax</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#ejemplos-de-triggers-disponibles">Ejemplos de triggers disponibles</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#ejemplos-de-acciones-disponibles">Ejemplos de acciones disponibles</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#ejecucion-de-trabajos-en-paralelo">Ejecucion de trabajos en paralelo</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#ejecucion-condicional">Ejecucion condicional</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#references">References</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../editors.md">📝 Editors (nano,vim,jupyter)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../pacman/">📦 Software (pacman,aur,pip)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ssh/">SSH</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tmux/">TMUX</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CLI data tools</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_data/free_text/">⚪️ Free text (regex,grep,tr,sed)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_data/csv/">🟢 Excel,csv,tsv (cut,paste,awk)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_data/html/">🟡 HTML (pup) XML</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_data/json/">🟠 JSON (jq)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_data/pdf/">🔴 PDF (Xpdf,poppler)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_data/image/">🔵 Image (ImageMagick)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_data/sound_video/">🟣 Sound,Video (ffmepg,sox)</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CLI networking tools</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_net/web_scraping/">⬇️ Web Scraping (curl,wget)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_net/pentesting/">🗡️ Pentesting (nmap)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_net/deffensive/">🛡️ Deffensive</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools_net/dns.md">📒 DNS (dig,nslookup,whois)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_net/vpn/">🔒 VPN</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_net/firewall/">📛 Firewall</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Python</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../python/numpy/">🟦 Numpy</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../python/machine_learning.md">🟫 Sklearn</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../python/pytorch/">🟥 Pytorch</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../python/tensorflow.md">🟧 Tensorflow</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../python/onnx.md">⬜️ ONNX</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../python/tensorrt.md">🟩 TensorRT</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../python/numpy/">🟦 Parallel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">C++</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/ruby/">♦️ Ruby</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/monitoring/">Monitoring</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/profiling/">Profiling</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/debugging/">Debugging</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/makefile/">Makefile</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Documentación de Javi</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>CLI tools &raquo;</li>
+      <li>GIT</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="git">Git</h1>
+<h2 id="setup">Setup</h2>
+<h3 id="1-git">1. Git</h3>
+<p>Install git: <code>sudo pacman -S github-cli</code></p>
+<p>Configure git:</p>
+<pre><code class="language-bash">$ git config --global user.name &quot;Javi&quot;
+$ git config --global user.email franfdk17@gmail.com
+$ git config --global core.editor nano
+</code></pre>
+<h3 id="2-github">2. Github</h3>
+<ol>
+<li>Go to Github.com -&gt; Settings -&gt; Developer settings -&gt; Personal access tokens <a href="https://github.com/settings/tokens">https://github.com/settings/tokens</a></li>
+<li>Generate a Personal Access Token (PAT) with the minimum required scopes are 'repo', 'read:org', 'workflow'</li>
+<li>Copy the Personal Access Token</li>
+<li>Go to the terminal and install the GitHub CLI</li>
+<li>On Mac: <code>brew install gh</code></li>
+<li>On Archlinux: <code>sudo pacman -S github-cli</code></li>
+<li>In the terminal, enter <code>gh auth login</code>, then follow the prompts.</li>
+<li>What account do you want to log into? <strong>GitHub.com</strong></li>
+<li>What is your preferred protocol for Git operations? <strong>HTTPS</strong></li>
+<li>Authenticate Git with your GitHub credentials? <strong>Yes</strong></li>
+<li>How would you like to authenticate GitHub CLI? <strong>Paste an authentication token here</strong></li>
+</ol>
+<blockquote>
+<h4 id="old-way-deprecated-and-unsecure">Old way (deprecated and unsecure)</h4>
+<ol>
+<li>Save in <code>~/.git-credentials</code> -&gt; https://USER:PASS@github.com</li>
+<li>Execute <code>git config --global credential.helper store</code></li>
+</ol>
+</blockquote>
+<p>https://atareao.es/software/programacion/github-en-el-terminal/</p>
+<h2 id="git-basics">Git basics</h2>
+<p>Undo local changes:</p>
+<pre><code class="language-bash">git checkout .  # Revert modified files (in this . directory)
+git clean -fd   # Remove new untracked files (-f) and new directories (-d): 
+</code></pre>
+<h2 id="github-actions">Github Actions</h2>
+<p>Archivo YAML ubicado en: <code>.github/workflows/mi_nombre.yml</code></p>
+<h3 id="basic-syntax">Basic syntax</h3>
+<p>Minimal action example:</p>
+<pre><code class="language-yaml">name: Simple workflow          # 1) Nombre de la acción/workflow [OPTIONAL]
+on: [push]                     # 2) Cuando se ejecutará (el trigger) [REQUIRED]
+jobs:                          # 3) Que hará
+   example-job-1:              #    Trabajo 1
+      runs-on: ubuntu-latest   #    Maquina virtual donde se ejecuta
+      steps:                
+         - run: echo &quot;The job 1 was automatically triggered!&quot;
+</code></pre>
+<h3 id="ejemplos-de-triggers-disponibles">Ejemplos de triggers disponibles</h3>
+<pre><code class="language-yaml">on:
+   # MANUALMENTE (desde la interfaz de github)
+   workflow_dispatch:
+
+   # PERIODICAMENTE ( with delay :( )
+   # Generally, the delay time is about 3 to 10 minutes.
+   # Sometimes, it may be more, even dozens of minutes, or more than one hour.
+   schedule:
+      # * is a special character in YAML so you have to quote this string
+      - cron:  '30 5,17 * * *'
+
+   # Cuando haces un push al repo
+   [push]
+
+   # Cuando haces un push en la rama master
+   push:
+      branches:
+            - master
+
+   # Cuando te hacen crean un pull request o un issue
+   [pull_request_target, issues]
+</code></pre>
+<h3 id="ejemplos-de-acciones-disponibles">Ejemplos de acciones disponibles</h3>
+<ul>
+<li><code>run</code>: Acciones propias para ejecutar comandos</li>
+<li><code>uses</code>: Acciones de terceros disponibles el github actions marketplace. sintaxis: <code>user/repo@version</code>.</li>
+</ul>
+<pre><code class="language-yaml"># ACCION QUE TE CLONA EL REPO EN LA MAQUINA VIRTUAL
+- name: ⬇️ Checkout the repo
+  uses: actions/checkout@master
+  with:
+    fetch-depth: 1
+
+#######################
+
+# ACCION QUE PONE EL PYTHON EN LA MAQUINA VIRTUAL
+- name: 🐍 Set up Python 3.8
+  uses: actions/setup-python@v2
+  with:
+    python-version: '3.8'
+
+# ACCION QUE TE INSTALA ALGUN PAQUETE DE PYTHON
+- name: 💿 Install Zotero2Readwise Python package
+  run: pip install zotero2readwise
+
+# ACCION QUE EJECUTA ALGUN SCRIPT DE PYTHON
+- name: 🚀 Run Automation
+  run: python run.py ${{ secrets.READWISE_TOKEN }} ${{ secrets.ZOTERO_KEY }} ${{ secrets.ZOTERO_ID }}
+
+##################
+
+- name: Give permision to some script
+  run: chmod +x my_script
+
+- name: Run script
+  run: ./permision
+
+##################
+
+- name: Commit and push changes
+  run: |
+    git config --global user.name &quot;your username&quot;
+    git config --global user.email &quot;your email&quot;
+
+    git add -A
+    git commit -m &quot;commit message&quot;
+    git push
+</code></pre>
+<h3 id="ejecucion-de-trabajos-en-paralelo">Ejecucion de trabajos en paralelo</h3>
+<pre><code class="language-yaml">name: Simple workflow  # Nombre de la acción/workflow
+on: [push]             # Cuando se ejecuta (el trigger)
+jobs:
+   example-job-1:     # Trabajo 1
+      runs-on: ubuntu-latest # Maquina virtual donde se ejecuta
+      steps:
+         - run: echo &quot;The job 1 was automatically triggered!&quot;
+
+   example-job-1:     # Trabajo 2 (se ejecuta en paralelo al trabajo 1)
+      runs-on: windows-latest # Maquina virtual donde se ejecuta
+      steps:
+         - run: echo &quot;The job 2 was automatically triggered!&quot;
+</code></pre>
+<h3 id="ejecucion-condicional">Ejecucion condicional</h3>
+<pre><code class="language-yaml">name: Simple workflow  # Nombre de la acción/workflow
+on: [push]             # Cuando se ejecuta (el trigger)
+jobs:
+   example-job-1:     # Trabajo 1
+      runs-on: ubuntu-latest # Maquina virtual donde se ejecuta
+      steps:
+         - run: echo &quot;The job 1 was automatically triggered!&quot;
+
+   example-job-1:     # Trabajo 2 (se ejecuta despues del trabajo 1)
+      needs: example-job-1
+      runs-on: windows-latest # Maquina virtual donde se ejecuta
+      steps:
+         - run: echo &quot;The job 2 was automatically triggered!&quot;
+</code></pre>
+<h3 id="references">References</h3>
+<ul>
+<li><a href="https://www.aaronsaray.com/2021/github-actions-pages-scheduled-data-updates">Using Github Actions &amp; Pages to Publish Static Pages Based on Dynamic Data</a> (Oct 2, 2021)</li>
+<li><a href="https://dagshub.com/blog/ci-cd-for-machine-learning-test-and-and-deploy-your-ml-model-with-github-actions">CI/CD for Machine Learning: Test and Deploy Your ML Model with GitHub Actions</a> (Jun 08, 2022)</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../customization/" class="btn btn-neutral float-left" title="🎨 Customization (dotfiles)"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../pacman/" class="btn btn-neutral float-right" title="📦 Software (pacman,aur,pip)">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../customization/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../pacman/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

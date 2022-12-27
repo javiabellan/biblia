@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>⚪️ Free text (regex,grep,tr,sed) - Documentación de Javi</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "\u26aa\ufe0f Free text (regex,grep,tr,sed)";
+        var mkdocs_page_input_path = "cli_tools_data/free_text.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Documentación de Javi
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CLI tools</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools/1_dirs/">📁 Dirs (cd,ls,find,ranger)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools/2_files/">📄 Files (cat,file,stat)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools/3_process/">⏳ Process (ps,top)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools/compression/">🗜️ Compress (zip,tar,bz)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools/cryptography/">🔑 Cryptography (base64)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools/plotting/">📊 Plotting (gnuplot)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools/scripting.md">👨‍💻 Scripting</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools/customization/">🎨 Customization (dotfiles)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools/git/">GIT</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools/editors.md">📝 Editors (nano,vim,jupyter)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools/pacman/">📦 Software (pacman,aur,pip)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools/ssh/">SSH</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools/tmux/">TMUX</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CLI data tools</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">⚪️ Free text (regex,grep,tr,sed)</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#pseudo-look-around-in-sed">Pseudo look-around in sed</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#flags">Flags</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#pseudo-regex-in-terminal">Pseudo-regex in terminal</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#ascii">ASCII</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#reference">Reference</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../csv/">🟢 Excel,csv,tsv (cut,paste,awk)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../html/">🟡 HTML (pup) XML</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../json/">🟠 JSON (jq)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../pdf/">🔴 PDF (Xpdf,poppler)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../image/">🔵 Image (ImageMagick)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../sound_video/">🟣 Sound,Video (ffmepg,sox)</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CLI networking tools</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_net/web_scraping/">⬇️ Web Scraping (curl,wget)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_net/pentesting/">🗡️ Pentesting (nmap)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_net/deffensive/">🛡️ Deffensive</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools_net/dns.md">📒 DNS (dig,nslookup,whois)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_net/vpn/">🔒 VPN</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_net/firewall/">📛 Firewall</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Python</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../python/numpy/">🟦 Numpy</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../python/machine_learning.md">🟫 Sklearn</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../python/pytorch/">🟥 Pytorch</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../python/tensorflow.md">🟧 Tensorflow</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../python/onnx.md">⬜️ ONNX</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../python/tensorrt.md">🟩 TensorRT</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../python/numpy/">🟦 Parallel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">C++</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/ruby/">♦️ Ruby</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/monitoring/">Monitoring</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/profiling/">Profiling</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/debugging/">Debugging</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/makefile/">Makefile</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Documentación de Javi</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>CLI data tools &raquo;</li>
+      <li>⚪️ Free text (regex,grep,tr,sed)</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="regular-expressions">Regular Expressions</h1>
+<table>
+<thead>
+<tr>
+<th></th>
+<th align="center">Basic REs<br><code>grep</code><br><code>sed</code></th>
+<th align="center">Extended REs<br><code>grep -E</code>, <code>egrep</code><br><code>sed -E</code>, <code>awk</code></th>
+<th align="center">Pearl/Python REs<br><code>grep -P</code><br>Python's <code>re</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CHARACTERS</strong></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>Any char (except newline)</td>
+<td align="center"><code>.</code></td>
+<td align="center"><code>.</code></td>
+<td align="center"><code>.</code></td>
+</tr>
+<tr>
+<td>a,b,c characters</td>
+<td align="center"><code>[abc]</code></td>
+<td align="center"><code>[abc]</code></td>
+<td align="center"><code>[abc]</code></td>
+</tr>
+<tr>
+<td>Any chars except a,b,c</td>
+<td align="center"><code>[^abc]</code></td>
+<td align="center"><code>[^abc]</code></td>
+<td align="center"><code>[^abc]</code></td>
+</tr>
+<tr>
+<td>Any digit</td>
+<td align="center"><code>[0-9]</code></td>
+<td align="center"><code>[0-9]</code></td>
+<td align="center"><code>[0-9]</code> <code>\d</code></td>
+</tr>
+<tr>
+<td>Any chars except digits</td>
+<td align="center"><code>[^0-9]</code></td>
+<td align="center"><code>[^0-9]</code></td>
+<td align="center"><code>[^0-9]</code> <code>\D</code></td>
+</tr>
+<tr>
+<td>Any letter</td>
+<td align="center"><code>[a-zA-Z]</code></td>
+<td align="center"><code>[a-zA-Z]</code></td>
+<td align="center"><code>[a-zA-Z]</code></td>
+</tr>
+<tr>
+<td>Any letter even with <code>´¨~</code></td>
+<td align="center"><code>[a-zA-Zà-üA-ZÀ-Ü]</code></td>
+<td align="center"><code>[a-zA-Zà-üA-ZÀ-Ü]</code></td>
+<td align="center"><code>[a-zA-Zà-üA-ZÀ-Ü]</code></td>
+</tr>
+<tr>
+<td>Any letter, digit or "_"</td>
+<td align="center"><code>\w</code></td>
+<td align="center"><code>\w</code></td>
+<td align="center"><code>\w</code></td>
+</tr>
+<tr>
+<td>Not letter, digit or "_"</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><code>\W</code></td>
+</tr>
+<tr>
+<td>Whitespace char</td>
+<td align="center"><code>\s</code></td>
+<td align="center"><code>\s</code></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>Whitespace char &amp; newline</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><code>\s</code></td>
+</tr>
+<tr>
+<td></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td><strong>QUANTIFIERS</strong></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>0 or More</td>
+<td align="center"><code>*</code></td>
+<td align="center"><code>*</code></td>
+<td align="center"><code>*</code></td>
+</tr>
+<tr>
+<td>1 or More</td>
+<td align="center"><code>\+</code></td>
+<td align="center"><code>+</code></td>
+<td align="center"><code>+</code></td>
+</tr>
+<tr>
+<td>0 or 1</td>
+<td align="center"><code>\?</code></td>
+<td align="center"><code>?</code></td>
+<td align="center"><code>?</code></td>
+</tr>
+<tr>
+<td>Exact Number</td>
+<td align="center"><code>\{3\}</code></td>
+<td align="center"><code>{3}</code></td>
+<td align="center"><code>{3}</code></td>
+</tr>
+<tr>
+<td>Range min max</td>
+<td align="center"><code>\{3,4\}</code></td>
+<td align="center"><code>{3,4}</code></td>
+<td align="center"><code>{3,4}</code></td>
+</tr>
+<tr>
+<td>2 or More</td>
+<td align="center"><code>\{2,}\</code></td>
+<td align="center"><code>{2,}</code></td>
+<td align="center"><code>{2,}</code></td>
+</tr>
+<tr>
+<td>3 or Less</td>
+<td align="center"><code>\{,3}\</code></td>
+<td align="center"><code>{,3}</code></td>
+<td align="center"><code>{,3}</code></td>
+</tr>
+<tr>
+<td></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td><strong>LIMITS</strong></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>Beginning of line</td>
+<td align="center"><code>^</code></td>
+<td align="center"><code>^</code></td>
+<td align="center"><code>^</code></td>
+</tr>
+<tr>
+<td>End of line</td>
+<td align="center"><code>$</code></td>
+<td align="center"><code>$</code></td>
+<td align="center"><code>$</code></td>
+</tr>
+<tr>
+<td>Word boundary</td>
+<td align="center"><code>\b</code></td>
+<td align="center"><code>\b</code></td>
+<td align="center"><code>\b</code></td>
+</tr>
+<tr>
+<td>Not word boundary</td>
+<td align="center"><code>\B</code></td>
+<td align="center"><code>\B</code></td>
+<td align="center"><code>\B</code></td>
+</tr>
+<tr>
+<td></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td><strong>ALTERNATION</strong></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>a or b</td>
+<td align="center"><code>\(a|b\)</code></td>
+<td align="center"><code>(a|b)</code></td>
+<td align="center"><code>(a|b)</code></td>
+</tr>
+<tr>
+<td>a or b</td>
+<td align="center"><code>[ab]</code></td>
+<td align="center"><code>[ab]</code></td>
+<td align="center"><code>[ab]</code></td>
+</tr>
+<tr>
+<td></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td><strong>GROUPING</strong></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>Capturing a group</td>
+<td align="center"><code>\(...\)</code></td>
+<td align="center"><code>(...)</code></td>
+<td align="center"><code>(...)</code></td>
+</tr>
+<tr>
+<td>Backreference a group</td>
+<td align="center"><code>\1</code></td>
+<td align="center"><code>\1</code></td>
+<td align="center"><code>\1</code></td>
+</tr>
+<tr>
+<td></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td><strong>LOOK-AROUND</strong></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>Positive look-behind</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><code>(?&lt;=prefijo)mi_patron</code></td>
+</tr>
+<tr>
+<td>Negative look-behind</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><code>(?&lt;!prefijo)mi_patron</code></td>
+</tr>
+<tr>
+<td>Positive look-ahead</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><code>mi_patron(?=sufijo)</code></td>
+</tr>
+<tr>
+<td>Positive look-ahead</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><code>mi_patron(?!sufijo)</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="pseudo-look-around-in-sed">Pseudo look-around in <code>sed</code></h3>
+<pre><code class="language-bash"># Remove something behind
+sed 's/pattern2remove\(pattern2keep\)/\1/g' file.txt
+sed -E 's/pattern2remove(pattern2keep)/\1/g' file.txt
+
+# Remove something ahead
+sed 's/\(pattern2keep\)pattern2remove/\1/g' file.txt
+sed -E 's/(pattern2keep)pattern2remove/\1/g' file.txt
+</code></pre>
+<h3 id="flags">Flags</h3>
+<ul>
+<li><code>/.../g</code>: Global. Several matches per line can occur</li>
+<li><code>/.../i</code>: Case insensitive</li>
+</ul>
+<h2 id="examples">Examples</h2>
+<ul>
+<li><code>.+</code>     Selececcionar cada linea</li>
+<li><code>\b[A-Z]+\b</code>   palabras solo en mayyscula (cada palabra es un match)</li>
+<li><code>([A-Z]+[ \t]+)+</code> frases solo en mayyscula (cada frase es un match)</li>
+<li><code>\.(png|jpg|gif)$</code></li>
+</ul>
+<h2 id="pseudo-regex-in-terminal">Pseudo-regex in terminal</h2>
+<ul>
+<li><code>*</code>: Matches zero or more.</li>
+<li><code>{a,b,c}</code>: <a href="https://www.gnu.org/software/bash/manual/html_node/Brace-Expansion.html"><strong>Brace Expansion</strong></a>. Examples:</li>
+<li><code>ls some_dir/{subdir_A,subdir_B}</code></li>
+<li><code>mkdir {old,new,dist,bugs}</code></li>
+<li><a href="https://www.gnu.org/software/bash/manual/html_node/Pattern-Matching.html"><strong>Pattern Matching</strong></a></li>
+<li><code>?(pattern-list)</code>: Matches zero or one occurrence of the given patterns.</li>
+<li><code>*(pattern-list)</code>: Matches zero or more occurrences of the given patterns.</li>
+<li><code>+(pattern-list)</code>: Matches one or more occurrences of the given patterns.</li>
+<li><code>@(pattern-list)</code>: Matches one of the given patterns.</li>
+<li><code>!(pattern-list)</code>: Matches anything except one of the given patterns.</li>
+</ul>
+<h2 id="ascii">ASCII</h2>
+<table>
+<thead>
+<tr>
+<th align="center">0-31</th>
+<th align="center">32-63</th>
+<th align="center">64-95</th>
+<th align="center">96-127</th>
+<th align="center">128-159</th>
+<th align="center">160-191</th>
+<th align="center">192-223</th>
+<th align="center">224.255</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">0  <code>\0</code></td>
+<td align="center">32 <code></code></td>
+<td align="center">64 <code>@</code></td>
+<td align="center">96</td>
+<td align="center">128 <code></code></td>
+<td align="center">160</td>
+<td align="center">192 <code>À</code></td>
+<td align="center">224 <code>à</code></td>
+</tr>
+<tr>
+<td align="center">1 <code>SOH</code></td>
+<td align="center">33 <code>!</code></td>
+<td align="center">65 <code>A</code></td>
+<td align="center">97   <code>a</code></td>
+<td align="center">129 <code></code></td>
+<td align="center">161 <code>¡</code></td>
+<td align="center">193 <code>Á</code></td>
+<td align="center">225 <code>á</code></td>
+</tr>
+<tr>
+<td align="center">2 <code>STX</code></td>
+<td align="center">34 <code>"</code></td>
+<td align="center">66 <code>B</code></td>
+<td align="center">98   <code>b</code></td>
+<td align="center">130 <code></code></td>
+<td align="center">162 <code>¢</code></td>
+<td align="center">194 <code>Â</code></td>
+<td align="center">226 <code>â</code></td>
+</tr>
+<tr>
+<td align="center">3 <code>ETX</code></td>
+<td align="center">35 <code>#</code></td>
+<td align="center">67 <code>C</code></td>
+<td align="center">99   <code>c</code></td>
+<td align="center">131 <code></code></td>
+<td align="center">163 <code>£</code></td>
+<td align="center">195 <code>Ã</code></td>
+<td align="center">227 <code>ã</code></td>
+</tr>
+<tr>
+<td align="center">4 <code>EOT</code></td>
+<td align="center">36 <code>$</code></td>
+<td align="center">68 <code>D</code></td>
+<td align="center">100   <code>d</code></td>
+<td align="center">132 <code></code></td>
+<td align="center">164 <code>¤</code></td>
+<td align="center">196 <code>Ä</code></td>
+<td align="center">228 <code>ä</code></td>
+</tr>
+<tr>
+<td align="center">5 <code>ENQ</code></td>
+<td align="center">37 <code>%</code></td>
+<td align="center">69 <code>E</code></td>
+<td align="center">101   <code>e</code></td>
+<td align="center">133 <code></code></td>
+<td align="center">165 <code>¥</code></td>
+<td align="center">197 <code>Å</code></td>
+<td align="center">229 <code>å</code></td>
+</tr>
+<tr>
+<td align="center">6 <code>ACK</code></td>
+<td align="center">38 <code>&amp;</code></td>
+<td align="center">70 <code>F</code></td>
+<td align="center">102   <code>f</code></td>
+<td align="center">134 <code></code></td>
+<td align="center">166 <code>¦</code></td>
+<td align="center">198 <code>Æ</code></td>
+<td align="center">230 <code>æ</code></td>
+</tr>
+<tr>
+<td align="center">7 <code>BEL</code></td>
+<td align="center">39 <code>'</code></td>
+<td align="center">71 <code>G</code></td>
+<td align="center">103   <code>g</code></td>
+<td align="center">135 <code></code></td>
+<td align="center">167 <code>§</code></td>
+<td align="center">199 <code>Ç</code></td>
+<td align="center">231 <code>ç</code></td>
+</tr>
+<tr>
+<td align="center">8 <code>BS</code></td>
+<td align="center">40 <code>(</code></td>
+<td align="center">72 <code>H</code></td>
+<td align="center">104   <code>h</code></td>
+<td align="center">136 <code></code></td>
+<td align="center">168 <code>¨</code></td>
+<td align="center">200 <code>È</code></td>
+<td align="center">232 <code>è</code></td>
+</tr>
+<tr>
+<td align="center">9 <code>\t</code></td>
+<td align="center">41 <code>)</code></td>
+<td align="center">73 <code>I</code></td>
+<td align="center">105   <code>i</code></td>
+<td align="center">137 <code></code></td>
+<td align="center">169 <code>©</code></td>
+<td align="center">201 <code>É</code></td>
+<td align="center">233 <code>é</code></td>
+</tr>
+<tr>
+<td align="center">10 <code>\n</code></td>
+<td align="center">42 <code>*</code></td>
+<td align="center">74 <code>J</code></td>
+<td align="center">106   <code>j</code></td>
+<td align="center">138 <code></code></td>
+<td align="center">170 <code>ª</code></td>
+<td align="center">202 <code>Ê</code></td>
+<td align="center">234 <code>ê</code></td>
+</tr>
+<tr>
+<td align="center">11 <code>\v</code></td>
+<td align="center">43 <code>+</code></td>
+<td align="center">75 <code>K</code></td>
+<td align="center">107   <code>k</code></td>
+<td align="center">139 <code></code></td>
+<td align="center">171 <code>«</code></td>
+<td align="center">203 <code>Ë</code></td>
+<td align="center">235 <code>ë</code></td>
+</tr>
+<tr>
+<td align="center">12 <code>FF</code></td>
+<td align="center">44 <code>,</code></td>
+<td align="center">76 <code>L</code></td>
+<td align="center">108   <code>l</code></td>
+<td align="center">140 <code></code></td>
+<td align="center">172 <code>¬</code></td>
+<td align="center">204 <code>Ì</code></td>
+<td align="center">236 <code>ì</code></td>
+</tr>
+<tr>
+<td align="center">13 <code>\r</code></td>
+<td align="center">45 <code>-</code></td>
+<td align="center">77 <code>M</code></td>
+<td align="center">109   <code>m</code></td>
+<td align="center">141 <code></code></td>
+<td align="center">173 <code>¡</code></td>
+<td align="center">205 <code>Í</code></td>
+<td align="center">237 <code>í</code></td>
+</tr>
+<tr>
+<td align="center">14 <code>SO</code></td>
+<td align="center">46 <code>.</code></td>
+<td align="center">78 <code>N</code></td>
+<td align="center">110   <code>n</code></td>
+<td align="center">142 <code></code></td>
+<td align="center">174 <code>®</code></td>
+<td align="center">206 <code>Î</code></td>
+<td align="center">238 <code>î</code></td>
+</tr>
+<tr>
+<td align="center">15 <code>SI</code></td>
+<td align="center">47 <code>/</code></td>
+<td align="center">79 <code>O</code></td>
+<td align="center">111   <code>o</code></td>
+<td align="center">143 <code></code></td>
+<td align="center">175 <code>¯</code></td>
+<td align="center">207 <code>Ï</code></td>
+<td align="center">239 <code>ï</code></td>
+</tr>
+<tr>
+<td align="center">16 <code>DLE</code></td>
+<td align="center">48 <code>0</code></td>
+<td align="center">80 <code>P</code></td>
+<td align="center">112   <code>p</code></td>
+<td align="center">144 <code></code></td>
+<td align="center">176 <code>°</code></td>
+<td align="center">208 <code>Ð</code></td>
+<td align="center">240 <code>ð</code></td>
+</tr>
+<tr>
+<td align="center">17 <code>DC1</code></td>
+<td align="center">49 <code>1</code></td>
+<td align="center">81 <code>Q</code></td>
+<td align="center">113   <code>q</code></td>
+<td align="center">145 <code></code></td>
+<td align="center">177 <code>±</code></td>
+<td align="center">209 <code>Ñ</code></td>
+<td align="center">241 <code>ñ</code></td>
+</tr>
+<tr>
+<td align="center">18 <code>DC2</code></td>
+<td align="center">50 <code>2</code></td>
+<td align="center">82 <code>R</code></td>
+<td align="center">114   <code>r</code></td>
+<td align="center">146 <code></code></td>
+<td align="center">178 <code>²</code></td>
+<td align="center">210 <code>Ò</code></td>
+<td align="center">242 <code>ò</code></td>
+</tr>
+<tr>
+<td align="center">19 <code>DC3</code></td>
+<td align="center">51 <code>3</code></td>
+<td align="center">83 <code>S</code></td>
+<td align="center">115   <code>s</code></td>
+<td align="center">147 <code></code></td>
+<td align="center">179 <code>³</code></td>
+<td align="center">211 <code>Ó</code></td>
+<td align="center">243 <code>ó</code></td>
+</tr>
+<tr>
+<td align="center">20 <code>DC4</code></td>
+<td align="center">52 <code>4</code></td>
+<td align="center">84 <code>T</code></td>
+<td align="center">116   <code>t</code></td>
+<td align="center">148 <code></code></td>
+<td align="center">180 <code>´</code></td>
+<td align="center">212 <code>Ô</code></td>
+<td align="center">244 <code>ô</code></td>
+</tr>
+<tr>
+<td align="center">21 <code>NAK</code></td>
+<td align="center">53 <code>5</code></td>
+<td align="center">85 <code>U</code></td>
+<td align="center">117   <code>u</code></td>
+<td align="center">149 <code></code></td>
+<td align="center">181 <code>µ</code></td>
+<td align="center">213 <code>Õ</code></td>
+<td align="center">245 <code>õ</code></td>
+</tr>
+<tr>
+<td align="center">22 <code>SYN</code></td>
+<td align="center">54 <code>6</code></td>
+<td align="center">86 <code>V</code></td>
+<td align="center">118   <code>v</code></td>
+<td align="center">150 <code></code></td>
+<td align="center">182 <code>¶</code></td>
+<td align="center">214 <code>Ö</code></td>
+<td align="center">246 <code>ö</code></td>
+</tr>
+<tr>
+<td align="center">23 <code>ETB</code></td>
+<td align="center">55 <code>7</code></td>
+<td align="center">87 <code>W</code></td>
+<td align="center">119   <code>w</code></td>
+<td align="center">151 <code></code></td>
+<td align="center">183 <code>·</code></td>
+<td align="center">215 <code>×</code></td>
+<td align="center">247 <code>÷</code></td>
+</tr>
+<tr>
+<td align="center">24 <code>CAN</code></td>
+<td align="center">56 <code>8</code></td>
+<td align="center">88 <code>X</code></td>
+<td align="center">120   <code>x</code></td>
+<td align="center">152 <code></code></td>
+<td align="center">184 <code>¸</code></td>
+<td align="center">216 <code>Ø</code></td>
+<td align="center">248 <code>ø</code></td>
+</tr>
+<tr>
+<td align="center">25 <code>EM</code></td>
+<td align="center">57 <code>9</code></td>
+<td align="center">89 <code>Y</code></td>
+<td align="center">121   <code>y</code></td>
+<td align="center">153 <code></code></td>
+<td align="center">185 <code>¹</code></td>
+<td align="center">217 <code>Ù</code></td>
+<td align="center">249 <code>ù</code></td>
+</tr>
+<tr>
+<td align="center">26 <code>SUB</code></td>
+<td align="center">58 <code>:</code></td>
+<td align="center">90 <code>Z</code></td>
+<td align="center">122   <code>z</code></td>
+<td align="center">154 <code></code></td>
+<td align="center">186 <code>º</code></td>
+<td align="center">218 <code>Ú</code></td>
+<td align="center">250 <code>ú</code></td>
+</tr>
+<tr>
+<td align="center">27 <code>ESC</code></td>
+<td align="center">59 <code>;</code></td>
+<td align="center">91 <code>[</code></td>
+<td align="center">123   <code>{</code></td>
+<td align="center">155 <code></code></td>
+<td align="center">187 <code>»</code></td>
+<td align="center">219 <code>Û</code></td>
+<td align="center">251 <code>û</code></td>
+</tr>
+<tr>
+<td align="center">28 <code>FS</code></td>
+<td align="center">60 <code>&lt;</code></td>
+<td align="center">92 <code>\</code></td>
+<td align="center">124  <code>\|</code></td>
+<td align="center">156 <code></code></td>
+<td align="center">188 <code>¼</code></td>
+<td align="center">220 <code>Ü</code></td>
+<td align="center">252 <code>ü</code></td>
+</tr>
+<tr>
+<td align="center">29 <code>GS</code></td>
+<td align="center">61 <code>=</code></td>
+<td align="center">93 <code>]</code></td>
+<td align="center">125   <code>}</code></td>
+<td align="center">157 <code></code></td>
+<td align="center">189 <code>½</code></td>
+<td align="center">221 <code>Ý</code></td>
+<td align="center">253 <code>ý</code></td>
+</tr>
+<tr>
+<td align="center">30 <code>RS</code></td>
+<td align="center">62 <code>&gt;</code></td>
+<td align="center">94 <code>^</code></td>
+<td align="center">126   <code>~</code></td>
+<td align="center">158 <code></code></td>
+<td align="center">190 <code>¾</code></td>
+<td align="center">222 <code>Þ</code></td>
+<td align="center">254 <code>þ</code></td>
+</tr>
+<tr>
+<td align="center">31 <code>US</code></td>
+<td align="center">63 <code>?</code></td>
+<td align="center">95 <code>_</code></td>
+<td align="center">127 <code>DEL</code></td>
+<td align="center">159 <code></code></td>
+<td align="center">191 <code>¿</code></td>
+<td align="center">223 <code>ß</code></td>
+<td align="center">255 <code>ÿ</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="reference">Reference</h2>
+<ul>
+<li>https://regexr.com/</li>
+<li>https://regex101.com/</li>
+<li><code>man re_format</code></li>
+<li><a href="https://blog.robertelder.org/character-ranges-class-negation-regular-expressions">Char ranges</a></li>
+<li>https://www.youtube.com/playlist?list=PLp31D6HATKfdc5PSJTx7rIvlTLCSM5nDi</li>
+<li>https://www.youtube.com/watch?v=w61mxJcUV-o</li>
+<li>https://remram44.github.io/regex-cheatsheet/regex.html</li>
+<li>https://linuxize.com/post/regular-expressions-in-grep</li>
+<li>http://mywiki.wooledge.org/RegularExpression</li>
+<li><strong><code>grep</code></strong>: print lines matching a pattern</li>
+<li><strong><code>egrep</code></strong>: can handle extended regular expressions (EREs)</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../cli_tools/tmux/" class="btn btn-neutral float-left" title="TMUX"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../csv/" class="btn btn-neutral float-right" title="🟢 Excel,csv,tsv (cut,paste,awk)">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../../cli_tools/tmux/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../csv/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
