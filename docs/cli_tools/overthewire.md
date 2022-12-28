@@ -31,5 +31,9 @@ ssh bandit0@bandit.labs.overthewire.org -p 2220
 | bandit17 | VwOSWtCA7lRKkTfbr2IDh6awj9RNZM5e | `diff passwords.new  passwords.old`                          |
 | bandit18 | hga5tuuCLF6fFzUpnagiMN8ssu9LFrdg | `ssh bandit18@bandit.labs.overthewire.org -p 2220 cat readme`|
 | bandit19 | awhqfNnAbc1naukrpqDYcF95h7HoMTrC | `./bandit20-do cat /etc/bandit_pass/bandit20`                |
-| bandit20 | VxCazJaVykI6W36BkBU0mJTCM8rR95XT | 
-
+| bandit20 | VxCazJaVykI6W36BkBU0mJTCM8rR95XT | window 1: listen on `nc -l -p 5757`                          |
+|          |                                  | window 2: `./suconnect 5757`                                 |
+|          |                                  | window 1: paste currnt level password on `nc`                |
+| bandit21 | NvEJF7oVjkddltPSrdKEFOllh9V1IBcq | `cat cronjob_bandit22` `cat /usr/bin/cronjob_bandit22.sh`    |
+| bandit22 | WdDozAdTM2z9DiFEQ2mGlwngMfj4EZff | `echo I am user bandit23 | md5sum` 
+| bandir23 | QYw0Y2aiA672PsMmh9puTQuhoz8SyR2G | 

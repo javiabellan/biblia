@@ -21,9 +21,12 @@
 ### See `head` or `tail` of file
 
 - **`head`**: shows the beginning of a file (defaults to first 10 lines).
-   - `head -n5`: only 5 lines
+  - `head -n5`: only 5 lines
 - **`tail`**: shows the ending of a file (defaults to last 10 lines).
-   - `tail -n5`: only 5 lines
+  - `tail -n5`: only 5 lines
+- `(head; echo ...;tail)` shows head and tail
+  - `(head; tail) < file.txt`
+  - `cat file.txt | (head; tail)`
 
 
 ### See entire content of text file

@@ -79,7 +79,7 @@ alias update="sudo pacman -Syu" # update the packages
 alias remove="sudo pacman -Rns" # remove a package
 
 # Others
-alias title="figlet" # r: remove a package
+alias title="figlet"
 
 # Git
 function commit() {

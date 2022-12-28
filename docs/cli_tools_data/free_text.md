@@ -74,6 +74,11 @@ sed -E 's/(pattern2keep)pattern2remove/\1/g' file.txt
 
 
 
+## Remove carriage return
+
+- `sed 's/\r$//' in.txt > out.txt`
+- `tr: tr -d '\r' in.txt > out.txt`
+
 
 ## Pseudo-regex in terminal
 - `*`: Matches zero or more.

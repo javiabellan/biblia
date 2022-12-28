@@ -1,17 +1,26 @@
 # Text data
 
 
-## `sort`
-Sorting
+## `sort`Sorting
+
+#### Soring options [bdfgiMhnRrV]:
+
 - `sort -r`: Reverse order
 - `sort -n`: Numerically
 - `sort -rn`: Numerically reversed
 - `sort -R`: Randomly (each time is different). Similar to **`shuf`**
-- `sort --field-separator=',' --key=2,1,3 {file}`: Sort a CSV file by 2nd, 1st and 3rd columns.
+
+#### Sorting by fields:
+
+- `sort -t ',' -k 2 file.csv`:  Sort a CSV file by 2nd column (until the end of line).
+- `sort -t ',' -k 2,2 file.csv`: Sort a CSV file by 2nd column.
+- `sort -t ',' -k 2n,2 file.csv`: Sort NUMERICALLY a CSV file by 2nd column.
+- `sort -t, -k 3n,3 -k 1n,1 file.csv`: Sort NUMERICALLY a CSV file by 3rd column, then by 1st column
 
 
 ## `uniq`
 See **uniq**ues. **need to `sort` first**.
+
 - `sort | uniq`: Display uniques
 - `sort | uniq -c`: Count uniques
 - `sort | uniq -d`: Display duplicates
@@ -19,6 +28,7 @@ See **uniq**ues. **need to `sort` first**.
 
 ## `wc`
 Count lines, words and chars
+
 - `wc -l`: count only lines
 - `wc -w`: count only words
 - `wc -c`: count only chars/bytes (useful for getting size of stdin)
@@ -26,6 +36,7 @@ Count lines, words and chars
 
 ## `column`
 Display in **column**s
+
 - `| column -t`: Pretty print TSV file
 - `column iris.csv -t -s ,`
 - `column file.csv -s "," -t | less -#2 -N -S`: CSV viewer
@@ -33,6 +44,7 @@ Display in **column**s
 
 ## `cut`
 Selecting fields (columns) (default is to delimit by tab).
+
 - `cut -d',' -f1`: Delimiter="," Field (col)=1st
 - `cut -d, -f 2`: Delimit by coma (CSV). Select 2nd field.
 - `cut -d, -f 2,3`: Delimit by coma (CSV). Select 2nd and 3rd fields.
@@ -42,8 +54,26 @@ Selecting fields (columns) (default is to delimit by tab).
 
 ## `paste`
 Join 2 (or more) files line by line
+
 - `pase file_a file_b`
 - `pase <(cut -d, -f1,2,3 some.csv) other_file`
+
+
+
+## `join`
+
+Join 2 files line by its **sorted id** column.
+
+If the the column separator is not specified, it will be the **space** by default
+
+If the id column position is not specified, it will be the **1st column** by default.
+
+- `join file1 file2` Join two files on the first (default) field.
+- `join -t, file1 file2` Join two files using a comma (instead of a space) as the field separator.
+- `join -t, <(sort -t, -k 1,1 file1.csv) <(sort file2_ids.txt)`: Sort ids of input files to work ok.
+- `join -1 3 -2 1 file1 file2` Join field3 of file1 with field1 of file2.
+- `join -a 1 file1 file2` Produce a line for each unpairable line for file1.
+- `cat path/to/file1 | join - path/to/file2` Join a file from `stdin`.
 
 
 ## `split`
