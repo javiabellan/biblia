@@ -83,6 +83,8 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#remove-carriage-return">Remove carriage return</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#pseudo-regex-in-terminal">Pseudo-regex in terminal</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#ascii">ASCII</a>
@@ -452,6 +454,11 @@ sed -E 's/(pattern2keep)pattern2remove/\1/g' file.txt
 <li><code>\b[A-Z]+\b</code>   palabras solo en mayyscula (cada palabra es un match)</li>
 <li><code>([A-Z]+[ \t]+)+</code> frases solo en mayyscula (cada frase es un match)</li>
 <li><code>\.(png|jpg|gif)$</code></li>
+</ul>
+<h2 id="remove-carriage-return">Remove carriage return</h2>
+<ul>
+<li><code>sed 's/\r$//' in.txt &gt; out.txt</code></li>
+<li><code>tr: tr -d '\r' in.txt &gt; out.txt</code></li>
 </ul>
 <h2 id="pseudo-regex-in-terminal">Pseudo-regex in terminal</h2>
 <ul>
