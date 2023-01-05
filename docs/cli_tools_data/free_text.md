@@ -73,11 +73,23 @@ sed -E 's/(pattern2keep)pattern2remove/\1/g' file.txt
 - `\.(png|jpg|gif)$`
 
 
+## DOS to UNIX file
 
-## Remove carriage return
+### Remove carriage return (\r\r\n)
 
-- `sed 's/\r$//' in.txt > out.txt`
-- `tr: tr -d '\r' in.txt > out.txt`
+- `sed 's/\r//' in.txt > out.txt` --> Bad (only first \r of line is removed)
+- `sed 's/\r$//' in.txt > out.txt` --> Bad (only last \r of line is removed)
+- `sed 's/\r//g' in.txt > out.txt` --> Good: Remove all the \r
+
+### Remove the BOM
+
+- `sed '1s/^\xEF\xBB\xBF//' in.txt > out.txt`
+
+### Conclusion 
+
+```bash
+cat input_file | sed '1s/^\xEF\xBB\xBF//' | sed 's/\r//g' > output_file
+```
 
 
 ## Pseudo-regex in terminal

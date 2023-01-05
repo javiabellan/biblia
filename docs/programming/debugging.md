@@ -1,7 +1,15 @@
 # Debugging
 
 
-## The lazy way: `print()`
+## Debugging in Python:
+
+- `print()`: too simple
+- `import pdb; pdb.set_trace()`: too complex
+- `import code; code.interact(local=locals())`: just right
+simply drops you into interpreter, perfect for 95% of debugging
+
+https://twitter.com/karpathy/status/1610822271157022720
+
 
 
 ## Python debugging: `ipdb`

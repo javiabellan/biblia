@@ -1,28 +1,29 @@
 
 
+# Pytorch dataloader
+
+
 
 ## Naive implementatation
 
 ```
-          ┌────────────┐ ┌────────────┐ ┌────────────┐                                 ┌────────────┐
-CPU CORE1 │Read image 1│ │Read image 2│ │Read image 3│                                 │Read image 4│ ...
-          └────────────┘ └────────────┘ └────────────┘                                 └────────────┘
-                                                     ┌───────────┐
-CPU 2 GPU                                            │Copy to GPU│
-                                                     └───────────┘
-                                                                 ┌────────────────────┐
- GPU                                                             │INFER MODEL         │
-                                                                 └────────────────────┘
+           Read batch 1 (B1)
+          ┌────────────────────────────────────┐                               ┌─────────────────
+          │slow|slow|   |slow| slow  |unecesary│  <-- No reads in parallel     │
+CPU CORE1 │read|read|...|read|Collate|copy from│  <-- No queue/prefetching     │ Read batch 2 ...
+          │img1|img2|   |imgN|       |pag 2 pin│                               │
+          └────────────────────────────────────┘                               └─────────────────
+                                               ┌─────────┐
+CPU 2 GPU                                      │B1 to GPU│ <-- No queue/prefetching on GPU 
+                                               └─────────┘
+                                                         ┌─────────────────────┐
+ GPU                                                     │ INFER B1 into MODEL │ <-- Slow model
+                                                         └─────────────────────┘
 ```
 
+## Read faster
 
-
-
-
-## Read images faster
-
-
-### Hardaware
+### Fast hardaware
 
 Try to store your dataset in a fast storage
 
@@ -37,7 +38,7 @@ Try to store your dataset in a fast storage
 9. Internet
 
 
-### Option fast: Fast imgedecodin `libjpg-turbo`
+### Fast decoding `libjpg-turbo`
 
 - Using [jpeg4py](https://github.com/ajkxyz/jpeg4py): `jpeg.JPEG(img).decode()` instead of `np.array(Image.open(img))`
   - [example of usage](https://www.pankesh.com/posts/2019-05-02-pytorch-augmentation-with-libjpeg-turbo)
@@ -61,28 +62,61 @@ Notese que a partir de la la verion 9 de PIL, viene por defecto
 - Torch storage
 - [FFCV](https://ffcv.io)
 
+```
+           Read batch 1 (B1)
+          ┌────────────────────────────────────┐                               ┌─────────────────
+          │fast|fast|   |fast| slow  |unecesary│                               │
+CPU CORE1 │read|read|...|read|Collate|copy from│                               │ Read batch 2 ...
+          │img1|img2|   |imgN|       |pag 2 pin│                               │
+          └────────────────────────────────────┘                               └─────────────────
+                                               ┌─────────┐
+CPU 2 GPU                                      │B1 to GPU│
+                                               └─────────┘
+                                                         ┌─────────────────────┐
+ GPU                                                     │ INFER B1 into MODEL │
+                                                         └─────────────────────┘
+```
 
+## Fast collate (= concat imags into batch)
+
+https://www.pankesh.com/posts/2019-05-02-pytorch-augmentation-with-libjpeg-turbo/
 
 ```
-          ┌─────────┐ ┌─────────┐ ┌─────────┐                                      ┌─────────┐
-CPU CORE1 │Read img1│ │Read img2│ │Read img3│                                      │Read img4│ ...
-          └─────────┘ └─────────┘ └─────────┘                                      └─────────┘
-                                            ┌───┐┌───────────┐
-CPU 2 GPU                                   │Pin││Copy to GPU│
-                                            └───┘└───────────┘
-                                                              ┌────────────────────┐
- GPU                                                          │INFER MODEL         │
-                                                              └────────────────────┘
+           Read batch 1 (B1)
+          ┌─────────────────────────────────┐                                ┌─────────────────
+          │fast|fast|   |fast|fast|unecesary│                                │
+CPU CORE1 │read|read|...|read|Coll|copy from│                                │ Read batch 2 ...
+          │img1|img2|   |imgN|ate |pag 2 pin│                                │
+          └─────────────────────────────────┘                                └─────────────────
+                                            ┌─────────┐
+CPU 2 GPU                                   │B1 to GPU│
+                                            └─────────┘
+                                                       ┌─────────────────────┐
+ GPU                                                   │ INFER B1 into MODEL │
+                                                       └─────────────────────┘
+```
+
+The `collate_fn` is also useful to discard broken images
+
+```python
+# a collate function that filters the None records.
+def collate_fn(batch):
+    # batch looks like [(x0,y0), (x4,y4), (x2,y2)... ]
+    batch = [(Id, Date, Img) for (Id, Date, Img) in batch if Img is not None]
+    #batch = list(filter(lambda x: x is not None, batch)) # Other way to do the same
+    
+    if len(batch) == 0: # If all images are broken, retrun None and discard in dl for loop
+        return None, None, None
+    else:
+        return torch.utils.data.dataloader.default_collate(batch)
 ```
 
 
 ## Optimization: Avoid unnecessary host copies `pin_memory=True`
 
-
 Host (CPU) data allocations are pageable by default. The GPU cannot access data directly from pageable host memory, so when a data transfer from pageable host memory to device memory is invoked, the CUDA driver must first allocate a temporary page-locked, or “pinned”, host array, copy the host data to the pinned array, and then transfer the data from the pinned array to device memory, as illustrated below.
 
 - https://developer.nvidia.com/blog/how-optimize-data-transfers-cuda-cc/
-
 
 if `pin_memory=True` is set on the Pytorch's dataloader, it will copy Tensors into device/CUDA pinned memory before returning them.
 
@@ -90,36 +124,43 @@ Also, once you pin a tensor or storage, you can use asynchronous GPU copies. Jus
 
 
 ```
-          ┌─────────┐ ┌─────────┐ ┌─────────┐                                ┌─────────┐
-CPU CORE1 │Read img1│ │Read img2│ │Read img3│                                │Read img4│ ...
-          └─────────┘ └─────────┘ └─────────┘                                └─────────┘
-                                            ┌───────────┐
-CPU 2 GPU                                   │Copy to GPU│
-                                            └───────────┘
-                                                        ┌────────────────────┐
- GPU                                                    │INFER MODEL         │
-                                                        └────────────────────┘
+           Read batch 1 (B1)
+          ┌───────────────────────┐                               ┌─────────────────
+          │fast|fast|   |fast|fast│                               │
+CPU CORE1 │read|read|...|read|Coll│                               │ Read batch 2 ...
+          │img1|img2|   |imgN|ate │                               │
+          └───────────────────────┘                               └─────────────────
+                                  ┌─────────┐
+CPU 2 GPU                         │B1 to GPU│
+                                  └─────────┘
+                                            ┌─────────────────────┐
+ GPU                                        │ INFER B1 into MODEL │
+                                            └─────────────────────┘
 ```
 
 ## Optimization: Read images in parallel `num_workers`
 
 ```
-          ┌────────────┐                                 ┌────────────┐
-CPU CORE1 │Read image 1│                                 │Read image 4│
-          └────────────┘                                 └────────────┘
-          ┌────────────┐                                 ┌────────────┐
-CPU CORE2 │Read image 2│                                 │Read image 5│
-          └────────────┘                                 └────────────┘
-          ┌────────────┐                                 ┌────────────┐
-CPU CORE3 │Read image 3│                                 │Read image 6│
-          └────────────┘                                 └────────────┘
-                       ┌───────────┐                                  ┌───────────┐
-CPU 2 GPU              │Copy to GPU│                                  │Copy to GPU│
-                       └───────────┘                                  └───────────┘
-                                   ┌────────────────────┐                         ┌────────────────────┐
-GPU                                │INFER MODEL         │                         │INFER MODEL         │
-                                   └────────────────────┘                         └────────────────────┘
+          ┌──────────────┐         ┌──────────────┐
+CPU CORE1 │ Read batch 1 │         │ Read batch 4 │
+(worker1) └──────────────┘         └──────────────┘
+          ┌──────────────┐         ·                       ┌──────────────┐
+CPU CORE2 │ Read batch 2 │         ·                       │ Read batch 5 │
+(worker2) └──────────────┘         ·                       └──────────────┘
+          ┌──────────────┐         ·                       ·                       ┌──────────────┐
+CPU CORE3 │ Read batch 3 │         ·                       ·                       │ Read batch 6 │
+(worker3) └──────────────┘         ·                       ·                       └──────────────┘
+                         ┌─────────┐             ┌─────────┐             ┌─────────┐
+CPU 2 GPU                │B1 to GPU│             │B2 to GPU│             │B3 to GPU│
+                         └─────────┘             └─────────┘             └─────────┘
+                                   ┌─────────────┐         ┌─────────────┐         ┌─────────────┐
+GPU                                │ INFER MODEL │         │ INFER MODEL │         │ INFER MODEL │
+                                   └─────────────┘         └─────────────┘         └─────────────┘
 ```
+
+> ## Memory optimization
+> **Avoid to each worker make a copy of the dataset!!!**
+> https://ppwwyyxx.com/blog/2022/Demystify-RAM-Usage-in-Multiprocess-DataLoader/
 
 
 ## Optimization: Prefetching on CPU (Queue) `prefetch_factor`
@@ -131,21 +172,21 @@ the prefetch_factor parameter of PyTorch DataLoader class. The prefetch_factor p
 
 
 ```
-          ┌────────────┬────────────┐
-CPU CORE1 │Read image 1│Read image 4│
-          └────────────┘────────────┘
-          ┌────────────┬────────────┐
-CPU CORE2 │Read image 2│Read image 5│
-          └────────────┴────────────┘
-          ┌────────────┬────────────┐
-CPU CORE3 │Read image 3│Read image 6│
-          └────────────┴────────────┘
-                       ┌──────────┐                    ┌──────────┐
-CPU 2 GPU              │123 to GPU│                    │456 to GPU│
-                       └──────────┘                    └──────────┘
-                                  ┌────────────────────┐          ┌────────────────────┐
-GPU                               │INFER 123 into MODEL│          │INFER 456 into MODEL│
-                                  └────────────────────┘          └────────────────────┘
+          ┌────────────┬────────────┬────────────┐
+CPU CORE1 │Read batch 1│Read batch 4│Read batch 7│
+          └────────────┴────────────┴────────────┘
+          ┌────────────┬────────────┐                          ┌────────────┐
+CPU CORE2 │Read batch 2│Read batch 5│                          │Read batch 8│
+          └────────────┴────────────┘                          └────────────┘
+          ┌────────────┬────────────┐                          ·                             ┌────────
+CPU CORE3 │Read batch 3│Read batch 6│                          ·                             │ Read B9
+          └────────────┴────────────┘                          ·                             └────────
+                       ┌─────────┐                   ┌─────────┐                   ┌─────────┐
+CPU 2 GPU              │B1 to GPU│                   │B2 to GPU│                   │B3 to GPU│
+                       └─────────┘                   └─────────┘                   └─────────┘
+                                 ┌───────────────────┐         ┌───────────────────┐         ┌────────
+GPU                              │INFER B1 into MODEL│         │INFER B2 into MODEL│         │INFER B3 
+                                 └───────────────────┘         └───────────────────┘         └────────
 ```
 
 - [But what are PyTorch DataLoaders really?](https://www.scottcondron.com/jupyter/visualisation/audio/2020/12/02/dataloaders-samplers-collate.html)
@@ -161,20 +202,20 @@ GPU                               │INFER 123 into MODEL│          │INFER 4
 
 ```
           ┌────────────┬────────────┐
-CPU CORE1 │Read image 1│Read image 4│
-          └────────────┘────────────┘
-          ┌────────────┬────────────┐
-CPU CORE2 │Read image 2│Read image 5│
+CPU CORE1 │Read batch 1│Read batch 4│
           └────────────┴────────────┘
           ┌────────────┬────────────┐
-CPU CORE3 │Read image 3│Read image 6│
+CPU CORE2 │Read batch 2│Read batch 5│
           └────────────┴────────────┘
-                       ┌──────────┐ ┌──────────┐
-CPU 2 GPU              │123 to GPU│ │456 to GPU│
-                       └──────────┘ └──────────┘
-                                  ┌────────────────────┬────────────────────┐
-GPU                               │INFER 123 into MODEL│INFER 456 into MODEL│
-                                  └────────────────────┴────────────────────┘
+          ┌────────────┬────────────┐
+CPU CORE3 │Read batch 3│Read batch 6│
+          └────────────┴────────────┘
+                       ┌─────────┬─────────┐         ┌─────────┐         ┌─────────┐
+CPU 2 GPU              │B1 to GPU│B2 to GPU│         │B3 to GPU│         │B4 to GPU│
+                       └─────────┴─────────┘         └─────────┘         └─────────┘
+                                 ┌───────────────────┬───────────────────┬───────────────────┐
+GPU                              │INFER B1 into MODEL│INFER B2 into MODEL│INFER B3 into MODEL│
+                                 └───────────────────┴───────────────────┴───────────────────┘
 ```
 
 
@@ -190,15 +231,7 @@ Achieving overlap between data transfers and other operations requires the use o
 
 
 
-## Fast collate (= concat imags into batch) ? 
-
-- https://www.pankesh.com/posts/2019-05-02-pytorch-augmentation-with-libjpeg-turbo/
-
-
-
 ## Faster Model: TensorRT engine --into--> TorchScript module
-
-
 
 - https://pytorch.org/TensorRT/
 - https://pytorch.org/TensorRT/_notebooks/lenet-getting-started.html

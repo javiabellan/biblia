@@ -41,6 +41,7 @@
 
 ### See entire content of binary files
 
+- `cat file | od -c | head`
 - **`hexdump`**: Para ver ficheros binarios
 - **`xxd`**: make a hexdump or do the reverse.
 - `hexeditor`:

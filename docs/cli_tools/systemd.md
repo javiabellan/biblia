@@ -1,6 +1,3 @@
-
-
-
 # SystemD
 
 Manage "units" in a dependency graph
@@ -35,7 +32,6 @@ Manage "units" in a dependency graph
 
 
 ## Service units
-
 
 ```bash
 [Unit]
@@ -98,6 +94,34 @@ Description=Run date.service every 10 minutes
 [Timer]
 OnCalendar=*:0/10
 ```
+
+| Timer type        | Description                                         |
+|-------------------|-----------------------------------------------------|
+| OnCalendar        | A specific day and time.                            |
+| OnBootSec         | Seconds after system boot time.                     |
+| OnStartupSec      | Seconds after systemd was started.                  |
+| OnActiveSec       | Seconds after the timer itself was activated.       |
+| OnUnitActiveSec   | Seconds after the specified unit was last active.   |
+| OnUnitInactiveSec | Seconds after the specified unit was last inactive. |
+
+
+OnBootSec=2h 1m
+OnStartupSec=1week 2days 3hours
+OnActiveSec=1hr20m30sec10msec
+
+```bash
+# Ver los timers actuales
+systemctl list-timers
+
+#  archlinux-keyring-wkd-sync.timer | Refresh existing PGP keys of archlinux-keyring regularly
+#  fstrim.timer                     | Discard unused blocks once a week
+#  shadow.timer                     | Daily verification of password and group files
+#  systemd-tmpfiles-clean.timer     | Daily Cleanup of Temporary Directories
+```
+
+https://wiki.archlinux.org/title/Systemd/Timers
+
+
 
 ## Logging
 

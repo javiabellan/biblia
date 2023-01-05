@@ -28,13 +28,14 @@ lsb_release -a # Ver mi sistema operativo
 
 > - `lsd`: Better ls
 > - `tree`
+> - `lsd --tree` Better tree
 > - `broot`
 > - `nnn`
 > - `ranger`
 
 
 
-## 🔎 Search `find`
+## 🔎 Search: `find`
 
 - `find ..... 2>/dev/null` Do not show STDERR (denied acces)
 - `find {where} -name {what} -type {what type}`
@@ -62,19 +63,32 @@ lsb_release -a # Ver mi sistema operativo
 - `find . -name '*.tmp' -exec rm {} \;` Delete all files with .tmp extension
 - `find . -name '*.png' -exec convert {} {}.jpg \;` Find all PNG files and convert them to JPG
 
-
 > - [`fd`](https://github.com/sharkdp/fd): a simple, fast, and user-friendly alternative to `find`.
-> - `updatedb` and `locate`: indexed search.
->   - `updatedb` compiles some sort of indexed database for quickly searching. Usually updated daily via `cron`
->   - `locate` uses the database for quickly searching.
 
 
+
+## 🔎 indexed search: `updatedb` + `locate`
+
+1. `$ sudo updatedb` compiles some sort of indexed database for quickly searching. Usually updated daily via `cron` or systemD timers.
+2. `$ locate some_file` uses the database for quickly searching. (Actually is `plocate`)
+
+With the existing systemD timer 
+- `/lib/systemd/system/plocate-updatedb.service`
+- `/lib/systemd/system/plocate-updatedb.timer`
+
+```bash
+sudo pacman -S locate # This installs plocate
+sudo systemctl enable plocate-updatedb.timer
+sudo systemctl start plocate-updatedb.timer
+```
 
 
 ## 💽 Disk usage
+
 - `du`: **d**isk **u**sage
   - `du FILE`: Disk usage of a file
   - `du -sh */ | sort -rh`
+  - `du -sh -- * | sort -h -r` Disk usage of current dir
 - `ncdu FILE`: Interactive version of Disk usage
 - `dust`
 - `duf`
