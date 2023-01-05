@@ -115,7 +115,7 @@
                   </li>
                   <li class="toctree-l1"><a class="" href="../../python/tensorflow.md">🟧 Tensorflow</a>
                   </li>
-                  <li class="toctree-l1"><a class="" href="../../python/onnx.md">⬜️ ONNX</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../python/onnx/">⬜️ ONNX</a>
                   </li>
                   <li class="toctree-l1"><a class="" href="../../python/tensorrt.md">🟩 TensorRT</a>
                   </li>
@@ -132,7 +132,7 @@
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Debugging</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#the-lazy-way-print">The lazy way: print()</a>
+    <li class="toctree-l2"><a class="reference internal" href="#debugging-in-python">Debugging in Python:</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#python-debugging-ipdb">Python debugging: ipdb</a>
     </li>
@@ -168,7 +168,14 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="debugging">Debugging</h1>
-<h2 id="the-lazy-way-print">The lazy way: <code>print()</code></h2>
+<h2 id="debugging-in-python">Debugging in Python:</h2>
+<ul>
+<li><code>print()</code>: too simple</li>
+<li><code>import pdb; pdb.set_trace()</code>: too complex</li>
+<li><code>import code; code.interact(local=locals())</code>: just right
+simply drops you into interpreter, perfect for 95% of debugging</li>
+</ul>
+<p>https://twitter.com/karpathy/status/1610822271157022720</p>
 <h2 id="python-debugging-ipdb">Python debugging: <code>ipdb</code></h2>
 <p>Start the debugger:
 - <code>python -m pdb  my_program.py</code>

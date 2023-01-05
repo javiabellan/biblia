@@ -66,9 +66,13 @@
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#change-bash-to-zsh">Change Bash to ZSH</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#zsh-better-prompt-powerlevel10k">ZSH: Better prompt -&gt; Powerlevel10k</a>
+    <li class="toctree-l3"><a class="reference internal" href="#better-prompt-zsh-theme-powerlevel10k">Better prompt -&gt; zsh-theme-powerlevel10k</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#colors-on-the-terminal-grep-ls">Colors on the terminal (grep, ls)</a>
+    <li class="toctree-l3"><a class="reference internal" href="#colors-on-terminal-outout">Colors on terminal outout</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#colors-on-terminal-commands-zsh-syntax-highlighting">Colors on terminal commands -&gt; zsh-syntax-highlighting</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#sugerir-comandos-del-pasado-zsh-autosuggestions">Sugerir comandos del pasado -&gt; zsh-autosuggestions</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#zsh-other-plugins">ZSH: Other plugins</a>
     </li>
@@ -79,6 +83,16 @@
     <li class="toctree-l2"><a class="reference internal" href="#tmux-tmuxconf">TMUX ~/.tmux.conf</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#vim-vimrc">VIM: ~/.vimrc</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#neovim-vimrc">NeoVIM: ~/.vimrc</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#iterm2">iTerm2</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#shell-integration">Shell Integration</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#imgcat">imgcat</a>
+    </li>
+        </ul>
     </li>
     </ul>
                   </li>
@@ -135,7 +149,7 @@
                   </li>
                   <li class="toctree-l1"><a class="" href="../../python/tensorflow.md">🟧 Tensorflow</a>
                   </li>
-                  <li class="toctree-l1"><a class="" href="../../python/onnx.md">⬜️ ONNX</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../python/onnx/">⬜️ ONNX</a>
                   </li>
                   <li class="toctree-l1"><a class="" href="../../python/tensorrt.md">🟩 TensorRT</a>
                   </li>
@@ -180,17 +194,26 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="customization-dotfiles">🎨 Customization (dotfiles)</h1>
+<ul>
+<li>bash: <code>~/.bashrc</code>, <code>~/.bash_profile</code></li>
+<li>zsh <code>~/.zshrc</code></li>
+<li>git: <code>~/.gitconfig</code></li>
+<li>vim: <code>~/.vimrc</code> and the <code>~/.vim folder</code></li>
+<li>ssh: <code>~/.ssh/config</code></li>
+<li>tmux: <code>~/.tmux.conf</code></li>
+<li>nano: <code>~/.nanorc</code></li>
+</ul>
 <h2 id="zsh-zshrc">ZSH <code>~/.zshrc</code></h2>
 <p>Change to zsh: <code>sudo chsh -s /usr/bin/zsh javi</code>
 curl -L http://install.ohmyz.sh | sh</p>
 <h3 id="change-bash-to-zsh">Change Bash to ZSH</h3>
-<pre><code class="language-bash">$ sudo pacman -S zsh                    # Install ZSH (and extras)
-$ zsh                                   # Make sure that ZSH has been installed correctly
-$ chsh -l                               # List all installed shells
-$ chsh -s /usr/bin/zsh                  # WAY 1) Set new default shell (zsh) for your user
-$ usermod --shell /usr/bin/zsh username # WAY 2) Set new default shell (zsh) for a user
-$ nano /etc/passwd                      # WAY 3) Set new default shell (zsh) for a user
-$ echo $SHELL                           # Comprobar la nueva shell
+<pre><code class="language-bash">$ sudo pacman -S zsh                # Install ZSH (and extras)
+$ zsh                               # Make sure that ZSH has been installed correctly
+$ chsh -l                           # List all installed shells
+$ chsh -s /usr/bin/zsh              # WAY 1) Set new default shell (zsh) for your user
+$ usermod --shell /usr/bin/zsh javi # WAY 2) Set new default shell (zsh) for a user (S4vitar lo hizo asi)
+$ nano /etc/passwd                  # WAY 3) Set new default shell (zsh) for a user
+$ echo $SHELL                       # Comprobar la nueva shell
 </code></pre>
 <blockquote>
 <ul>
@@ -199,25 +222,38 @@ $ echo $SHELL                           # Comprobar la nueva shell
 <li><a href="https://www.tecmint.com/change-a-users-default-shell-in-linux/">3 Ways to Change a Users Default Shell</a></li>
 </ul>
 </blockquote>
-<h3 id="zsh-better-prompt-powerlevel10k">ZSH: Better prompt -&gt; Powerlevel10k</h3>
+<h3 id="better-prompt-zsh-theme-powerlevel10k">Better prompt -&gt; <code>zsh-theme-powerlevel10k</code></h3>
 <pre><code class="language-bash">$ sudo pacman -S zsh-theme-powerlevel10k
 $ echo 'source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme' &gt;&gt; ~/.zshrc
+$ source ~/.zshrc
 $ p10k configure
 </code></pre>
-<h3 id="colors-on-the-terminal-grep-ls">Colors on the terminal (grep, ls)</h3>
-<blockquote>
 <ul>
 <li>https://github.com/ahillio/powerlevel10k/blob/master/README.md#arch-linux</li>
 </ul>
-</blockquote>
+<h3 id="colors-on-terminal-outout">Colors on terminal outout</h3>
+<pre><code class="language-bash">alias ls='ls --color=auto'
+alias diff='diff --color=auto'
+alias grep='grep --color=auto'
+alias ip='ip -color=auto'
+</code></pre>
+<p>Pacman has a color option. Uncomment the <code>Color</code> line in <code>/etc/pacman.conf</code>.</p>
+<p>https://wiki.archlinux.org/title/Color_output_in_console</p>
+<p>Other way is to install <code>grml-zsh-config</code></p>
+<h3 id="colors-on-terminal-commands-zsh-syntax-highlighting">Colors on terminal commands -&gt; <code>zsh-syntax-highlighting</code></h3>
+<pre><code class="language-bash">$ sudo pacman -S zsh-syntax-highlighting
+$ echo 'source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh' &gt;&gt; ~/.zshrc
+</code></pre>
+<h3 id="sugerir-comandos-del-pasado-zsh-autosuggestions">Sugerir comandos del pasado -&gt; <code>zsh-autosuggestions</code></h3>
+<pre><code class="language-bash">$ sudo pacman -S zsh-autosuggestions
+$ echo 'source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh' &gt;&gt; ~/.zshrc
+</code></pre>
 <h3 id="zsh-other-plugins">ZSH: Other plugins</h3>
 <ul>
 <li>zsh-completions</li>
-<li>grml-zsh-config</li>
-<li>zsh-sudo   -&gt; con esc esc  te pone sudo al principio</li>
-<li>zsh-syntax-highlining</li>
+<li>zsh-sudo   -&gt; con esc esc  te pone sudo al principio (source /usr/share/zsh-sudo/sudo.plugin.zsh
+)</li>
 <li>zsh-suggestions</li>
-<li>zsh-autosuggestions</li>
 <li>fzf -&gt; con ctrl + T busca</li>
 </ul>
 <pre><code class="language-bash"># ZSH pluggins
@@ -231,11 +267,7 @@ alias ls='lsd'
 alias ll='lsd -l'
 alias la='lsd -a'
 alias lla='lsd -la'
-alias lt='lsd --tree'
-
-# Disk usage of current dir
-alias du='du -sh -- * | sort -h -r'
-
+alias tree='lsd --tree'
 
 # Jupyter notebook
 alias jn=&quot;jupyter notebook&quot;
@@ -261,19 +293,13 @@ function commit() {
     git commit -m &quot;$msg&quot;
     git push
 }
-
-# Data wraling
-alias uniq=&quot;sort | uniq&quot; # uniq reqires previous sorting
-alias lc=&quot;wc --lines&quot; # lines count
-alias wc=&quot;wc --words&quot; # words count
-alias cc=&quot;wc --chars&quot; # chars count
 </code></pre>
 <h2 id="nano-nanorc">Nano: <code>~/.nanorc</code></h2>
 <pre><code class="language-bash">set autoindent  # Tthe newly created line will contain the same indent as the preceding line
 set tabsize 4   # Use a tab size of number columns. The default value is 8.
 set softwrap    # Enable soft line wrapping for easier viewing of very long lines
 set nowrap      # Don’t hard-wrap text at all
-set nohelp      # Don’t display the two help lines at the bottom of the screen.
+# set nohelp    # Don’t display the two help lines at the bottom of the screen.
 set linenumbers # Display of line numbers in front of the text.
 </code></pre>
 <h2 id="tmux-tmuxconf">TMUX <code>~/.tmux.conf</code></h2>
@@ -283,6 +309,7 @@ if 'infocmp -x tmux-256color &gt; /dev/null 2&gt;&amp;1' 'set -g default-termina
 
 ####### MOUSE (enable scroll)
 set -g mouse on        # For tmux version 2.1 and above
+set -g terminal-overrides 'xterm*:smcup@:rmcup@' # Sane scrolling (instead of mimic arrrow keys)
 
 ####### Number windows and panes start at 1 instead of 0
 set -g base-index 1
@@ -290,6 +317,7 @@ set -g pane-base-index 1
 </code></pre>
 <ul>
 <li><a href="https://github.com/gpakosz/.tmux">Oh my tmux!</a>: Self-contained, pretty &amp; versatile tmux configuration</li>
+<li><a href="https://mutelight.org/practical-tmux">Practical Tmux</a></li>
 </ul>
 <h2 id="vim-vimrc">VIM: <code>~/.vimrc</code></h2>
 <pre><code>&quot; Comments in Vimscript start with a `&quot;`.
@@ -392,12 +420,43 @@ inoremap &lt;Right&gt; &lt;ESC&gt;:echoe &quot;Use l&quot;&lt;CR&gt;
 inoremap &lt;Up&gt;    &lt;ESC&gt;:echoe &quot;Use k&quot;&lt;CR&gt;
 inoremap &lt;Down&gt;  &lt;ESC&gt;:echoe &quot;Use j&quot;&lt;CR&gt;
 </code></pre>
-<p>IMACAT</p>
+<h2 id="neovim-vimrc">NeoVIM: <code>~/.vimrc</code></h2>
+<pre><code class="language-bash">sudo pacman -S neovim
+</code></pre>
+<h2 id="iterm2">iTerm2</h2>
+<h3 id="shell-integration"><a href="https://iterm2.com/documentation-shell-integration.html">Shell Integration</a></h3>
+<pre><code class="language-bash">curl -L https://iterm2.com/shell_integration/zsh -o ~/.iterm2_shell_integration.zsh
+source ~/.iterm2_shell_integration.zsh # Add this line at ~/.zshrc 
+
+
+# If hostname command not found install https://www.gnu.org/software/inetutils/
+sudo pacman -S inetutils
+</code></pre>
+<p>Download files from remote hosts with a click.
+You can right click on a filename (e.g., in the output of ls) to download it.</p>
+<p>Drag-drop files to upload with scp.
+Hold down option and drag-drop a file from Finder into iTerm2 to upload it.</p>
+<h3 id="imgcat"><code>imgcat</code></h3>
+<pre><code class="language-bash">wget https://iterm2.com/utilities/imgcat ; chmod 755 imgcat`
+</code></pre>
 <p>Ranger + imgcat</p>
 <h1 id="set-ntp-time">Set NTP time</h1>
 <pre><code class="language-bash">sudo pacman -S ntp
 sudo timedatectl set-ntp true
 </code></pre>
+<h1 id="comunity-configsdotfiles">Comunity configs/dotfiles</h1>
+<ul>
+<li>Savitar</li>
+<li>https://www.youtube.com/watch?v=fshLf6u8B-w&amp;t=3276s</li>
+<li>https://s4vitar.github.io/bspwm-configuration-files/#</li>
+<li>Josean Martinez</li>
+<li>
+<p>Terminal https://www.youtube.com/watch?v=CF1tMjvHDRA</p>
+</li>
+<li>
+<p>https://github.com/rxyhn/dotfiles</p>
+</li>
+</ul>
               
             </div>
           </div><footer>

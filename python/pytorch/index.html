@@ -113,11 +113,41 @@
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">🟥 Pytorch</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#naive-implementatation">Naive implementatation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#read-faster">Read faster</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#fast-hardaware">Fast hardaware</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#fast-decoding-libjpg-turbo">Fast decoding libjpg-turbo</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#even-faster">Even faster:</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#fast-collate-concat-imags-into-batch">Fast collate (= concat imags into batch)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#optimization-avoid-unnecessary-host-copies-pin_memorytrue">Optimization: Avoid unnecessary host copies pin_memory=True</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#optimization-read-images-in-parallel-num_workers">Optimization: Read images in parallel num_workers</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#memory-optimization">Memory optimization</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#optimization-prefetching-on-cpu-queue-prefetch_factor">Optimization: Prefetching on CPU (Queue) prefetch_factor</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#optimization-prefetching-on-gpu">Optimization: Prefetching on GPU</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#faster-model-tensorrt-engine-into-torchscript-module">Faster Model: TensorRT engine --into--&gt; TorchScript module</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#cuda-programming">CUDA Programming</a>
+    </li>
     </ul>
                   </li>
                   <li class="toctree-l1"><a class="" href="../tensorflow.md">🟧 Tensorflow</a>
                   </li>
-                  <li class="toctree-l1"><a class="" href="../onnx.md">⬜️ ONNX</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../onnx/">⬜️ ONNX</a>
                   </li>
                   <li class="toctree-l1"><a class="" href="../tensorrt.md">🟩 TensorRT</a>
                   </li>
@@ -161,19 +191,23 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="naive-implementatation">Naive implementatation</h2>
-<pre><code>          ┌────────────┐ ┌────────────┐ ┌────────────┐                                 ┌────────────┐
-CPU CORE1 │Read image 1│ │Read image 2│ │Read image 3│                                 │Read image 4│ ...
-          └────────────┘ └────────────┘ └────────────┘                                 └────────────┘
-                                                     ┌───────────┐
-CPU 2 GPU                                            │Copy to GPU│
-                                                     └───────────┘
-                                                                 ┌────────────────────┐
- GPU                                                             │INFER MODEL         │
-                                                                 └────────────────────┘
+                <h1 id="pytorch-dataloader">Pytorch dataloader</h1>
+<h2 id="naive-implementatation">Naive implementatation</h2>
+<pre><code>           Read batch 1 (B1)
+          ┌────────────────────────────────────┐                               ┌─────────────────
+          │slow|slow|   |slow| slow  |unecesary│  &lt;-- No reads in parallel     │
+CPU CORE1 │read|read|...|read|Collate|copy from│  &lt;-- No queue/prefetching     │ Read batch 2 ...
+          │img1|img2|   |imgN|       |pag 2 pin│                               │
+          └────────────────────────────────────┘                               └─────────────────
+                                               ┌─────────┐
+CPU 2 GPU                                      │B1 to GPU│ &lt;-- No queue/prefetching on GPU 
+                                               └─────────┘
+                                                         ┌─────────────────────┐
+ GPU                                                     │ INFER B1 into MODEL │ &lt;-- Slow model
+                                                         └─────────────────────┘
 </code></pre>
-<h2 id="read-images-faster">Read images faster</h2>
-<h3 id="hardaware">Hardaware</h3>
+<h2 id="read-faster">Read faster</h2>
+<h3 id="fast-hardaware">Fast hardaware</h3>
 <p>Try to store your dataset in a fast storage</p>
 <ol>
 <li>RAM</li>
@@ -186,7 +220,7 @@ CPU 2 GPU                                            │Copy to GPU│
 <li>Other machine in local network (/mnt/media mounting point)</li>
 <li>Internet</li>
 </ol>
-<h3 id="option-fast-fast-imgedecodin-libjpg-turbo">Option fast: Fast imgedecodin <code>libjpg-turbo</code></h3>
+<h3 id="fast-decoding-libjpg-turbo">Fast decoding <code>libjpg-turbo</code></h3>
 <ul>
 <li>Using <a href="https://github.com/ajkxyz/jpeg4py">jpeg4py</a>: <code>jpeg.JPEG(img).decode()</code> instead of <code>np.array(Image.open(img))</code></li>
 <li><a href="https://www.pankesh.com/posts/2019-05-02-pytorch-augmentation-with-libjpeg-turbo">example of usage</a></li>
@@ -207,15 +241,45 @@ print(PIL.features.check_feature("libjpeg_turbo"))</code></p>
 <li>Torch storage</li>
 <li><a href="https://ffcv.io">FFCV</a></li>
 </ul>
-<pre><code>          ┌─────────┐ ┌─────────┐ ┌─────────┐                                      ┌─────────┐
-CPU CORE1 │Read img1│ │Read img2│ │Read img3│                                      │Read img4│ ...
-          └─────────┘ └─────────┘ └─────────┘                                      └─────────┘
-                                            ┌───┐┌───────────┐
-CPU 2 GPU                                   │Pin││Copy to GPU│
-                                            └───┘└───────────┘
-                                                              ┌────────────────────┐
- GPU                                                          │INFER MODEL         │
-                                                              └────────────────────┘
+<pre><code>           Read batch 1 (B1)
+          ┌────────────────────────────────────┐                               ┌─────────────────
+          │fast|fast|   |fast| slow  |unecesary│                               │
+CPU CORE1 │read|read|...|read|Collate|copy from│                               │ Read batch 2 ...
+          │img1|img2|   |imgN|       |pag 2 pin│                               │
+          └────────────────────────────────────┘                               └─────────────────
+                                               ┌─────────┐
+CPU 2 GPU                                      │B1 to GPU│
+                                               └─────────┘
+                                                         ┌─────────────────────┐
+ GPU                                                     │ INFER B1 into MODEL │
+                                                         └─────────────────────┘
+</code></pre>
+<h2 id="fast-collate-concat-imags-into-batch">Fast collate (= concat imags into batch)</h2>
+<p>https://www.pankesh.com/posts/2019-05-02-pytorch-augmentation-with-libjpeg-turbo/</p>
+<pre><code>           Read batch 1 (B1)
+          ┌─────────────────────────────────┐                                ┌─────────────────
+          │fast|fast|   |fast|fast|unecesary│                                │
+CPU CORE1 │read|read|...|read|Coll|copy from│                                │ Read batch 2 ...
+          │img1|img2|   |imgN|ate |pag 2 pin│                                │
+          └─────────────────────────────────┘                                └─────────────────
+                                            ┌─────────┐
+CPU 2 GPU                                   │B1 to GPU│
+                                            └─────────┘
+                                                       ┌─────────────────────┐
+ GPU                                                   │ INFER B1 into MODEL │
+                                                       └─────────────────────┘
+</code></pre>
+<p>The <code>collate_fn</code> is also useful to discard broken images</p>
+<pre><code class="language-python"># a collate function that filters the None records.
+def collate_fn(batch):
+    # batch looks like [(x0,y0), (x4,y4), (x2,y2)... ]
+    batch = [(Id, Date, Img) for (Id, Date, Img) in batch if Img is not None]
+    #batch = list(filter(lambda x: x is not None, batch)) # Other way to do the same
+
+    if len(batch) == 0: # If all images are broken, retrun None and discard in dl for loop
+        return None, None, None
+    else:
+        return torch.utils.data.dataloader.default_collate(batch)
 </code></pre>
 <h2 id="optimization-avoid-unnecessary-host-copies-pin_memorytrue">Optimization: Avoid unnecessary host copies <code>pin_memory=True</code></h2>
 <p>Host (CPU) data allocations are pageable by default. The GPU cannot access data directly from pageable host memory, so when a data transfer from pageable host memory to device memory is invoked, the CUDA driver must first allocate a temporary page-locked, or “pinned”, host array, copy the host data to the pinned array, and then transfer the data from the pinned array to device memory, as illustrated below.</p>
@@ -224,51 +288,59 @@ CPU 2 GPU                                   │Pin││Copy to GPU│
 </ul>
 <p>if <code>pin_memory=True</code> is set on the Pytorch's dataloader, it will copy Tensors into device/CUDA pinned memory before returning them.</p>
 <p>Also, once you pin a tensor or storage, you can use asynchronous GPU copies. Just pass an additional <code>non_blocking=True</code> argument to a <code>to()</code> or a <code>cuda()</code> call. This can be used to overlap data transfers with computation. (Prefetching on GPU Optimization).</p>
-<pre><code>          ┌─────────┐ ┌─────────┐ ┌─────────┐                                ┌─────────┐
-CPU CORE1 │Read img1│ │Read img2│ │Read img3│                                │Read img4│ ...
-          └─────────┘ └─────────┘ └─────────┘                                └─────────┘
-                                            ┌───────────┐
-CPU 2 GPU                                   │Copy to GPU│
-                                            └───────────┘
-                                                        ┌────────────────────┐
- GPU                                                    │INFER MODEL         │
-                                                        └────────────────────┘
+<pre><code>           Read batch 1 (B1)
+          ┌───────────────────────┐                               ┌─────────────────
+          │fast|fast|   |fast|fast│                               │
+CPU CORE1 │read|read|...|read|Coll│                               │ Read batch 2 ...
+          │img1|img2|   |imgN|ate │                               │
+          └───────────────────────┘                               └─────────────────
+                                  ┌─────────┐
+CPU 2 GPU                         │B1 to GPU│
+                                  └─────────┘
+                                            ┌─────────────────────┐
+ GPU                                        │ INFER B1 into MODEL │
+                                            └─────────────────────┘
 </code></pre>
 <h2 id="optimization-read-images-in-parallel-num_workers">Optimization: Read images in parallel <code>num_workers</code></h2>
-<pre><code>          ┌────────────┐                                 ┌────────────┐
-CPU CORE1 │Read image 1│                                 │Read image 4│
-          └────────────┘                                 └────────────┘
-          ┌────────────┐                                 ┌────────────┐
-CPU CORE2 │Read image 2│                                 │Read image 5│
-          └────────────┘                                 └────────────┘
-          ┌────────────┐                                 ┌────────────┐
-CPU CORE3 │Read image 3│                                 │Read image 6│
-          └────────────┘                                 └────────────┘
-                       ┌───────────┐                                  ┌───────────┐
-CPU 2 GPU              │Copy to GPU│                                  │Copy to GPU│
-                       └───────────┘                                  └───────────┘
-                                   ┌────────────────────┐                         ┌────────────────────┐
-GPU                                │INFER MODEL         │                         │INFER MODEL         │
-                                   └────────────────────┘                         └────────────────────┘
+<pre><code>          ┌──────────────┐         ┌──────────────┐
+CPU CORE1 │ Read batch 1 │         │ Read batch 4 │
+(worker1) └──────────────┘         └──────────────┘
+          ┌──────────────┐         ·                       ┌──────────────┐
+CPU CORE2 │ Read batch 2 │         ·                       │ Read batch 5 │
+(worker2) └──────────────┘         ·                       └──────────────┘
+          ┌──────────────┐         ·                       ·                       ┌──────────────┐
+CPU CORE3 │ Read batch 3 │         ·                       ·                       │ Read batch 6 │
+(worker3) └──────────────┘         ·                       ·                       └──────────────┘
+                         ┌─────────┐             ┌─────────┐             ┌─────────┐
+CPU 2 GPU                │B1 to GPU│             │B2 to GPU│             │B3 to GPU│
+                         └─────────┘             └─────────┘             └─────────┘
+                                   ┌─────────────┐         ┌─────────────┐         ┌─────────────┐
+GPU                                │ INFER MODEL │         │ INFER MODEL │         │ INFER MODEL │
+                                   └─────────────┘         └─────────────┘         └─────────────┘
 </code></pre>
+<blockquote>
+<h2 id="memory-optimization">Memory optimization</h2>
+<p><strong>Avoid to each worker make a copy of the dataset!!!</strong>
+https://ppwwyyxx.com/blog/2022/Demystify-RAM-Usage-in-Multiprocess-DataLoader/</p>
+</blockquote>
 <h2 id="optimization-prefetching-on-cpu-queue-prefetch_factor">Optimization: Prefetching on CPU (Queue) <code>prefetch_factor</code></h2>
 <p><strong>This is the defual behavior of Pytroch's dataloader</strong>. It does prefetching on the CPU RAM.</p>
 <p>the prefetch_factor parameter of PyTorch DataLoader class. The prefetch_factor parameter only controls CPU-side loading of the parallel data loader processes</p>
-<pre><code>          ┌────────────┬────────────┐
-CPU CORE1 │Read image 1│Read image 4│
-          └────────────┘────────────┘
-          ┌────────────┬────────────┐
-CPU CORE2 │Read image 2│Read image 5│
-          └────────────┴────────────┘
-          ┌────────────┬────────────┐
-CPU CORE3 │Read image 3│Read image 6│
-          └────────────┴────────────┘
-                       ┌──────────┐                    ┌──────────┐
-CPU 2 GPU              │123 to GPU│                    │456 to GPU│
-                       └──────────┘                    └──────────┘
-                                  ┌────────────────────┐          ┌────────────────────┐
-GPU                               │INFER 123 into MODEL│          │INFER 456 into MODEL│
-                                  └────────────────────┘          └────────────────────┘
+<pre><code>          ┌────────────┬────────────┬────────────┐
+CPU CORE1 │Read batch 1│Read batch 4│Read batch 7│
+          └────────────┴────────────┴────────────┘
+          ┌────────────┬────────────┐                          ┌────────────┐
+CPU CORE2 │Read batch 2│Read batch 5│                          │Read batch 8│
+          └────────────┴────────────┘                          └────────────┘
+          ┌────────────┬────────────┐                          ·                             ┌────────
+CPU CORE3 │Read batch 3│Read batch 6│                          ·                             │ Read B9
+          └────────────┴────────────┘                          ·                             └────────
+                       ┌─────────┐                   ┌─────────┐                   ┌─────────┐
+CPU 2 GPU              │B1 to GPU│                   │B2 to GPU│                   │B3 to GPU│
+                       └─────────┘                   └─────────┘                   └─────────┘
+                                 ┌───────────────────┐         ┌───────────────────┐         ┌────────
+GPU                              │INFER B1 into MODEL│         │INFER B2 into MODEL│         │INFER B3 
+                                 └───────────────────┘         └───────────────────┘         └────────
 </code></pre>
 <ul>
 <li><a href="https://www.scottcondron.com/jupyter/visualisation/audio/2020/12/02/dataloaders-samplers-collate.html">But what are PyTorch DataLoaders really?</a></li>
@@ -278,20 +350,20 @@ GPU                               │INFER 123 into MODEL│          │INFER 4
 </ul>
 <h2 id="optimization-prefetching-on-gpu">Optimization: Prefetching on GPU</h2>
 <pre><code>          ┌────────────┬────────────┐
-CPU CORE1 │Read image 1│Read image 4│
-          └────────────┘────────────┘
-          ┌────────────┬────────────┐
-CPU CORE2 │Read image 2│Read image 5│
+CPU CORE1 │Read batch 1│Read batch 4│
           └────────────┴────────────┘
           ┌────────────┬────────────┐
-CPU CORE3 │Read image 3│Read image 6│
+CPU CORE2 │Read batch 2│Read batch 5│
           └────────────┴────────────┘
-                       ┌──────────┐ ┌──────────┐
-CPU 2 GPU              │123 to GPU│ │456 to GPU│
-                       └──────────┘ └──────────┘
-                                  ┌────────────────────┬────────────────────┐
-GPU                               │INFER 123 into MODEL│INFER 456 into MODEL│
-                                  └────────────────────┴────────────────────┘
+          ┌────────────┬────────────┐
+CPU CORE3 │Read batch 3│Read batch 6│
+          └────────────┴────────────┘
+                       ┌─────────┬─────────┐         ┌─────────┐         ┌─────────┐
+CPU 2 GPU              │B1 to GPU│B2 to GPU│         │B3 to GPU│         │B4 to GPU│
+                       └─────────┴─────────┘         └─────────┘         └─────────┘
+                                 ┌───────────────────┬───────────────────┬───────────────────┐
+GPU                              │INFER B1 into MODEL│INFER B2 into MODEL│INFER B3 into MODEL│
+                                 └───────────────────┴───────────────────┴───────────────────┘
 </code></pre>
 <ul>
 <li>Prefetching Implementation #1: <code>class data_prefetcher()</code> in https://github.com/NVIDIA/apex/blob/master/examples/imagenet/main_amp.py#L265</li>
@@ -304,10 +376,6 @@ GPU                               │INFER 123 into MODEL│INFER 456 into MODEL
 <li>https://developer.nvidia.com/blog/how-overlap-data-transfers-cuda-cc/</li>
 </ul>
 <p>Achieving overlap between data transfers and other operations requires the use of CUDA streams, so first let’s learn about streams.</p>
-<h2 id="fast-collate-concat-imags-into-batch">Fast collate (= concat imags into batch) ?</h2>
-<ul>
-<li>https://www.pankesh.com/posts/2019-05-02-pytorch-augmentation-with-libjpeg-turbo/</li>
-</ul>
 <h2 id="faster-model-tensorrt-engine-into-torchscript-module">Faster Model: TensorRT engine --into--&gt; TorchScript module</h2>
 <ul>
 <li>https://pytorch.org/TensorRT/</li>
@@ -400,7 +468,7 @@ cuda.memcpy_dtoh_async(dest=cpu_mem[name], src=gpu_mem[name], stream=my_stream)
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../numpy/" class="btn btn-neutral float-left" title="🟦 Numpy"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../numpy/" class="btn btn-neutral float-right" title="🟦 Parallel">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../onnx/" class="btn btn-neutral float-right" title="⬜️ ONNX">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -426,7 +494,7 @@ cuda.memcpy_dtoh_async(dest=cpu_mem[name], src=gpu_mem[name], stream=my_stream)
       <span><a href="../numpy/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../numpy/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../onnx/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

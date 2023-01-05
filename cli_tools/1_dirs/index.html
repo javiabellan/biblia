@@ -50,7 +50,7 @@
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#navigate">🚶🏻‍♂️ Navigate</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#search-find">🔎 Search find</a>
+    <li class="toctree-l2"><a class="reference internal" href="#search-find">🔎 Search: find</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#filter-by-typenamepath">Filter by type/name/path</a>
     </li>
@@ -63,6 +63,8 @@
     <li class="toctree-l3"><a class="reference internal" href="#find-then-do-some-action">Find, then do some action</a>
     </li>
         </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#indexed-search-updatedb-locate">🔎 indexed search: updatedb + locate</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#disk-usage">💽 Disk usage</a>
     </li>
@@ -139,7 +141,7 @@
                   </li>
                   <li class="toctree-l1"><a class="" href="../../python/tensorflow.md">🟧 Tensorflow</a>
                   </li>
-                  <li class="toctree-l1"><a class="" href="../../python/onnx.md">⬜️ ONNX</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../python/onnx/">⬜️ ONNX</a>
                   </li>
                   <li class="toctree-l1"><a class="" href="../../python/tensorrt.md">🟩 TensorRT</a>
                   </li>
@@ -210,12 +212,13 @@ lsb_release -a # Ver mi sistema operativo
 <ul>
 <li><code>lsd</code>: Better ls</li>
 <li><code>tree</code></li>
+<li><code>lsd --tree</code> Better tree</li>
 <li><code>broot</code></li>
 <li><code>nnn</code></li>
 <li><code>ranger</code></li>
 </ul>
 </blockquote>
-<h2 id="search-find">🔎 Search <code>find</code></h2>
+<h2 id="search-find">🔎 Search: <code>find</code></h2>
 <ul>
 <li><code>find ..... 2&gt;/dev/null</code> Do not show STDERR (denied acces)</li>
 <li><code>find {where} -name {what} -type {what type}</code></li>
@@ -251,16 +254,26 @@ lsb_release -a # Ver mi sistema operativo
 <blockquote>
 <ul>
 <li><a href="https://github.com/sharkdp/fd"><code>fd</code></a>: a simple, fast, and user-friendly alternative to <code>find</code>.</li>
-<li><code>updatedb</code> and <code>locate</code>: indexed search.</li>
-<li><code>updatedb</code> compiles some sort of indexed database for quickly searching. Usually updated daily via <code>cron</code></li>
-<li><code>locate</code> uses the database for quickly searching.</li>
 </ul>
 </blockquote>
+<h2 id="indexed-search-updatedb-locate">🔎 indexed search: <code>updatedb</code> + <code>locate</code></h2>
+<ol>
+<li><code>$ sudo updatedb</code> compiles some sort of indexed database for quickly searching. Usually updated daily via <code>cron</code> or systemD timers.</li>
+<li><code>$ locate some_file</code> uses the database for quickly searching. (Actually is <code>plocate</code>)</li>
+</ol>
+<p>With the existing systemD timer 
+- <code>/lib/systemd/system/plocate-updatedb.service</code>
+- <code>/lib/systemd/system/plocate-updatedb.timer</code></p>
+<pre><code class="language-bash">sudo pacman -S locate # This installs plocate
+sudo systemctl enable plocate-updatedb.timer
+sudo systemctl start plocate-updatedb.timer
+</code></pre>
 <h2 id="disk-usage">💽 Disk usage</h2>
 <ul>
 <li><code>du</code>: <strong>d</strong>isk <strong>u</strong>sage</li>
 <li><code>du FILE</code>: Disk usage of a file</li>
 <li><code>du -sh */ | sort -rh</code></li>
+<li><code>du -sh -- * | sort -h -r</code> Disk usage of current dir</li>
 <li><code>ncdu FILE</code>: Interactive version of Disk usage</li>
 <li><code>dust</code></li>
 <li><code>duf</code></li>

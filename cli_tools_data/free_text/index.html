@@ -83,7 +83,15 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#remove-carriage-return">Remove carriage return</a>
+    <li class="toctree-l2"><a class="reference internal" href="#dos-to-unix-file">DOS to UNIX file</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#remove-carriage-return-rrn">Remove carriage return (\r\r\n)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#remove-the-bom">Remove the BOM</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#conclusion">Conclusion</a>
+    </li>
+        </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#pseudo-regex-in-terminal">Pseudo-regex in terminal</a>
     </li>
@@ -131,7 +139,7 @@
                   </li>
                   <li class="toctree-l1"><a class="" href="../../python/tensorflow.md">🟧 Tensorflow</a>
                   </li>
-                  <li class="toctree-l1"><a class="" href="../../python/onnx.md">⬜️ ONNX</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../python/onnx/">⬜️ ONNX</a>
                   </li>
                   <li class="toctree-l1"><a class="" href="../../python/tensorrt.md">🟩 TensorRT</a>
                   </li>
@@ -455,11 +463,20 @@ sed -E 's/(pattern2keep)pattern2remove/\1/g' file.txt
 <li><code>([A-Z]+[ \t]+)+</code> frases solo en mayyscula (cada frase es un match)</li>
 <li><code>\.(png|jpg|gif)$</code></li>
 </ul>
-<h2 id="remove-carriage-return">Remove carriage return</h2>
+<h2 id="dos-to-unix-file">DOS to UNIX file</h2>
+<h3 id="remove-carriage-return-rrn">Remove carriage return (\r\r\n)</h3>
 <ul>
-<li><code>sed 's/\r$//' in.txt &gt; out.txt</code></li>
-<li><code>tr: tr -d '\r' in.txt &gt; out.txt</code></li>
+<li><code>sed 's/\r//' in.txt &gt; out.txt</code> --&gt; Bad (only first \r of line is removed)</li>
+<li><code>sed 's/\r$//' in.txt &gt; out.txt</code> --&gt; Bad (only last \r of line is removed)</li>
+<li><code>sed 's/\r//g' in.txt &gt; out.txt</code> --&gt; Good: Remove all the \r</li>
 </ul>
+<h3 id="remove-the-bom">Remove the BOM</h3>
+<ul>
+<li><code>sed '1s/^\xEF\xBB\xBF//' in.txt &gt; out.txt</code></li>
+</ul>
+<h3 id="conclusion">Conclusion</h3>
+<pre><code class="language-bash">cat input_file | sed '1s/^\xEF\xBB\xBF//' | sed 's/\r//g' &gt; output_file
+</code></pre>
 <h2 id="pseudo-regex-in-terminal">Pseudo-regex in terminal</h2>
 <ul>
 <li><code>*</code>: Matches zero or more.</li>

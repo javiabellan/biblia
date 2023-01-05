@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Python - Documentación de Javi</title>
+    <title>⬜️ ONNX - Documentación de Javi</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Python";
-        var mkdocs_page_input_path = "programming/python.md";
+        var mkdocs_page_name = "\u2b1c\ufe0f ONNX";
+        var mkdocs_page_input_path = "python/onnx.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -106,33 +106,33 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Python</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../python/numpy/">🟦 Numpy</a>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../numpy/">🟦 Numpy</a>
                   </li>
-                  <li class="toctree-l1"><a class="" href="../../python/machine_learning.md">🟫 Sklearn</a>
+                  <li class="toctree-l1"><a class="" href="../machine_learning.md">🟫 Sklearn</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../python/pytorch/">🟥 Pytorch</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../pytorch/">🟥 Pytorch</a>
                   </li>
-                  <li class="toctree-l1"><a class="" href="../../python/tensorflow.md">🟧 Tensorflow</a>
+                  <li class="toctree-l1"><a class="" href="../tensorflow.md">🟧 Tensorflow</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../python/onnx/">⬜️ ONNX</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">⬜️ ONNX</a>
                   </li>
-                  <li class="toctree-l1"><a class="" href="../../python/tensorrt.md">🟩 TensorRT</a>
+                  <li class="toctree-l1"><a class="" href="../tensorrt.md">🟩 TensorRT</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../python/numpy/">🟦 Parallel</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../numpy/">🟦 Parallel</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">C++</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../ruby/">♦️ Ruby</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/ruby/">♦️ Ruby</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../monitoring/">Monitoring</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/monitoring/">Monitoring</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../profiling/">Profiling</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/profiling/">Profiling</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../debugging/">Debugging</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/debugging/">Debugging</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../makefile/">Makefile</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/makefile/">Makefile</a>
                   </li>
               </ul>
       </div>
@@ -149,7 +149,8 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-      <li>Python</li>
+          <li>Python &raquo;</li>
+      <li>⬜️ ONNX</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -158,16 +159,42 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="python">Python</h1>
-<h2 id="python-script">Python script</h2>
-<pre><code class="language-python">#!/usr/bin/python
-import sys
-for arg in reversed(sys.argv[1:]):
-    print(arg)
+                <pre><code class="language-python">import onnx
+
+# LOAD MODEL
+onnx_model = onnx.load(&quot;model.onnx&quot;)
+
+# SAVE MODEL
+onnx.save(onnx_model, &quot;model.onnx&quot;)
+
+# CREATE Tensors
+t1 = onnx.helper.make_tensor_value_info('input', onnx.TensorProto.FLOAT, [&quot;BS&quot;, 3, &quot;H&quot;, &quot;W&quot;])
+t2 = onnx.helper.make_tensor_value_info('scalar_tensor', onnx.TensorProto.INT64, [])
+
+
+
+def get_input(model, name):
+    for elem in model.graph.input:
+        if elem.name == name:
+            return elem
+
+def get_node(model, name):
+    for elem in model.graph.node:
+        if elem.name == name:
+            return elem
+
+def get_output(model, name):
+    for elem in model.graph.output:
+        if elem.name == name:
+            return elem
 </code></pre>
               
             </div>
           </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../pytorch/" class="btn btn-neutral float-left" title="🟥 Pytorch"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../numpy/" class="btn btn-neutral float-right" title="🟦 Parallel">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
 
   <hr/>
 
@@ -189,6 +216,10 @@ for arg in reversed(sys.argv[1:]):
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
+      <span><a href="../pytorch/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../numpy/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
