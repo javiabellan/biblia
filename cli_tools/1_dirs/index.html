@@ -66,6 +66,8 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#indexed-search-updatedb-locate">🔎 indexed search: updatedb + locate</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#find-installed-programs">Find installed programs</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#disk-usage">💽 Disk usage</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#hard-drives">💽 Hard drives</a>
@@ -192,6 +194,19 @@ man echo    # Muestra el manual de un programa
 tldr echo   # Muestra el manual de ejemplos de un programa
 lsb_release -a # Ver mi sistema operativo
 </code></pre>
+<pre><code class="language-bash">man title
+
+</code></pre>
+<p>Man sections</p>
+<p>1 User-level <strong>commands</strong> and applications
+2 System calls and kernel error codes
+3 Library calls
+4 Device drivers and network protocols
+5 <strong>configuration file</strong>. Standard file formats
+6 Games and demonstrations
+7 Miscellaneous files and documents
+8 System administration commands
+9 Obscure kernel specs and interfaces</p>
 <h2 id="navigate">🚶🏻‍♂️ Navigate</h2>
 <ul>
 <li><code>pwd</code>: <strong>p</strong>rint <strong>w</strong>orking <strong>d</strong>irectory</li>
@@ -257,16 +272,27 @@ lsb_release -a # Ver mi sistema operativo
 </ul>
 </blockquote>
 <h2 id="indexed-search-updatedb-locate">🔎 indexed search: <code>updatedb</code> + <code>locate</code></h2>
-<ol>
-<li><code>$ sudo updatedb</code> compiles some sort of indexed database for quickly searching. Usually updated daily via <code>cron</code> or systemD timers.</li>
+<ul>
+<li>locate is FreeBSD includes locate as part of the base system.</li>
+<li>
+<p>In Linux, the old implementation of locate is in the mlocate package, the current implemetation is plocate</p>
+</li>
+<li>
+<p><code>$ sudo updatedb</code> compiles some sort of indexed database for quickly searching. Usually updated daily via <code>cron</code> or systemD timers.</p>
+</li>
 <li><code>$ locate some_file</code> uses the database for quickly searching. (Actually is <code>plocate</code>)</li>
-</ol>
+</ul>
 <p>With the existing systemD timer 
 - <code>/lib/systemd/system/plocate-updatedb.service</code>
 - <code>/lib/systemd/system/plocate-updatedb.timer</code></p>
 <pre><code class="language-bash">sudo pacman -S locate # This installs plocate
 sudo systemctl enable plocate-updatedb.timer
 sudo systemctl start plocate-updatedb.timer
+</code></pre>
+<h2 id="find-installed-programs">Find installed programs</h2>
+<pre><code class="language-bash">which
+whereis
+pacman -Q
 </code></pre>
 <h2 id="disk-usage">💽 Disk usage</h2>
 <ul>

@@ -201,7 +201,10 @@
 - <code>#!/bin/bash</code>:  Bash shell script <code>./myScript.sh</code>
 - <code>#!/usr/bin/env bash</code>: Bash shell script
 - <code>#!/usr/bin/python</code>:  Python script <code>./myScript.py</code>
-- <code>#!/usr/bin/env python</code>:  Python script (more portable because looks for python comand)  <code>./myScript.py</code></p>
+- <code>#!/usr/bin/env python</code>:  Python script (more portable because looks for python comand)  <code>./myScript.py</code>
+- #!/usr/bin/expect</p>
+<h2 id="expect"><code>expect</code></h2>
+<p>para automatizar scripts que tienen un input manual</p>
 <h2 id="print-echo-printf">Print: <code>echo</code>, <code>printf</code></h2>
 <ul>
 <li><code>echo</code></li>
@@ -325,54 +328,10 @@ ls | xargs rm  # | xargs is when the inputs is IN THE ARGUMENTS
 rm $(ls)       # same of above
 cmd1 |&amp; cmd1   #  command1's stdout AND stderr is redirected to command2's stdin
 </code></pre>
+<ul>
+<li><a href="https://jott.live/markdown/ml_pipes">Machine Learning with Unix Pipes</a></li>
+</ul>
 <h3 id="named-pipes-mkfifo">Named Pipes: <code>mkfifo</code></h3>
-<h2 id="cron">CRON</h2>
-<pre><code>┌───────────── minute (0 - 59)
-│ ┌───────────── hour (0 - 23)
-│ │ ┌───────────── day of the month (1 - 31)
-│ │ │ ┌───────────── month (1 - 12)
-│ │ │ │ ┌───────────── day of the week (0=Sun - 6=Sat)
-│ │ │ │ │                                   
-* * * * *
-</code></pre>
-<table>
-<thead>
-<tr>
-<th>minute</th>
-<th>hour</th>
-<th>day of the month</th>
-<th>month</th>
-<th>day of the week</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0..59</td>
-<td>0..23</td>
-<td>1..31</td>
-<td>1..12</td>
-<td>0..6 (Sun,Mon,..,Sat)</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li><code>*</code> means “every” </li>
-<li><code>,</code> value list separator</li>
-<li><code>-</code> Range of values.</li>
-<li><code>/</code> step values. Eg. <code>/5 * * * *</code> means every 5 minutes. </li>
-</ul>
-<h3 id="examples">Examples:</h3>
-<ul>
-<li><code>* * * * *</code>: Every minute</li>
-<li><code>*/5 * * * *</code>: Every 5 minutes</li>
-<li><code>*/5 8-16 * * 1-5</code>: Every 5 minutes from 8:00 to 16:00, from Mon to Fri.</li>
-<li><code>0 * * * *</code>: Every hour (at minute 0)</li>
-<li><code>0 0 * * *</code>: Every day (at 00:00)</li>
-<li><code>0 0 * * 0</code>: Every week (at 00:00 on Sunday)</li>
-<li><code>0 0 1 * *</code>: Mothly (at 00:00 on day 1)</li>
-<li><code>0 0 1 1 *</code>: Yearly (at 00:00 on day 1 of January)</li>
-</ul>
-<p>Check <a href="https://crontab.guru">crontab guru</a> to come up with the cron syntax for your schedule.</p>
 <h2 id="example-bash-script">Example Bash script</h2>
 <pre><code class="language-bash">############## Variables
 myVar=someValue

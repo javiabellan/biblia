@@ -301,7 +301,13 @@ set softwrap    # Enable soft line wrapping for easier viewing of very long line
 set nowrap      # Don’t hard-wrap text at all
 # set nohelp    # Don’t display the two help lines at the bottom of the screen.
 set linenumbers # Display of line numbers in front of the text.
+
+include &quot;/usr/share/nano/*.nanorc&quot; # Default Syntax highlighting
+include &quot;/usr/share/nano-syntax-highlighting/*.nanorc&quot; #  syntax highlighting enhancements*
 </code></pre>
+<blockquote>
+<p>sudo pacman -S nano-syntax-highlighting</p>
+</blockquote>
 <h2 id="tmux-tmuxconf">TMUX <code>~/.tmux.conf</code></h2>
 <pre><code class="language-bash">####### SAME PROMT
 set -g default-terminal &quot;screen-256color&quot;

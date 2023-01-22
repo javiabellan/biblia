@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Packets - Documentación de Javi</title>
+    <title>HTTP server - Documentación de Javi</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Packets";
-        var mkdocs_page_input_path = "others/paquets.md";
+        var mkdocs_page_name = "HTTP server";
+        var mkdocs_page_input_path = "cli_tools_net/server_web.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -92,17 +92,17 @@
               </ul>
               <p class="caption"><span class="caption-text">CLI networking tools</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_net/web_scraping/">⬇️ Web Scraping (curl,wget)</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../web_scraping/">⬇️ Web Scraping (curl,wget)</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_net/pentesting/">🗡️ Pentesting (nmap)</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../pentesting/">🗡️ Pentesting (nmap)</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_net/deffensive/">🛡️ Deffensive</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../deffensive/">🛡️ Deffensive</a>
                   </li>
-                  <li class="toctree-l1"><a class="" href="../../cli_tools_net/dns.md">📒 DNS (dig,nslookup,whois)</a>
+                  <li class="toctree-l1"><a class="" href="../dns.md">📒 DNS (dig,nslookup,whois)</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_net/vpn/">🔒 VPN</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../vpn/">🔒 VPN</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_net/firewall/">📛 Firewall</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../firewall/">📛 Firewall</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Python</span></p>
@@ -149,7 +149,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-      <li>Packets</li>
+      <li>HTTP server</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -158,13 +158,88 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="packets">Packets</h1>
+                <h1 id="http-server">HTTP server</h1>
+<p>https://atareao.es/software/utilidades/httpie-un-cliente-http-para-la-linea-de-comandos/</p>
+<h2 id="python-http-server">Python HTTP server</h2>
+<pre><code class="language-bash">python3 -m http.server 9000
+</code></pre>
+<p>Now, create the simple index.html file inside that server directory where you have started the server. go to <a href="http://localhost:9000">http://localhost:9000</a></p>
+<h2 id="netcat-http-server">Netcat HTTP server</h2>
+<pre><code class="language-bash">while true
+do
+  echo -e &quot;HTTP/1.1 200 OK\r\n\r\n$(date)&quot; | nc -l localhost 8888
+done
+
+# ncat -lk -p 8080 --exec $(server_response) # --listen --keep-open
+
+# https://www.youtube.com/watch?v=pYjoqsFjzgQ
+
+function response {
+  echo -en &quot;HTTP/1.1 200 OK\r\n\r\n&quot;
+  echo '&lt;!DOCTYPE html&gt;'
+  echo '&lt;html lang=&quot;es&quot;&gt;'
+  echo '  &lt;head&gt;'
+  echo '    &lt;title&gt;HTML&lt;/title&gt;'
+  echo '    &lt;meta charset=&quot;utf-8&quot;&gt;'
+  echo '    &lt;meta http-equiv=&quot;refresh&quot; content=&quot;5&quot;&gt;' # Update frontend every 5 seconds
+  echo '  &lt;/head&gt;'
+  echo '  &lt;body&gt;'
+  echo &quot; $(date)&quot;
+  echo '  &lt;/body&gt;'
+  echo '&lt;/html&gt;'
+}
+
+while true; do
+  response | nc -l localhost 8888
+  # here netcat waits for 1 connection, 
+  # When the user concet to http://localhost:8888
+  # The program flow continues
+  echo &quot;================================================&quot;
+done
+</code></pre>
+<h2 id="http-protocol">HTTP protocol</h2>
+<h3 id="http-request">HTTP request</h3>
+<pre><code>GET / HTTP/1.1             -&gt; request line
+Host: localhost:8000       \
+User-Agent: curl/7.54.0    | Request headers
+Accept: */*                /
+</code></pre>
+<h3 id="http-response">HTTP response</h3>
+<pre><code>HTTP/1.1 200 OK
+Content-Type: text/html
+Content-Lenght: 11
+
+Hello world
+</code></pre>
+<pre><code>INTERNET --http--&gt; WEB SERVER --http--&gt; APPLICATION SERVER --wsgi--&gt; WEB FRAMEWORK
+                   ==========           ==================           =============
+                   apache               gunicorn                     Django
+                   ngixn                uWSGI                        Flask
+                                                                     FastAPI
+</code></pre>
+<p>https://www.youtube.com/watch?v=UklcIDgHtwQ
+https://www.youtube.com/watch?v=WqrCnVAkLIo</p>
+<p>CGI: Common Gateway Interface (1997)
+WSGI: Web Server Gateway Interface (2003)</p>
 <ul>
-<li>ngrep: grep for your network</li>
-<li>tcdump: show me all packets on port 80!</li>
-<li>wireshark: look at those packets in a GUI</li>
-<li>tshark: wireshark at th comman line</li>
-<li>tcpflow: capture assemble TCP streams</li>
+<li>caching mechanism:</li>
+<li>
+<p>Reverse proxy: a system that forwards all requests from the web to our web server and back</p>
+</li>
+<li>
+<p>Que pasa si alguien sube una imagen (o imagenens) muy pesada? Relentiza el servidor?</p>
+</li>
+<li>gunicorn bloquearia la petición</li>
+<li>Pero ngixn haria offloading buffering</li>
+</ul>
+<h2 id="load-balancing">Load balancing</h2>
+<p>"failover" or "load balancing", which is where two servers provide the same service but allow for distribution in the event of problems.</p>
+<p>Services like NGINX, Cloudflare, Apigee, AWS ELB, <a href="http://www.haproxy.org/">HAProxy</a></p>
+<p>Existen distintos criterios para balancear:</p>
+<ul>
+<li>Por tamaño de paquete</li>
+<li>Por numero de peticiones</li>
+<li>... </li>
 </ul>
               
             </div>

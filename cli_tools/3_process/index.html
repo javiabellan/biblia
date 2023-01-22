@@ -71,14 +71,6 @@
     <li class="toctree-l2"><a class="reference internal" href="#process-priorities">Process priorities</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#tracking-ongoing-processes-ps">Tracking ongoing processes (ps)</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#process-managers">Process managers</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#boot-time-system-v">Boot time (System V)</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#boot-time-systemd">Boot time (SystemD)</a>
-    </li>
-        </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#proc-dir">Proc dir</a>
     </li>
@@ -430,116 +422,6 @@ CMD:   The command that started this process</p>
 <p>UID   PID  PPID   C STIME   TTY           TIME CMD
     0     1     0   0  5may22 ??        98:12.93 /sbin/launchd
     0    69     1   0  5may22 ??         4:07.06 /usr/sbin/syslogd</p>
-<h3 id="process-managers">Process managers</h3>
-<ul>
-<li>launchd (OS X)</li>
-<li>Upstart (Ubuntu) (antiguo y tradicional sistema init)</li>
-<li>SystemV (SysV) (antiguo y tradicional sistema init)</li>
-<li>SystemD (el mas usado (y odiado) en la acutailidad</li>
-<li>Systemd-shim (alternativa moderna)</li>
-<li>In BSD, the init binary doesn't do much regarding startup, basically just executes /etc/rc; it's shell scripts all the way afterwards.</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>SystemV</th>
-<th>SystemD</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Distros</td>
-<td>Gentoo, Slackware, Linux from Scratch</td>
-<td>ArchLinux, AWS, Red Hat, CentOS, Fedora, Debian, Ubuntu</td>
-</tr>
-<tr>
-<td>Restart</td>
-<td><code>/etc/init.d/sshd start</code></td>
-<td><code>systemctl restart sshd</code></td>
-</tr>
-<tr>
-<td>Enable</td>
-<td></td>
-<td><code>systemctl enable NetworkManager.service</code></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td><code>systemctl enable wpa_supplicant</code></td>
-</tr>
-</tbody>
-</table>
-<p>https://papers.freebsd.org/2018/bsdcan/rice-the_tragedy_of_systemd/</p>
-<p>FreeBSD ventajas: init system, LLVM, documentation, ZFS, dtrace</p>
-<h3 id="boot-time-system-v">Boot time (System V)</h3>
-<ol>
-<li><strong>BIOS</strong> (Basic Input/Output System)</li>
-<li><strong>MBR</strong> (Master Boot Record)</li>
-<li><strong>GRUB</strong> (Grand Unified Bootloader)</li>
-<li><strong>Kernel</strong><ul>
-<li>Mounts the root file system as specified in the “root=” in grub.conf</li>
-<li>Kernel executes the <code>/sbin/init</code> program</li>
-</ul>
-</li>
-<li><strong>Init</strong> (PID=1)<ul>
-<li>Es el primer proceso que se inicia durante el arranque del sistema por parte del kernel.</li>
-<li>Se ejecutará en segundo plano continuamente hasta que el sistema se apague.</li>
-<li>Lee el archivo <code>/etc/inittab</code> para decidir el nivel de ejecución de Linux.</li>
-<li>luego inicia todos los demás procesos.</li>
-<li>Run level 0 –&gt; halt (CAUTION: never set initdefault to this)</li>
-<li>Run level 1 –&gt; Single user mode</li>
-<li>Run level 2 –&gt; Multiuser, without NFS (The same as 3, if you do not have networking)</li>
-<li>Run level 3 –&gt; Full multiuser mode (common initdefault)</li>
-<li>Run level 4 –&gt; unused</li>
-<li>Run level 5 –&gt; X11 (common initdefault)</li>
-<li>Run level 6 –&gt; reboot (CAUTION: never set initdefault to this)</li>
-<li>Ejemplo de inittab: <code>id:3:initdefault:</code></li>
-</ul>
-</li>
-<li><strong>Runlevel programs</strong>
-Depending on your default init level setting, the system will execute the programs from one of the following directories.<ul>
-<li>Run level 0 –&gt; <code>/etc/rc.d/rc0.d/</code></li>
-<li>Run level 1 –&gt; <code>/etc/rc.d/rc1.d/</code></li>
-<li>Run level 2 –&gt; <code>/etc/rc.d/rc2.d/</code></li>
-<li>Run level 3 –&gt; <code>/etc/rc.d/rc3.d/</code></li>
-<li>Run level 4 –&gt; <code>/etc/rc.d/rc4.d/</code></li>
-<li>Run level 5 –&gt; <code>/etc/rc.d/rc5.d/</code></li>
-<li>Run level 6 –&gt; <code>/etc/rc.d/rc6.d/</code></li>
-</ul>
-</li>
-<li>Programs starts with S are used during startup. S for startup.</li>
-<li>Programs starts with K are used during shutdown. K for kill.</li>
-</ol>
-<p>Ejemplo de un script que:</p>
-<pre><code class="language-bash">#      ┌───────────── rc3: Será ejecutado en el Run level 3
-#      │   ┌───────── S:   Será ejecutado al encenderse
-#      │   │ ┌─────── 98:  Momento de ejecución, a menor número, antes se ejecuta
-#      │   │ │  
-/etc/rc3.d/S98miscript
-
-# Puede ser un enlace simbolico a un script que esté en otro sitio
-ln -s  /etc/init.d/mi_script /etc/rc3.d/S98miscript
-</code></pre>
-<p><img alt="" src="../../img/linux-boot-process.png" /></p>
-<p>Reference: https://www.thegeekstuff.com/2011/02/linux-boot-process/</p>
-<h3 id="boot-time-systemd">Boot time (SystemD)</h3>
-<p>SystemD uses "targets" instead of runlevels.</p>
-<p>By default, there are two main targets:
-- multi-user.target: analogous to runlevel 3
-- graphical.target: analogous to runlevel 5</p>
-<pre><code class="language-bash"># To view current default target, run:
-systemctl get-default
-
-# To set a default target, run:
-#systemctl set-default TARGET.target
-
-# Establezca el nivel de ejecución actual en 3 (comenzar en modo de línea de comando)
-systemctl set-default multi-user.target
-
-# Establezca el nivel de ejecución actual en 5 (encendido para la interfaz gráfica)
-systemctl set-default graphical.target
-</code></pre>
 <h2 id="proc-dir">Proc dir</h2>
 <p>It has PID 28, so we check the /proc</p>
 <h2 id="inter-process-comunication-ipc">Inter Process Comunication (IPC)</h2>

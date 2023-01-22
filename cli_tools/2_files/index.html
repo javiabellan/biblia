@@ -58,6 +58,8 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#see-entire-content-of-text-file">See entire content of text file</a>
     </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pager-echo-pager">Pager (echo $PAGER)</a>
+    </li>
     <li class="toctree-l3"><a class="reference internal" href="#see-entire-content-of-binary-files">See entire content of binary files</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#see-info-file-stat">See info file stat</a>
@@ -210,16 +212,16 @@
 <h3 id="see-entire-content-of-text-file">See entire content of text file</h3>
 <ul>
 <li><strong><code>cat</code></strong>: con<strong>cat</strong>enate and print files.</li>
-<li><strong><code>less</code></strong>: Interactive file viwer. Load the file dynamically (faster)</li>
-<li><code>less -N</code> Add line number</li>
-<li><strong><code>more</code></strong>:</li>
-</ul>
-<blockquote>
-<ul>
 <li><code>bat</code>: Better cat</li>
 <li><code>mdcat</code>: cat for markdown</li>
 </ul>
-</blockquote>
+<h3 id="pager-echo-pager">Pager (<code>echo $PAGER</code>)</h3>
+<ol>
+<li><strong><code>more</code></strong>:</li>
+<li><strong><code>less</code></strong>: Beter than more. Interactive file viwer. Load the file dynamically (faster than cat)</li>
+<li><code>less -N</code> Add line number</li>
+<li><strong><code>most</code></strong>: Better than less. Capable of viewing any number of files.</li>
+</ol>
 <h3 id="see-entire-content-of-binary-files">See entire content of binary files</h3>
 <ul>
 <li><code>cat file | od -c | head</code></li>

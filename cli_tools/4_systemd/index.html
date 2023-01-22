@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>SystemD - Documentación de Javi</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "SystemD";
+        var mkdocs_page_input_path = "cli_tools/4_systemd.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Documentación de Javi
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CLI tools</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../1_dirs/">📁 Dirs (cd,ls,find,ranger)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../2_files/">📄 Files (cat,file,stat)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../3_process/">⏳ Process (ps,top)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../compression/">🗜️ Compress (zip,tar,bz)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cryptography/">🔑 Cryptography (base64)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../plotting/">📊 Plotting (gnuplot)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../scripting.md">👨‍💻 Scripting</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../customization/">🎨 Customization (dotfiles)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../git/">GIT</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../editors.md">📝 Editors (nano,vim,jupyter)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../pacman/">📦 Software (pacman,aur,pip)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ssh/">SSH</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tmux/">TMUX</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CLI data tools</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_data/free_text/">⚪️ Free text (regex,grep,tr,sed)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_data/csv/">🟢 Excel,csv,tsv (cut,paste,awk)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_data/html/">🟡 HTML (pup) XML</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_data/json/">🟠 JSON (jq)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_data/pdf/">🔴 PDF (Xpdf,poppler)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_data/image/">🔵 Image (ImageMagick)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_data/sound_video/">🟣 Sound,Video (ffmepg,sox)</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CLI networking tools</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_net/web_scraping/">⬇️ Web Scraping (curl,wget)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_net/pentesting/">🗡️ Pentesting (nmap)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_net/deffensive/">🛡️ Deffensive</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools_net/dns.md">📒 DNS (dig,nslookup,whois)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_net/vpn/">🔒 VPN</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools_net/firewall/">📛 Firewall</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Python</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../python/numpy/">🟦 Numpy</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../python/machine_learning.md">🟫 Sklearn</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../python/pytorch/">🟥 Pytorch</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../python/tensorflow.md">🟧 Tensorflow</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../python/onnx/">⬜️ ONNX</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../python/tensorrt.md">🟩 TensorRT</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../python/numpy/">🟦 Parallel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">C++</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/ruby/">♦️ Ruby</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/monitoring/">Monitoring</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/profiling/">Profiling</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/debugging/">Debugging</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../programming/makefile/">Makefile</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Documentación de Javi</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>SystemD</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="systemd">SystemD</h1>
+<table>
+<thead>
+<tr>
+<th>Unit type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.service</code></td>
+<td>A system service</td>
+</tr>
+<tr>
+<td><code>.socket</code></td>
+<td>An IPC socket</td>
+</tr>
+<tr>
+<td><code>.device</code></td>
+<td>A device file</td>
+</tr>
+<tr>
+<td><code>.mount</code></td>
+<td>A mount point in the filesystem</td>
+</tr>
+<tr>
+<td><code>.automount</code></td>
+<td>An automount point in the filesystem</td>
+</tr>
+<tr>
+<td><code>.swap</code></td>
+<td>A swap device or file</td>
+</tr>
+<tr>
+<td><code>.target</code></td>
+<td>A group of units. Equivalent of trditional init’s run levels</td>
+</tr>
+<tr>
+<td><code>.path</code></td>
+<td>A path (file or directory) monitored by systemd</td>
+</tr>
+<tr>
+<td><code>.timer</code></td>
+<td>A timer controlled by systemd</td>
+</tr>
+<tr>
+<td><code>.snapshot</code></td>
+<td>A saved state of systemd</td>
+</tr>
+<tr>
+<td><code>.slice</code></td>
+<td>A group of units, hierarchically organized in a tree, for managing processes</td>
+</tr>
+<tr>
+<td><code>.scope</code></td>
+<td>A scope unit for managing externally created processes</td>
+</tr>
+</tbody>
+</table>
+<h2 id="where-store-the-units">Where store the units ?</h2>
+<table>
+<thead>
+<tr>
+<th>Directory</th>
+<th>Description</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/etc/systemd/system</code></td>
+<td>Administrator-configured units</td>
+<td>Your local units can go here</td>
+</tr>
+<tr>
+<td><code>/lib/systemd/system</code></td>
+<td>Package-installed units</td>
+<td>you shouldn’t modify them</td>
+</tr>
+<tr>
+<td><code>/run/systemd/system</code></td>
+<td>Non-persistent runtime modifications</td>
+<td>An area for transient units</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>If there’s any conflict, the files in <code>/etc</code> have the highest priority</p>
+</blockquote>
+<h2 id="systemctl-manage-systemd"><code>systemctl</code>: manage systemd</h2>
+<pre><code class="language-bash">systemctl                           # Eqivalent to systemctl list-units
+systemctl list-units                # shows LOADED and ACTIVE services, sockets, targets, mounts, and devices.
+systemctl list-units --type=service # shows LOADED and ACTIVE services.
+systemctl list-unit-files           # See all unit files, regardless of whether or not they’re active
+systemctl list-unit-files --type=service # See all services files, regardless of whether or not they’re active.
+
+
+systemctl status cups.service #  
+systemctl status cups         # The same (systemctl can usually accept a unit name without a unit-type suffix)
+
+</code></pre>
+<table>
+<thead>
+<tr>
+<th><code>systemctl</code> Subcommand</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>list-units</strong></td>
+<td>Shows LOADED services, sockets, targets, mounts, and devices.</td>
+</tr>
+<tr>
+<td><strong>list-units</strong> --type=service</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>list-units</strong> [ <em>pattern</em> ]</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>list-unit-files</strong> --type=service</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>list-unit-files</strong> [ <em>pattern</em> ]</td>
+<td>Shows installed units; optionally matching pattern</td>
+</tr>
+<tr>
+<td><strong>enable</strong> <em>unit</em></td>
+<td>Start unit <strong>at boot</strong></td>
+</tr>
+<tr>
+<td><strong>disable</strong> <em>unit</em></td>
+<td>Not start unit <strong>at boot</strong></td>
+</tr>
+<tr>
+<td><strong>start</strong> <em>unit</em></td>
+<td>Start unit <strong>immediately</strong></td>
+</tr>
+<tr>
+<td><strong>stop</strong> <em>unit</em></td>
+<td>Stop unit <strong>immediately</strong></td>
+</tr>
+<tr>
+<td><strong>restart</strong> <em>unit</em></td>
+<td>Restarts unit <strong>immediately</strong></td>
+</tr>
+<tr>
+<td><strong>status</strong> <em>unit</em></td>
+<td>Shows unit’s status and recent log entries</td>
+</tr>
+<tr>
+<td><strong>kill</strong> pattern</td>
+<td>Sends a signal to units matching pattern</td>
+</tr>
+<tr>
+<td><strong>reboot</strong></td>
+<td>Reboots the computer</td>
+</tr>
+<tr>
+<td><strong>daemon-reload</strong></td>
+<td>Reloads unit files and systemd configuration</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><em>units</em> can be full name (<code>cups.service</code>) or sometimes without a unit-type suffix can be accepted (<code>cups</code>)</p>
+</blockquote>
+<h2 id="unit-statuses-systemctl-list-units">Unit statuses <code>systemctl list-units</code></h2>
+<table>
+<thead>
+<tr>
+<th>LOAD</th>
+<th>ACTIVE</th>
+<th>SUB</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>not-found</code></td>
+<td><code>inactive</code></td>
+<td><code>dead</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>loaded</code></td>
+<td><code>inactive</code></td>
+<td><code>dead</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>loaded</code></td>
+<td><code>active</code></td>
+<td><code>exited</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>loaded</code></td>
+<td><code>active</code></td>
+<td><code>running</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="unit-file-statuses-systemctl-list-unit-files">Unit file statuses <code>systemctl list-unit-files</code></h2>
+<table>
+<thead>
+<tr>
+<th>State</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bad</code></td>
+<td>Some kind of problem within systemd; usually a bad unit file</td>
+</tr>
+<tr>
+<td><code>disabled</code></td>
+<td>Present, but not configured to start autonomously</td>
+</tr>
+<tr>
+<td><code>enabled</code></td>
+<td>Installed and runnable; will start autonomously</td>
+</tr>
+<tr>
+<td><code>indirect</code></td>
+<td>Disabled, but has peers in Also clauses that may be enabled</td>
+</tr>
+<tr>
+<td><code>linked</code></td>
+<td>Unit file available through a symlink</td>
+</tr>
+<tr>
+<td><code>masked</code></td>
+<td>Banished from the systemd world from a logical perspective</td>
+</tr>
+<tr>
+<td>man</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="target-units-dependencies"><code>.target</code> units (dependencies)</h2>
+<p>Manage "units" in a dependency graph</p>
+<ul>
+<li>Se puede definir que un servicio empiece antes que otro</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>SystemV Run level</th>
+<th>SystemD Target</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Run level 0</td>
+<td><code>poweroff.target</code></td>
+<td>System halt</td>
+</tr>
+<tr>
+<td>emergency</td>
+<td><code>emergency.target</code></td>
+<td>Bare-bones shell for system recovery</td>
+</tr>
+<tr>
+<td>Run level 1</td>
+<td><code>rescue.target</code></td>
+<td>Single-user mode</td>
+</tr>
+<tr>
+<td>Run level 2</td>
+<td><code>multi-user.target</code></td>
+<td>Multiuser mode (command line)</td>
+</tr>
+<tr>
+<td>Run level 3</td>
+<td><code>multi-user.target</code></td>
+<td>Multiuser mode with networking</td>
+</tr>
+<tr>
+<td>Run level 4</td>
+<td><code>multi-user.target</code></td>
+<td>Not normally used by init</td>
+</tr>
+<tr>
+<td>Run level 5</td>
+<td><code>graphical.target</code></td>
+<td>Multiuser mode with networking and GUI</td>
+</tr>
+<tr>
+<td>Run level 6</td>
+<td><code>reboot.target</code></td>
+<td>System reboot</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-bash">
+systemctl list-units --type=target            # To see all the system’s available targets
+systemctl list-dependencies graphical.target  # Explore dependency order of some unit
+
+# To change the system’s current operating mode, use the systemctl isolate command:
+sudo systemctl isolate multi-user.target
+
+# To see the target the system boots into by default, run the get-default subcommand:
+systemctl get-default
+
+# Most Linux distributions boot to graphical.target by default,
+# which isn’t appropriate for servers that don’t need a GUI.
+# But that’s easily changed:
+sudo systemctl set-default multi-user.target
+</code></pre>
+<p>Under traditional init, you use the <code>telinit</code> command to change run levels once the system is booted.</p>
+<blockquote>
+<p>More info on <code>man systemd.target</code></p>
+</blockquote>
+<h2 id="service-units"><code>.service</code> units</h2>
+<ol>
+<li>specifies the location of the executable file for the daemon</li>
+<li>tells systemd how to start and stop the service</li>
+<li>
+<p>and identifies any other units that the service depends on</p>
+</li>
+<li>
+<p>Create a service (<code>my_custom.service</code>) an place it in <code>/etc/systemd/system</code></p>
+</li>
+<li>Refresh systemD avaialblae services <code>sudo systemctl daemon-reload</code></li>
+<li>Start the service <code>sudo systemctl start my_custom.service</code></li>
+<li>OPTINAL: Enable on booting <code>sudo systemctl start my_custom.service</code></li>
+<li>See output (logging) of a <strong>u</strong>nit <code>journalctl -u triton.service</code></li>
+<li><code>journalctl -u triton.service -f</code> To <strong>f</strong>ollow the latest changes in real time</li>
+</ol>
+<p>Example of <code>rsync.service</code>:</p>
+<pre><code class="language-bash">[Unit]
+Description=fast remote file copy program daemon
+ConditionPathExists=/etc/rsyncd.conf
+
+[Service]
+ExecStart=/usr/bin/rsync --daemon --no-detach
+
+[Install] WantedBy=multi-user.target
+</code></pre>
+<pre><code class="language-bash">[Unit]
+Description=The SAMPLE server
+After=syslog.target network.target remote-fs.target nss-lookup.target
+
+[Service] # Esta seccion solo esta para units de tipo .service
+Type=forking
+PIDFile=/run/sample.pid
+ExecStartPre=/usr/sbin/sample -t
+ExecStart=/usr/sbin/sample
+ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/bin/kill -s QUIT $MAINPID
+PrivateTmp=true
+
+[Install]   # Esta seccion es la encargada de poner la unit en el dependency tree
+WantedBy=app.service # This unit should start when app.service is starting
+</code></pre>
+<h2 id="servicio-que-se-levanta-solo-si-se-cae">Servicio que se levanta solo, si se cae</h2>
+<p>dentro de <code>[Service]</code> si especificamos <code>Restart=on-failure</code> conseguimos esta funcionalidad. Ademas podemos definir <code>RestartSec=5s</code> para que se levante a los 5 segundos de haberse caido.</p>
+<pre><code class="language-bash">[Unit]
+Description=Triton
+
+[Service]
+ExecStart=/home/javi/wesog/models/5_Triton_server/start.sh
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+<blockquote>
+<p>https://www.redhat.com/sysadmin/systemd-automate-recovery
+More info on <code>man systemd.service</code></p>
+</blockquote>
+<h2 id="service-socket">.service + .socket</h2>
+<p>Cuando el servicio esta inactivo (se esta iniciando, se cae, o se reinicia con una nueva version), las peticiones que recibe durante ese tiempo no se pierden sino que se meantienen en su socket, hasta que el servicio este operativo de nuevo. A esto se le conoce como Socket activation.</p>
+<p>Asi que las servidos no deben crear sus sockets manuelamente, sino usar el socket que le da systemD.</p>
+<p>Un servicio se crea con socket ativation crando <strong>con el mismo nombre</strong> <code>myservwithsocket.service</code> y <code>myservwithsocket.socket</code></p>
+<p><code>myservwithsocket.service</code>:</p>
+<pre><code class="language-bash">[Unit]
+Description=My service with socket activation
+
+[Service]
+ExecStart=/path/to/exec
+</code></pre>
+<p><code>myservwithsocket.socket</code>:</p>
+<pre><code class="language-bash">[Socket]
+ListenStream=8000
+BindIPv6Only=both
+
+[Install]
+WantedBy=sockets.target # After sockets is availabe
+</code></pre>
+<h2 id="service-timer">.service + .timer</h2>
+<p>si quieres que un servicio que termina (script) se ejecute periodicamente (con la sisntaxis de CRON) puedes añadir un .timer unit <strong>con el mismo nombre que el .service</strong></p>
+<p><code>date.timer</code>:</p>
+<pre><code class="language-bash">[Unit]
+Description=Run date.service every 10 minutes
+
+[Timer]
+OnCalendar=*:0/10
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Timer type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OnCalendar</td>
+<td>A specific day and time.</td>
+</tr>
+<tr>
+<td>OnBootSec</td>
+<td>Seconds after system boot time.</td>
+</tr>
+<tr>
+<td>OnStartupSec</td>
+<td>Seconds after systemd was started.</td>
+</tr>
+<tr>
+<td>OnActiveSec</td>
+<td>Seconds after the timer itself was activated.</td>
+</tr>
+<tr>
+<td>OnUnitActiveSec</td>
+<td>Seconds after the specified unit was last active.</td>
+</tr>
+<tr>
+<td>OnUnitInactiveSec</td>
+<td>Seconds after the specified unit was last inactive.</td>
+</tr>
+</tbody>
+</table>
+<p>OnBootSec=2h 1m
+OnStartupSec=1week 2days 3hours
+OnActiveSec=1hr20m30sec10msec</p>
+<pre><code class="language-bash"># Ver los timers actuales
+systemctl list-timers
+
+#  archlinux-keyring-wkd-sync.timer | Refresh existing PGP keys of archlinux-keyring regularly
+#  fstrim.timer                     | Discard unused blocks once a week
+#  shadow.timer                     | Daily verification of password and group files
+#  systemd-tmpfiles-clean.timer     | Daily Cleanup of Temporary Directories
+</code></pre>
+<p>https://wiki.archlinux.org/title/Systemd/Timers</p>
+<h2 id="cron-syntax">CRON Syntax</h2>
+<pre><code>┌───────────── minute (0 - 59)
+│ ┌───────────── hour (0 - 23)
+│ │ ┌───────────── day of the month (1 - 31)
+│ │ │ ┌───────────── month (1 - 12)
+│ │ │ │ ┌───────────── day of the week (0=Sun - 6=Sat)
+│ │ │ │ │                                   
+* * * * *
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>minute</th>
+<th>hour</th>
+<th>day of the month</th>
+<th>month</th>
+<th>day of the week</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0..59</td>
+<td>0..23</td>
+<td>1..31</td>
+<td>1..12</td>
+<td>0..6 (Sun,Mon,..,Sat)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>*</code> means “every” </li>
+<li><code>,</code> value list separator</li>
+<li><code>-</code> Range of values.</li>
+<li><code>/</code> step values. Eg. <code>/5 * * * *</code> means every 5 minutes. </li>
+</ul>
+<h3 id="examples">Examples:</h3>
+<ul>
+<li><code>* * * * *</code>: Every minute</li>
+<li><code>*/5 * * * *</code>: Every 5 minutes</li>
+<li><code>*/5 8-16 * * 1-5</code>: Every 5 minutes from 8:00 to 16:00, from Mon to Fri.</li>
+<li><code>0 * * * *</code>: Every hour (at minute 0)</li>
+<li><code>0 0 * * *</code>: Every day (at 00:00)</li>
+<li><code>0 0 * * 0</code>: Every week (at 00:00 on Sunday)</li>
+<li><code>0 0 1 * *</code>: Mothly (at 00:00 on day 1)</li>
+<li><code>0 0 1 1 *</code>: Yearly (at 00:00 on day 1 of January)</li>
+</ul>
+<p>Check <a href="https://crontab.guru">crontab guru</a> to come up with the cron syntax for your schedule.</p>
+<h2 id="logging">Logging</h2>
+<p>Systemd tiene su propio log (journal)</p>
+<h2 id="permission">Permission</h2>
+<p>No se recomienda que el proprieerio del servicio sea el usurario root, para no tocar cosas que no debe.</p>
+<h2 id="todo-se-ejecuta-con-cgroups">Todo se ejecuta con cgroups</h2>
+<h2 id="reference">Reference</h2>
+<ul>
+<li>https://www.youtube.com/watch?v=r_haLf5mWhE</li>
+<li>https://www.softprayog.in/tutorials/systemd-system-and-service-manager-in-linux</li>
+<li>https://alesnosek.com/blog/2016/12/04/controlling-a-multi-service-application-with-systemd</li>
+</ul>
+<p>====================</p>
+<h1 id="booting">Booting</h1>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th>OLD (GRUB + SystemV)</th>
+<th>NEW (UEFI + SystemD)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>Power On</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td>Load BIOS/UEFI from NVRAM</td>
+<td>Load <strong>BIOS</strong> firmware from ROM</td>
+<td>UEFI</td>
+</tr>
+<tr>
+<td></td>
+<td>Probe for hardware</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Select boot device (disk, net,...)</td>
+<td>MBR (Master Boot Record)</td>
+<td>GPT (GUID Partition Table)</td>
+</tr>
+<tr>
+<td></td>
+<td>Identify EFI system partition</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Load boot loader</td>
+<td>GRUB</td>
+<td>systemd-bootctl</td>
+</tr>
+<tr>
+<td></td>
+<td>Determine which kernel to boot</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Load kernel</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Instantiate kernel data structures</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Start init/systemd as PID 1</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Execute startup scripts</td>
+<td>Runlevel programs <code>/etc/rc.d/</code></td>
+<td>SystemD uses "targets"</td>
+</tr>
+<tr>
+<td></td>
+<td>Running system</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li><strong>BIOS</strong> (Basic Input/Output System)</li>
+<li><strong>MBR</strong> (Master Boot Record)</li>
+<li><strong>GRUB</strong> (Grand Unified Bootloader)</li>
+<li><strong>Kernel</strong></li>
+</ol>
+<h3 id="process-managers">Process managers</h3>
+<ul>
+<li>launchd (OS X)</li>
+<li>Upstart (Ubuntu) (antiguo y tradicional sistema init)</li>
+<li>SystemV (SysV) (antiguo y tradicional sistema init)</li>
+<li>SystemD (el mas usado (y odiado) en la acutailidad</li>
+<li>Systemd-shim (alternativa moderna)</li>
+<li>In BSD, the init binary doesn't do much regarding startup, basically just executes /etc/rc; it's shell scripts all the way afterwards.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>SystemV</th>
+<th>SystemD</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Distros</td>
+<td>Gentoo, Slackware, Linux from Scratch</td>
+<td>ArchLinux, AWS, Red Hat, CentOS, Fedora, Debian, Ubuntu</td>
+</tr>
+<tr>
+<td>Restart</td>
+<td><code>/etc/init.d/sshd start</code></td>
+<td><code>systemctl restart sshd</code></td>
+</tr>
+<tr>
+<td>Enable</td>
+<td></td>
+<td><code>systemctl enable NetworkManager.service</code></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><code>systemctl enable wpa_supplicant</code></td>
+</tr>
+</tbody>
+</table>
+<p>https://papers.freebsd.org/2018/bsdcan/rice-the_tragedy_of_systemd/</p>
+<p>FreeBSD ventajas: init system, LLVM, documentation, ZFS, dtrace</p>
+<h3 id="boot-time-system-v">Boot time (System V)</h3>
+<ol>
+<li><strong>BIOS</strong> (Basic Input/Output System)</li>
+<li><strong>MBR</strong> (Master Boot Record)</li>
+<li><strong>GRUB</strong> (Grand Unified Bootloader)</li>
+<li><strong>Kernel</strong><ul>
+<li>Mounts the root file system as specified in the “root=” in grub.conf</li>
+<li>Kernel executes the <code>/sbin/init</code> program</li>
+</ul>
+</li>
+<li><strong>Init</strong> (PID=1)<ul>
+<li>Es el primer proceso que se inicia durante el arranque del sistema por parte del kernel.</li>
+<li>Se ejecutará en segundo plano continuamente hasta que el sistema se apague.</li>
+<li>Lee el archivo <code>/etc/inittab</code> para decidir el nivel de ejecución de Linux.</li>
+<li>luego inicia todos los demás procesos.</li>
+<li>Run level 0 –&gt; halt (CAUTION: never set initdefault to this)</li>
+<li>Run level 1 –&gt; Single user mode</li>
+<li>Run level 2 –&gt; Multiuser, without NFS (The same as 3, if you do not have networking)</li>
+<li>Run level 3 –&gt; Full multiuser mode (common initdefault)</li>
+<li>Run level 4 –&gt; unused</li>
+<li>Run level 5 –&gt; X11 (common initdefault)</li>
+<li>Run level 6 –&gt; reboot (CAUTION: never set initdefault to this)</li>
+<li>Ejemplo de inittab: <code>id:3:initdefault:</code></li>
+</ul>
+</li>
+<li><strong>Runlevel programs</strong>
+Depending on your default init level setting, the system will execute the programs from one of the following directories.<ul>
+<li>Run level 0 –&gt; <code>/etc/rc.d/rc0.d/</code></li>
+<li>Run level 1 –&gt; <code>/etc/rc.d/rc1.d/</code></li>
+<li>Run level 2 –&gt; <code>/etc/rc.d/rc2.d/</code></li>
+<li>Run level 3 –&gt; <code>/etc/rc.d/rc3.d/</code></li>
+<li>Run level 4 –&gt; <code>/etc/rc.d/rc4.d/</code></li>
+<li>Run level 5 –&gt; <code>/etc/rc.d/rc5.d/</code></li>
+<li>Run level 6 –&gt; <code>/etc/rc.d/rc6.d/</code></li>
+</ul>
+</li>
+<li>Programs starts with S are used during startup. S for startup.</li>
+<li>Programs starts with K are used during shutdown. K for kill.</li>
+</ol>
+<p>Ejemplo de un script que:</p>
+<pre><code class="language-bash">#      ┌───────────── rc3: Será ejecutado en el Run level 3
+#      │   ┌───────── S:   Será ejecutado al encenderse
+#      │   │ ┌─────── 98:  Momento de ejecución, a menor número, antes se ejecuta
+#      │   │ │  
+/etc/rc3.d/S98miscript
+
+# Puede ser un enlace simbolico a un script que esté en otro sitio
+ln -s  /etc/init.d/mi_script /etc/rc3.d/S98miscript
+</code></pre>
+<p><img alt="" src="../../img/linux-boot-process.png" /></p>
+<p>Reference: https://www.thegeekstuff.com/2011/02/linux-boot-process/</p>
+<h3 id="boot-time-systemd">Boot time (SystemD)</h3>
+<p>SystemD uses "targets" instead of runlevels.</p>
+<p>By default, there are two main targets:
+- multi-user.target: analogous to runlevel 3
+- graphical.target: analogous to runlevel 5</p>
+<p>systemd not only manages processes in parallel, but also manages:
+- network connections (networkd)
+- kernel log entries (journald)
+- and logins (logind).</p>
+<pre><code class="language-bash"># To view current default target, run:
+systemctl get-default
+
+# To set a default target, run:
+#systemctl set-default TARGET.target
+
+# Establezca el nivel de ejecución actual en 3 (comenzar en modo de línea de comando)
+systemctl set-default multi-user.target
+
+# Establezca el nivel de ejecución actual en 5 (encendido para la interfaz gráfica)
+systemctl set-default graphical.target
+</code></pre>
+<h2 id="systemd-haters">systemD haters</h2>
+<p>you may find it informative to peruse the Arguments against systemd section at without-systemd.org</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
