@@ -59,10 +59,11 @@ Let's say you have 12 physical disks. You might have a pool consisting of 6 mirr
 >
 > Mediante `noatime` desactivamos esta funcionalidad y ganamos algo de velocidad al leer y escribira archivos.
 
-https://markmcb.com/2020/01/07/five-years-of-btrfs/
-https://carfax.org.uk/btrfs-usage/
-https://www.linuxjournal.com/content/hot-swappable-filesystems-smooth-btrfs
-https://www.salvagedata.com/btrfs-zfs-xfs-ext4-how-are-they-different/
+- https://markmcb.com/2020/01/07/five-years-of-btrfs/
+- https://carfax.org.uk/btrfs-usage/
+- https://www.linuxjournal.com/content/hot-swappable-filesystems-smooth-btrfs
+- https://www.salvagedata.com/btrfs-zfs-xfs-ext4-how-are-they-different
+- [Notes on exFAT and Reliability](https://pawitp.medium.com/notes-on-exfat-and-reliability-d2f194d394c2)
 
 ### I/O schedulers
 > - https://wiki.archlinux.org/title/improving_performance

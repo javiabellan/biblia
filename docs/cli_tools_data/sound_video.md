@@ -5,6 +5,8 @@
 Video and audio
 
 - `ffmpeg -i input.mp4 output.avi` Convert audio format
+- [FFmpeg: The Ultimate Guide](https://img.ly/blog/ultimate-guide-to-ffmpeg
+
 
 
 ## `sox`

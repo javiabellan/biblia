@@ -18,6 +18,12 @@
 - `#!/usr/bin/env bash`: Bash shell script
 - `#!/usr/bin/python`:  Python script `./myScript.py`
 - `#!/usr/bin/env python`:  Python script (more portable because looks for python comand)  `./myScript.py`
+- #!/usr/bin/expect
+
+
+## `expect`
+
+para automatizar scripts que tienen un input manual
 
 
 
@@ -150,7 +156,6 @@ echo hello >> hello.txt # Añade (append) a un fichero la salida del programa an
 - Assign the stdout (FD1) of the first command to the pipe.
 - Assign the stdin (FD0) of the second command to the pipe.
 
-
 ```bash
 ls -l | tail -n2        # Pipe: Imprime solo los ultimos 2 ficheros
 ls -l | tail -n2 >  hello.txt # Pipe and file writting
@@ -159,47 +164,10 @@ rm $(ls)       # same of above
 cmd1 |& cmd1   #  command1's stdout AND stderr is redirected to command2's stdin
 ```
 
+- [Machine Learning with Unix Pipes](https://jott.live/markdown/ml_pipes)
+
 
 ### Named Pipes: `mkfifo`
-
-
-
-
-## CRON
-
-```
-┌───────────── minute (0 - 59)
-│ ┌───────────── hour (0 - 23)
-│ │ ┌───────────── day of the month (1 - 31)
-│ │ │ ┌───────────── month (1 - 12)
-│ │ │ │ ┌───────────── day of the week (0=Sun - 6=Sat)
-│ │ │ │ │                                   
-* * * * *
-```
-
-| minute | hour  | day of the month | month | day of the week       |
-|--------|-------|------------------|-------|-----------------------|
-| 0..59  | 0..23 | 1..31            | 1..12 | 0..6 (Sun,Mon,..,Sat) |
-
-- `*` means “every” 
-- `,` value list separator
-- `-` Range of values.
-- `/` step values. Eg. `/5 * * * *` means every 5 minutes. 
-
-### Examples:
-
-- `* * * * *`: Every minute
-- `*/5 * * * *`: Every 5 minutes
-  - `*/5 8-16 * * 1-5`: Every 5 minutes from 8:00 to 16:00, from Mon to Fri.
-- `0 * * * *`: Every hour (at minute 0)
-- `0 0 * * *`: Every day (at 00:00)
-- `0 0 * * 0`: Every week (at 00:00 on Sunday)
-- `0 0 1 * *`: Mothly (at 00:00 on day 1)
-- `0 0 1 1 *`: Yearly (at 00:00 on day 1 of January)
-
-Check [crontab guru](https://crontab.guru) to come up with the cron syntax for your schedule.
-
-
 
 
 

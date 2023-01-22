@@ -9,6 +9,21 @@ tldr echo   # Muestra el manual de ejemplos de un programa
 lsb_release -a # Ver mi sistema operativo
 ```
 
+```bash
+man title
+
+```
+Man sections
+
+1 User-level **commands** and applications
+2 System calls and kernel error codes
+3 Library calls
+4 Device drivers and network protocols
+5 **configuration file**. Standard file formats
+6 Games and demonstrations
+7 Miscellaneous files and documents
+8 System administration commands
+9 Obscure kernel specs and interfaces
 
 ## 🚶🏻‍♂️ Navigate
 
@@ -69,6 +84,9 @@ lsb_release -a # Ver mi sistema operativo
 
 ## 🔎 indexed search: `updatedb` + `locate`
 
+- locate is FreeBSD includes locate as part of the base system.
+- In Linux, the old implementation of locate is in the mlocate package, the current implemetation is plocate
+
 1. `$ sudo updatedb` compiles some sort of indexed database for quickly searching. Usually updated daily via `cron` or systemD timers.
 2. `$ locate some_file` uses the database for quickly searching. (Actually is `plocate`)
 
@@ -82,6 +100,13 @@ sudo systemctl enable plocate-updatedb.timer
 sudo systemctl start plocate-updatedb.timer
 ```
 
+## Find installed programs
+
+```bash
+which
+whereis
+pacman -Q
+```
 
 ## 💽 Disk usage
 

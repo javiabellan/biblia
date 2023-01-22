@@ -27,7 +27,7 @@ The most popular terminal multiplexer these days is [`tmux`](https://www.man7.or
   - `[Ctrl+b] ,`: Rename the current window
   - `[Ctrl+b] w`: List current windows
   - `[Ctrl+b] d`: Detaches the current session (remains active in background)
-  - `[Ctrl+d]`: Kill the current window (kill the sesion if is it the only window)
+  - `[Ctrl+d] x`: Kill the current pane/window(if1pane)/sesion(if1window)
 - **Panes**: Like vim splits, panes let you have multiple shells in the same visual display.
   - `[Ctrl+b] "` Split the current pane horizontally
   - `[Ctrl+b] %` Split the current pane vertically

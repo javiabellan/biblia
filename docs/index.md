@@ -1,6 +1,7 @@
 # Useful resources
 
 ### Bash
+- https://www.slackbook.org/html/
 - [Advanced Bash-Scripting Guide](https://linux.die.net/abs-guide) by Mendel Cooper
 - [Bash Reference Manual](https://www.gnu.org/software/bash/manual/bash.html) ⭐
 - [The Bash Hackers Wiki](https://wiki.bash-hackers.org) ⭐⭐

@@ -10,3 +10,6 @@
 ## `feedgnuplot`
 - https://github.com/dkogan/feedgnuplot/blob/master/guide/guide.org 
 
+
+## `uplot`
+- https://github.com/red-data-tools/YouPlot

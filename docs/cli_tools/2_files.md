@@ -32,12 +32,17 @@
 ### See entire content of text file
 
 - **`cat`**: con**cat**enate and print files.
-- **`less`**: Interactive file viwer. Load the file dynamically (faster)
-  - `less -N` Add line number
-- **`more`**:
+- `bat`: Better cat
+- `mdcat`: cat for markdown
 
-> - `bat`: Better cat
-> - `mdcat`: cat for markdown
+
+### Pager (`echo $PAGER`) 
+1. **`more`**:
+2. **`less`**: Beter than more. Interactive file viwer. Load the file dynamically (faster than cat)
+  - `less -N` Add line number
+3. **`most`**: Better than less. Capable of viewing any number of files.
+
+
 
 ### See entire content of binary files
 

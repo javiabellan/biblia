@@ -316,5 +316,24 @@ cuda.memcpy_dtoh_async(dest=cpu_mem[name], src=gpu_mem[name], stream=my_stream)
 
 
 
-https://blog.christianperone.com/2018/03/pytorch-internal-architecture-tour/
+
+
+## Reference
+
+- Paul Bridger [Twiter](https://twitter.com/paul_bridger), [Blog](paulbridger.com)
+  - [Solving Machine Learning Performance Anti-Patterns: a Systematic Approach](https://paulbridger.com/posts/nsight-systems-systematic-optimization) Jun, 2021
+  - [Object Detection at 2530 FPS with TensorRT and 8-Bit Quantization](https://paulbridger.com/posts/tensorrt-object-detection-quantized), Dec 2020
+- Horace He [Twiter](https://twitter.com/cHHillee), [Blog](https://horace.io/writing.html)
+  - [Making Deep Learning Go Brrrr From First Principles](https://horace.io/brrr_intro.html) Mar, 2022
+  - [Another thing PyTorch 2.0 helps speed up - overhead](https://twitter.com/cHHillee/status/1616906059368763392) Jan, 2023
+- Jungkyu Park [Twiter](https://twitter.com/jpatrickpark) [Blog](https://www.jpatrickpark.com)
+  - [Visualizing data loaders to diagnose deep learning pipelines](https://www.jpatrickpark.com/post/loader_sim) Apr, 2021
+  - [Data Prefetching on GPU in Deep Learning](https://www.jpatrickpark.com/post/prefetcher) Feb, 2022 
+- Yuxin Wu [Twiter](https://twitter.com/ppwwyyxx), [Blog](https://ppwwyyxx.com)
+  - [Demystify RAM Usage in Multi-Process Data Loaders](https://ppwwyyxx.com/blog/2022/Demystify-RAM-Usage-in-Multiprocess-DataLoader)
+- Christian S. Perone
+  - https://blog.christianperone.com/2018/03/pytorch-internal-architecture-tour
+
+
+
 

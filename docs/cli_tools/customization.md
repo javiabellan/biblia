@@ -132,8 +132,12 @@ set softwrap    # Enable soft line wrapping for easier viewing of very long line
 set nowrap      # Don’t hard-wrap text at all
 # set nohelp    # Don’t display the two help lines at the bottom of the screen.
 set linenumbers # Display of line numbers in front of the text.
+
+include "/usr/share/nano/*.nanorc" # Default Syntax highlighting
+include "/usr/share/nano-syntax-highlighting/*.nanorc" #  syntax highlighting enhancements*
 ```
 
+> sudo pacman -S nano-syntax-highlighting
 
 
 ## TMUX `~/.tmux.conf`
