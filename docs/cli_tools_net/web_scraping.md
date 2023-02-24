@@ -13,6 +13,13 @@
 - `-s, --silent`: Silent or quiet mode. Don't show progress meter or error messages.
 - `-v, --verbose`: Verbose. Show request headers (>) and response headers (<).
 
+| HTTP Content-Type   | Curl client                             | Flask server
+|---------------------|-----------------------------------------|----------------
+| params in URL       | curl https://ip:port/endpoint?name=Javi | flask.request.args.get('name')
+| multipart/form-data | curl -F name=Javi                       | flask.request.form["name"]
+| multipart/form-data | curl -F img=@myimg.jpg                  | flask.request.files['img']
+| application/json    | curl -d "{\"name\": \"Javi\"}"          | json = flask.request.json
+
 ## httpie
 
 ## wget

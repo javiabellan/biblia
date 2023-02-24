@@ -142,9 +142,9 @@ Magic numbers:
 ## Users and Privileges (when `ls -l`)
 
 ```
- ┌───────> Permission of owner
- │  ┌────> Permission of users of same group
- │  │  ┌─> Permission of other users 
+ ┌───────> Permission of user (owner)
+ │  ┌────> Permission of group (of users)
+ │  │  ┌─> Permission of others (users) 
  │  │  │
 / \/ \/ \
 rwxrwxrwx  ownerUser userGroup 13B file
@@ -155,30 +155,17 @@ rwxrwxrwx  ownerUser userGroup 13B file
   - `su otherUser`: Change to other user
   - `exit: Change to prevous user
 - Manage files
-  - `chmod +x file`: Add execution permission to the owner
+  - `chmod` [**u**user|**g**roup|**o**thers][+|-][**r**ead|**w**rite|e**x**ecute] `file`
+  - `chmod +x file`: Add execution permission to everyone
+  - `chmod g+w file`: Add write permission to group users.
   - `chmod o-r file`: Remove read permission to other users.
   - `chmod o+rw file`: Add read and write permission to other users.
-  - `chmod g+w file`: Add write permission to group users.
   - `chmod g+r,o-w file`: Modifiy several users permission at the same time
   - `chmod 640 file`:  Modifiy several users permission at the same time
   - `chgrp userGroup file`: Change the user group
   - `lsattr file` List special atributers of file
   - `chattr +i file` Change special atributes of file (add i atribute)
   - `chattr -i file` Change special atributes of file (remove i atribute)
-
-
-
-
-
-
-
-
-
-
-
-
-
----
 
 
 

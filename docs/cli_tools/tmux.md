@@ -19,15 +19,16 @@ The most popular terminal multiplexer these days is [`tmux`](https://www.man7.or
   - `tmux kill-server`: Removes all sessions and kill tmux server
 - **Inside tmux**:
   - `[Ctrl+b] c`: Creates a new window. To close it you can just terminate the shells doing `<C-d>`
+  - `[Ctrl+b] ,`: Rename the current window
   - `[Ctrl+b] 0`: Go to window 0
   - `[Ctrl+b] 1`: Go to window 1
   - `[Ctrl+b] 2`: Go to window 2
-  - `[Ctrl+b] p`: Go to the previous window
-  - `[Ctrl+b] n`: Go to the next window
-  - `[Ctrl+b] ,`: Rename the current window
-  - `[Ctrl+b] w`: List current windows
-  - `[Ctrl+b] d`: Detaches the current session (remains active in background)
   - `[Ctrl+d] x`: Kill the current pane/window(if1pane)/sesion(if1window)
+  - `[Ctrl+b] d`: Detaches the current session (remains active in background)
+  - Less common
+    - `[Ctrl+b] w`: List current windows
+    - `[Ctrl+b] p`: Go to the previous window
+    - `[Ctrl+b] n`: Go to the next window
 - **Panes**: Like vim splits, panes let you have multiple shells in the same visual display.
   - `[Ctrl+b] "` Split the current pane horizontally
   - `[Ctrl+b] %` Split the current pane vertically

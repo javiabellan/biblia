@@ -204,19 +204,6 @@ It has PID 28, so we check the /proc
 
 
 
-## Inter Process Comunication (IPC)
-
-- Shared files
-- Shared memory (with semaphores)
-- Pipes
-  - unnamed pipes `|`
-  - named pipes `mkfifo my_pipe`
-- Message queues
-- Sockets
-  - Unix domain sockets
-  - TCP/IP sockets
-- Signals
-- semaphores
 
 
 

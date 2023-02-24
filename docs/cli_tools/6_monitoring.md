@@ -2,13 +2,12 @@
 
 ## CPU & RAM
 
-### top
+-`top`
+-`htop`
+  - Pres `F5` to see a **tree view of processes**.
+-`glances`
 
-### htop
-
-
-
-
+https://www.brendangregg.com/linuxperf.html
 
 ## GPU
 

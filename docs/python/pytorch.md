@@ -307,17 +307,6 @@ cuda.memcpy_dtoh_async(dest=cpu_mem[name], src=gpu_mem[name], stream=my_stream)
 
 
 
-|
-|---------------------------------------------------------
-| my_arr.save(my_file_str)                                              | SLOW
-| my_file = open(filepath, mode='wb'); my_arr.tofile(my_file)           | FAST
-| my_file = open(filepath, mode='wb'); my_file.write(my_arr.tobytes())  | VERY FAST | Cuidado pq no escribe en disco hasta quellames a file.clos()
-
-
-
-
-
-
 ## Reference
 
 - Paul Bridger [Twiter](https://twitter.com/paul_bridger), [Blog](paulbridger.com)
@@ -333,7 +322,7 @@ cuda.memcpy_dtoh_async(dest=cpu_mem[name], src=gpu_mem[name], stream=my_stream)
   - [Demystify RAM Usage in Multi-Process Data Loaders](https://ppwwyyxx.com/blog/2022/Demystify-RAM-Usage-in-Multiprocess-DataLoader)
 - Christian S. Perone
   - https://blog.christianperone.com/2018/03/pytorch-internal-architecture-tour
-
+- [Building a Multi-Process Data Loader from Scratch](https://teddykoker.com/2020/12/dataloader/)
 
 
 

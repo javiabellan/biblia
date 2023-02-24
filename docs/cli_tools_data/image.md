@@ -1,6 +1,22 @@
 # Image
 
 
+## Resize options
+
+| Filter           | Downscaling quality | Upscaling quality | Performance |
+|:-----------------|:-------------------:|:-----------------:|:-----------:|
+| Pillow: NEAREST  |                     |                   |  ⭐⭐⭐⭐⭐ |
+| Pillow: BOX      |                  ⭐ |                   |    ⭐⭐⭐⭐ |
+| Pillow: BILINEAR |                  ⭐ |                ⭐ |      ⭐⭐⭐ |
+| Pillow: HAMMING  |                ⭐⭐ |                   |      ⭐⭐⭐ |
+| Pillow: BICUBIC  |              ⭐⭐⭐ |             ⭐⭐⭐ |       ⭐⭐ |
+| Pillow: LANCZOS  |            ⭐⭐⭐⭐ |           ⭐⭐⭐⭐ |         ⭐ |
+
+[Refencece](https://pillow.readthedocs.io/en/stable/handbook/concepts.html#concept-modes)
+
+
+
+
 ## Display images in terminal (iTerm2)
 
 iTerm2 has a protocol to display images:
