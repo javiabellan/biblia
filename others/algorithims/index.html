@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Remote administration - Documentación de Javi</title>
+    <title>Shortest path - Documentación de Javi</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Remote administration";
-        var mkdocs_page_input_path = "others/remote_administration.md";
+        var mkdocs_page_name = "Shortest path";
+        var mkdocs_page_input_path = "others/algorithims.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -149,7 +149,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-      <li>Remote administration</li>
+      <li>Shortest path</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -158,80 +158,18 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="remote-administration">Remote administration</h1>
-<h2 id="in-band-management-os-level-the-usual-network-channel">in-band management (OS level) (the usual network channel)</h2>
+                <h1 id="shortest-path">Shortest path</h1>
 <ul>
-<li>SSH, sftp, scp (port 22)</li>
-<li>Telnet (port 23)</li>
-<li>Remote desktop</li>
-<li>VNC (port 5900)</li>
-<li>RDP (port 3389)</li>
-<li>FreeNX</li>
-<li>TeamViewer</li>
-<li>IPSec</li>
+<li>dijkstra</li>
+<li>A*</li>
+<li>https://www.youtube.com/watch?v=A60q6dcoCjw</li>
 </ul>
-<h2 id="out-of-band-management-bios-level-dedicated-ethernet-port">Out-of-band management (BIOS level) (dedicated Ethernet port)</h2>
-<h3 id="advantages">Advantages</h3>
+<h1 id="sat-solvers">SAT solvers</h1>
+<h2 id="factorizaton-algos">Factorizaton algos</h2>
+<h2 id="books">Books</h2>
 <ul>
-<li>Reboot, Shutdown, Powering on</li>
-<li>Accesing the bios configuration</li>
-<li>broadcasting of video and receiving of input from remote keyboard and mouse (KVM over IP) (HDBaseT)</li>
-<li>Hardware sensor monitoring (fan speed, temeratures, voltages, chassis intrusion, etc.)</li>
-<li>Hardware inventory</li>
-<li>Hardware failure detection</li>
-<li>Reinstall the operating system</li>
-<li>Configure harware RAID</li>
+<li>The Art of Computer Programming</li>
 </ul>
-<h3 id="technologies">Technologies</h3>
-<ul>
-<li>IPMI: standard (a bit old)</li>
-<li>Redfish: standard (new, using HTTPS &amp; JSON)</li>
-<li>DRAC: proprietary from Dell</li>
-<li>ILO:  proprietary from HP</li>
-<li>ILOM: proprietary from Sun/Oracle</li>
-<li>IMM:  proprietary from IBM</li>
-</ul>
-<blockquote>
-<h3 id="security">Security</h3>
-<p>Bear in mind that many of these built-in systems have been found to suffer from traditional security holes, such as buffer overruns. It is not wise to assume that setting a password on the OOB interface and using SSL is sufficient protection for such access to your servers. Assume that access to the OOB interface is equivalent to physical access to the machine, and establish additional security measures accordingly. For example, put OOB interfaces on a dedicated protected network. Allow access to this network only via a web proxy with certificate-based authentication, and appropriate authorization.</p>
-</blockquote>
-<h2 id="redfish">Redfish</h2>
-<pre><code class="language-bash">curl https://&lt;OOB&gt;/redfish/v1/Systems/System.Embedded.1 --user root:password | jq .Status
-
-# {
-#   &quot;Health&quot;: &quot;Ok&quot;,
-#   &quot;HealthRollUp&quot;: &quot;Ok&quot;,
-# }
-
-curl https://&lt;OOB&gt;/redfish/v1/Systems/System.Embedded.1/Thermal --user root:password
-
-
-curl https://&lt;OOB&gt;/redfish/v1/Systems/System.Embedded.1/Thermal --user root:password
-
-</code></pre>
-<p>https://www.youtube.com/watch?v=9tAXBvuyXJU</p>
-<h2 id="wake-on-lan">Wake on LAN</h2>
-<ul>
-<li>On the server</li>
-<li><code>ip link</code> to find informatio about available network cards<ul>
-<li>find the name og the ethernet enterface (eg. <code>enp0s31f6</code>)</li>
-<li>find the mac address (eg. e0:............)</li>
-</ul>
-</li>
-<li><code>sudo ethtool enp0s31f6 | grep Wake-on</code><ul>
-<li>Check that is on </li>
-</ul>
-</li>
-<li>On the client</li>
-<li>Find the server mac address: <code>arp -a</code></li>
-<li>Wake the server <code>wakeonlan *mac address*</code></li>
-</ul>
-<h2 id="shutdown">shutdown</h2>
-<pre><code class="language-bash">shutdown now
-</code></pre>
-<h2 id="reboot">Reboot</h2>
-<pre><code class="language-bash">reboot now
-</code></pre>
               
             </div>
           </div><footer>

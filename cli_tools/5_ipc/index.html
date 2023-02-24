@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Remote administration - Documentación de Javi</title>
+    <title>5 ipc - Documentación de Javi</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Remote administration";
-        var mkdocs_page_input_path = "others/remote_administration.md";
+        var mkdocs_page_name = "5 ipc";
+        var mkdocs_page_input_path = "cli_tools/5_ipc.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -46,31 +46,31 @@
               </ul>
               <p class="caption"><span class="caption-text">CLI tools</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools/1_dirs/">📁 Dirs (cd,ls,find,ranger)</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../1_dirs/">📁 Dirs (cd,ls,find,ranger)</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools/2_files/">📄 Files (cat,file,stat)</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../2_files/">📄 Files (cat,file,stat)</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools/3_process/">⏳ Process (ps,top)</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../3_process/">⏳ Process (ps,top)</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools/compression/">🗜️ Compress (zip,tar,bz)</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../compression/">🗜️ Compress (zip,tar,bz)</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools/cryptography/">🔑 Cryptography (base64)</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../cryptography/">🔑 Cryptography (base64)</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools/plotting/">📊 Plotting (gnuplot)</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../plotting/">📊 Plotting (gnuplot)</a>
                   </li>
-                  <li class="toctree-l1"><a class="" href="../../cli_tools/scripting.md">👨‍💻 Scripting</a>
+                  <li class="toctree-l1"><a class="" href="../scripting.md">👨‍💻 Scripting</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools/customization/">🎨 Customization (dotfiles)</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../customization/">🎨 Customization (dotfiles)</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools/git/">GIT</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../git/">GIT</a>
                   </li>
-                  <li class="toctree-l1"><a class="" href="../../cli_tools/editors.md">📝 Editors (nano,vim,jupyter)</a>
+                  <li class="toctree-l1"><a class="" href="../editors.md">📝 Editors (nano,vim,jupyter)</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools/pacman/">📦 Software (pacman,aur,pip)</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../pacman/">📦 Software (pacman,aur,pip)</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools/ssh/">SSH</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../ssh/">SSH</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../cli_tools/tmux/">TMUX</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../tmux/">TMUX</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">CLI data tools</span></p>
@@ -149,7 +149,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-      <li>Remote administration</li>
+      <li>5 ipc</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -158,80 +158,26 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="remote-administration">Remote administration</h1>
-<h2 id="in-band-management-os-level-the-usual-network-channel">in-band management (OS level) (the usual network channel)</h2>
+                <h2 id="inter-process-comunication-ipc">Inter Process Comunication (IPC)</h2>
 <ul>
-<li>SSH, sftp, scp (port 22)</li>
-<li>Telnet (port 23)</li>
-<li>Remote desktop</li>
-<li>VNC (port 5900)</li>
-<li>RDP (port 3389)</li>
-<li>FreeNX</li>
-<li>TeamViewer</li>
-<li>IPSec</li>
+<li>Shared files</li>
+<li>Shared memory (with semaphores)</li>
+<li>Pipes</li>
+<li>unnamed pipes <code>|</code></li>
+<li>named pipes <code>mkfifo my_pipe</code></li>
+<li>Message queues</li>
+<li>Sockets</li>
+<li>Unix domain sockets</li>
+<li>TCP/IP sockets</li>
+<li>Signals</li>
+<li>semaphores</li>
 </ul>
-<h2 id="out-of-band-management-bios-level-dedicated-ethernet-port">Out-of-band management (BIOS level) (dedicated Ethernet port)</h2>
-<h3 id="advantages">Advantages</h3>
-<ul>
-<li>Reboot, Shutdown, Powering on</li>
-<li>Accesing the bios configuration</li>
-<li>broadcasting of video and receiving of input from remote keyboard and mouse (KVM over IP) (HDBaseT)</li>
-<li>Hardware sensor monitoring (fan speed, temeratures, voltages, chassis intrusion, etc.)</li>
-<li>Hardware inventory</li>
-<li>Hardware failure detection</li>
-<li>Reinstall the operating system</li>
-<li>Configure harware RAID</li>
-</ul>
-<h3 id="technologies">Technologies</h3>
-<ul>
-<li>IPMI: standard (a bit old)</li>
-<li>Redfish: standard (new, using HTTPS &amp; JSON)</li>
-<li>DRAC: proprietary from Dell</li>
-<li>ILO:  proprietary from HP</li>
-<li>ILOM: proprietary from Sun/Oracle</li>
-<li>IMM:  proprietary from IBM</li>
-</ul>
-<blockquote>
-<h3 id="security">Security</h3>
-<p>Bear in mind that many of these built-in systems have been found to suffer from traditional security holes, such as buffer overruns. It is not wise to assume that setting a password on the OOB interface and using SSL is sufficient protection for such access to your servers. Assume that access to the OOB interface is equivalent to physical access to the machine, and establish additional security measures accordingly. For example, put OOB interfaces on a dedicated protected network. Allow access to this network only via a web proxy with certificate-based authentication, and appropriate authorization.</p>
-</blockquote>
-<h2 id="redfish">Redfish</h2>
-<pre><code class="language-bash">curl https://&lt;OOB&gt;/redfish/v1/Systems/System.Embedded.1 --user root:password | jq .Status
-
-# {
-#   &quot;Health&quot;: &quot;Ok&quot;,
-#   &quot;HealthRollUp&quot;: &quot;Ok&quot;,
-# }
-
-curl https://&lt;OOB&gt;/redfish/v1/Systems/System.Embedded.1/Thermal --user root:password
-
-
-curl https://&lt;OOB&gt;/redfish/v1/Systems/System.Embedded.1/Thermal --user root:password
-
-</code></pre>
-<p>https://www.youtube.com/watch?v=9tAXBvuyXJU</p>
-<h2 id="wake-on-lan">Wake on LAN</h2>
-<ul>
-<li>On the server</li>
-<li><code>ip link</code> to find informatio about available network cards<ul>
-<li>find the name og the ethernet enterface (eg. <code>enp0s31f6</code>)</li>
-<li>find the mac address (eg. e0:............)</li>
-</ul>
-</li>
-<li><code>sudo ethtool enp0s31f6 | grep Wake-on</code><ul>
-<li>Check that is on </li>
-</ul>
-</li>
-<li>On the client</li>
-<li>Find the server mac address: <code>arp -a</code></li>
-<li>Wake the server <code>wakeonlan *mac address*</code></li>
-</ul>
-<h2 id="shutdown">shutdown</h2>
-<pre><code class="language-bash">shutdown now
-</code></pre>
-<h2 id="reboot">Reboot</h2>
-<pre><code class="language-bash">reboot now
-</code></pre>
+<h2 id="practical-ipc-with-python">Practical IPC with python</h2>
+<p>Unix domain socket &lt; gRPC &lt; HTTP</p>
+<p>|            | Unix domain socket | gRPC | HTTP |</p>
+<p>address        <code>unix://</code>         </p>
+<p>data is exchanged via a Unix domain socket (unix:// address) instead of a TCP socket</p>
+<p>https://www.mpi-hd.mpg.de/personalhomes/fwerner/research/2021/09/grpc-for-ipc/</p>
               
             </div>
           </div><footer>

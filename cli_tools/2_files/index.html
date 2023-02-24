@@ -154,7 +154,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../../programming/ruby/">♦️ Ruby</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../programming/monitoring/">Monitoring</a>
+                  <li class="toctree-l1"><a class="" href="../../programming/monitoring.md">Monitoring</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../programming/profiling/">Profiling</a>
                   </li>
@@ -303,9 +303,9 @@ comm -23 &lt;(ls march) &lt;(ls april)</p>
 <li><code>89 50 4e 47 0d 0a 1a 0a</code> magic number of PNG file</li>
 </ul>
 <h2 id="users-and-privileges-when-ls-l">Users and Privileges (when <code>ls -l</code>)</h2>
-<pre><code> ┌───────&gt; Permission of owner
- │  ┌────&gt; Permission of users of same group
- │  │  ┌─&gt; Permission of other users 
+<pre><code> ┌───────&gt; Permission of user (owner)
+ │  ┌────&gt; Permission of group (of users)
+ │  │  ┌─&gt; Permission of others (users) 
  │  │  │
 / \/ \/ \
 rwxrwxrwx  ownerUser userGroup 13B file
@@ -316,10 +316,11 @@ rwxrwxrwx  ownerUser userGroup 13B file
 <li><code>su otherUser</code>: Change to other user</li>
 <li>`exit: Change to prevous user</li>
 <li>Manage files</li>
-<li><code>chmod +x file</code>: Add execution permission to the owner</li>
+<li><code>chmod</code> [<strong>u</strong>user|<strong>g</strong>roup|<strong>o</strong>thers][+|-][<strong>r</strong>ead|<strong>w</strong>rite|e<strong>x</strong>ecute] <code>file</code></li>
+<li><code>chmod +x file</code>: Add execution permission to everyone</li>
+<li><code>chmod g+w file</code>: Add write permission to group users.</li>
 <li><code>chmod o-r file</code>: Remove read permission to other users.</li>
 <li><code>chmod o+rw file</code>: Add read and write permission to other users.</li>
-<li><code>chmod g+w file</code>: Add write permission to group users.</li>
 <li><code>chmod g+r,o-w file</code>: Modifiy several users permission at the same time</li>
 <li><code>chmod 640 file</code>:  Modifiy several users permission at the same time</li>
 <li><code>chgrp userGroup file</code>: Change the user group</li>
@@ -327,7 +328,6 @@ rwxrwxrwx  ownerUser userGroup 13B file
 <li><code>chattr +i file</code> Change special atributes of file (add i atribute)</li>
 <li><code>chattr -i file</code> Change special atributes of file (remove i atribute)</li>
 </ul>
-<hr />
               
             </div>
           </div><footer>

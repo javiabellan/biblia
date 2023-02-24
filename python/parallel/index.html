@@ -126,7 +126,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../../programming/ruby/">♦️ Ruby</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../programming/monitoring/">Monitoring</a>
+                  <li class="toctree-l1"><a class="" href="../../programming/monitoring.md">Monitoring</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../programming/profiling/">Profiling</a>
                   </li>
@@ -158,40 +158,129 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <p>Mul</p>
-<p>HOW TO DISTRUBUTE</p>
+                <h2 id="io-intensive-concurrent-use-threads">IO intensive --&gt; Concurrent --&gt; Use Threads</h2>
+<p>Python threads are only useful when functions take a long time because of IO (releases the GIL)
+Python threads are real system threads but parallel execution is forbidden because of GIL.</p>
+<p><img alt="" src="../img/GIL.png" /></p>
+<p>Example of functions that releases the GIL:
+- Downloading
+- requesting an URL
+- opening a file...</p>
+<p>Python libraries that releases the GIL:
+- <code>requsets</code>
+- <code>numpy</code>
+- <a href="https://github.com/facebookresearch/faiss/issues/924#issuecomment-524756847"><code>faiss</code></a>
+- <code>time.sleep(3)</code> is not equivalent to a loop running for 3 seconds, burning CPU cycles while holding the GIL lock. The thread is switched away from for 3 seconds, allowing other threads to run. https://stackoverflow.com/a/61809931</p>
+<blockquote>
+<p>http://www.dabeaz.com/python/UnderstandingGIL.pdf</p>
+</blockquote>
+<h2 id="cpu-instensive-parallel-use-multiprocessing">CPU instensive --&gt; Parallel --&gt; use Multiprocessing</h2>
+<h2 id="conclusion">Conclusion</h2>
 <table>
 <thead>
 <tr>
 <th></th>
-<th>Sequential execution</th>
-<th>Concurrency</th>
-<th>Parallel</th>
+<th><code>asyncio</code></th>
+<th><code>threading</code></th>
+<th><code>multiprocessing</code></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>1 Core</td>
-<td><code>____----</code></td>
-<td><code>_-_-_-_-</code></td>
-<td>Not possible</td>
+<td>Great for</td>
+<td>Concurrency</td>
+<td>Concurrency</td>
+<td>Parallelism</td>
 </tr>
 <tr>
-<td>2 Cores</td>
-<td>Same, but 2nd core unused</td>
+<td></td>
+<td><code>_-_-_-_-</code></td>
+<td><code>_-_-_-_-</code></td>
 <td><code>====</code></td>
-<td><code>====</code></td>
+</tr>
+<tr>
+<td>Great for</td>
+<td>IO intensive</td>
+<td>IO intensive</td>
+<td>CPU instensive</td>
+</tr>
+<tr>
+<td>swithing is controled by</td>
+<td>Program</td>
+<td>OS</td>
+<td>OS</td>
+</tr>
+<tr>
+<td>Access to same objects</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No, IPC is needed</td>
 </tr>
 </tbody>
 </table>
-<p>WHO CONTROL IT</p>
-<ul>
-<li>Coroutines</li>
-<li><code>asyncio</code>: Great for IO intensive aplications</li>
-<li>Threading: (<code>threading</code>) Inside the same process, but swithing is controled by OS</li>
-<li>Multiprocess (<code>multiprocessing</code>):</li>
-</ul>
 <p>https://superfastpython.com/learning-paths/</p>
+<pre><code class="language-python">from threading import Thread
+
+
+def worker():
+    &quot;&quot;&quot;thread worker function&quot;&quot;&quot;
+    print('Worker')
+
+
+t = Thread(target=worker)
+t.start()
+</code></pre>
+<h2 id="producer-consumer-in-parallel-queue">Producer &amp; consumer in parallel -&gt; queue</h2>
+<pre><code class="language-python"># SuperFastPython.com
+# example of using the queue with processes
+from time import sleep
+from random import random
+from multiprocessing import Process, Queue
+
+# generate work
+def producer(queue):
+    print('Producer: Running', flush=True)
+    # generate work
+    for i in range(10):
+        # generate a value
+        value = random()
+        # block
+        sleep(value)
+        # add to the queue
+        queue.put(value)
+    # all done
+    queue.put(None)
+    print('Producer: Done', flush=True)
+
+# consume work
+def consumer(queue):
+    print('Consumer: Running', flush=True)
+    # consume work
+    while True:
+        # get a unit of work
+        item = queue.get()
+        # check for stop
+        if item is None:
+            break
+        # report
+        print(f'&gt;got {item}', flush=True)
+    # all done
+    print('Consumer: Done', flush=True)
+
+# entry point
+if __name__ == '__main__':
+    # create the shared queue
+    queue = Queue(maxsize=50)
+    # start the consumer
+    consumer_process = Process(target=consumer, args=(queue,))
+    consumer_process.start()
+    # start the producer
+    producer_process = Process(target=producer, args=(queue,))
+    producer_process.start()
+    # wait for all processes to finish
+    producer_process.join()
+    consumer_process.join()
+</code></pre>
               
             </div>
           </div><footer>

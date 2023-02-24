@@ -164,7 +164,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../../programming/ruby/">♦️ Ruby</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../programming/monitoring/">Monitoring</a>
+                  <li class="toctree-l1"><a class="" href="../../programming/monitoring.md">Monitoring</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../programming/profiling/">Profiling</a>
                   </li>
@@ -211,6 +211,37 @@
 <li><code>-s, --silent</code>: Silent or quiet mode. Don't show progress meter or error messages.</li>
 <li><code>-v, --verbose</code>: Verbose. Show request headers (&gt;) and response headers (&lt;).</li>
 </ul>
+<table>
+<thead>
+<tr>
+<th>HTTP Content-Type</th>
+<th>Curl client</th>
+<th>Flask server</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>params in URL</td>
+<td>curl https://ip:port/endpoint?name=Javi</td>
+<td>flask.request.args.get('name')</td>
+</tr>
+<tr>
+<td>multipart/form-data</td>
+<td>curl -F name=Javi</td>
+<td>flask.request.form["name"]</td>
+</tr>
+<tr>
+<td>multipart/form-data</td>
+<td>curl -F img=@myimg.jpg</td>
+<td>flask.request.files['img']</td>
+</tr>
+<tr>
+<td>application/json</td>
+<td>curl -d "{\"name\": \"Javi\"}"</td>
+<td>json = flask.request.json</td>
+</tr>
+</tbody>
+</table>
 <h2 id="httpie">httpie</h2>
 <h2 id="wget">wget</h2>
 <pre><code class="language-bash">wget URL                    # Download and store in the current directory.

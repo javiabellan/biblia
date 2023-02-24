@@ -158,7 +158,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../../programming/ruby/">♦️ Ruby</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../programming/monitoring/">Monitoring</a>
+                  <li class="toctree-l1"><a class="" href="../../programming/monitoring.md">Monitoring</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../programming/profiling/">Profiling</a>
                   </li>
@@ -444,24 +444,6 @@ cuda.memcpy_dtoh_async(dest=cpu_mem[name], src=gpu_mem[name], stream=my_stream)
 </tr>
 </tbody>
 </table>
-<table>
-<thead>
-<tr>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>my_arr.save(my_file_str)</td>
-</tr>
-<tr>
-<td>my_file = open(filepath, mode='wb'); my_arr.tofile(my_file)</td>
-</tr>
-<tr>
-<td>my_file = open(filepath, mode='wb'); my_file.write(my_arr.tobytes())</td>
-</tr>
-</tbody>
-</table>
 <h2 id="reference">Reference</h2>
 <ul>
 <li>Paul Bridger <a href="https://twitter.com/paul_bridger">Twiter</a>, <a href="paulbridger.com">Blog</a></li>
@@ -477,6 +459,7 @@ cuda.memcpy_dtoh_async(dest=cpu_mem[name], src=gpu_mem[name], stream=my_stream)
 <li><a href="https://ppwwyyxx.com/blog/2022/Demystify-RAM-Usage-in-Multiprocess-DataLoader">Demystify RAM Usage in Multi-Process Data Loaders</a></li>
 <li>Christian S. Perone</li>
 <li>https://blog.christianperone.com/2018/03/pytorch-internal-architecture-tour</li>
+<li><a href="https://teddykoker.com/2020/12/dataloader/">Building a Multi-Process Data Loader from Scratch</a></li>
 </ul>
               
             </div>

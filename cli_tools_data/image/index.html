@@ -87,6 +87,8 @@
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">🔵 Image (ImageMagick)</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#resize-options">Resize options</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#display-images-in-terminal-iterm2">Display images in terminal (iTerm2)</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#libjpeg-turbo">LibJPEG-Turbo</a>
@@ -144,7 +146,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../../programming/ruby/">♦️ Ruby</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../programming/monitoring/">Monitoring</a>
+                  <li class="toctree-l1"><a class="" href="../../programming/monitoring.md">Monitoring</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../programming/profiling/">Profiling</a>
                   </li>
@@ -178,6 +180,56 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="image">Image</h1>
+<h2 id="resize-options">Resize options</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Filter</th>
+<th align="center">Downscaling quality</th>
+<th align="center">Upscaling quality</th>
+<th align="center">Performance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Pillow: NEAREST</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">⭐⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td align="left">Pillow: BOX</td>
+<td align="center">⭐</td>
+<td align="center"></td>
+<td align="center">⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td align="left">Pillow: BILINEAR</td>
+<td align="center">⭐</td>
+<td align="center">⭐</td>
+<td align="center">⭐⭐⭐</td>
+</tr>
+<tr>
+<td align="left">Pillow: HAMMING</td>
+<td align="center">⭐⭐</td>
+<td align="center"></td>
+<td align="center">⭐⭐⭐</td>
+</tr>
+<tr>
+<td align="left">Pillow: BICUBIC</td>
+<td align="center">⭐⭐⭐</td>
+<td align="center">⭐⭐⭐</td>
+<td align="center">⭐⭐</td>
+</tr>
+<tr>
+<td align="left">Pillow: LANCZOS</td>
+<td align="center">⭐⭐⭐⭐</td>
+<td align="center">⭐⭐⭐⭐</td>
+<td align="center">⭐</td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://pillow.readthedocs.io/en/stable/handbook/concepts.html#concept-modes">Refencece</a></p>
 <h2 id="display-images-in-terminal-iterm2">Display images in terminal (iTerm2)</h2>
 <p>iTerm2 has a protocol to display images:</p>
 <ul>

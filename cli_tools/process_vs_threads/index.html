@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Vim - Documentación de Javi</title>
+    <title>Process vs threads - Documentación de Javi</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Vim";
-        var mkdocs_page_input_path = "cli_tools/vim.md";
+        var mkdocs_page_name = "Process vs threads";
+        var mkdocs_page_input_path = "cli_tools/process_vs_threads.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -149,7 +149,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-      <li>Vim</li>
+      <li>Process vs threads</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -158,39 +158,116 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="vim">Vim</h1>
-<h2 id="modes">Modes</h2>
+                <p>Process virtual memory</p>
+<pre><code>                     VIRTUAL MEMORY OF A PROCESS
+ 0x00000000  ╔══════════════════════════════════════════╗
+             ║                                          ║
+             ║                                          ║
+ 0x08048000  ╟──────────────────────────────────────────╢
+             ║                 TEXT                     ║\
+             ║             (Binary code)                ║ | 
+             ╟──────────────────────────────────────────╢ | Initiali filled 
+             ║                 DATA                     ║ | with content of
+             ║            Initialized data              ║ | my_program.out
+             ║      (global and static variables)       ║/
+             ╟──────────────────────────────────────────╢
+             ║                  BSS                     ║\
+             ║           Uninitialized data             ║ |
+             ║     (global and static variables)        ║ | Initiali filled
+             ╟──────────────────────────────────────────╢ | with zeros
+             ║                 HEAP                     ║ |
+             ║             Dynamic memory               ║ |
+             ║            malloc/free in C              ║ |
+             ║            new/delete in C++             ║/
+             ╟────────────────────┬─────────────────────╢-&gt; brk (program break)
+             ║                    ▼                     ║
+             ║                                          ║
+             ║                   ...                    ║
+             ║                                          ║
+             ║                    ▲                     ║
+             ╟────────────────────┴─────────────────────╢
+             ║             MEMORY MAPPING               ║\
+             ║ - Included shared libraries (printf...)  ║ | For #include libraries 
+             ║ - Shared file for IPC mmap(SHARED, FILE) ║ | Initiali filled
+             ║ - Shared mem. for IPC mmap(SHARED, ANON) ║ | Initiali filled
+             ║ - Read file fast     mmap(PRIVATE, FILE) ║ | with content of
+             ║ - Subthreads stack                       ║ | libc.so, ...
+             ╟────────────────────┬─────────────────────╢/
+             ║                    ▼                     ║
+             ║                                          ║
+             ║                   ...                    ║
+             ║                                          ║
+             ║                    ▲                     ║
+             ╟────────────────────┴─────────────────────╢\
+             ║           Main thread STACK              ║ | Initiali filled
+             ║                                          ║ | with zeros
+        3GB  ╠══════════════════════════════════════════╣/
+             ║               KERNEL SPACE               ║
+             ║      User can not read/write here        ║
+        4GB  ╚══════════════════════════════════════════╝
+</code></pre>
+<h3 id="a-process-owns">A Process owns:</h3>
 <ul>
-<li><strong><code>ESC</code></strong>: Normal mode. For moving around a file; reading; going to file to file</li>
-<li><strong><code>i</code></strong>: Insert mode. For inserting text</li>
-<li><strong><code>:</code></strong>: Command-line mode. For running a command</li>
-<li><strong><code>r</code></strong>: Replace mode. For replacing text</li>
-<li><strong><code>v</code></strong>: Visual mode. For selecting blocks of text</li>
-<li><strong><code>SHIFT</code> + <code>v</code></strong>: Visual line mode</li>
-<li><strong><code>Ctrl</code> + <code>v</code></strong>: Visual block mode</li>
-</ul>
-<h2 id="command-line">Command-line</h2>
-<p>Command mode can be entered by typing <code>:</code> in Normal mode. Your cursor will jump
-to the command line at the bottom of the screen upon pressing <code>:</code>. This mode
-has many functionalities, including opening, saving, and closing files, and
-<a href="https://twitter.com/iamdevloper/status/435555976687923200">quitting Vim</a>.</p>
-<ul>
-<li><code>:q</code> quit (close window)</li>
-<li><code>:w</code> save ("write")</li>
-<li><code>:wq</code> save and quit</li>
-<li><code>:e {name of file}</code> open file for editing</li>
-<li><code>:ls</code> show open buffers</li>
-<li><code>:help {topic}</code> open help<ul>
-<li><code>:help :w</code> opens help for the <code>:w</code> command</li>
-<li><code>:help w</code> opens help for the <code>w</code> movement</li>
+<li>PID: Process Identifier</li>
+<li>PPID: Parent PID</li>
+<li>UID: User Identifier (the person who initiated)</li>
+<li>GID: Group identifier (the person who initiated)</li>
+<li>TEXT segment (binary code instructions)</li>
+<li>DATA segment (static and global data)</li>
+<li>Global variables: <code>int myglobalint = 5;</code></li>
+<li>Static variables: <code>static char* mystaticstr = "hello";</code></li>
+<li>BSS segment (uninitialized data)</li>
+<li><code>static char* my_uninitialized_str</code></li>
+<li>HEAP segment (Dynamically-allocated memory)</li>
+<li><code>malloc</code>/<code>free</code> in C</li>
+<li><code>new</code>/<code>delete</code> in C++</li>
+<li>MEMORY MAPPING segment</li>
+<li>FILE OR ANONYMOUS<ul>
+<li>FILE mappings (code of included libraries, eg <code>printf</code>)</li>
+<li>ANONYMOUS mappping</li>
 </ul>
 </li>
+<li>SHARED vs PRIVATE</li>
+<li>MAIN STACK segment</li>
+<li>Space for the stack <strong>of the main thread</strong></li>
+<li>Page table (maps virtual adresses into physical addrs)</li>
+<li>Open files descriptors (every open file has an offset)</li>
+<li>Signal handlers</li>
+<li>Current working directory</li>
+<li>Enviroment variables (<code>$ env A=val ./program</code>)</li>
+<li>Command line arguments (see them in <code>/proc/PID/cmdline</code>)</li>
+<li>Main Thread --&gt; ALWAYS</li>
+<li>Sub Threads --&gt; OPTIONAL</li>
 </ul>
-<h2 id="neovim">NeoVIM</h2>
+<h3 id="a-thread-owns">A Thread owns:</h3>
 <ul>
-<li>NvimTreeToogle: left tree panel</li>
-<li>nvchad</li>
+<li>Thread ID</li>
+<li>Stack (called functions, local variables, return addresses)</li>
+<li><strong>Stack space for a new thread is created by the parent thread with mmap(). So they're in the "memory map segment"</strong></li>
+<li>Saved Registers</li>
+<li>General purpose registers</li>
+<li>PC (program counter)</li>
+<li>SP (stack pointer)</li>
+<li>Priority (scheduling information)</li>
 </ul>
+<h3 id="thread-thread-switching">thread-thread switching</h3>
+<p>Thread take less time to create</p>
+<h3 id="process-process-switching">process-process switching</h3>
+<p>Much slower than thread-thread switching</p>
+<h3 id="refenrences">Refenrences</h3>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=XV5sRaSVtXQ">Jacob Sorber: How processes get more memory. (mmap, brk)</a></li>
+<li><a href="https://www.youtube.com/watch?v=m7E9piHcfr4">Jacob Sorber: How to Map Files into Memory in C</a></li>
+<li><a href="https://www.youtube.com/watch?v=Aw0YAUdQp1c">Jacob Sorber: Virtual Memory</a></li>
+<li><a href="https://www.youtube.com/watch?v=GIWeQ2I67rk">Jacob Sorber: The Heap</a></li>
+<li><a href="https://www.youtube.com/watch?v=4rLW7zg21gI">ByteByteGo: Process vs Thread </a></li>
+<li><a href="https://www.youtube.com/watch?v=85T_ZaT8EUI">Chris Kanich: Process vs Thread</a></li>
+<li><a href="https://www.youtube.com/watch?v=syecJXuC80I">Chris Kanich: when to use processes, when to use threads</a></li>
+<li><a href="https://www.youtube.com/watch?v=8hVLcyBkSXY">Chris Kanich: understanding mmap</a></li>
+<li><a href="">Julia Evans: Bit size Linux</a>
+https://stackoverflow.com/questions/44858528/where-are-the-stacks-for-the-other-threads-located-in-a-process-virtual-address</li>
+</ul>
+<p>https://people.cs.rutgers.edu/~pxk/416/notes/05-threads.html</p>
               
             </div>
           </div><footer>

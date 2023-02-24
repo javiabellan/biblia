@@ -136,7 +136,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../../programming/ruby/">♦️ Ruby</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../programming/monitoring/">Monitoring</a>
+                  <li class="toctree-l1"><a class="" href="../../programming/monitoring.md">Monitoring</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../programming/profiling/">Profiling</a>
                   </li>
@@ -186,15 +186,18 @@
 <li><code>tmux kill-server</code>: Removes all sessions and kill tmux server</li>
 <li><strong>Inside tmux</strong>:</li>
 <li><code>[Ctrl+b] c</code>: Creates a new window. To close it you can just terminate the shells doing <code>&lt;C-d&gt;</code></li>
+<li><code>[Ctrl+b] ,</code>: Rename the current window</li>
 <li><code>[Ctrl+b] 0</code>: Go to window 0</li>
 <li><code>[Ctrl+b] 1</code>: Go to window 1</li>
 <li><code>[Ctrl+b] 2</code>: Go to window 2</li>
+<li><code>[Ctrl+d] x</code>: Kill the current pane/window(if1pane)/sesion(if1window)</li>
+<li><code>[Ctrl+b] d</code>: Detaches the current session (remains active in background)</li>
+<li>Less common<ul>
+<li><code>[Ctrl+b] w</code>: List current windows</li>
 <li><code>[Ctrl+b] p</code>: Go to the previous window</li>
 <li><code>[Ctrl+b] n</code>: Go to the next window</li>
-<li><code>[Ctrl+b] ,</code>: Rename the current window</li>
-<li><code>[Ctrl+b] w</code>: List current windows</li>
-<li><code>[Ctrl+b] d</code>: Detaches the current session (remains active in background)</li>
-<li><code>[Ctrl+d] x</code>: Kill the current pane/window(if1pane)/sesion(if1window)</li>
+</ul>
+</li>
 <li><strong>Panes</strong>: Like vim splits, panes let you have multiple shells in the same visual display.</li>
 <li><code>[Ctrl+b] "</code> Split the current pane horizontally</li>
 <li><code>[Ctrl+b] %</code> Split the current pane vertically</li>
