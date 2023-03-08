@@ -1,8 +1,5 @@
 # Debugging
 
-
-## Debugging in Python:
-
 - `print()`: too simple
 - `import pdb; pdb.set_trace()`: too complex
 - `import code; code.interact(local=locals())`: just right
@@ -26,8 +23,3 @@ Debugger commands:
 - `l`: list code and see lines
 - `b 6`: create a break point at line 6
 - `q`: Quit the debugger
-
-## C/C++ debugging
-- [gdb](https://www.gnu.org/software/gdb/)
-
-

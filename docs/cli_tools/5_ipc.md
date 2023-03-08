@@ -4,13 +4,13 @@
 - Shared memory (with semaphores)
 - Pipes
   - unnamed pipes `|`
-  - named pipes `mkfifo my_pipe`
+  - named pipes `mkfifo my_pipe` (aka FIFO)
 - Message queues
 - Sockets
   - Unix domain sockets
   - TCP/IP sockets
+  - https://www.youtube.com/watch?v=8TGV4zcd9k4
 - Signals
-- semaphores
 
 
 
