@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Pytorch dataloader - Documentación de Javi</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Pytorch dataloader";
+        var mkdocs_page_input_path = "2_python/ai/pytorch.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Documentación de Javi
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CLI tools</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools/1_dirs.md">📁 Dirs (cd,ls,find,ranger)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools/2_files.md">📄 Files (cat,file,stat)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools/3_process.md">⏳ Process (ps,top)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools/compression.md">🗜️ Compress (zip,tar,bz)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools/cryptography.md">🔑 Cryptography (base64)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools/plotting.md">📊 Plotting (gnuplot)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools/scripting.md">👨‍💻 Scripting</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools/customization.md">🎨 Customization (dotfiles)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools/git.md">GIT</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools/editors.md">📝 Editors (nano,vim,jupyter)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools/pacman.md">📦 Software (pacman,aur,pip)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools/ssh.md">SSH</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools/tmux.md">TMUX</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CLI data tools</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools_data/free_text.md">⚪️ Free text (regex,grep,tr,sed)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools_data/csv.md">🟢 Excel,csv,tsv (cut,paste,awk)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools_data/html.md">🟡 HTML (pup) XML</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools_data/json.md">🟠 JSON (jq)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools_data/pdf.md">🔴 PDF (Xpdf,poppler)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools_data/image.md">🔵 Image (ImageMagick)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools_data/sound_video.md">🟣 Sound,Video (ffmepg,sox)</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CLI networking tools</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools_net/web_scraping.md">⬇️ Web Scraping (curl,wget)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools_net/pentesting.md">🗡️ Pentesting (nmap)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools_net/deffensive.md">🛡️ Deffensive</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools_net/dns.md">📒 DNS (dig,nslookup,whois)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools_net/vpn.md">🔒 VPN</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools_net/firewall.md">📛 Firewall</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Python</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../../../python/numpy.md">🟦 Numpy</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../python/machine_learning.md">🟫 Sklearn</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../python/pytorch.md">🟥 Pytorch</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../python/tensorflow.md">🟧 Tensorflow</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../python/onnx.md">⬜️ ONNX</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../python/tensorrt.md">🟩 TensorRT</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../python/numpy.md">🟦 Parallel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">C++</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../../../programming/ruby.md">♦️ Ruby</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../programming/monitoring.md">Monitoring</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../programming/profiling.md">Profiling</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../programming/debugging.md">Debugging</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../programming/makefile.md">Makefile</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Documentación de Javi</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>Pytorch dataloader</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="pytorch-dataloader">Pytorch dataloader</h1>
+<h2 id="naive-implementatation">Naive implementatation</h2>
+<pre><code>           Read batch 1 (B1)
+          ┌────────────────────────────────────┐                               ┌─────────────────
+          │slow|slow|   |slow| slow  |unecesary│  &lt;-- No reads in parallel     │
+CPU CORE1 │read|read|...|read|Collate|copy from│  &lt;-- No queue/prefetching     │ Read batch 2 ...
+          │img1|img2|   |imgN|       |pag 2 pin│                               │
+          └────────────────────────────────────┘                               └─────────────────
+                                               ┌─────────┐
+CPU 2 GPU                                      │B1 to GPU│ &lt;-- No queue/prefetching on GPU 
+                                               └─────────┘
+                                                         ┌─────────────────────┐
+ GPU                                                     │ INFER B1 into MODEL │ &lt;-- Slow model
+                                                         └─────────────────────┘
+</code></pre>
+<h2 id="read-faster">Read faster</h2>
+<h3 id="fast-hardaware">Fast hardaware</h3>
+<p>Try to store your dataset in a fast storage</p>
+<ol>
+<li>RAM</li>
+<li>SSDs NVMe RAID</li>
+<li>SSD NVMe</li>
+<li>SSDs SATA RAID</li>
+<li>SSD SATA</li>
+<li>HDD RAID</li>
+<li>HDD SATA</li>
+<li>Other machine in local network (/mnt/media mounting point)</li>
+<li>Internet</li>
+</ol>
+<h3 id="fast-decoding-libjpg-turbo">Fast decoding <code>libjpg-turbo</code></h3>
+<ul>
+<li>Using <a href="https://github.com/ajkxyz/jpeg4py">jpeg4py</a>: <code>jpeg.JPEG(img).decode()</code> instead of <code>np.array(Image.open(img))</code></li>
+<li><a href="https://www.pankesh.com/posts/2019-05-02-pytorch-augmentation-with-libjpeg-turbo">example of usage</a></li>
+<li>Using <code>Pillow&gt;=9.0.0</code> <a href="https://pillow.readthedocs.io/en/stable/releasenotes/9.0.0.html#switched-to-libjpeg-turbo-in-macos-and-linux-wheels">source</a></li>
+</ul>
+<p>Notese que a partir de la la verion 9 de PIL, viene por defecto </p>
+<blockquote>
+<p>Comprobar que PIL usa libjpg-turbo
+<code>python
+import PIL.features
+print(PIL.features.check_feature("libjpeg_turbo"))</code></p>
+</blockquote>
+<h3 id="even-faster">Even faster:</h3>
+<p><strong>Precompute tensors and save the on disk</strong></p>
+<p><strong>For reading just memap, No need to decoding</strong></p>
+<ul>
+<li>Numpy Memmap</li>
+<li>Torch storage</li>
+<li><a href="https://ffcv.io">FFCV</a></li>
+</ul>
+<pre><code>           Read batch 1 (B1)
+          ┌────────────────────────────────────┐                               ┌─────────────────
+          │fast|fast|   |fast| slow  |unecesary│                               │
+CPU CORE1 │read|read|...|read|Collate|copy from│                               │ Read batch 2 ...
+          │img1|img2|   |imgN|       |pag 2 pin│                               │
+          └────────────────────────────────────┘                               └─────────────────
+                                               ┌─────────┐
+CPU 2 GPU                                      │B1 to GPU│
+                                               └─────────┘
+                                                         ┌─────────────────────┐
+ GPU                                                     │ INFER B1 into MODEL │
+                                                         └─────────────────────┘
+</code></pre>
+<h2 id="fast-collate-concat-imags-into-batch">Fast collate (= concat imags into batch)</h2>
+<p>https://www.pankesh.com/posts/2019-05-02-pytorch-augmentation-with-libjpeg-turbo/</p>
+<pre><code>           Read batch 1 (B1)
+          ┌─────────────────────────────────┐                                ┌─────────────────
+          │fast|fast|   |fast|fast|unecesary│                                │
+CPU CORE1 │read|read|...|read|Coll|copy from│                                │ Read batch 2 ...
+          │img1|img2|   |imgN|ate |pag 2 pin│                                │
+          └─────────────────────────────────┘                                └─────────────────
+                                            ┌─────────┐
+CPU 2 GPU                                   │B1 to GPU│
+                                            └─────────┘
+                                                       ┌─────────────────────┐
+ GPU                                                   │ INFER B1 into MODEL │
+                                                       └─────────────────────┘
+</code></pre>
+<p>The <code>collate_fn</code> is also useful to discard broken images</p>
+<pre><code class="language-python"># a collate function that filters the None records.
+def collate_fn(batch):
+    # batch looks like [(x0,y0), (x4,y4), (x2,y2)... ]
+    batch = [(Id, Date, Img) for (Id, Date, Img) in batch if Img is not None]
+    #batch = list(filter(lambda x: x is not None, batch)) # Other way to do the same
+
+    if len(batch) == 0: # If all images are broken, retrun None and discard in dl for loop
+        return None, None, None
+    else:
+        return torch.utils.data.dataloader.default_collate(batch)
+</code></pre>
+<h2 id="optimization-avoid-unnecessary-host-copies-pin_memorytrue">Optimization: Avoid unnecessary host copies <code>pin_memory=True</code></h2>
+<p>Host (CPU) data allocations are pageable by default. The GPU cannot access data directly from pageable host memory, so when a data transfer from pageable host memory to device memory is invoked, the CUDA driver must first allocate a temporary page-locked, or “pinned”, host array, copy the host data to the pinned array, and then transfer the data from the pinned array to device memory, as illustrated below.</p>
+<ul>
+<li>https://developer.nvidia.com/blog/how-optimize-data-transfers-cuda-cc/</li>
+</ul>
+<p>if <code>pin_memory=True</code> is set on the Pytorch's dataloader, it will copy Tensors into device/CUDA pinned memory before returning them.</p>
+<p>Also, once you pin a tensor or storage, you can use asynchronous GPU copies. Just pass an additional <code>non_blocking=True</code> argument to a <code>to()</code> or a <code>cuda()</code> call. This can be used to overlap data transfers with computation. (Prefetching on GPU Optimization).</p>
+<pre><code>           Read batch 1 (B1)
+          ┌───────────────────────┐                               ┌─────────────────
+          │fast|fast|   |fast|fast│                               │
+CPU CORE1 │read|read|...|read|Coll│                               │ Read batch 2 ...
+          │img1|img2|   |imgN|ate │                               │
+          └───────────────────────┘                               └─────────────────
+                                  ┌─────────┐
+CPU 2 GPU                         │B1 to GPU│
+                                  └─────────┘
+                                            ┌─────────────────────┐
+ GPU                                        │ INFER B1 into MODEL │
+                                            └─────────────────────┘
+</code></pre>
+<h2 id="optimization-read-images-in-parallel-num_workers">Optimization: Read images in parallel <code>num_workers</code></h2>
+<pre><code>          ┌──────────────┐         ┌──────────────┐
+CPU CORE1 │ Read batch 1 │         │ Read batch 4 │
+(worker1) └──────────────┘         └──────────────┘
+          ┌──────────────┐         ·                       ┌──────────────┐
+CPU CORE2 │ Read batch 2 │         ·                       │ Read batch 5 │
+(worker2) └──────────────┘         ·                       └──────────────┘
+          ┌──────────────┐         ·                       ·                       ┌──────────────┐
+CPU CORE3 │ Read batch 3 │         ·                       ·                       │ Read batch 6 │
+(worker3) └──────────────┘         ·                       ·                       └──────────────┘
+                         ┌─────────┐             ┌─────────┐             ┌─────────┐
+CPU 2 GPU                │B1 to GPU│             │B2 to GPU│             │B3 to GPU│
+                         └─────────┘             └─────────┘             └─────────┘
+                                   ┌─────────────┐         ┌─────────────┐         ┌─────────────┐
+GPU                                │ INFER MODEL │         │ INFER MODEL │         │ INFER MODEL │
+                                   └─────────────┘         └─────────────┘         └─────────────┘
+</code></pre>
+<blockquote>
+<h2 id="memory-optimization">Memory optimization</h2>
+<p><strong>Avoid to each worker make a copy of the dataset!!!</strong>
+https://ppwwyyxx.com/blog/2022/Demystify-RAM-Usage-in-Multiprocess-DataLoader/</p>
+</blockquote>
+<h2 id="optimization-prefetching-on-cpu-queue-prefetch_factor">Optimization: Prefetching on CPU (Queue) <code>prefetch_factor</code></h2>
+<p><strong>This is the defual behavior of Pytroch's dataloader</strong>. It does prefetching on the CPU RAM.</p>
+<p>the prefetch_factor parameter of PyTorch DataLoader class. The prefetch_factor parameter only controls CPU-side loading of the parallel data loader processes</p>
+<pre><code>          ┌────────────┬────────────┬────────────┐
+CPU CORE1 │Read batch 1│Read batch 4│Read batch 7│
+          └────────────┴────────────┴────────────┘
+          ┌────────────┬────────────┐                          ┌────────────┐
+CPU CORE2 │Read batch 2│Read batch 5│                          │Read batch 8│
+          └────────────┴────────────┘                          └────────────┘
+          ┌────────────┬────────────┐                          ·                             ┌────────
+CPU CORE3 │Read batch 3│Read batch 6│                          ·                             │ Read B9
+          └────────────┴────────────┘                          ·                             └────────
+                       ┌─────────┐                   ┌─────────┐                   ┌─────────┐
+CPU 2 GPU              │B1 to GPU│                   │B2 to GPU│                   │B3 to GPU│
+                       └─────────┘                   └─────────┘                   └─────────┘
+                                 ┌───────────────────┐         ┌───────────────────┐         ┌────────
+GPU                              │INFER B1 into MODEL│         │INFER B2 into MODEL│         │INFER B3 
+                                 └───────────────────┘         └───────────────────┘         └────────
+</code></pre>
+<ul>
+<li><a href="https://www.scottcondron.com/jupyter/visualisation/audio/2020/12/02/dataloaders-samplers-collate.html">But what are PyTorch DataLoaders really?</a></li>
+<li><a href="https://teddykoker.com/2020/12/dataloader">Building a Multi-Process Data Loader from Scratch</a></li>
+<li>The full code for this project is available at github.com/teddykoker/tinyloader</li>
+<li>https://www.jpatrickpark.com/post/loader_sim/</li>
+</ul>
+<h2 id="optimization-prefetching-on-gpu">Optimization: Prefetching on GPU</h2>
+<pre><code>          ┌────────────┬────────────┐
+CPU CORE1 │Read batch 1│Read batch 4│
+          └────────────┴────────────┘
+          ┌────────────┬────────────┐
+CPU CORE2 │Read batch 2│Read batch 5│
+          └────────────┴────────────┘
+          ┌────────────┬────────────┐
+CPU CORE3 │Read batch 3│Read batch 6│
+          └────────────┴────────────┘
+                       ┌─────────┬─────────┐         ┌─────────┐         ┌─────────┐
+CPU 2 GPU              │B1 to GPU│B2 to GPU│         │B3 to GPU│         │B4 to GPU│
+                       └─────────┴─────────┘         └─────────┘         └─────────┘
+                                 ┌───────────────────┬───────────────────┬───────────────────┐
+GPU                              │INFER B1 into MODEL│INFER B2 into MODEL│INFER B3 into MODEL│
+                                 └───────────────────┴───────────────────┴───────────────────┘
+</code></pre>
+<ul>
+<li>Prefetching Implementation #1: <code>class data_prefetcher()</code> in https://github.com/NVIDIA/apex/blob/master/examples/imagenet/main_amp.py#L265</li>
+<li>
+<p>Prefetching Implementation #2: Sacrife 1 data loader process into a prefetcher process</p>
+</li>
+<li>
+<p>https://www.jpatrickpark.com/post/prefetcher/</p>
+</li>
+<li>https://developer.nvidia.com/blog/how-overlap-data-transfers-cuda-cc/</li>
+</ul>
+<p>Achieving overlap between data transfers and other operations requires the use of CUDA streams, so first let’s learn about streams.</p>
+<h2 id="faster-model-tensorrt-engine-into-torchscript-module">Faster Model: TensorRT engine --into--&gt; TorchScript module</h2>
+<ul>
+<li>https://pytorch.org/TensorRT/</li>
+<li>https://pytorch.org/TensorRT/_notebooks/lenet-getting-started.html</li>
+<li>https://pytorch.org/TensorRT/py_api/ts.html?highlight=embed#torch_tensorrt.ts.embed_engine_in_new_module</li>
+</ul>
+<h2 id="summary">Summary</h2>
+<p>For getting fast training/inference </p>
+<ul>
+<li>Data reading:</li>
+<li>Use fast data staorage hardware (RAM, NVMe, RAID,...)</li>
+<li>Use fast data decoding (libjpeg-turbo for images)</li>
+<li>Even faster is you store precomted tensors and load them with either<ul>
+<li>Numpy.memmap</li>
+<li>torch.Storage</li>
+<li>FFIO</li>
+</ul>
+</li>
+<li>Dataloader</li>
+<li>Read images in parallel <code>num_workers</code></li>
+<li>Avoid unnecessary host copies <code>pin_memory=True</code></li>
+<li>Prefetching on CPU (CPU Queue) <code>prefetch_factor</code></li>
+<li>Prefetching on GPU (GPU Queue)</li>
+<li>Model</li>
+<li>TensorRT</li>
+</ul>
+<h2 id="cuda-programming">CUDA Programming</h2>
+<p>Pytorch</p>
+<pre><code class="language-python">
+my_stream = torch.cuda.Stream()
+
+with torch.cuda.stream(my_stream):
+
+    # Send data to GPU (NO BLOCKING)
+    data = data.cuda(non_blocking=True) # or data.to(&quot;cuda&quot;, non_blocking=True)
+</code></pre>
+<p>PyCUDA</p>
+<pre><code class="language-python">
+my_stream = cuda.Stream()
+
+# Send data to GPU (NO BLOCKING)
+cuda.memcpy_htod_async(dest=gpu_mem[name], src=cpu_mem[name], stream=my_stream)
+
+
+cuda.memcpy_dtoh_async(dest=cpu_mem[name], src=gpu_mem[name], stream=my_stream)
+</code></pre>
+<h1 id="copy-betwwnn-numpy-and-pytorch">Copy betwwnn numpy and pytorch</h1>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Copy by value, Deep copy</th>
+<th>Copy by reference, Shallow copy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Numpy to Pytorch</td>
+<td><code>torch.tensor(my_npArr)</code></td>
+<td><code>torch.from_numpy(my_npArr)</code></td>
+</tr>
+<tr>
+<td>Pytorch to Numpy</td>
+<td><code>np.array(my_tensor)</code></td>
+<td><code>my_tensor.numpy()</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="reference">Reference</h2>
+<ul>
+<li>Paul Bridger <a href="https://twitter.com/paul_bridger">Twiter</a>, <a href="paulbridger.com">Blog</a></li>
+<li><a href="https://paulbridger.com/posts/nsight-systems-systematic-optimization">Solving Machine Learning Performance Anti-Patterns: a Systematic Approach</a> Jun, 2021</li>
+<li><a href="https://paulbridger.com/posts/tensorrt-object-detection-quantized">Object Detection at 2530 FPS with TensorRT and 8-Bit Quantization</a>, Dec 2020</li>
+<li>Horace He <a href="https://twitter.com/cHHillee">Twiter</a>, <a href="https://horace.io/writing.html">Blog</a></li>
+<li><a href="https://horace.io/brrr_intro.html">Making Deep Learning Go Brrrr From First Principles</a> Mar, 2022</li>
+<li><a href="https://twitter.com/cHHillee/status/1616906059368763392">Another thing PyTorch 2.0 helps speed up - overhead</a> Jan, 2023</li>
+<li>Jungkyu Park <a href="https://twitter.com/jpatrickpark">Twiter</a> <a href="https://www.jpatrickpark.com">Blog</a></li>
+<li><a href="https://www.jpatrickpark.com/post/loader_sim">Visualizing data loaders to diagnose deep learning pipelines</a> Apr, 2021</li>
+<li><a href="https://www.jpatrickpark.com/post/prefetcher">Data Prefetching on GPU in Deep Learning</a> Feb, 2022 </li>
+<li>Yuxin Wu <a href="https://twitter.com/ppwwyyxx">Twiter</a>, <a href="https://ppwwyyxx.com">Blog</a></li>
+<li><a href="https://ppwwyyxx.com/blog/2022/Demystify-RAM-Usage-in-Multiprocess-DataLoader">Demystify RAM Usage in Multi-Process Data Loaders</a></li>
+<li>Christian S. Perone</li>
+<li>https://blog.christianperone.com/2018/03/pytorch-internal-architecture-tour</li>
+<li><a href="https://teddykoker.com/2020/12/dataloader/">Building a Multi-Process Data Loader from Scratch</a></li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme_extra.js" defer></script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

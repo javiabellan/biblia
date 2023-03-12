@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Ipc - Documentación de Javi</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Ipc";
+        var mkdocs_page_input_path = "2_python/ipc.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Documentación de Javi
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CLI tools</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools/1_dirs.md">📁 Dirs (cd,ls,find,ranger)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools/2_files.md">📄 Files (cat,file,stat)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools/3_process.md">⏳ Process (ps,top)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools/compression.md">🗜️ Compress (zip,tar,bz)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools/cryptography.md">🔑 Cryptography (base64)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools/plotting.md">📊 Plotting (gnuplot)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools/scripting.md">👨‍💻 Scripting</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools/customization.md">🎨 Customization (dotfiles)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools/git.md">GIT</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools/editors.md">📝 Editors (nano,vim,jupyter)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools/pacman.md">📦 Software (pacman,aur,pip)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools/ssh.md">SSH</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools/tmux.md">TMUX</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CLI data tools</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools_data/free_text.md">⚪️ Free text (regex,grep,tr,sed)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools_data/csv.md">🟢 Excel,csv,tsv (cut,paste,awk)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools_data/html.md">🟡 HTML (pup) XML</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools_data/json.md">🟠 JSON (jq)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools_data/pdf.md">🔴 PDF (Xpdf,poppler)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools_data/image.md">🔵 Image (ImageMagick)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools_data/sound_video.md">🟣 Sound,Video (ffmepg,sox)</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CLI networking tools</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools_net/web_scraping.md">⬇️ Web Scraping (curl,wget)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools_net/pentesting.md">🗡️ Pentesting (nmap)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools_net/deffensive.md">🛡️ Deffensive</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools_net/dns.md">📒 DNS (dig,nslookup,whois)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools_net/vpn.md">🔒 VPN</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools_net/firewall.md">📛 Firewall</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Python</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../../python/numpy.md">🟦 Numpy</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../python/machine_learning.md">🟫 Sklearn</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../python/pytorch.md">🟥 Pytorch</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../python/tensorflow.md">🟧 Tensorflow</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../python/onnx.md">⬜️ ONNX</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../python/tensorrt.md">🟩 TensorRT</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../python/numpy.md">🟦 Parallel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">C++</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../../programming/ruby.md">♦️ Ruby</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../programming/monitoring.md">Monitoring</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../programming/profiling.md">Profiling</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../programming/debugging.md">Debugging</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../programming/makefile.md">Makefile</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Documentación de Javi</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>Ipc</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>https://cloudcity.io/blog/2019/02/27/things-i-wish-they-told-me-about-multiprocessing-in-python/
+https://cloudcity.io/blog/2019/05/14/five-python-multiprocessing-tips-pycon-2019-video/</p>
+<h1 id="ipc-in-python">IPC in Python</h1>
+<p><strong>I</strong>nter <strong>P</strong>rocess <strong>C</strong>ommunication (IPC) is very improtant because process are independent (do not share memory and run in parallel).</p>
+<h2 id="index">Index</h2>
+<h4 id="shared-memory-the-bad-approach">Shared memory -&gt; the BAD approach</h4>
+<ul>
+<li>Shared memory:</li>
+<li><code>multiprocessing.Value</code></li>
+<li><code>multiprocessing.Array</code></li>
+<li><code>multiprocessing.shared_memory</code>: <a href="https://stackoverflow.com/questions/14124588/shared-memory-in-multiprocessing">Stackoverflow answer</a></li>
+</ul>
+<h4 id="message-passing-the-good-approach">Message passing -&gt; the GOOD approach</h4>
+<ul>
+<li>Socket:</li>
+<li>Unix domain socket:<ul>
+<li><code>socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)</code>: connection based. Send consecutive bytes.</li>
+<li><code>socket.socket(socket.AF_UNIX, socket.SOCK_DGRAM)</code>: connection-less. Send independented datagrams.</li>
+<li><code>multiprocessing.connection.Listener('AF_UNIX')</code></li>
+</ul>
+</li>
+<li>Internet socket:<ul>
+<li><code>socket.socket(socket.AF_INET, socket.SOCK_STREAM)</code>: Realiable (Uses TCP).</li>
+<li><code>socket.socket(socket.AF_INET, socket.SOCK_DGRAM)</code>: Not realiable (Uses UDP).</li>
+<li><code>multiprocessing.connection.Listener('AF_INET')</code></li>
+</ul>
+</li>
+<li>Pipe:</li>
+<li><code>multiprocessing.Pipe</code></li>
+<li><code>multiprocessing.connection.Listener('AF_PIPE')</code></li>
+<li>Queue:</li>
+<li><code>multiprocessing.Queue</code></li>
+</ul>
+<blockquote>
+<p>External libraries
+- <code>Flask</code>: Tradition web server with
+- <code>zeromq</code>: https://zeromq.org/</p>
+</blockquote>
+<h4 id="remote-procedure-call-rpc">Remote Procedure call (RPC)</h4>
+<p>Call fuctions/methods from outside.
+- <code>RPyC</code>
+- <code>XML-RPC</code>: https://docs.python.org/3/library/xmlrpc.client.html
+- <code>gRPC</code>: HTTP2 + Google protobuffers</p>
+<hr />
+<h2 id="sockets">Sockets</h2>
+<p>needs pickle to stringfy obj and send it</p>
+<pre><code>  - Client: `socket.send( pickle.dumps(variable) )`
+  - Server: `data = pickle.loads( conn.recv(4096) )`
+</code></pre>
+<h3 id="server-multiple-connections">Server (multiple connections)</h3>
+<pre><code class="language-python">import socket
+import threading
+
+
+# Threaded function
+def handle_connection(conn):
+   while True:
+       data = conn.recv(1001) # Data is received from the conn
+       if not data:
+           print('No connection, Bye')
+
+           # Releasing lock on exit
+           break
+
+       # DO SOMETHING WITH data
+
+       # conn.send(data) # Send data back
+
+   conn.close()
+</code></pre>
+<pre><code class="language-python">def main():
+
+    # Create socket and listen to it. 
+    sock = socket.socket(...) # (socket.AF_INET, socket.SOCK_STREAM)
+    sock.bind((HOST, PORT))
+    sock.listen(5)
+
+    # Wait for connections (BLOCKING)
+    while True:
+        conn, addr = sock.accept() # &lt;-- blocks here.
+        print('Connected to :', addr[0], ':', addr[1])
+        client_process = Process(target=handle_connection, args=(conn))
+        client_process.start()
+    sock.close()
+</code></pre>
+<pre><code class="language-python">def main():
+
+    # Create socket and listen to it. 
+    sock = socket.socket(...) # (socket.AF_INET, socket.SOCK_STREAM)
+    sock.bind((HOST, PORT))
+    socket.settimeout(0.1)
+    socket.listen(1)
+
+    # Wait for connections (NON BLOCKING)
+    while True:
+        try:
+            conn, addr = socket.accept()
+            print('Connected to :', addr[0], ':', addr[1])
+            client_process = Process(target=handle_connection, args=(conn))
+            client_process.start()
+        except socket.timeout:
+            continue
+    sock.close()
+</code></pre>
+<h2 id="better-sockets-with-listener-and-client">Better Sockets with <code>Listener</code> and <code>Client</code></h2>
+<h3 id="server-max-1-connection">Server (max 1 connection)</h3>
+<pre><code class="language-python">from multiprocessing.connection import Listener
+
+address = ('localhost', 6000) # family is deduced to be 'AF_INET'
+listener = Listener(address, authkey=b'secret password')
+conn = listener.accept()  # &lt;---  This blocks!
+print 'connection accepted from', listener.last_accepted
+while True:
+    msg = conn.recv()  # &lt;---  This blocks!
+    # do something with msg
+    if msg == 'close':
+        conn.close()
+        break
+listener.close()
+</code></pre>
+<h3 id="server-multiple-connections_1">Server (multiple connections)</h3>
+<pre><code class="language-python">from multiprocessing.connection import Listener
+
+listener = Listener(('localhost', 6000), authkey=b'secret password')
+running = True
+while running:
+    conn = listener.accept()  # &lt;---  This blocks!
+    print('connection accepted from', listener.last_accepted)
+    while True:
+        msg = conn.recv()  # &lt;---  This blocks!
+        print(msg)
+        if msg == 'close connection':
+            conn.close()
+            break
+        if msg == 'close server':
+            conn.close()
+            running = False
+            break
+listener.close()
+</code></pre>
+<h3 id="client">Client</h3>
+<pre><code class="language-python">from multiprocessing.connection import Client
+
+address = ('localhost', 6000)
+conn = Client(address, authkey=b'secret password')
+conn.send('close')
+# can also send arbitrary objects:
+# conn.send(['a', 2.5, None, int, sum])
+conn.close()
+</code></pre>
+<h2 id="queues-multiprocessingqueue">Queues: <code>multiprocessing.Queue</code></h2>
+<blockquote>
+<p>Don’t Share Resources, Pass Messages</p>
+</blockquote>
+<p>At first thought, it might seem like a good idea to have some sort of shared data structures that would be protected by locks. When there is only <em>one</em> shared structure, you can easily run into issues with blocking and contention. As such structures proliferate, however, the complexity and unexpected interactions multiply, potentially leading to deadlocks, and very likely leading to code that is difficult to maintain and test. The better option is to pass <strong>messages</strong> using <code>multiprocessing.Queue</code> objects. Queues should be used to pass all data between subprocesses. This leads to designs that “chunkify” the data into messages to be passed and handled, so that subprocesses can be more isolated and functional/task oriented. The Python <code>Queue</code> class is implemented on unix-like systems as a PIPE - where data that gets sent to the queue is serialized using the Python standard library <code>pickle</code> module. Queues are usually initialized by the main process and passed to the subprocess as part of their initialization.</p>
+<p>Source: https://cloudcity.io/blog/2019/02/27/things-i-wish-they-told-me-about-multiprocessing-in-python/</p>
+<pre><code class="language-python">from multiprocessing import Process, Queue
+
+def f(q):
+    q.put([42, None, 'hello'])
+
+if __name__ == '__main__':
+    q = Queue()
+    p = Process(target=f, args=(q,))
+    p.start()
+    print(q.get())    # prints &quot;[42, None, 'hello']&quot;
+    p.join()
+</code></pre>
+<h2 id="pipes">Pipes:</h2>
+<pre><code class="language-python">from multiprocessing import Process, Pipe
+
+def f(conn):
+    conn.send([42, None, 'hello'])
+    conn.close()
+
+if __name__ == '__main__':
+    parent_conn, child_conn = Pipe()
+    p = Process(target=f, args=(child_conn,))
+    p.start()
+    print(parent_conn.recv())   # prints &quot;[42, None, 'hello']&quot;
+    p.join()
+</code></pre>
+<h3 id="shared-memory-multiprocessingvalue-or-multiprocessingarray">Shared memory: <code>multiprocessing.Value</code> or <code>multiprocessing.Array</code></h3>
+<pre><code class="language-python">from multiprocessing import Process, Value, Array
+
+def f(n, a):
+    n.value = 3.1415927
+    for i in range(len(a)):
+        a[i] = -a[i]
+
+if __name__ == '__main__':
+    num = Value('d', 0.0)
+    arr = Array('i', range(10))
+
+    p = Process(target=f, args=(num, arr))
+    p.start()
+    p.join()
+
+    print(num.value)
+    print(arr[:])
+</code></pre>
+<h1 id="example-of-full-code">Example of full code</h1>
+<pre><code class="language-python">############################
+import socket, pickle
+
+class VectorDB_client():
+
+    def __init__(self, ip, port):
+        self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.sock.connect((ip, port))
+
+    def send_py_obj(self, obj):
+        self.sock.send( pickle.dumps(obj) )
+
+##########################
+
+# Threaded function
+# https://stackoverflow.com/questions/2915160/how-do-i-abort-a-socket-recv-from-another-thread-in-python
+def handle_connection(conn):
+    while True:
+
+        try:
+            print(db)
+
+            data = pickle.loads( conn.recv(4096) ) # &lt;--- blocks
+            print(data)
+
+            if not data:
+                print('No connection, Bye')
+                break # Releasing lock on exit
+
+        except socket.timeout: 
+            # If it was a timeout, we want to continue with recv
+            continue
+        except KeyboardInterrupt:
+            break
+
+        # DO SOMETHING WITH data
+        # conn.send(data) # Send data back
+        #socket.send( pickle.dumps(variable) )
+
+    print(f&quot;Closing VectorDB connection&quot;)
+    conn.close()
+
+
+if __name__ == '__main__':
+
+    ############################### Parse command-line named arguments
+    parser=argparse.ArgumentParser()
+    parser.add_argument(&quot;--host&quot;, help=&quot;Service host&quot;)
+    parser.add_argument(&quot;--port&quot;, help=&quot;Service port&quot;, type=int)
+    args=parser.parse_args()
+
+    ############################### Create socket server
+
+    # Create socket and listen to it.
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    sock.bind((args.host, args.port)) # INET socket needs ip and port
+    #sock.bind(&quot;/tmp/socket_test.s&quot;)  # UNIX socket needs a socket file
+    sock.settimeout(1) # 1 sec max for sock.accept()
+    sock.listen(1)
+    print(f&quot;VectorDB is listening on {args.host}:{args.port}&quot;)
+
+    # Wait for connections (NON BLOCKING)
+    while True:
+        try:
+            conn, (client_ip, client_port) = sock.accept() # &lt;--- blocks for N seconds
+            print(f&quot;Connected to client: {client_ip}:{client_port}&quot;)
+            client_thread = threading.Thread(target=handle_connection, args=(conn,)) # &lt;-- Comma is needed
+            client_thread.start()
+        except socket.timeout:
+            #print(&quot;Listening again...&quot;)
+            continue
+        except KeyboardInterrupt:
+            break
+
+    print(f&quot;Closing VectorDB server {args.host}:{args.port}&quot;)
+    sock.shutdown(socket.SHUT_RDWR) # closes the underlying connections
+    sock.close()
+
+# Do signals propagate on subthreads? -&gt; NO (YES if daemon)
+#
+# Python signal handlers are always executed in the main Python thread of the main interpreter,
+# even if the signal was received in another thread.
+#
+# After you send SIGINT with ^C, you will see that the main thread is killed
+# (no more 'Parent parenting' logs)and the child thread continues to run.
+
+# Do signals propagate on subprocess? -&gt; YES
+</code></pre>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

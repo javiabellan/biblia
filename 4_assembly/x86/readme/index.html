@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Diagram - Documentación de Javi</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Diagram";
+        var mkdocs_page_input_path = "4_assembly/x86/readme.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Documentación de Javi
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CLI tools</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools/1_dirs.md">📁 Dirs (cd,ls,find,ranger)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools/2_files.md">📄 Files (cat,file,stat)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools/3_process.md">⏳ Process (ps,top)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools/compression.md">🗜️ Compress (zip,tar,bz)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools/cryptography.md">🔑 Cryptography (base64)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools/plotting.md">📊 Plotting (gnuplot)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools/scripting.md">👨‍💻 Scripting</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools/customization.md">🎨 Customization (dotfiles)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools/git.md">GIT</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools/editors.md">📝 Editors (nano,vim,jupyter)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools/pacman.md">📦 Software (pacman,aur,pip)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools/ssh.md">SSH</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools/tmux.md">TMUX</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CLI data tools</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools_data/free_text.md">⚪️ Free text (regex,grep,tr,sed)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools_data/csv.md">🟢 Excel,csv,tsv (cut,paste,awk)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools_data/html.md">🟡 HTML (pup) XML</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools_data/json.md">🟠 JSON (jq)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools_data/pdf.md">🔴 PDF (Xpdf,poppler)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools_data/image.md">🔵 Image (ImageMagick)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools_data/sound_video.md">🟣 Sound,Video (ffmepg,sox)</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CLI networking tools</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools_net/web_scraping.md">⬇️ Web Scraping (curl,wget)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools_net/pentesting.md">🗡️ Pentesting (nmap)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools_net/deffensive.md">🛡️ Deffensive</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools_net/dns.md">📒 DNS (dig,nslookup,whois)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools_net/vpn.md">🔒 VPN</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools_net/firewall.md">📛 Firewall</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Python</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../../../python/numpy.md">🟦 Numpy</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../python/machine_learning.md">🟫 Sklearn</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../python/pytorch.md">🟥 Pytorch</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../python/tensorflow.md">🟧 Tensorflow</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../python/onnx.md">⬜️ ONNX</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../python/tensorrt.md">🟩 TensorRT</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../python/numpy.md">🟦 Parallel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">C++</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../../../programming/ruby.md">♦️ Ruby</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../programming/monitoring.md">Monitoring</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../programming/profiling.md">Profiling</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../programming/debugging.md">Debugging</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../programming/makefile.md">Makefile</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Documentación de Javi</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>Diagram</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="diagram">Diagram</h1>
+<pre><code>                       CPU x86 32bits                                          RAM (4GB)                                   I/O Devices
+|------------------------------------------------------------|    0x0000|-------------------------|-------       0x00|-------------------|
+|                                                            |          | Interrupt Vector Table  |                  |                   |
+|     32bits General Purpose Registers     16bits Status     |    0x0400|.........................|                  |                   |
+|  |----------------|--------|--------|  |----------------|  |          | BIOS Data Area 256 Bytes|                  |                   |
+|  |&quot;accumulator&quot; [EAX] AH  (AX) AL   |  |               C|  |    0x0500|.........................|                  |                   |
+|  |----------------|--------|--------|  |----------------|  |          |                         |              0x40| Time Counter chip | (used for random)
+|  |   &quot;base&quot;     [EBX] BH  (BX) BL   |                      |    0x7C00|.........................|  BASE            |                   | 
+|  |----------------|--------|--------|    16bits Segments   |          | Boot Sector (512 Bytes) |  RAM             |                   |
+|  |   &quot;counter&quot;  [ECX] CH  (CX) CL   |  |----------------|  |    0x7E00|.........................| MEMORY           |-------------------|
+|  |----------------|--------|--------|  | [CS] Code Seg  |  |          |                         | 640 KB
+|  |   &quot;data&quot;     [EDX] DH  (DX) DL   |  |----------------|  |          |                         |
+|  |----------------|--------|--------|  | [DS] Data Seg  |  |          |                         |
+|                                        |----------------|  |    0x9FC0|.........................|
+|         32bits Index Registers         | [ES] Extra Seg |  |          |                         |
+|  |----------------------------------|  |----------------|  |          | Extended BIOS Data Area |
+|  |       [ESI] Source Index         |  | [FS] More extra|  |          |                         |
+|  |----------------------------------|  |----------------|  |   0xA0000|-------------------------|-------
+|  |       [EDI] Destination Index    |  | [GS] More extra|  |          | VGA Graphic mode (64KB) |
+|  |----------------------------------|  |----------------|  |   0xB0000|  .....................  |   VIDEO
+|  |       [ESP] Stack Pointer        |  | [SS] Stack Seg |  |          |  B&amp;W text mode (32KB)   |  MEMORY
+|  |----------------------------------|  |----------------|  |   0xB8000|  .....................  |   128KB
+|  |       [EBP] Base Pointer         |                      |          |  Color text mode (32KB) |
+|  |----------------------------------|                      |   0xC0000|-------------------------|-------
+|                                                            |          |                         |
+|  |----------------------------------|                      |          |                         |
+|  |       [EIP] Instruction Pointer  | aka Program Counter  |          |                         |
+|  |----------------------------------|                      |    0xFFFF|-------------------------|
+|                                                            |
+|------------------------------------------------------------| 
+
+32bits address bus for up to 4GB of flat addresable RAM.
+</code></pre>
+<h1 id="types">Types</h1>
+<h3 id="define-byte-db">Define byte <code>db</code></h3>
+<pre><code>my_number: db 10010001b        ; Saves byte in binary format
+my_number: db 145              ; Saves byte in decimal format
+my_number: db 0xAF, AFh        ; Saves byte in Hexadecinal format
+my_char:   db &quot;a&quot;              ; Saves the ASCII byte represtantion of a char
+my_string: db ’Hello world’, 0 ; Saves evert character inside a byte. Last char sholulb be te null char (0)
+</code></pre>
+<blockquote>
+<p><code>db 01001010b, 74, 4Ah, 0x4A, 4ah, 0x4a, "J", 'J'</code> Define same byte in different ways.
+Machine code: <code>4A</code> <code>4A</code> <code>4A</code> <code>4A</code> <code>4A</code> <code>4A</code> <code>4A</code> <code>4A</code></p>
+</blockquote>
+<h3 id="define-word-dw">Define word <code>dw</code></h3>
+<pre><code>my_number: dw  AF3Bh  
+</code></pre>
+<h3 id="conditional-jumps-after-compare">Conditional jumps (after compare)</h3>
+<pre><code>cmp x, y    ; Do the comparison (x and y are registers or values)
+
+je address  ; jump if equal                 (x == y)
+jne address ; jump if not equal             (x != y)
+
+; Compare signed numbers
+jl address  ; jump if less than             (x &lt; y)
+jle address ; jump if less than or equal    (x &lt;= y)
+jg address  ; jump if greater than          (x &gt; y)
+jge address ; jump if greater than or equal (x &gt;= y)
+
+; Compare unsigned numbers
+JB adress   ; Jump if Below                 (x &lt; y)
+JBE adress  ; Jump if below or equal        (x &lt;= y)
+JA adress   ; Jump if Above                 (x &gt; y)
+JAE adress  ; Jump if above or equal        (x &gt;= y)
+</code></pre>
+<p>http://unixwiz.net/techtips/x86-jumps.html</p>
+<h3 id="functions">Functions</h3>
+<pre><code>mov al , &quot;H&quot;       ; Pass parameters to function (al=&quot;H&quot;)
+call some_function ; Call function
+
+some_function:
+    pusha       ; Push all register values to the stack (OPTIONAL FOR SAFETY)
+    ; Do the code
+    ; You can safely destroy registers here
+    popa        ; Restore original register values (OPTIONAL FOR SAFETY)
+    ret         ; Jump back after the function call
+</code></pre>
+<h1 id="modes">Modes</h1>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Real Mode</th>
+<th>Protected Mode</th>
+<th>Long Mode</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bits for data (word size)</td>
+<td>16 bits</td>
+<td>32 bits</td>
+<td>64 bits</td>
+</tr>
+<tr>
+<td>Bits for memory</td>
+<td>20 (Max 1 MB)</td>
+<td>32 bits</td>
+<td></td>
+</tr>
+<tr>
+<td>Memory protection</td>
+<td>no</td>
+<td>yes</td>
+<td></td>
+</tr>
+<tr>
+<td>Virtual memory (Paging)</td>
+<td>no</td>
+<td>yes</td>
+<td></td>
+</tr>
+<tr>
+<td>32bit offsets</td>
+<td>no</td>
+<td>yes</td>
+<td></td>
+</tr>
+<tr>
+<td>More than 1MB</td>
+<td>no</td>
+<td>yes</td>
+<td></td>
+</tr>
+<tr>
+<td>Notes</td>
+<td>Bootsector default</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Real mode: Real memory addresses.</li>
+<li>Protected mode:  virtual memory.</li>
+</ul>
+<h1 id="instruction-set">Instruction set</h1>
+<p>Additional instruction sets available, including the floating point, MMX, and SSE operations.</p>
+<blockquote>
+<p>Bootsector
+Note that at booting time, the firts program to execute is the bootsector (512 bit). This code is in <strong>16bit in Real Mode</strong> that means that we only can access x86-16bits registers and the maximun memory is 1Mb.
+http://kernelx.weebly.com/writing-a-bootsector.html
+https://www.cs.bham.ac.uk/~exr/lectures/opsys/10_11/lectures/os-dev.pdf ---&gt; voy por 3.3.2</p>
+</blockquote>
+<p>x86 assembly language has two main syntaxs: Intel and AT&amp;T.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Intel syntax</th>
+<th>AT&amp;T syntax</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OS</td>
+<td>Windows and DOS</td>
+<td>Linux, Unix and MacOS</td>
+</tr>
+<tr>
+<td>Assemblers</td>
+<td>NASM, FASM, MASM, TASM, and YASM</td>
+<td>GNU Assembler (GAS)</td>
+</tr>
+</tbody>
+</table>
+<h1 id="memory-sections">Memory sections</h1>
+<pre><code>                                                                   Can write during execution
+</code></pre>
+<p>|-----------------|--------------------------------------------------|---------
+| <code>section .text</code> | Memory space for the <strong>code of the program</strong>     | no
+| <code>section .data</code> | Memory space for the <strong>initialized variables</strong>   | yes
+| <code>section .bss</code>  | Extra future memory space that the program needs | yes</p>
+<h1 id="hello-world">Hello world</h1>
+<p>```asm
+section .data</p>
+<p>my_message db "hola",0x0A,0    # Define bytes "hola\n"  0x0A=\n  0=End of String in C</p>
+<p>section .text</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme_extra.js" defer></script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

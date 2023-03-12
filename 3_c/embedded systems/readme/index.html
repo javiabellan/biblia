@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Readme - Documentación de Javi</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Readme";
+        var mkdocs_page_input_path = "3_c/embedded systems/readme.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Documentación de Javi
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CLI tools</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools/1_dirs.md">📁 Dirs (cd,ls,find,ranger)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools/2_files.md">📄 Files (cat,file,stat)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools/3_process.md">⏳ Process (ps,top)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools/compression.md">🗜️ Compress (zip,tar,bz)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools/cryptography.md">🔑 Cryptography (base64)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools/plotting.md">📊 Plotting (gnuplot)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools/scripting.md">👨‍💻 Scripting</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools/customization.md">🎨 Customization (dotfiles)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools/git.md">GIT</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools/editors.md">📝 Editors (nano,vim,jupyter)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools/pacman.md">📦 Software (pacman,aur,pip)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools/ssh.md">SSH</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools/tmux.md">TMUX</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CLI data tools</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools_data/free_text.md">⚪️ Free text (regex,grep,tr,sed)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools_data/csv.md">🟢 Excel,csv,tsv (cut,paste,awk)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools_data/html.md">🟡 HTML (pup) XML</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools_data/json.md">🟠 JSON (jq)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools_data/pdf.md">🔴 PDF (Xpdf,poppler)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools_data/image.md">🔵 Image (ImageMagick)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools_data/sound_video.md">🟣 Sound,Video (ffmepg,sox)</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CLI networking tools</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools_net/web_scraping.md">⬇️ Web Scraping (curl,wget)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools_net/pentesting.md">🗡️ Pentesting (nmap)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools_net/deffensive.md">🛡️ Deffensive</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools_net/dns.md">📒 DNS (dig,nslookup,whois)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools_net/vpn.md">🔒 VPN</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools_net/firewall.md">📛 Firewall</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Python</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../../../python/numpy.md">🟦 Numpy</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../python/machine_learning.md">🟫 Sklearn</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../python/pytorch.md">🟥 Pytorch</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../python/tensorflow.md">🟧 Tensorflow</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../python/onnx.md">⬜️ ONNX</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../python/tensorrt.md">🟩 TensorRT</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../python/numpy.md">🟦 Parallel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">C++</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../../../programming/ruby.md">♦️ Ruby</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../programming/monitoring.md">Monitoring</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../programming/profiling.md">Profiling</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../programming/debugging.md">Debugging</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../programming/makefile.md">Makefile</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Documentación de Javi</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>Readme</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 align="center">Embedded systems</h1>
+
+<h3 id="micocontrollers-mcus">Micocontrollers (MCUs)</h3>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">CPU</th>
+<th align="center">Bits</th>
+<th align="center">Cores</th>
+<th align="center">Clock<br><sup>(MHz)</th>
+<th align="center">Memory<br><sup>(SRAM)</th>
+<th align="center">Storage<br><sup>(Flash)</th>
+<th align="right">TF</th>
+<th align="center">Others</th>
+<th align="center">Price</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><strong>Arduino Uno (Rev3)</strong></td>
+<td align="center">AVR</td>
+<td align="center">8</td>
+<td align="center">1</td>
+<td align="center">16..20</td>
+<td align="center">2KB</td>
+<td align="center">32KB</td>
+<td align="right">❌</td>
+<td align="center"></td>
+<td align="center">20€</td>
+</tr>
+<tr>
+<td align="center"><strong>Raspberry Pi Pico</strong></td>
+<td align="center">ARM Cortex-M0+</td>
+<td align="center">32</td>
+<td align="center">2</td>
+<td align="center">125..133</td>
+<td align="center">264KB</td>
+<td align="center">2MB</td>
+<td align="right">✅</td>
+<td align="center"></td>
+<td align="center">4€</td>
+</tr>
+<tr>
+<td align="center"><strong>Arduino Nano 33 BLE</strong></td>
+<td align="center">ARM Cortex-M4</td>
+<td align="center">32</td>
+<td align="center">1</td>
+<td align="center">64..xxx</td>
+<td align="center">256KB</td>
+<td align="center">1MB</td>
+<td align="right">✅</td>
+<td align="center">🔷</td>
+<td align="center">17€</td>
+</tr>
+<tr>
+<td align="center"><strong>Arduino Nano 33 BLE Sense</strong></td>
+<td align="center">ARM Cortex-M4</td>
+<td align="center">32</td>
+<td align="center">1</td>
+<td align="center">64..xxx</td>
+<td align="center">256KB</td>
+<td align="center">1MB</td>
+<td align="right">✅</td>
+<td align="center">🔷🎤🧭</td>
+<td align="center">32€</td>
+</tr>
+<tr>
+<td align="center"><strong>Adafruit EdgeBadge</strong></td>
+<td align="center">ARM Cortex-M4</td>
+<td align="center">32</td>
+<td align="center">1</td>
+<td align="center">120</td>
+<td align="center">192KB</td>
+<td align="center">2.5MB</td>
+<td align="right">✅</td>
+<td align="center"></td>
+<td align="center">31€</td>
+</tr>
+<tr>
+<td align="center"><strong>SparkFun Edge</strong></td>
+<td align="center">ARM Cortex-M4</td>
+<td align="center">32</td>
+<td align="center">1</td>
+<td align="center">48..96</td>
+<td align="center">384KB</td>
+<td align="center">1MB</td>
+<td align="right">✅</td>
+<td align="center">🔷🎤🧭</td>
+<td align="center">16€</td>
+</tr>
+<tr>
+<td align="center"><strong>Espressif ESP8266</strong></td>
+<td align="center">Xtensa LX106</td>
+<td align="center">32</td>
+<td align="center">1</td>
+<td align="center">80..160</td>
+<td align="center">64KB</td>
+<td align="center">4MB</td>
+<td align="right">❌</td>
+<td align="center">🌐🔷</td>
+<td align="center">2€</td>
+</tr>
+<tr>
+<td align="center"><strong>Espressif ESP32</strong></td>
+<td align="center">Xtensa LX6</td>
+<td align="center">32</td>
+<td align="center">2</td>
+<td align="center">160..240</td>
+<td align="center">520KiB</td>
+<td align="center">4MB</td>
+<td align="right">✅</td>
+<td align="center">🌐🔷</td>
+<td align="center">3€</td>
+</tr>
+<tr>
+<td align="center"><strong>Espressif ESP-EYE</strong></td>
+<td align="center">Xtensa LX6</td>
+<td align="center">32</td>
+<td align="center">2</td>
+<td align="center">160..240</td>
+<td align="center">520KiB</td>
+<td align="center">4MB</td>
+<td align="right">✅</td>
+<td align="center">🌐🔷🎤📷</td>
+<td align="center">18€</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li>Other microcontrollers</li>
+<li>STM32</li>
+<li>Texas Instruments MSP430</li>
+<li>TinyPico</li>
+<li>Legend</li>
+<li>🌐: WiFi</li>
+<li>🔷: Bluetooth</li>
+<li>📷: Camera</li>
+<li>🎤: Microphone</li>
+<li>🧭: Accelerometer with magnetometer</li>
+<li>Common architectures: ARM Cortex-M, RISC-V, Hexagon, Xtensa</li>
+<li>Jacob Sorber works a lot with Texas Instruments MSP430</li>
+<li>https://wokwi.com/</li>
+<li>https://vivonomicon.com/2019/03/30/getting-started-with-bare-metal-esp32-programming/</li>
+</ul>
+</blockquote>
+<h3 id="single-board-computers-sbcs">Single Board Computers (SBCs)</h3>
+<p>Rememeber that:</p>
+<pre><code>     System on Module (SoM)
+ +      Carrier Board (CB) 
+---------------------------
+Single Board Computer (SBC)
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="right"></th>
+<th align="center">CPU</th>
+<th align="center">Bits</th>
+<th align="center">Cores</th>
+<th align="center">Clock<br><sup>(GHz)</th>
+<th align="center">Memory<br><sup>(RAM)</th>
+<th align="center">GPU</th>
+<th align="left">Price</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><strong>Raspberry Pi 1</strong></td>
+<td align="center">ARM11 1176JZF-S</td>
+<td align="center">32</td>
+<td align="center">1</td>
+<td align="center">0.7</td>
+<td align="center">0.25,0.5GB</td>
+<td align="center">VideoCore IV</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="right"><strong>Raspberry Pi 2</strong></td>
+<td align="center">ARMv7-A Cortex-A7</td>
+<td align="center">32</td>
+<td align="center">4</td>
+<td align="center">0.9</td>
+<td align="center">1 GB</td>
+<td align="center">VideoCore IV</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="right"><strong>Raspberry Pi 3</strong></td>
+<td align="center">ARMv8-A Cortex-A53</td>
+<td align="center">64</td>
+<td align="center">4</td>
+<td align="center">1.4</td>
+<td align="center">1 GB</td>
+<td align="center">VideoCore IV</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="right"><strong>Raspberry Pi 4</strong></td>
+<td align="center">ARMv8-A Cortex-A72</td>
+<td align="center">64</td>
+<td align="center">4</td>
+<td align="center">1.5</td>
+<td align="center">1,2,4,8GB</td>
+<td align="center">VideoCore VI</td>
+<td align="left">40,80€</td>
+</tr>
+<tr>
+<td align="right"><strong>Jetson Nano</strong></td>
+<td align="center">ARMv8-A Cortex-A57</td>
+<td align="center">64</td>
+<td align="center">4</td>
+<td align="center">1.43</td>
+<td align="center">2 GB</td>
+<td align="center">128CUDA cores Maxwell</td>
+<td align="left">77€</td>
+</tr>
+<tr>
+<td align="right"><strong>Jetson Nano B01</strong></td>
+<td align="center">ARMv8-A Cortex-A57</td>
+<td align="center">64</td>
+<td align="center">4</td>
+<td align="center">1.43</td>
+<td align="center">4 GB</td>
+<td align="center">128CUDA cores Maxwell</td>
+<td align="left">156€</td>
+</tr>
+<tr>
+<td align="right"><strong>Coral Dev board</strong></td>
+<td align="center">ARMv8-A Cortex-A53</td>
+<td align="center">64</td>
+<td align="center">4</td>
+<td align="center">1.5</td>
+<td align="center">1 GB</td>
+<td align="center">Vivante GC7000Lite</td>
+<td align="left">136€</td>
+</tr>
+<tr>
+<td align="right"><strong>Coral Dev board mini</strong></td>
+<td align="center">ARMv8-A Cortex-A35</td>
+<td align="center">64</td>
+<td align="center">4</td>
+<td align="center">1.5</td>
+<td align="center">2 GB</td>
+<td align="center">IMG PowerVR GE8300</td>
+<td align="left">110€</td>
+</tr>
+<tr>
+<td align="right"><strong>Coral Dev board micro</strong></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th></th>
+<th align="center">CPU cores</th>
+<th>GPU cores</th>
+<th>TPU cores</th>
+<th>NVDLA</th>
+<th>Power</th>
+<th>Connector</th>
+<th>Price</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Jetson Nano</strong></td>
+<td align="center">4 ARM A57 @ 1.43GHz</td>
+<td>128 Maxwell @ 921 MHz</td>
+<td>-</td>
+<td>-</td>
+<td>5W / 10W</td>
+<td></td>
+<td>77€, 156€</td>
+</tr>
+<tr>
+<td><strong>Jetson TX1</strong></td>
+<td align="center">4 ARM A57 @ 1.73GHz</td>
+<td>256 Maxwell @ 998MHz</td>
+<td>-</td>
+<td>-</td>
+<td>10 W</td>
+<td></td>
+<td>$300</td>
+</tr>
+<tr>
+<td><strong>Jetson TX2</strong></td>
+<td align="center">4 ARM A57 @ 2GHz</td>
+<td>256 Pascal  @ 1.3 GHz</td>
+<td>-</td>
+<td>-</td>
+<td>7.5W / 15W</td>
+<td></td>
+<td>500€</td>
+</tr>
+<tr>
+<td><strong>Jetson Xavier NX</strong></td>
+<td align="center">6 ARM Carmel</td>
+<td>384 Volta</td>
+<td>48 Volta</td>
+<td>2</td>
+<td>10W / 15W / 20W</td>
+<td>260 pins SO-DIMM</td>
+<td>430€</td>
+</tr>
+<tr>
+<td><strong>Jetson AGX Xavier</strong></td>
+<td align="center">8 ARM Carmel @ 2.26 GHz</td>
+<td>512 Volta</td>
+<td>64 Volta</td>
+<td>2</td>
+<td>10W / 15W / 30W</td>
+<td>699 pins</td>
+<td>750€</td>
+</tr>
+<tr>
+<td><strong>Jetson Orin NX</strong></td>
+<td align="center">8 ARM A78AE</td>
+<td>1024 Ampere</td>
+<td>32 Ampere</td>
+<td>2 v2.0</td>
+<td>10W / 15W / 25W</td>
+<td>260 pins SO-DIMM</td>
+<td>no yet</td>
+</tr>
+<tr>
+<td><strong>Jetson AGX Orin</strong></td>
+<td align="center">12 ARM A78AE</td>
+<td>2048 Ampere</td>
+<td>64 Ampere</td>
+<td>2 v2.0</td>
+<td>15W / 30W / 50W</td>
+<td>699 pins</td>
+<td>no yet</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<h3 id="nvdla">NVDLA</h3>
+<p>The NVDLA (Nvidia Deep Learning Accelerator) is an alternative to the GPU,
+and it can be used with minimal change in software.
+It is not as fast as the GPU but is extremely power efficient.
+So, if you need your application to run at all times and power consumption is an issue, you should try to use the DLAs.</p>
+</blockquote>
+<h3 id="programming">Programming</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>IDE</th>
+<th>Compiler</th>
+<th>Emulator</th>
+<th>Uploader</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AVR (Arduino)</td>
+<td>Arduino IDE</td>
+<td><code>avr-gcc</code></td>
+<td></td>
+<td><code>avr-dude</code></td>
+</tr>
+<tr>
+<td>MSP430</td>
+<td>Energia.nu</td>
+<td><code>msp430-gcc</code></td>
+<td></td>
+<td><code>mspdebug</code></td>
+</tr>
+<tr>
+<td>ESP32</td>
+<td>ESP IDF</td>
+<td><code>esp32-gcc</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ESP8266</td>
+<td>ESP IDF</td>
+<td><code>esp8266-gcc</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Raspberry Pi 2B</td>
+<td></td>
+<td></td>
+<td><code>qemu-system-aarch64 -M raspi2b</code></td>
+<td></td>
+</tr>
+<tr>
+<td>Raspberry Pi 3B</td>
+<td></td>
+<td></td>
+<td><code>qemu-system-aarch64 -M raspi3b</code></td>
+<td></td>
+</tr>
+<tr>
+<td>ARM64</td>
+<td></td>
+<td><code>aarch64-linux-gnu-gcc</code></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>ESP IDF: Espressif IoT Development Framework</p>
+</blockquote>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=tJLxgixq9VQ">Getting Started with Programming in AVR C | Attiny45 Blink LED Tutorial</a></li>
+</ul>
+<h2 id="main-issues-in-embedded-systems-programming">Main issues in Embedded systems programming</h2>
+<h3 id="issue-number-1-memory-limit">Issue number 1: Memory limit</h3>
+<h3 id="issue-number-2-power-consumption">Issue number 2: Power consumption</h3>
+<p>1mW -&gt; 1 año con una batería de botón</p>
+<p>Red neuronal -&gt; 1mW
+Sensor de camara -&gt; 10mW</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Hardware</li>
+<li>https://qengineering.eu/deep-learning-with-raspberry-pi-and-alternatives.html</li>
+<li>https://qengineering.eu/computer-vision-with-raspberry-pi-and-alternatives.html</li>
+<li>https://www.fastcompression.com/blog/jetson-benchmark-comparison.htm</li>
+<li>Jacob Sorber <a href="https://www.youtube.com/playlist?list=PL9IEJIKnBJjEcPAz6fss-Hx0TLytCOMVC">Embedded Systems playlist</a></li>
+<li>Links Juanjo. Cubren RPI, Arduino y ESP32 que son mis placas de desarrollo favoritas.</li>
+<li>https://projects.raspberrypi.org/en</li>
+<li>https://docs.platformio.org/en/latest/</li>
+<li>https://www.arduino.cc/en/Tutorial/HomePage</li>
+<li>https://arduinojson.org/book/</li>
+<li>https://magpi.raspberrypi.org/</li>
+<li>https://www.itead.cc/blog</li>
+<li>https://www.esploradores.com/</li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme_extra.js" defer></script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>Sensors - Documentación de Javi</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Sensors";
+        var mkdocs_page_input_path = "3_c/embedded systems/sensors/readme.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> Documentación de Javi
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CLI tools</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../../../../cli_tools/1_dirs.md">📁 Dirs (cd,ls,find,ranger)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../../cli_tools/2_files.md">📄 Files (cat,file,stat)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../../cli_tools/3_process.md">⏳ Process (ps,top)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../../cli_tools/compression.md">🗜️ Compress (zip,tar,bz)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../../cli_tools/cryptography.md">🔑 Cryptography (base64)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../../cli_tools/plotting.md">📊 Plotting (gnuplot)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../../cli_tools/scripting.md">👨‍💻 Scripting</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../../cli_tools/customization.md">🎨 Customization (dotfiles)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../../cli_tools/git.md">GIT</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../../cli_tools/editors.md">📝 Editors (nano,vim,jupyter)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../../cli_tools/pacman.md">📦 Software (pacman,aur,pip)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../../cli_tools/ssh.md">SSH</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../../cli_tools/tmux.md">TMUX</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CLI data tools</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../../../../cli_tools_data/free_text.md">⚪️ Free text (regex,grep,tr,sed)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../../cli_tools_data/csv.md">🟢 Excel,csv,tsv (cut,paste,awk)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../../cli_tools_data/html.md">🟡 HTML (pup) XML</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../../cli_tools_data/json.md">🟠 JSON (jq)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../../cli_tools_data/pdf.md">🔴 PDF (Xpdf,poppler)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../../cli_tools_data/image.md">🔵 Image (ImageMagick)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../../cli_tools_data/sound_video.md">🟣 Sound,Video (ffmepg,sox)</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CLI networking tools</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../../../../cli_tools_net/web_scraping.md">⬇️ Web Scraping (curl,wget)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../../cli_tools_net/pentesting.md">🗡️ Pentesting (nmap)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../../cli_tools_net/deffensive.md">🛡️ Deffensive</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../../cli_tools_net/dns.md">📒 DNS (dig,nslookup,whois)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../../cli_tools_net/vpn.md">🔒 VPN</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../../cli_tools_net/firewall.md">📛 Firewall</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Python</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../../../../python/numpy.md">🟦 Numpy</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../../python/machine_learning.md">🟫 Sklearn</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../../python/pytorch.md">🟥 Pytorch</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../../python/tensorflow.md">🟧 Tensorflow</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../../python/onnx.md">⬜️ ONNX</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../../python/tensorrt.md">🟩 TensorRT</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../../python/numpy.md">🟦 Parallel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">C++</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../../../../programming/ruby.md">♦️ Ruby</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../../programming/monitoring.md">Monitoring</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../../programming/profiling.md">Profiling</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../../programming/debugging.md">Debugging</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../../programming/makefile.md">Makefile</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">Documentación de Javi</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>Sensors</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="sensors">Sensors</h1>
+<h2 id="current">Current</h2>
+<p>5V como de 3.3V. Si tu Arduino es de 5V no debería tener ningún problema para leer la señal de senbsores de 3.3V, ya cualquier tensión que sobre pase 2.5V es leído como HIGH en Arduino.</p>
+<h2 id="kalman-filter">Kalman filter</h2>
+<hr />
+<h2 id="image">Image</h2>
+<ul>
+<li>Stereo</li>
+<li>Visión nocturna</li>
+<li>Ultrawide</li>
+<li>With autofocus</li>
+<li>Multisctrum</li>
+<li>Thermal Imaging</li>
+</ul>
+<h2 id="sound">Sound</h2>
+<ul>
+<li>Microphone</li>
+</ul>
+<h2 id="velocity">Velocity</h2>
+<p>Radar sensors using the doppler effect</p>
+<h2 id="distance">Distance</h2>
+<p>Returns an analog value with the distance.</p>
+<p>|                             | Ultrasonic (sonar)   | IR triangulation | LiDAR    | ToF (Time of Flight) | Radar
+|-----------------------------|-----------------------------------------|--------------
+| Emits and recives           | High-frequency sound | Infrared light   | UV light |
+| Detects tranparent surfaces |        yes 🙂        | No 🙁           | No 🙁    |
+| Safe for human eyes         |        yes 🙂        |           | No 🙁    |
+| Invariant to dust           |        yes 🙂
+| Invariant to temperature    |        yes 🙂
+| Invariant to light          |        yes 🙂
+| Max range                   |        ~10m          |
+| Application                 | Slow &amp; near objects  |</p>
+<p>https://www.terabee.com/choosing-right-distance-sensor-your-application/</p>
+<table>
+<thead>
+<tr>
+<th>Technology</th>
+<th>Sensor</th>
+<th>Range</th>
+<th>Angle</th>
+<th>Voltage</th>
+<th>Current</th>
+<th>Price</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ultrasound</td>
+<td>HC-SR04</td>
+<td>2cm - 400cm</td>
+<td></td>
+<td>5V</td>
+<td>15mA</td>
+<td>1,80 €</td>
+</tr>
+<tr>
+<td>Ultrasound</td>
+<td>Grove</td>
+<td>3cm – 350cm</td>
+<td></td>
+<td>3.3V/5V</td>
+<td>8mA</td>
+<td></td>
+</tr>
+<tr>
+<td>Infrared</td>
+<td></td>
+<td>2cm - 30cm</td>
+<td>35°</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Infrared</td>
+<td>GP2Y0A21YK</td>
+<td>10cm - 80cm</td>
+<td></td>
+<td>10€</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="external-movementpresence-sensor">External Movement/Presence sensor</h2>
+<p>Returns a boolean value if the presence of an objects appears.</p>
+<table>
+<thead>
+<tr>
+<th>Sensor</th>
+<th>Emmiter</th>
+<th>Detector</th>
+<th>Application</th>
+<th>Price</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PIR sensor (Pasive InfraRed)</td>
+<td>No</td>
+<td>Infrared</td>
+<td>Room presence</td>
+<td>0,80€</td>
+</tr>
+<tr>
+<td>IR sensor</td>
+<td>Infrared</td>
+<td>Infrared</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Magnetic (Reed Switch)</td>
+<td>Magnetic</td>
+<td>Magnetic</td>
+<td>The door is open/close</td>
+<td></td>
+</tr>
+<tr>
+<td>Magnetic (Hall effect)</td>
+<td>No</td>
+<td>Magnetic</td>
+<td>Magnetometer</td>
+<td></td>
+</tr>
+<tr>
+<td>Optical sensor (Transmissive)</td>
+<td>Light</td>
+<td>Light</td>
+<td>Sensor puerta ascensor</td>
+<td></td>
+</tr>
+<tr>
+<td>Optical sensor (Reflective)</td>
+<td>Light</td>
+<td>Light</td>
+<td>Sensor puerta ascensor</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="internal-movement-sensor-aka-imu">Internal Movement sensor (aka IMU)</h2>
+<ul>
+<li>Vibration sensor</li>
+<li>Tilt sensor</li>
+<li>3-axis Accelerometer</li>
+<li>3-axis Gyroscope</li>
+<li>3-axis Magnetometer (aka Compass)      </li>
+<li>Wheel-speed sensor</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Chip</th>
+<th>Sensors</th>
+<th>Price</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MPU-6050</td>
+<td>3D Acc + 3D Gyr</td>
+<td>5€</td>
+<td></td>
+</tr>
+<tr>
+<td>HMC5883L / GY-271</td>
+<td>3D Mag</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>LSM9DS1</td>
+<td>3D Acc + 3D Gyr + 3D Mag</td>
+<td>20€</td>
+<td>Incluido en Arduino Nano 33 BLE Sense)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="navigation">Navigation</h2>
+<ul>
+<li>GPS</li>
+</ul>
+<h2 id="force-presure">Force &amp; Presure</h2>
+<ul>
+<li>car Seat</li>
+<li>Sensor de peatones</li>
+<li>Peso (balanza)</li>
+</ul>
+<h2 id="manual-interface">Manual interface</h2>
+<ul>
+<li>Rotary Encoder Module</li>
+<li>Joystic</li>
+<li>Button</li>
+</ul>
+<h2 id="biometrics">Biometrics</h2>
+<ul>
+<li>Muscle Sensor</li>
+<li>Pulse Oximeter</li>
+<li>Heart Rate Sensor</li>
+<li>Fingerprint Scanner</li>
+<li>car seat occupancy sensor</li>
+<li>PULSÍMETRO Y OXÍMETRO CON ARDUINO Y MAX30102</li>
+</ul>
+<h2 id="gas">Gas</h2>
+<table>
+<thead>
+<tr>
+<th>Sensor</th>
+<th>Detects</th>
+<th>Heater Voltage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MQ-2</td>
+<td>Methane, Butane, LPG, smoke</td>
+<td>5V</td>
+</tr>
+<tr>
+<td>MQ-3</td>
+<td>Alcohol, Ethanol, smoke</td>
+<td>5V</td>
+</tr>
+<tr>
+<td>MQ-4</td>
+<td>Methane, CNG Gas</td>
+<td>5V</td>
+</tr>
+<tr>
+<td>MQ-5</td>
+<td>Natural gas, LPG</td>
+<td>5V</td>
+</tr>
+<tr>
+<td>MQ-6</td>
+<td>LPG, butane gas</td>
+<td>5V</td>
+</tr>
+<tr>
+<td>MQ-7</td>
+<td>Carbon Monoxide</td>
+<td>Alternating 5V and 1.4V</td>
+</tr>
+<tr>
+<td>MQ-8</td>
+<td>Hydrogen Gas</td>
+<td>5V</td>
+</tr>
+<tr>
+<td>MQ-9</td>
+<td>Carbon Monoxide, flammable gasses.</td>
+<td>Alternating 5V and 1.4V</td>
+</tr>
+<tr>
+<td>MQ131</td>
+<td>Ozone</td>
+<td>6V</td>
+</tr>
+<tr>
+<td>MQ135</td>
+<td>Air Quality (Benzene, Alcohol, smoke)</td>
+<td>5V</td>
+</tr>
+<tr>
+<td>MQ136</td>
+<td>Hydrogen Sulfide gas</td>
+<td>5V</td>
+</tr>
+<tr>
+<td>MQ137</td>
+<td>Ammonia</td>
+<td>5V</td>
+</tr>
+<tr>
+<td>MQ138</td>
+<td>Benzene, Toluene, Alcohol, Acetone, Propane, Formaldehyde gas, Hydrogen</td>
+<td>5V</td>
+</tr>
+<tr>
+<td>MQ214</td>
+<td>Methane, Natural gas</td>
+<td>6V</td>
+</tr>
+<tr>
+<td>MQ216</td>
+<td>Natural gas, Coal gas</td>
+<td>5V</td>
+</tr>
+<tr>
+<td>MQ303A</td>
+<td>Alcohol, Ethanol, smoke</td>
+<td>0.9V</td>
+</tr>
+<tr>
+<td>MQ306A</td>
+<td>LPG, butane gas</td>
+<td>0.9V</td>
+</tr>
+<tr>
+<td>MQ307A</td>
+<td>Carbon Monoxide</td>
+<td>Alternating 0.2V and 0.9V.</td>
+</tr>
+<tr>
+<td>MQ309A</td>
+<td>Carbon Monoxide, flammable gasses</td>
+<td>Alternating 0.2V and 0.9V</td>
+</tr>
+<tr>
+<td>MG811</td>
+<td>Carbon Dioxide (CO2)</td>
+<td>6V</td>
+</tr>
+<tr>
+<td>AQ-104</td>
+<td>Air quality</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h2 id="soil">Soil</h2>
+<ul>
+<li>soil moisture sensor</li>
+</ul>
+<h2 id="weather">Weather</h2>
+<ul>
+<li>Temerature</li>
+<li>Humity</li>
+<li>pressure sensor</li>
+</ul>
+<p>|            | Sensor          | Example
+|------------|---------------------
+| Light      | Photoresistor   |
+| Temerature | Thermal sensor  | TMP36 [40°C...+125°] 0.1°C resolution
+| Humidity   |                 | DHT11 
+| Presure    | Barometer       | BMP180 (5€)
+| Flame      | Flame IR sensor | KY-026 (detects wavelengths ranging from 760nm to 1100nm in the infrared spectrum)
+| Raindrop   | Raindrop Sensor | 
+| CO2 sensor
+| Wind</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../../../..';</script>
+    <script src="../../../../js/theme_extra.js" defer></script>
+    <script src="../../../../js/theme.js" defer></script>
+      <script src="../../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

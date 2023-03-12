@@ -1,0 +1,2290 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Syscalls - Documentación de Javi</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Syscalls";
+        var mkdocs_page_input_path = "3_c/syscalls.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Documentación de Javi
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CLI tools</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools/1_dirs.md">📁 Dirs (cd,ls,find,ranger)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools/2_files.md">📄 Files (cat,file,stat)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools/3_process.md">⏳ Process (ps,top)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools/compression.md">🗜️ Compress (zip,tar,bz)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools/cryptography.md">🔑 Cryptography (base64)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools/plotting.md">📊 Plotting (gnuplot)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools/scripting.md">👨‍💻 Scripting</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools/customization.md">🎨 Customization (dotfiles)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools/git.md">GIT</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools/editors.md">📝 Editors (nano,vim,jupyter)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools/pacman.md">📦 Software (pacman,aur,pip)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools/ssh.md">SSH</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools/tmux.md">TMUX</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CLI data tools</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools_data/free_text.md">⚪️ Free text (regex,grep,tr,sed)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools_data/csv.md">🟢 Excel,csv,tsv (cut,paste,awk)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools_data/html.md">🟡 HTML (pup) XML</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools_data/json.md">🟠 JSON (jq)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools_data/pdf.md">🔴 PDF (Xpdf,poppler)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools_data/image.md">🔵 Image (ImageMagick)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools_data/sound_video.md">🟣 Sound,Video (ffmepg,sox)</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CLI networking tools</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools_net/web_scraping.md">⬇️ Web Scraping (curl,wget)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools_net/pentesting.md">🗡️ Pentesting (nmap)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools_net/deffensive.md">🛡️ Deffensive</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools_net/dns.md">📒 DNS (dig,nslookup,whois)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools_net/vpn.md">🔒 VPN</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools_net/firewall.md">📛 Firewall</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Python</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../../python/numpy.md">🟦 Numpy</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../python/machine_learning.md">🟫 Sklearn</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../python/pytorch.md">🟥 Pytorch</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../python/tensorflow.md">🟧 Tensorflow</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../python/onnx.md">⬜️ ONNX</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../python/tensorrt.md">🟩 TensorRT</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../python/numpy.md">🟦 Parallel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">C++</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../../programming/ruby.md">♦️ Ruby</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../programming/monitoring.md">Monitoring</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../programming/profiling.md">Profiling</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../programming/debugging.md">Debugging</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../programming/makefile.md">Makefile</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Documentación de Javi</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>Syscalls</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h2 id="strace"><code>strace</code></h2>
+<p>Is a cli tool to monitor the syscalls done by a process</p>
+<pre><code class="language-bash">strace myprogram
+</code></pre>
+<h2 id="build-yout-own-strace">Build yout own <code>strace</code></h2>
+<ul>
+<li>https://www.youtube.com/watch?v=engduNoI6DE</li>
+<li>https://github.com/liexusong/build-strace-by-myself/blob/main/strace.c</li>
+<li>https://blog.nelhage.com/2010/08/write-yourself-an-strace-in-70-lines-of-code/</li>
+</ul>
+<pre><code class="language-c">#include &lt;sys/ptrace.h&gt;
+#include &lt;sys/reg.h&gt;
+#include &lt;sys/wait.h&gt;
+#include &lt;sys/types.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;errno.h&gt;
+#include &lt;string.h&gt;
+
+
+int do_child(int argc, char **argv);
+int do_trace(pid_t child);
+
+int main(int argc, char **argv)
+{
+    if (argc &lt; 2)
+    {
+        fprintf(stderr, &quot;Usage: %s prog args\n&quot;, argv[0]);
+        exit(1);
+    }
+
+    pid_t child = fork();
+    if (child == 0)
+    {
+        // CHILD PROCESS: PROGRAM TO BE TRACED
+        return do_child(argc-1, argv+1);
+    }
+    else
+    {
+        // PARENT (MAIN) PROCESS: SYCALLS TRACER
+        return do_trace(child);
+    }
+}
+
+int do_child(int argc, char **argv)
+{
+    char *args [argc+1];
+    memcpy(args, argv, argc * sizeof(char*));
+    args[argc] = NULL;
+    ptrace(PTRACE_TRACEME); // This process is going to be traced
+    kill(getpid(), SIGSTOP);
+    return execvp(args[0], args); // Execute
+}
+
+
+int do_trace(pid_t child)
+{
+    int status, syscall, retval;
+    waitpid(child, &amp;status, 0);
+    ptrace(PTRACE_SETOPTIONS, child, 0, PTRACE_O_TRACESYSGOOD);
+    while(1)
+    {
+        if (wait_for_syscall(child) != 0) break;
+        syscall = ptrace(PTRACE_PEEKUSER, child, sizeof(long)*ORIG_EAX);
+        fprintf(stderr, &quot;syscall(%d) = &quot;, syscall);
+        if (wait_for_syscall(child) != 0) break;
+        retval = ptrace(PTRACE_PEEKUSER, child, sizeof(long)*EAX);
+        fprintf(stderr, &quot;%d\n&quot;, retval);
+    }
+    return 0;
+}
+
+int wait_for_syscall(pid_t child)
+{
+    int status;
+    while (1) {
+        ptrace(PTRACE_SYSCALL, child, 0, 0);
+        waitpid(child, &amp;status, 0);
+        if (WIFSTOPPED(status) &amp;&amp; WSTOPSIG(status) &amp; 0x80)
+            return 0;
+        if (WIFEXITED(status))
+            return 1;
+    }
+}
+</code></pre>
+<h2 id="appendix-syscalls">Appendix: Syscalls</h2>
+<p>%clock    Trace all system calls that read or modify system clocks.
+%creds    Trace all system calls that read or modify user and group identifiers or capability sets.
+%desc     Trace all file descriptor related system calls.
+%file     Trace all system calls which take a file name as an argument.
+%fstat    Trace fstat and fstatat syscall variants.
+%fstatfs  Trace fstatfs, fstatfs64, fstatvfs, osf_fstatfs, and osf_fstatfs64 system calls.
+%ipc      Trace all IPC related system calls.
+%lstat    Trace lstat syscall variants.
+%memory   Trace all memory mapping related system calls.
+%network  Trace all the network related system calls.
+%process  Trace all system calls which involve process management.
+%pure     Trace syscalls that always succeed and have no arguments.
+%signal   Trace all signal related system calls.
+%stat     Trace stat syscall variants.
+%statfs   Trace statfs, statfs64, statvfs, osf_statfs, and osf_statfs64 system calls.
+%%stat    Trace syscalls used for requesting file status.
+%%statfs  Trace syscalls related to file system statistics.</p>
+<ul>
+<li>File system</li>
+<li>File operations</li>
+<li>Directory operations</li>
+<li>Link operations</li>
+<li>Basic file attributes</li>
+<li>Extended file attributes</li>
+<li>File descriptor manipulations</li>
+<li>Read/Write</li>
+<li>Synchronized I/O</li>
+<li>Asynchronous I/O</li>
+<li>Multiplexed I/O</li>
+<li>Monitoring file events</li>
+<li>Miscellaneous</li>
+<li>Network</li>
+<li>Time</li>
+<li>Processes</li>
+<li>Signals</li>
+<li>IPC</li>
+<li>Pipe<ul>
+<li><code>pipe</code></li>
+<li><code>pipe2</code></li>
+<li><code>tee</code></li>
+</ul>
+</li>
+<li>Shared memory<ul>
+<li><code>shmget</code></li>
+<li><code>shmat</code></li>
+<li><code>shmctl</code></li>
+</ul>
+</li>
+<li>Semaphores</li>
+<li>Futexes</li>
+<li>NUMA</li>
+</ul>
+<p>https://linasm.sourceforge.net/docs/syscalls/index.php</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Syscall</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>read</td>
+<td>Read N bytes from file</td>
+</tr>
+<tr>
+<td>1</td>
+<td>write</td>
+<td>write N bytes at some file position (fp)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>open</td>
+<td>Open file and get its fp</td>
+</tr>
+<tr>
+<td>3</td>
+<td>close</td>
+<td>Close file</td>
+</tr>
+<tr>
+<td>4</td>
+<td>stat</td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>fstat</td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td>lstat</td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td>poll</td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td>lseek</td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td>mmap</td>
+<td>Memory map an entire file into RAM</td>
+</tr>
+<tr>
+<td>10</td>
+<td>mprotect</td>
+<td></td>
+</tr>
+<tr>
+<td>11</td>
+<td>munmap</td>
+<td></td>
+</tr>
+<tr>
+<td>12</td>
+<td>brk</td>
+<td>Change the HEAP pointer position</td>
+</tr>
+<tr>
+<td>13</td>
+<td>rt_sigaction</td>
+<td></td>
+</tr>
+<tr>
+<td>14</td>
+<td>rt_sigprocmask</td>
+<td></td>
+</tr>
+<tr>
+<td>15</td>
+<td>rt_sigreturn</td>
+<td></td>
+</tr>
+<tr>
+<td>16</td>
+<td>ioctl</td>
+<td></td>
+</tr>
+<tr>
+<td>17</td>
+<td>pread64</td>
+<td></td>
+</tr>
+<tr>
+<td>18</td>
+<td>pwrite64</td>
+<td></td>
+</tr>
+<tr>
+<td>19</td>
+<td>readv</td>
+<td></td>
+</tr>
+<tr>
+<td>20</td>
+<td>writev</td>
+<td></td>
+</tr>
+<tr>
+<td>21</td>
+<td>access</td>
+<td></td>
+</tr>
+<tr>
+<td>22</td>
+<td>pipe</td>
+<td></td>
+</tr>
+<tr>
+<td>23</td>
+<td>select</td>
+<td></td>
+</tr>
+<tr>
+<td>24</td>
+<td>sched_yield</td>
+<td></td>
+</tr>
+<tr>
+<td>25</td>
+<td>mremap</td>
+<td></td>
+</tr>
+<tr>
+<td>26</td>
+<td>msync</td>
+<td></td>
+</tr>
+<tr>
+<td>27</td>
+<td>mincore</td>
+<td></td>
+</tr>
+<tr>
+<td>28</td>
+<td>madvise</td>
+<td></td>
+</tr>
+<tr>
+<td>29</td>
+<td>shmget</td>
+<td></td>
+</tr>
+<tr>
+<td>30</td>
+<td>shmat</td>
+<td></td>
+</tr>
+<tr>
+<td>31</td>
+<td>shmctl</td>
+<td></td>
+</tr>
+<tr>
+<td>32</td>
+<td>dup</td>
+<td></td>
+</tr>
+<tr>
+<td>33</td>
+<td>dup2</td>
+<td></td>
+</tr>
+<tr>
+<td>34</td>
+<td>pause</td>
+<td></td>
+</tr>
+<tr>
+<td>35</td>
+<td>nanosleep</td>
+<td></td>
+</tr>
+<tr>
+<td>36</td>
+<td>getitimer</td>
+<td></td>
+</tr>
+<tr>
+<td>37</td>
+<td>alarm</td>
+<td></td>
+</tr>
+<tr>
+<td>38</td>
+<td>setitimer</td>
+<td></td>
+</tr>
+<tr>
+<td>39</td>
+<td>getpid</td>
+<td></td>
+</tr>
+<tr>
+<td>40</td>
+<td>sendfile</td>
+<td></td>
+</tr>
+<tr>
+<td>41</td>
+<td>socket</td>
+<td></td>
+</tr>
+<tr>
+<td>42</td>
+<td>connect</td>
+<td></td>
+</tr>
+<tr>
+<td>43</td>
+<td>accept</td>
+<td></td>
+</tr>
+<tr>
+<td>44</td>
+<td>sendto</td>
+<td></td>
+</tr>
+<tr>
+<td>45</td>
+<td>recvfrom</td>
+<td></td>
+</tr>
+<tr>
+<td>46</td>
+<td>sendmsg</td>
+<td></td>
+</tr>
+<tr>
+<td>47</td>
+<td>recvmsg</td>
+<td></td>
+</tr>
+<tr>
+<td>48</td>
+<td>shutdown</td>
+<td></td>
+</tr>
+<tr>
+<td>49</td>
+<td>bind</td>
+<td></td>
+</tr>
+<tr>
+<td>50</td>
+<td>listen</td>
+<td></td>
+</tr>
+<tr>
+<td>51</td>
+<td>getsockname</td>
+<td></td>
+</tr>
+<tr>
+<td>52</td>
+<td>getpeername</td>
+<td></td>
+</tr>
+<tr>
+<td>53</td>
+<td>socketpair</td>
+<td></td>
+</tr>
+<tr>
+<td>54</td>
+<td>setsockopt</td>
+<td></td>
+</tr>
+<tr>
+<td>55</td>
+<td>getsockopt</td>
+<td></td>
+</tr>
+<tr>
+<td>56</td>
+<td>clone</td>
+<td></td>
+</tr>
+<tr>
+<td>57</td>
+<td>fork</td>
+<td></td>
+</tr>
+<tr>
+<td>58</td>
+<td>vfork</td>
+<td></td>
+</tr>
+<tr>
+<td>59</td>
+<td>execve</td>
+<td></td>
+</tr>
+<tr>
+<td>60</td>
+<td>exit</td>
+<td></td>
+</tr>
+<tr>
+<td>61</td>
+<td>wait4</td>
+<td></td>
+</tr>
+<tr>
+<td>62</td>
+<td>kill</td>
+<td></td>
+</tr>
+<tr>
+<td>63</td>
+<td>uname</td>
+<td></td>
+</tr>
+<tr>
+<td>64</td>
+<td>semget</td>
+<td></td>
+</tr>
+<tr>
+<td>65</td>
+<td>semop</td>
+<td></td>
+</tr>
+<tr>
+<td>66</td>
+<td>semctl</td>
+<td></td>
+</tr>
+<tr>
+<td>67</td>
+<td>shmdt</td>
+<td></td>
+</tr>
+<tr>
+<td>68</td>
+<td>msgget</td>
+<td></td>
+</tr>
+<tr>
+<td>69</td>
+<td>msgsnd</td>
+<td></td>
+</tr>
+<tr>
+<td>70</td>
+<td>msgrcv</td>
+<td></td>
+</tr>
+<tr>
+<td>71</td>
+<td>msgctl</td>
+<td></td>
+</tr>
+<tr>
+<td>72</td>
+<td>fcntl</td>
+<td></td>
+</tr>
+<tr>
+<td>73</td>
+<td>flock</td>
+<td></td>
+</tr>
+<tr>
+<td>74</td>
+<td>fsync</td>
+<td></td>
+</tr>
+<tr>
+<td>75</td>
+<td>fdatasync</td>
+<td></td>
+</tr>
+<tr>
+<td>76</td>
+<td>truncate</td>
+<td></td>
+</tr>
+<tr>
+<td>77</td>
+<td>ftruncate</td>
+<td></td>
+</tr>
+<tr>
+<td>78</td>
+<td>getdents</td>
+<td></td>
+</tr>
+<tr>
+<td>79</td>
+<td>getcwd</td>
+<td></td>
+</tr>
+<tr>
+<td>80</td>
+<td>chdir</td>
+<td></td>
+</tr>
+<tr>
+<td>81</td>
+<td>fchdir</td>
+<td></td>
+</tr>
+<tr>
+<td>82</td>
+<td>rename</td>
+<td></td>
+</tr>
+<tr>
+<td>83</td>
+<td>mkdir</td>
+<td></td>
+</tr>
+<tr>
+<td>84</td>
+<td>rmdir</td>
+<td></td>
+</tr>
+<tr>
+<td>85</td>
+<td>creat</td>
+<td></td>
+</tr>
+<tr>
+<td>86</td>
+<td>link</td>
+<td></td>
+</tr>
+<tr>
+<td>87</td>
+<td>unlink</td>
+<td></td>
+</tr>
+<tr>
+<td>88</td>
+<td>symlink</td>
+<td></td>
+</tr>
+<tr>
+<td>89</td>
+<td>readlink</td>
+<td></td>
+</tr>
+<tr>
+<td>90</td>
+<td>chmod</td>
+<td></td>
+</tr>
+<tr>
+<td>91</td>
+<td>fchmod</td>
+<td></td>
+</tr>
+<tr>
+<td>92</td>
+<td>chown</td>
+<td></td>
+</tr>
+<tr>
+<td>93</td>
+<td>fchown</td>
+<td></td>
+</tr>
+<tr>
+<td>94</td>
+<td>lchown</td>
+<td></td>
+</tr>
+<tr>
+<td>95</td>
+<td>umask</td>
+<td></td>
+</tr>
+<tr>
+<td>96</td>
+<td>gettimeofday</td>
+<td></td>
+</tr>
+<tr>
+<td>97</td>
+<td>getrlimit</td>
+<td></td>
+</tr>
+<tr>
+<td>98</td>
+<td>getrusage</td>
+<td></td>
+</tr>
+<tr>
+<td>99</td>
+<td>sysinfo</td>
+<td></td>
+</tr>
+<tr>
+<td>100</td>
+<td>times</td>
+<td></td>
+</tr>
+<tr>
+<td>101</td>
+<td>ptrace</td>
+<td></td>
+</tr>
+<tr>
+<td>102</td>
+<td>getuid</td>
+<td></td>
+</tr>
+<tr>
+<td>103</td>
+<td>syslog</td>
+<td></td>
+</tr>
+<tr>
+<td>104</td>
+<td>getgid</td>
+<td></td>
+</tr>
+<tr>
+<td>105</td>
+<td>setuid</td>
+<td></td>
+</tr>
+<tr>
+<td>106</td>
+<td>setgid</td>
+<td></td>
+</tr>
+<tr>
+<td>107</td>
+<td>geteuid</td>
+<td></td>
+</tr>
+<tr>
+<td>108</td>
+<td>getegid</td>
+<td></td>
+</tr>
+<tr>
+<td>109</td>
+<td>setpgid</td>
+<td></td>
+</tr>
+<tr>
+<td>110</td>
+<td>getppid</td>
+<td></td>
+</tr>
+<tr>
+<td>111</td>
+<td>getpgrp</td>
+<td></td>
+</tr>
+<tr>
+<td>112</td>
+<td>setsid</td>
+<td></td>
+</tr>
+<tr>
+<td>113</td>
+<td>setreuid</td>
+<td></td>
+</tr>
+<tr>
+<td>114</td>
+<td>setregid</td>
+<td></td>
+</tr>
+<tr>
+<td>115</td>
+<td>getgroups</td>
+<td></td>
+</tr>
+<tr>
+<td>116</td>
+<td>setgroups</td>
+<td></td>
+</tr>
+<tr>
+<td>117</td>
+<td>setresuid</td>
+<td></td>
+</tr>
+<tr>
+<td>118</td>
+<td>getresuid</td>
+<td></td>
+</tr>
+<tr>
+<td>119</td>
+<td>setresgid</td>
+<td></td>
+</tr>
+<tr>
+<td>120</td>
+<td>getresgid</td>
+<td></td>
+</tr>
+<tr>
+<td>121</td>
+<td>getpgid</td>
+<td></td>
+</tr>
+<tr>
+<td>122</td>
+<td>setfsuid</td>
+<td></td>
+</tr>
+<tr>
+<td>123</td>
+<td>setfsgid</td>
+<td></td>
+</tr>
+<tr>
+<td>124</td>
+<td>getsid</td>
+<td></td>
+</tr>
+<tr>
+<td>125</td>
+<td>capget</td>
+<td></td>
+</tr>
+<tr>
+<td>126</td>
+<td>capset</td>
+<td></td>
+</tr>
+<tr>
+<td>127</td>
+<td>rt_sigpending</td>
+<td></td>
+</tr>
+<tr>
+<td>128</td>
+<td>rt_sigtimedwait</td>
+<td></td>
+</tr>
+<tr>
+<td>129</td>
+<td>rt_sigqueueinfo</td>
+<td></td>
+</tr>
+<tr>
+<td>130</td>
+<td>rt_sigsuspend</td>
+<td></td>
+</tr>
+<tr>
+<td>131</td>
+<td>sigaltstack</td>
+<td></td>
+</tr>
+<tr>
+<td>132</td>
+<td>utime</td>
+<td></td>
+</tr>
+<tr>
+<td>133</td>
+<td>mknod</td>
+<td></td>
+</tr>
+<tr>
+<td>134</td>
+<td>uselib</td>
+<td></td>
+</tr>
+<tr>
+<td>135</td>
+<td>personality</td>
+<td></td>
+</tr>
+<tr>
+<td>136</td>
+<td>ustat</td>
+<td></td>
+</tr>
+<tr>
+<td>137</td>
+<td>statfs</td>
+<td></td>
+</tr>
+<tr>
+<td>138</td>
+<td>fstatfs</td>
+<td></td>
+</tr>
+<tr>
+<td>139</td>
+<td>sysfs</td>
+<td></td>
+</tr>
+<tr>
+<td>140</td>
+<td>getpriority</td>
+<td></td>
+</tr>
+<tr>
+<td>141</td>
+<td>setpriority</td>
+<td></td>
+</tr>
+<tr>
+<td>142</td>
+<td>sched_setparam</td>
+<td></td>
+</tr>
+<tr>
+<td>143</td>
+<td>sched_getparam</td>
+<td></td>
+</tr>
+<tr>
+<td>144</td>
+<td>sched_setscheduler</td>
+<td></td>
+</tr>
+<tr>
+<td>145</td>
+<td>sched_getscheduler</td>
+<td></td>
+</tr>
+<tr>
+<td>146</td>
+<td>sched_get_priority_max</td>
+<td></td>
+</tr>
+<tr>
+<td>147</td>
+<td>sched_get_priority_min</td>
+<td></td>
+</tr>
+<tr>
+<td>148</td>
+<td>sched_rr_get_interval</td>
+<td></td>
+</tr>
+<tr>
+<td>149</td>
+<td>mlock</td>
+<td></td>
+</tr>
+<tr>
+<td>150</td>
+<td>munlock</td>
+<td></td>
+</tr>
+<tr>
+<td>151</td>
+<td>mlockall</td>
+<td></td>
+</tr>
+<tr>
+<td>152</td>
+<td>munlockall</td>
+<td></td>
+</tr>
+<tr>
+<td>153</td>
+<td>vhangup</td>
+<td></td>
+</tr>
+<tr>
+<td>154</td>
+<td>modify_ldt</td>
+<td></td>
+</tr>
+<tr>
+<td>155</td>
+<td>pivot_root</td>
+<td></td>
+</tr>
+<tr>
+<td>156</td>
+<td>_sysctl</td>
+<td></td>
+</tr>
+<tr>
+<td>157</td>
+<td>prctl</td>
+<td></td>
+</tr>
+<tr>
+<td>158</td>
+<td>arch_prctl</td>
+<td></td>
+</tr>
+<tr>
+<td>159</td>
+<td>adjtimex</td>
+<td></td>
+</tr>
+<tr>
+<td>160</td>
+<td>setrlimit</td>
+<td></td>
+</tr>
+<tr>
+<td>161</td>
+<td>chroot</td>
+<td></td>
+</tr>
+<tr>
+<td>162</td>
+<td>sync</td>
+<td></td>
+</tr>
+<tr>
+<td>163</td>
+<td>acct</td>
+<td></td>
+</tr>
+<tr>
+<td>164</td>
+<td>settimeofday</td>
+<td></td>
+</tr>
+<tr>
+<td>165</td>
+<td>mount</td>
+<td></td>
+</tr>
+<tr>
+<td>166</td>
+<td>umount2</td>
+<td></td>
+</tr>
+<tr>
+<td>167</td>
+<td>swapon</td>
+<td></td>
+</tr>
+<tr>
+<td>168</td>
+<td>swapoff</td>
+<td></td>
+</tr>
+<tr>
+<td>169</td>
+<td>reboot</td>
+<td></td>
+</tr>
+<tr>
+<td>170</td>
+<td>sethostname</td>
+<td></td>
+</tr>
+<tr>
+<td>171</td>
+<td>setdomainname</td>
+<td></td>
+</tr>
+<tr>
+<td>172</td>
+<td>iopl</td>
+<td></td>
+</tr>
+<tr>
+<td>173</td>
+<td>ioperm</td>
+<td></td>
+</tr>
+<tr>
+<td>174</td>
+<td>create_module</td>
+<td></td>
+</tr>
+<tr>
+<td>175</td>
+<td>init_module</td>
+<td></td>
+</tr>
+<tr>
+<td>176</td>
+<td>delete_module</td>
+<td></td>
+</tr>
+<tr>
+<td>177</td>
+<td>get_kernel_syms</td>
+<td></td>
+</tr>
+<tr>
+<td>178</td>
+<td>query_module</td>
+<td></td>
+</tr>
+<tr>
+<td>179</td>
+<td>quotactl</td>
+<td></td>
+</tr>
+<tr>
+<td>180</td>
+<td>nfsservctl</td>
+<td></td>
+</tr>
+<tr>
+<td>181</td>
+<td>getpmsg</td>
+<td></td>
+</tr>
+<tr>
+<td>182</td>
+<td>putpmsg</td>
+<td></td>
+</tr>
+<tr>
+<td>183</td>
+<td>afs_syscall</td>
+<td></td>
+</tr>
+<tr>
+<td>184</td>
+<td>tuxcall</td>
+<td></td>
+</tr>
+<tr>
+<td>185</td>
+<td>security</td>
+<td></td>
+</tr>
+<tr>
+<td>186</td>
+<td>gettid</td>
+<td></td>
+</tr>
+<tr>
+<td>187</td>
+<td>readahead</td>
+<td></td>
+</tr>
+<tr>
+<td>188</td>
+<td>setxattr</td>
+<td></td>
+</tr>
+<tr>
+<td>189</td>
+<td>lsetxattr</td>
+<td></td>
+</tr>
+<tr>
+<td>190</td>
+<td>fsetxattr</td>
+<td></td>
+</tr>
+<tr>
+<td>191</td>
+<td>getxattr</td>
+<td></td>
+</tr>
+<tr>
+<td>192</td>
+<td>lgetxattr</td>
+<td></td>
+</tr>
+<tr>
+<td>193</td>
+<td>fgetxattr</td>
+<td></td>
+</tr>
+<tr>
+<td>194</td>
+<td>listxattr</td>
+<td></td>
+</tr>
+<tr>
+<td>195</td>
+<td>llistxattr</td>
+<td></td>
+</tr>
+<tr>
+<td>196</td>
+<td>flistxattr</td>
+<td></td>
+</tr>
+<tr>
+<td>197</td>
+<td>removexattr</td>
+<td></td>
+</tr>
+<tr>
+<td>198</td>
+<td>lremovexattr</td>
+<td></td>
+</tr>
+<tr>
+<td>199</td>
+<td>fremovexattr</td>
+<td></td>
+</tr>
+<tr>
+<td>200</td>
+<td>tkill</td>
+<td></td>
+</tr>
+<tr>
+<td>201</td>
+<td>time</td>
+<td></td>
+</tr>
+<tr>
+<td>202</td>
+<td>futex</td>
+<td></td>
+</tr>
+<tr>
+<td>203</td>
+<td>sched_setaffinity</td>
+<td></td>
+</tr>
+<tr>
+<td>204</td>
+<td>sched_getaffinity</td>
+<td></td>
+</tr>
+<tr>
+<td>205</td>
+<td>set_thread_area</td>
+<td></td>
+</tr>
+<tr>
+<td>206</td>
+<td>io_setup</td>
+<td></td>
+</tr>
+<tr>
+<td>207</td>
+<td>io_destroy</td>
+<td></td>
+</tr>
+<tr>
+<td>208</td>
+<td>io_getevents</td>
+<td></td>
+</tr>
+<tr>
+<td>209</td>
+<td>io_submit</td>
+<td></td>
+</tr>
+<tr>
+<td>210</td>
+<td>io_cancel</td>
+<td></td>
+</tr>
+<tr>
+<td>211</td>
+<td>get_thread_area</td>
+<td></td>
+</tr>
+<tr>
+<td>212</td>
+<td>lookup_dcookie</td>
+<td></td>
+</tr>
+<tr>
+<td>213</td>
+<td>epoll_create</td>
+<td></td>
+</tr>
+<tr>
+<td>214</td>
+<td>epoll_ctl_old</td>
+<td></td>
+</tr>
+<tr>
+<td>215</td>
+<td>epoll_wait_old</td>
+<td></td>
+</tr>
+<tr>
+<td>216</td>
+<td>remap_file_pages</td>
+<td></td>
+</tr>
+<tr>
+<td>217</td>
+<td>getdents64</td>
+<td></td>
+</tr>
+<tr>
+<td>218</td>
+<td>set_tid_address</td>
+<td></td>
+</tr>
+<tr>
+<td>219</td>
+<td>restart_syscall</td>
+<td></td>
+</tr>
+<tr>
+<td>220</td>
+<td>semtimedop</td>
+<td></td>
+</tr>
+<tr>
+<td>221</td>
+<td>fadvise64</td>
+<td></td>
+</tr>
+<tr>
+<td>222</td>
+<td>timer_create</td>
+<td></td>
+</tr>
+<tr>
+<td>223</td>
+<td>timer_settime</td>
+<td></td>
+</tr>
+<tr>
+<td>224</td>
+<td>timer_gettime</td>
+<td></td>
+</tr>
+<tr>
+<td>225</td>
+<td>timer_getoverrun</td>
+<td></td>
+</tr>
+<tr>
+<td>226</td>
+<td>timer_delete</td>
+<td></td>
+</tr>
+<tr>
+<td>227</td>
+<td>clock_settime</td>
+<td></td>
+</tr>
+<tr>
+<td>228</td>
+<td>clock_gettime</td>
+<td></td>
+</tr>
+<tr>
+<td>229</td>
+<td>clock_getres</td>
+<td></td>
+</tr>
+<tr>
+<td>230</td>
+<td>clock_nanosleep</td>
+<td></td>
+</tr>
+<tr>
+<td>231</td>
+<td>exit_group</td>
+<td></td>
+</tr>
+<tr>
+<td>232</td>
+<td>epoll_wait</td>
+<td></td>
+</tr>
+<tr>
+<td>233</td>
+<td>epoll_ctl</td>
+<td></td>
+</tr>
+<tr>
+<td>234</td>
+<td>tgkill</td>
+<td></td>
+</tr>
+<tr>
+<td>235</td>
+<td>utimes</td>
+<td></td>
+</tr>
+<tr>
+<td>236</td>
+<td>vserver</td>
+<td></td>
+</tr>
+<tr>
+<td>237</td>
+<td>mbind</td>
+<td></td>
+</tr>
+<tr>
+<td>238</td>
+<td>set_mempolicy</td>
+<td></td>
+</tr>
+<tr>
+<td>239</td>
+<td>get_mempolicy</td>
+<td></td>
+</tr>
+<tr>
+<td>240</td>
+<td>mq_open</td>
+<td></td>
+</tr>
+<tr>
+<td>241</td>
+<td>mq_unlink</td>
+<td></td>
+</tr>
+<tr>
+<td>242</td>
+<td>mq_timedsend</td>
+<td></td>
+</tr>
+<tr>
+<td>243</td>
+<td>mq_timedreceive</td>
+<td></td>
+</tr>
+<tr>
+<td>244</td>
+<td>mq_notify</td>
+<td></td>
+</tr>
+<tr>
+<td>245</td>
+<td>mq_getsetattr</td>
+<td></td>
+</tr>
+<tr>
+<td>246</td>
+<td>kexec_load</td>
+<td></td>
+</tr>
+<tr>
+<td>247</td>
+<td>waitid</td>
+<td></td>
+</tr>
+<tr>
+<td>248</td>
+<td>add_key</td>
+<td></td>
+</tr>
+<tr>
+<td>249</td>
+<td>request_key</td>
+<td></td>
+</tr>
+<tr>
+<td>250</td>
+<td>keyctl</td>
+<td></td>
+</tr>
+<tr>
+<td>251</td>
+<td>ioprio_set</td>
+<td></td>
+</tr>
+<tr>
+<td>252</td>
+<td>ioprio_get</td>
+<td></td>
+</tr>
+<tr>
+<td>253</td>
+<td>inotify_init</td>
+<td></td>
+</tr>
+<tr>
+<td>254</td>
+<td>inotify_add_watch</td>
+<td></td>
+</tr>
+<tr>
+<td>255</td>
+<td>inotify_rm_watch</td>
+<td></td>
+</tr>
+<tr>
+<td>256</td>
+<td>migrate_pages</td>
+<td></td>
+</tr>
+<tr>
+<td>257</td>
+<td>openat</td>
+<td></td>
+</tr>
+<tr>
+<td>258</td>
+<td>mkdirat</td>
+<td></td>
+</tr>
+<tr>
+<td>259</td>
+<td>mknodat</td>
+<td></td>
+</tr>
+<tr>
+<td>260</td>
+<td>fchownat</td>
+<td></td>
+</tr>
+<tr>
+<td>261</td>
+<td>futimesat</td>
+<td></td>
+</tr>
+<tr>
+<td>262</td>
+<td>newfstatat</td>
+<td></td>
+</tr>
+<tr>
+<td>263</td>
+<td>unlinkat</td>
+<td></td>
+</tr>
+<tr>
+<td>264</td>
+<td>renameat</td>
+<td></td>
+</tr>
+<tr>
+<td>265</td>
+<td>linkat</td>
+<td></td>
+</tr>
+<tr>
+<td>266</td>
+<td>symlinkat</td>
+<td></td>
+</tr>
+<tr>
+<td>267</td>
+<td>readlinkat</td>
+<td></td>
+</tr>
+<tr>
+<td>268</td>
+<td>fchmodat</td>
+<td></td>
+</tr>
+<tr>
+<td>269</td>
+<td>faccessat</td>
+<td></td>
+</tr>
+<tr>
+<td>270</td>
+<td>pselect6</td>
+<td></td>
+</tr>
+<tr>
+<td>271</td>
+<td>ppoll</td>
+<td></td>
+</tr>
+<tr>
+<td>272</td>
+<td>unshare</td>
+<td></td>
+</tr>
+<tr>
+<td>273</td>
+<td>set_robust_list</td>
+<td></td>
+</tr>
+<tr>
+<td>274</td>
+<td>get_robust_list</td>
+<td></td>
+</tr>
+<tr>
+<td>275</td>
+<td>splice</td>
+<td></td>
+</tr>
+<tr>
+<td>276</td>
+<td>tee</td>
+<td></td>
+</tr>
+<tr>
+<td>277</td>
+<td>sync_file_range</td>
+<td></td>
+</tr>
+<tr>
+<td>278</td>
+<td>vmsplice</td>
+<td></td>
+</tr>
+<tr>
+<td>279</td>
+<td>move_pages</td>
+<td></td>
+</tr>
+<tr>
+<td>280</td>
+<td>utimensat</td>
+<td></td>
+</tr>
+<tr>
+<td>281</td>
+<td>epoll_pwait</td>
+<td></td>
+</tr>
+<tr>
+<td>282</td>
+<td>signalfd</td>
+<td></td>
+</tr>
+<tr>
+<td>283</td>
+<td>timerfd_create</td>
+<td></td>
+</tr>
+<tr>
+<td>284</td>
+<td>eventfd</td>
+<td></td>
+</tr>
+<tr>
+<td>285</td>
+<td>fallocate</td>
+<td></td>
+</tr>
+<tr>
+<td>286</td>
+<td>timerfd_settime</td>
+<td></td>
+</tr>
+<tr>
+<td>287</td>
+<td>timerfd_gettime</td>
+<td></td>
+</tr>
+<tr>
+<td>288</td>
+<td>accept4</td>
+<td></td>
+</tr>
+<tr>
+<td>289</td>
+<td>signalfd4</td>
+<td></td>
+</tr>
+<tr>
+<td>290</td>
+<td>eventfd2</td>
+<td></td>
+</tr>
+<tr>
+<td>291</td>
+<td>epoll_create1</td>
+<td></td>
+</tr>
+<tr>
+<td>292</td>
+<td>dup3</td>
+<td></td>
+</tr>
+<tr>
+<td>293</td>
+<td>pipe2</td>
+<td></td>
+</tr>
+<tr>
+<td>294</td>
+<td>inotify_init1</td>
+<td></td>
+</tr>
+<tr>
+<td>295</td>
+<td>preadv</td>
+<td></td>
+</tr>
+<tr>
+<td>296</td>
+<td>pwritev</td>
+<td></td>
+</tr>
+<tr>
+<td>297</td>
+<td>rt_tgsigqueueinfo</td>
+<td></td>
+</tr>
+<tr>
+<td>298</td>
+<td>perf_event_open</td>
+<td></td>
+</tr>
+<tr>
+<td>299</td>
+<td>recvmmsg</td>
+<td></td>
+</tr>
+<tr>
+<td>300</td>
+<td>fanotify_init</td>
+<td></td>
+</tr>
+<tr>
+<td>301</td>
+<td>fanotify_mark</td>
+<td></td>
+</tr>
+<tr>
+<td>302</td>
+<td>prlimit64</td>
+<td></td>
+</tr>
+<tr>
+<td>303</td>
+<td>name_to_handle_at</td>
+<td></td>
+</tr>
+<tr>
+<td>304</td>
+<td>open_by_handle_at</td>
+<td></td>
+</tr>
+<tr>
+<td>305</td>
+<td>clock_adjtime</td>
+<td></td>
+</tr>
+<tr>
+<td>306</td>
+<td>syncfs</td>
+<td></td>
+</tr>
+<tr>
+<td>307</td>
+<td>sendmmsg</td>
+<td></td>
+</tr>
+<tr>
+<td>308</td>
+<td>setns</td>
+<td></td>
+</tr>
+<tr>
+<td>309</td>
+<td>getcpu</td>
+<td></td>
+</tr>
+<tr>
+<td>310</td>
+<td>process_vm_readv</td>
+<td></td>
+</tr>
+<tr>
+<td>311</td>
+<td>process_vm_writev</td>
+<td></td>
+</tr>
+<tr>
+<td>312</td>
+<td>kcmp</td>
+<td></td>
+</tr>
+<tr>
+<td>313</td>
+<td>finit_module</td>
+<td></td>
+</tr>
+<tr>
+<td>314</td>
+<td>sched_setattr</td>
+<td></td>
+</tr>
+<tr>
+<td>315</td>
+<td>sched_getattr</td>
+<td></td>
+</tr>
+<tr>
+<td>316</td>
+<td>renameat2</td>
+<td></td>
+</tr>
+<tr>
+<td>317</td>
+<td>seccomp</td>
+<td></td>
+</tr>
+<tr>
+<td>318</td>
+<td>getrandom</td>
+<td></td>
+</tr>
+<tr>
+<td>319</td>
+<td>memfd_create</td>
+<td></td>
+</tr>
+<tr>
+<td>320</td>
+<td>kexec_file_load</td>
+<td></td>
+</tr>
+<tr>
+<td>321</td>
+<td>bpf</td>
+<td></td>
+</tr>
+<tr>
+<td>322</td>
+<td>execveat</td>
+<td></td>
+</tr>
+<tr>
+<td>323</td>
+<td>userfaultfd</td>
+<td></td>
+</tr>
+<tr>
+<td>324</td>
+<td>membarrier</td>
+<td></td>
+</tr>
+<tr>
+<td>325</td>
+<td>mlock2</td>
+<td></td>
+</tr>
+<tr>
+<td>326</td>
+<td>copy_file_range</td>
+<td></td>
+</tr>
+<tr>
+<td>327</td>
+<td>preadv2</td>
+<td></td>
+</tr>
+<tr>
+<td>328</td>
+<td>pwritev2</td>
+<td></td>
+</tr>
+<tr>
+<td>329</td>
+<td>pkey_mprotect</td>
+<td></td>
+</tr>
+<tr>
+<td>330</td>
+<td>pkey_alloc</td>
+<td></td>
+</tr>
+<tr>
+<td>331</td>
+<td>pkey_free</td>
+<td></td>
+</tr>
+<tr>
+<td>332</td>
+<td>statx</td>
+<td></td>
+</tr>
+<tr>
+<td>333</td>
+<td>io_pgetevents</td>
+<td></td>
+</tr>
+<tr>
+<td>334</td>
+<td>rseq</td>
+<td></td>
+</tr>
+<tr>
+<td>424</td>
+<td>pidfd_send_signal</td>
+<td></td>
+</tr>
+<tr>
+<td>425</td>
+<td>io_uring_setup</td>
+<td></td>
+</tr>
+<tr>
+<td>426</td>
+<td>io_uring_enter</td>
+<td></td>
+</tr>
+<tr>
+<td>427</td>
+<td>io_uring_register</td>
+<td></td>
+</tr>
+<tr>
+<td>428</td>
+<td>open_tree</td>
+<td></td>
+</tr>
+<tr>
+<td>429</td>
+<td>move_mount</td>
+<td></td>
+</tr>
+<tr>
+<td>430</td>
+<td>fsopen</td>
+<td></td>
+</tr>
+<tr>
+<td>431</td>
+<td>fsconfig</td>
+<td></td>
+</tr>
+<tr>
+<td>432</td>
+<td>fsmount</td>
+<td></td>
+</tr>
+<tr>
+<td>433</td>
+<td>fspick</td>
+<td></td>
+</tr>
+<tr>
+<td>434</td>
+<td>pidfd_open</td>
+<td></td>
+</tr>
+<tr>
+<td>435</td>
+<td>clone3</td>
+<td></td>
+</tr>
+<tr>
+<td>436</td>
+<td>close_range</td>
+<td></td>
+</tr>
+<tr>
+<td>437</td>
+<td>openat2</td>
+<td></td>
+</tr>
+<tr>
+<td>438</td>
+<td>pidfd_getfd</td>
+<td></td>
+</tr>
+<tr>
+<td>439</td>
+<td>faccessat2</td>
+<td></td>
+</tr>
+<tr>
+<td>440</td>
+<td>process_madvise</td>
+<td></td>
+</tr>
+<tr>
+<td>512</td>
+<td>rt_sigaction</td>
+<td></td>
+</tr>
+<tr>
+<td>513</td>
+<td>rt_sigreturn</td>
+<td></td>
+</tr>
+<tr>
+<td>514</td>
+<td>ioctl</td>
+<td></td>
+</tr>
+<tr>
+<td>515</td>
+<td>readv</td>
+<td></td>
+</tr>
+<tr>
+<td>516</td>
+<td>writev</td>
+<td></td>
+</tr>
+<tr>
+<td>517</td>
+<td>recvfrom</td>
+<td></td>
+</tr>
+<tr>
+<td>518</td>
+<td>sendmsg</td>
+<td></td>
+</tr>
+<tr>
+<td>519</td>
+<td>recvmsg</td>
+<td></td>
+</tr>
+<tr>
+<td>520</td>
+<td>execve</td>
+<td></td>
+</tr>
+<tr>
+<td>521</td>
+<td>ptrace</td>
+<td></td>
+</tr>
+<tr>
+<td>522</td>
+<td>rt_sigpending</td>
+<td></td>
+</tr>
+<tr>
+<td>523</td>
+<td>rt_sigtimedwait</td>
+<td></td>
+</tr>
+<tr>
+<td>524</td>
+<td>rt_sigqueueinfo</td>
+<td></td>
+</tr>
+<tr>
+<td>525</td>
+<td>sigaltstack</td>
+<td></td>
+</tr>
+<tr>
+<td>526</td>
+<td>timer_create</td>
+<td></td>
+</tr>
+<tr>
+<td>527</td>
+<td>mq_notify</td>
+<td></td>
+</tr>
+<tr>
+<td>528</td>
+<td>kexec_load</td>
+<td></td>
+</tr>
+<tr>
+<td>529</td>
+<td>waitid</td>
+<td></td>
+</tr>
+<tr>
+<td>530</td>
+<td>set_robust_list</td>
+<td></td>
+</tr>
+<tr>
+<td>531</td>
+<td>get_robust_list</td>
+<td></td>
+</tr>
+<tr>
+<td>532</td>
+<td>vmsplice</td>
+<td></td>
+</tr>
+<tr>
+<td>533</td>
+<td>move_pages</td>
+<td></td>
+</tr>
+<tr>
+<td>534</td>
+<td>preadv</td>
+<td></td>
+</tr>
+<tr>
+<td>535</td>
+<td>pwritev</td>
+<td></td>
+</tr>
+<tr>
+<td>536</td>
+<td>rt_tgsigqueueinfo</td>
+<td></td>
+</tr>
+<tr>
+<td>537</td>
+<td>recvmmsg</td>
+<td></td>
+</tr>
+<tr>
+<td>538</td>
+<td>sendmmsg</td>
+<td></td>
+</tr>
+<tr>
+<td>539</td>
+<td>process_vm_readv</td>
+<td></td>
+</tr>
+<tr>
+<td>540</td>
+<td>process_vm_writev</td>
+<td></td>
+</tr>
+<tr>
+<td>541</td>
+<td>setsockopt</td>
+<td></td>
+</tr>
+<tr>
+<td>542</td>
+<td>getsockopt</td>
+<td></td>
+</tr>
+<tr>
+<td>543</td>
+<td>io_setup</td>
+<td></td>
+</tr>
+<tr>
+<td>544</td>
+<td>io_submit</td>
+<td></td>
+</tr>
+<tr>
+<td>545</td>
+<td>execveat</td>
+<td></td>
+</tr>
+<tr>
+<td>546</td>
+<td>preadv2</td>
+<td></td>
+</tr>
+<tr>
+<td>547</td>
+<td>pwritev2</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

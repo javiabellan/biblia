@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Diagram - Documentación de Javi</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Diagram";
+        var mkdocs_page_input_path = "4_assembly/z80/readme.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Documentación de Javi
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CLI tools</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools/1_dirs.md">📁 Dirs (cd,ls,find,ranger)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools/2_files.md">📄 Files (cat,file,stat)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools/3_process.md">⏳ Process (ps,top)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools/compression.md">🗜️ Compress (zip,tar,bz)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools/cryptography.md">🔑 Cryptography (base64)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools/plotting.md">📊 Plotting (gnuplot)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools/scripting.md">👨‍💻 Scripting</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools/customization.md">🎨 Customization (dotfiles)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools/git.md">GIT</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools/editors.md">📝 Editors (nano,vim,jupyter)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools/pacman.md">📦 Software (pacman,aur,pip)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools/ssh.md">SSH</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools/tmux.md">TMUX</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CLI data tools</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools_data/free_text.md">⚪️ Free text (regex,grep,tr,sed)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools_data/csv.md">🟢 Excel,csv,tsv (cut,paste,awk)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools_data/html.md">🟡 HTML (pup) XML</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools_data/json.md">🟠 JSON (jq)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools_data/pdf.md">🔴 PDF (Xpdf,poppler)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools_data/image.md">🔵 Image (ImageMagick)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools_data/sound_video.md">🟣 Sound,Video (ffmepg,sox)</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CLI networking tools</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools_net/web_scraping.md">⬇️ Web Scraping (curl,wget)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools_net/pentesting.md">🗡️ Pentesting (nmap)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools_net/deffensive.md">🛡️ Deffensive</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools_net/dns.md">📒 DNS (dig,nslookup,whois)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools_net/vpn.md">🔒 VPN</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../cli_tools_net/firewall.md">📛 Firewall</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Python</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../../../python/numpy.md">🟦 Numpy</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../python/machine_learning.md">🟫 Sklearn</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../python/pytorch.md">🟥 Pytorch</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../python/tensorflow.md">🟧 Tensorflow</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../python/onnx.md">⬜️ ONNX</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../python/tensorrt.md">🟩 TensorRT</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../python/numpy.md">🟦 Parallel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">C++</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../../../programming/ruby.md">♦️ Ruby</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../programming/monitoring.md">Monitoring</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../programming/profiling.md">Profiling</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../programming/debugging.md">Debugging</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../../programming/makefile.md">Makefile</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Documentación de Javi</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>Diagram</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="diagram">Diagram</h1>
+<pre><code>         CPU z80
+|-----------------------|                    RAM (64KB) = 65536 Bytes
+|                       |                  |-------------------------|
+|   General Registers   |                  |0000...    OS     ...0FFF|
+|  |--------|--------|  |&lt;================&gt;|1000...    OS     ...1FFF|
+|  |    A   |  Flags |  |&lt;=== DATA BUS ===&gt;|2000...    OS     ...2FFF|
+|  |--------|--------|  |&lt;===  8 BITS  ===&gt;|3000...    OS     ...3FFF|
+|  |    B   |    C   |  |&lt;================&gt;|4000...  PROGRAM  ...4FFF| OUR PROGRAM starts at 4000 fowards
+|  |--------|--------|  |                  |5000...  PROGRAM  ...5FFF|
+|  |    D   |    E   |  |                  |6000...  PROGRAM  ...6FFF|
+|  |--------|--------|  |=================&gt;|7000...     ~     ...7FFF|
+|  |    H   .    L   |  |=================&gt;|8000...     ~     ...8FFF|
+|  |--------|--------|  |=================&gt;|9000...     ~     ...9FFF|
+|                       |== ADRESS BUS ===&gt;|A000...   STACK   ...AFFF|
+|  |-----------------|  |==   16 BITS  ===&gt;|B000...   STACK   ...BFFF| STACK starts at BFFF backwards
+|  | Program Counter |  |=================&gt;|C000...   VIDEO   ...CFFF| VIDEO starts at C000 fowards
+|  |-----------------|  |=================&gt;|D000...   VIDEO   ...DFFF|
+|  |  Stack Pointer  |  |=================&gt;|E000...   VIDEO   ...EFFF|
+|  |-----------------|  |                  |F000...   VIDEO   ...FFFF|
+|                       |                  |-------------------------|
+|-----------------------|
+</code></pre>
+<blockquote>
+<p>Z80 is LITTLE ENDIAN: Bytes are saved in reverse order in memory</p>
+<p>Bytes 45 67 FA -----&gt; Memory FA 67 45</p>
+</blockquote>
+<h1 id="instruction-set"><a href="https://clrhome.org/table">Instruction Set</a></h1>
+<p>There are 256 different instrucctions</p>
+<h3 id="numbers-n">Numbers: n</h3>
+<ul>
+<li><code>12</code>: for writing 12 in decimal.</li>
+<li><code>#0C</code>: for writing 12 in hexadecimal.</li>
+<li><code>%00001100</code>: for writing 12 in binary.</li>
+</ul>
+<h3 id="write-cpu-registers">Write CPU registers</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Opcode</th>
+<th align="left">Instruction</th>
+<th align="left">Description</th>
+<th align="center">Bytes</th>
+<th align="center">Cycles</th>
+<th align="left">Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">3E __</td>
+<td align="left">LD A, n</td>
+<td align="left">A = 8BITS_VALUE</td>
+<td align="center">2</td>
+<td align="center"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">06 __</td>
+<td align="left">LD B, n</td>
+<td align="left">B = 8BITS_VALUE</td>
+<td align="center">2</td>
+<td align="center"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">26 __</td>
+<td align="left">LD H, n</td>
+<td align="left">H = 8BITS_VALUE</td>
+<td align="center">2</td>
+<td align="center"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">21 <strong> </strong></td>
+<td align="left">LD LH, nn</td>
+<td align="left">LH = 16BITS_VALUE</td>
+<td align="center">3</td>
+<td align="center"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3A <strong> </strong></td>
+<td align="left">LD A, (ADR)</td>
+<td align="left">A = *ADR</td>
+<td align="center">3</td>
+<td align="center"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">EB</td>
+<td align="left">EX DE,HL</td>
+<td align="left">DE = HL; HL = DE</td>
+<td align="center">1</td>
+<td align="center"></td>
+<td align="left"><strong>Ex</strong>change DE and HL values.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="operations-in-cpu">Operations in CPU</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Opcode</th>
+<th align="left">Instruction</th>
+<th>Description</th>
+<th align="center">Bytes</th>
+<th align="center">Cycles</th>
+<th>Modifies Flags</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">3C</td>
+<td align="left">INC A</td>
+<td>A = A + 1</td>
+<td align="center">1</td>
+<td align="center"></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">3D</td>
+<td align="left">DEC A</td>
+<td>A = A - 1</td>
+<td align="center">1</td>
+<td align="center"></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">23</td>
+<td align="left">INC HL</td>
+<td>HL = HL + 1</td>
+<td align="center">1</td>
+<td align="center"></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">D6 __</td>
+<td align="left">SUB n</td>
+<td>A = A - n</td>
+<td align="center">2</td>
+<td align="center">7</td>
+<td>yes</td>
+</tr>
+<tr>
+<td align="left">FE __</td>
+<td align="left">CP n</td>
+<td>A - n</td>
+<td align="center">2</td>
+<td align="center">7</td>
+<td>yes</td>
+</tr>
+<tr>
+<td align="left">76</td>
+<td align="left">HALT</td>
+<td>Wait 0.003 secs</td>
+<td align="center">1</td>
+<td align="center">4</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="jumps">↪️ Jumps</h3>
+<blockquote>
+<ul>
+<li><strong>Jump Absolute</strong>: Change the <strong><code>PC</code></strong> (Program Counter) to a given memory adress.</li>
+<li><strong>Jump Relative</strong>: Sum to the current <strong><code>PC</code></strong> (Program Counter) a ±128 value.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">Opcode</th>
+<th align="left">Instruction</th>
+<th align="left">Pseudocode</th>
+<th align="left">Flags Cond.</th>
+<th align="left">Description</th>
+<th align="center">Bytes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">C3 <strong> </strong></td>
+<td align="left">JP ____</td>
+<td align="left"><code>PC = ____</code></td>
+<td align="left"></td>
+<td align="left">Jump Absolute (Big jump)</td>
+<td align="center">3</td>
+</tr>
+<tr>
+<td align="left">18 __</td>
+<td align="left">JR __</td>
+<td align="left"><code>PC = PC + __</code></td>
+<td align="left"></td>
+<td align="left">Jump Relative (±128 jump)</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="left">CD <strong> </strong></td>
+<td align="left">CALL ____</td>
+<td align="left"><code>push(PC+1); PC = ____</code></td>
+<td align="left"></td>
+<td align="left">Jump &amp; save next addr on stack</td>
+<td align="center">3</td>
+</tr>
+<tr>
+<td align="left">C9</td>
+<td align="left">RET</td>
+<td align="left"><code>PC = pop()</code></td>
+<td align="left"></td>
+<td align="left">Jump back to last stack addr</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="left">C8</td>
+<td align="left">RET Z</td>
+<td align="left"><code>if Z: PC = pop()</code></td>
+<td align="left">If Zero</td>
+<td align="left">Jump to last stack addr</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="left">C2 <strong> </strong></td>
+<td align="left">JP NZ ____</td>
+<td align="left"><code>if NZ: PC = ____</code></td>
+<td align="left">If Not Zero</td>
+<td align="left">Jump Absolute (Big jump)</td>
+<td align="center">3</td>
+</tr>
+<tr>
+<td align="left">20 __</td>
+<td align="left">JR NZ, __</td>
+<td align="left"><code>if NZ: PC = PC + __</code></td>
+<td align="left">If Not Zero</td>
+<td align="left">Jump Relative (±128 jump)</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="left">C0</td>
+<td align="left">RET NZ</td>
+<td align="left"><code>if NZ: PC = pop()</code></td>
+<td align="left">If Not Zero</td>
+<td align="left">Jump to last stack addr</td>
+<td align="center">1</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h3 id="write-in-memory">Write in memory</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Opcode</th>
+<th align="left">Instruction</th>
+<th>Description</th>
+<th align="center">Bytes</th>
+<th>Number of cycles</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">32 <strong> </strong></td>
+<td align="left">LD (ADR), A</td>
+<td>*ADR = A</td>
+<td align="center">3</td>
+<td></td>
+<td>Used for write video memory</td>
+</tr>
+<tr>
+<td align="left">22 <strong> </strong></td>
+<td align="left">LD (ADR), LH</td>
+<td>*ADR = LH</td>
+<td align="center">3</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">36 __</td>
+<td align="left">LD (HL), n</td>
+<td>*LH = VALUE</td>
+<td align="center">2</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<h4 id="assembly-utility">Assembly utility</h4>
+<p>Write directly on memory with:
+|          |                               | Example                                                                           |
+|----------|-------------------------------|-----------------------------------------------------------------------------------|
+| <strong><code>DB</code></strong> | <strong>D</strong>efine <strong>B</strong>yte (8 bits)  | <code>DB #30, 10, %01100110</code> writes on memory: <code>30</code> <code>0A</code> <code>66</code>                          |
+| <strong><code>DW</code></strong> | <strong>D</strong>efine <strong>W</strong>ord (16 bits) | <code>DW #C000, 64, %11110000</code> writes: <code>00 C0</code> <code>40 00</code> <code>00 FF</code> (because little endian) |  </p>
+</blockquote>
+<h1 id="assembly-automatization-extras">Assembly automatization extras</h1>
+<p>There are several things from assembly language that <strong>Dont exists in machine code</strong>:</p>
+<ul>
+<li><code>$</code> Dollar sign to compute current memery psition of the program</li>
+<li>Function labels</li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme_extra.js" defer></script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

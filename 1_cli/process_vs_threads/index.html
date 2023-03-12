@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Process vs threads - Documentación de Javi</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Process vs threads";
+        var mkdocs_page_input_path = "1_cli/process_vs_threads.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Documentación de Javi
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CLI tools</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools/1_dirs.md">📁 Dirs (cd,ls,find,ranger)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools/2_files.md">📄 Files (cat,file,stat)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools/3_process.md">⏳ Process (ps,top)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools/compression.md">🗜️ Compress (zip,tar,bz)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools/cryptography.md">🔑 Cryptography (base64)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools/plotting.md">📊 Plotting (gnuplot)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools/scripting.md">👨‍💻 Scripting</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools/customization.md">🎨 Customization (dotfiles)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools/git.md">GIT</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools/editors.md">📝 Editors (nano,vim,jupyter)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools/pacman.md">📦 Software (pacman,aur,pip)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools/ssh.md">SSH</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools/tmux.md">TMUX</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CLI data tools</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools_data/free_text.md">⚪️ Free text (regex,grep,tr,sed)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools_data/csv.md">🟢 Excel,csv,tsv (cut,paste,awk)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools_data/html.md">🟡 HTML (pup) XML</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools_data/json.md">🟠 JSON (jq)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools_data/pdf.md">🔴 PDF (Xpdf,poppler)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools_data/image.md">🔵 Image (ImageMagick)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools_data/sound_video.md">🟣 Sound,Video (ffmepg,sox)</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CLI networking tools</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools_net/web_scraping.md">⬇️ Web Scraping (curl,wget)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools_net/pentesting.md">🗡️ Pentesting (nmap)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools_net/deffensive.md">🛡️ Deffensive</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools_net/dns.md">📒 DNS (dig,nslookup,whois)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools_net/vpn.md">🔒 VPN</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../cli_tools_net/firewall.md">📛 Firewall</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Python</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../../python/numpy.md">🟦 Numpy</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../python/machine_learning.md">🟫 Sklearn</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../python/pytorch.md">🟥 Pytorch</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../python/tensorflow.md">🟧 Tensorflow</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../python/onnx.md">⬜️ ONNX</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../python/tensorrt.md">🟩 TensorRT</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../python/numpy.md">🟦 Parallel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">C++</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../../programming/ruby.md">♦️ Ruby</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../programming/monitoring.md">Monitoring</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../programming/profiling.md">Profiling</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../programming/debugging.md">Debugging</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../programming/makefile.md">Makefile</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Documentación de Javi</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>Process vs threads</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>Process virtual memory</p>
+<pre><code>                     VIRTUAL MEMORY OF A PROCESS
+ 0x00000000  ╔══════════════════════════════════════════╗
+             ║                                          ║
+             ║                                          ║
+ 0x08048000  ╟──────────────────────────────────────────╢
+             ║                 TEXT                     ║\
+             ║             (Binary code)                ║ | 
+             ╟──────────────────────────────────────────╢ | Initiali filled 
+             ║                 DATA                     ║ | with content of
+             ║            Initialized data              ║ | my_program.out
+             ║      (global and static variables)       ║/
+             ╟──────────────────────────────────────────╢
+             ║                  BSS                     ║\
+             ║           Uninitialized data             ║ |
+             ║     (global and static variables)        ║ | Initiali filled
+             ╟──────────────────────────────────────────╢ | with zeros
+             ║                 HEAP                     ║ |
+             ║             Dynamic memory               ║ |
+             ║            malloc/free in C              ║ |
+             ║            new/delete in C++             ║/
+             ╟────────────────────┬─────────────────────╢-&gt; brk (program break)
+             ║                    ▼                     ║
+             ║                                          ║
+             ║                   ...                    ║
+             ║                                          ║
+             ║                    ▲                     ║
+             ╟────────────────────┴─────────────────────╢
+             ║             MEMORY MAPPING               ║\
+             ║ - Included shared libraries (printf...)  ║ | For #include libraries 
+             ║ - Shared file for IPC mmap(SHARED, FILE) ║ | Initiali filled
+             ║ - Shared mem. for IPC mmap(SHARED, ANON) ║ | Initiali filled
+             ║ - Read file fast     mmap(PRIVATE, FILE) ║ | with content of
+             ║ - Subthreads stack                       ║ | libc.so, ...
+             ╟────────────────────┬─────────────────────╢/
+             ║                    ▼                     ║
+             ║                                          ║
+             ║                   ...                    ║
+             ║                                          ║
+             ║                    ▲                     ║
+             ╟────────────────────┴─────────────────────╢\
+             ║           Main thread STACK              ║ | Initiali filled
+             ║                                          ║ | with zeros
+        3GB  ╠══════════════════════════════════════════╣/
+             ║               KERNEL SPACE               ║
+             ║      User can not read/write here        ║
+        4GB  ╚══════════════════════════════════════════╝
+</code></pre>
+<h3 id="a-process-owns">A Process owns:</h3>
+<ul>
+<li>PID: Process Identifier</li>
+<li>PPID: Parent PID</li>
+<li>UID: User Identifier (the person who initiated)</li>
+<li>GID: Group identifier (the person who initiated)</li>
+<li>TEXT segment (binary code instructions)</li>
+<li>DATA segment (static and global data)</li>
+<li>Global variables: <code>int myglobalint = 5;</code></li>
+<li>Static variables: <code>static char* mystaticstr = "hello";</code></li>
+<li>BSS segment (uninitialized data)</li>
+<li><code>static char* my_uninitialized_str</code></li>
+<li>HEAP segment (Dynamically-allocated memory)</li>
+<li><code>malloc</code>/<code>free</code> in C</li>
+<li><code>new</code>/<code>delete</code> in C++</li>
+<li>MEMORY MAPPING segment</li>
+<li>FILE OR ANONYMOUS<ul>
+<li>FILE mappings (code of included libraries, eg <code>printf</code>)</li>
+<li>ANONYMOUS mappping</li>
+</ul>
+</li>
+<li>SHARED vs PRIVATE</li>
+<li>MAIN STACK segment</li>
+<li>Space for the stack <strong>of the main thread</strong></li>
+<li>Page table (maps virtual adresses into physical addrs)</li>
+<li>Open files descriptors (every open file has an offset)</li>
+<li>Signal handlers</li>
+<li>Current working directory</li>
+<li>Enviroment variables (<code>$ env A=val ./program</code>)</li>
+<li>Command line arguments (see them in <code>/proc/PID/cmdline</code>)</li>
+<li>Main Thread --&gt; ALWAYS</li>
+<li>Sub Threads --&gt; OPTIONAL</li>
+</ul>
+<h3 id="a-thread-owns">A Thread owns:</h3>
+<ul>
+<li>Thread ID</li>
+<li>Stack (called functions, local variables, return addresses)</li>
+<li><strong>Stack space for a new thread is created by the parent thread with mmap(). So they're in the "memory map segment"</strong></li>
+<li>Saved Registers</li>
+<li>General purpose registers</li>
+<li>PC (program counter)</li>
+<li>SP (stack pointer)</li>
+<li>Priority (scheduling information)</li>
+</ul>
+<h3 id="thread-thread-switching">thread-thread switching</h3>
+<p>Thread take less time to create</p>
+<h3 id="process-process-switching">process-process switching</h3>
+<p>Much slower than thread-thread switching</p>
+<h3 id="refenrences">Refenrences</h3>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=XV5sRaSVtXQ">Jacob Sorber: How processes get more memory. (mmap, brk)</a></li>
+<li><a href="https://www.youtube.com/watch?v=m7E9piHcfr4">Jacob Sorber: How to Map Files into Memory in C</a></li>
+<li><a href="https://www.youtube.com/watch?v=Aw0YAUdQp1c">Jacob Sorber: Virtual Memory</a></li>
+<li><a href="https://www.youtube.com/watch?v=GIWeQ2I67rk">Jacob Sorber: The Heap</a></li>
+<li><a href="https://www.youtube.com/watch?v=4rLW7zg21gI">ByteByteGo: Process vs Thread </a></li>
+<li><a href="https://www.youtube.com/watch?v=85T_ZaT8EUI">Chris Kanich: Process vs Thread</a></li>
+<li><a href="https://www.youtube.com/watch?v=syecJXuC80I">Chris Kanich: when to use processes, when to use threads</a></li>
+<li><a href="https://www.youtube.com/watch?v=8hVLcyBkSXY">Chris Kanich: understanding mmap</a></li>
+<li><a href="">Julia Evans: Bit size Linux</a>
+https://stackoverflow.com/questions/44858528/where-are-the-stacks-for-the-other-threads-located-in-a-process-virtual-address</li>
+</ul>
+<p>https://people.cs.rutgers.edu/~pxk/416/notes/05-threads.html</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
