@@ -21,6 +21,15 @@
 - #!/usr/bin/expect
 
 
+## Static program analisis
+
+```bash
+pacman -S shellcheck
+shellcheck yourscript
+```
+https://www.shellcheck.net
+
+
 ## `expect`
 
 para automatizar scripts que tienen un input manual

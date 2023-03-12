@@ -23,13 +23,28 @@
 - [Course 2019](https://missing.csail.mit.edu/2019)
 
 
+### Youtube
+- [CodeAesthetic](https://www.youtube.com/@CodeAesthetic)
+- [fasterthanlime](https://www.youtube.com/@fasterthanlime)
+- [pamarcos](https://www.youtube.com/@Nietmetal)
+
+### Jan Schaumann
+- [Twitter](https://twitter.com/jschauma)
+- [Website](https://www.netmeister.org)
+- [Blog](https://www.netmeister.org/blog)
+- Advanced Programming in the UNIX Environment (CS631apue)
+	- [Website](https://stevens.netmeister.org/631)
+	- [Youtube playlist](https://www.youtube.com/playlist?list=PL0qfF8MrJ-jxMfirAdxDs9zIiBg2Wug0z)
+	- [Twitter account](https://twitter.com/cs631apue)
+- System Administration (CS615asa)
+	- [Website](https://stevens.netmeister.org/615/)
+	- [Youtube playlist](https://www.youtube.com/watch?v=QJL5cNv9dJs&list=PLDadzdouM0VBq9HdgalQkqFKvM7uSaj9L
+	- [Twitter account](https://twitter.com/cs615asa)
+
 ### Linux internals
 - [linux-insides](https://github.com/0xAX/linux-insides/blob/master/SUMMARY.md)
 - [Understanding the bin, sbin, usr/bin, usr/sbin split](http://lists.busybox.net/pipermail/busybox/2010-December/074114.html)
 
-
-## C/C++
-https://www.youtube.com/user/Nietmetal
 
 
 ### Misc
